@@ -8,11 +8,11 @@ Here are some code samples that most relates to the identified area. Unless spec
 
 ### Goggles and Host Device
 #### Disney MagicBand
-![Disney xConnect Overview](https://youtu.be/lmSV1Mz7rgw)
-![Disney MagicBand Overview](https://youtu.be/TkP8nl8e4xY)
+Disney xConnect Overview Video: https://youtu.be/lmSV1Mz7rgw
+Disney MagicBand Overview Video: https://youtu.be/TkP8nl8e4xY
 
 C++ code that implements the controller for the hardware that reads all band communications within its range.
-![xReader Source](./Code/Disney/disney.reader/xBR/reader)
+xReader Source: ./Code/Disney/disney.reader/xBR/reader
 
 #### Microsoft Connected Campus
 ![Microsoft Connected Campus Overview](https://youtu.be/zurGw9kRz1Q)
