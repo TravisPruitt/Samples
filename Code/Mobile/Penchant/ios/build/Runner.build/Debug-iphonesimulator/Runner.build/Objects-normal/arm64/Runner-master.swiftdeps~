@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)"
+options: "16cf0477ddb043e2f336f18561f78a223ec6e9bafbae9adf05c949b4428673f1"
+build_start_time: [1641796214, 34396171]
+build_end_time: [1641796214, 647890090]
+inputs:
+  "/Users/travisp/Documents/Projects/Scratch/penchant/ios/Runner/AppDelegate.swift": [1619498502, 491329669]

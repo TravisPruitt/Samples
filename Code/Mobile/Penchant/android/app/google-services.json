@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "75785510164",
+    "firebase_url": "https://penchant-b3980.firebaseio.com",
+    "project_id": "penchant-b3980",
+    "storage_bucket": "penchant-b3980.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75785510164:android:a015eb06a9892444577601",
+        "android_client_info": {
+          "package_name": "com.nebarisoftware.penchant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75785510164-rt3rll2k4198tcnqso3pdg6oalajtv4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChdj60523CKzQhHxKi1hTXwr12mCPkRjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75785510164-rt3rll2k4198tcnqso3pdg6oalajtv4h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "75785510164-ohgdaldujf6amtl95vfca10fs1ltnu41.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nebari.penchant"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

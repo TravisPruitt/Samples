@@ -1,0 +1,12 @@
+{
+  "name": "processvoice",
+  "version": "0.0.2",
+  "dependencies": {
+    "@google-cloud/firestore": "^4.0.0",
+    "@google-cloud/speech": "^4.1.0",
+    "@google-cloud/storage": "^4.1.0",
+    "@google-cloud/language": "^4.1.0",
+    "@google-cloud/debug-agent": "^5.1.1",
+    "path": "^0.12.7"
+  }
+}
