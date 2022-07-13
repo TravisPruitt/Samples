@@ -1,0 +1,425 @@
+$color Off 0 0 0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+$color Red 255 0 0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+$color Green 0 255 0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+$color Blue 0 0 255,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+$color Yellow 255 255 0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+$color Teal 0 255 255,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+$color Purple 255 0 255,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+$color w1 1 1 1
+$color w2 2 2 2
+$color w3 3 3 3
+$color w4 4 4 4
+$color w5 5 5 5
+$color w6 6 6 6
+$color w7 7 7 7
+$color w8 8 8 8
+$color w9 9 9 9
+$color w10 10 10 10
+$color w11 11 6 11
+$color w12 12 12 12
+$color w13 13 13 13
+$color w14 14 14 14
+$color w15 15 8 15
+$color w16 16 16 16
+$color w17 17 17 17
+$color w18 18 18 18
+$color w19 19 19 19
+$color w20 20 20 20
+$color w21 21 21 21
+$color w22 22 22 22
+$color w23 23 23 23
+$color w24 24 24 24
+$color w25 25 25 25
+$color w26 26 26 26
+$color w27 27 27 27
+$color w28 28 28 28
+$color w29 29 29 29
+$color w30 30 30 30
+$color w31 31 31 31
+$color w32 32 32 32
+$color w33 33 33 33
+$color w34 34 34 34
+$color w35 35 35 35
+$color w36 36 36 36
+$color w37 37 37 37
+$color w38 38 38 38
+$color w39 39 39 39
+$color w40 40 40 40
+$color w41 41 41 41
+$color w42 42 42 42
+$color w43 43 43 43
+$color w44 44 44 44
+$color w45 45 45 45
+$color w46 46 46 46
+$color w47 47 47 47
+$color w48 48 48 48
+$color w49 49 49 49
+$color w50 50 50 50
+$color w51 51 51 51
+$color w52 52 52 52
+$color w53 53 53 53
+$color w54 54 54 54
+$color w55 55 55 55
+$color w56 56 56 56
+$color w57 57 57 57
+$color w58 58 58 58
+$color w59 59 59 59
+$color w60 60 60 60
+$color w61 61 61 61
+$color w62 62 62 62
+$color w63 63 63 63
+$color w64 64 64 64
+$color w65 65 65 65
+$color w66 66 66 66
+$color w67 67 67 67
+$color w68 68 68 68
+$color w69 69 69 69
+$color w70 70 70 70
+$color w71 71 71 71
+$color w72 72 72 72
+$color w73 73 73 73
+$color w74 74 74 74
+$color w75 75 75 75
+$color w76 76 76 76
+$color w77 77 77 77
+$color w78 78 78 78
+$color w79 79 79 79
+$color w80 80 80 80
+$color w81 81 81 81
+$color w82 82 82 82
+$color w83 83 83 83
+$color w84 84 84 84
+$color w85 85 85 85
+$color w86 86 86 86
+$color w87 87 87 87
+$color w88 88 88 88
+$color w89 89 89 89
+$color w90 90 90 90
+$color w91 91 91 91
+$color w92 92 92 92
+$color w93 93 93 93
+$color w94 94 94 94
+$color w95 95 95 95
+$color w96 96 96 96
+$color w97 97 97 97
+$color w98 98 98 98
+$color w99 99 99 99
+$color w100 100 100 100
+$color w101 101 101 101
+$color w102 102 102 102
+$color w103 103 103 103
+$color w104 104 104 104
+$color w105 105 105 105
+$color w106 106 106 106
+$color w107 107 107 107
+$color w108 108 108 108
+$color w109 109 109 109
+$color w110 110 110 110
+$color w111 111 111 111
+$color w112 112 112 112
+$color w113 113 113 113
+$color w114 114 114 114
+$color w115 115 115 115
+$color w116 116 116 116
+$color w117 117 117 117
+$color w118 118 118 118
+$color w119 119 119 119
+$color w120 120 120 120
+$color w121 121 121 121
+$color w122 122 122 122
+$color w123 123 123 123
+$color w124 124 124 124
+$color w125 125 125 125
+$color w126 126 126 126
+$color w127 127 127 127
+$color w128 128 128 128
+$color w129 129 129 129
+$color w130 130 130 130
+$color w131 131 131 131
+$color w132 132 132 132
+$color w133 133 133 133
+$color w134 134 134 134
+$color w135 135 135 135
+$color w136 136 136 136
+$color w137 137 137 137
+$color w138 138 138 138
+$color w139 139 139 139
+$color w140 140 140 140
+$color w141 141 141 141
+$color w142 142 142 142
+$color w143 143 143 143
+$color w144 144 144 144
+$color w145 145 145 145
+$color w146 146 146 146
+$color w147 147 147 147
+$color w148 148 148 148
+$color w149 149 149 149
+$color w150 150 150 150
+$color w151 151 151 151
+$color w152 152 152 152
+$color w153 153 153 153
+$color w154 154 154 154
+$color w155 155 155 155
+$color w156 156 156 156
+$color w157 157 157 157
+$color w158 158 158 158
+$color w159 159 159 159
+$color w160 160 160 160
+$color w161 161 161 161
+$color w162 162 162 162
+$color w163 163 163 163
+$color w164 164 164 164
+$color w165 165 165 165
+$color w166 166 166 166
+$color w167 167 167 167
+$color w168 168 168 168
+$color w169 169 169 169
+$color w170 170 170 170
+$color w171 171 171 171
+$color w172 172 172 172
+$color w173 173 173 173
+$color w174 174 174 174
+$color w175 175 175 175
+$color w176 176 176 176
+$color w177 177 177 177
+$color w178 178 178 178
+$color w179 179 179 179
+$color w180 180 180 180
+$color w181 181 181 181
+$color w182 182 182 182
+$color w183 183 183 183
+$color w184 184 184 184
+$color w185 185 185 185
+$color w186 186 186 186
+$color w187 187 187 187
+$color w188 188 188 188
+$color w189 189 189 189
+$color w190 190 190 190
+$color w191 191 191 191
+$color w192 192 192 192
+$color w193 193 193 193
+$color w194 194 194 194
+$color w195 195 195 195
+$color w196 196 196 196
+$color w197 197 197 197
+$color w198 198 198 198
+$color w199 199 199 199
+$color w200 200 200 200
+$color w201 201 201 201
+$color w202 202 202 202
+$color w203 203 203 203
+$color w204 204 204 204
+$color w205 205 205 205
+$color w206 206 206 206
+$color w207 207 207 207
+$color w208 208 208 208
+$color w209 209 209 209
+$color w210 210 210 210
+$color w211 211 211 211
+$color w212 212 212 212
+$color w213 213 213 213
+$color w214 214 214 214
+$color w215 215 215 215
+$color w216 216 216 216
+$color w217 217 217 217
+$color w218 218 218 218
+$color w219 219 219 219
+$color w220 220 220 220
+$color w221 221 221 221
+$color w222 222 222 222
+$color w223 223 223 223
+$color w224 224 224 224
+$color w225 225 225 225
+$color w226 226 226 226
+$color w227 227 227 227
+$color w228 228 228 228
+$color w229 229 229 229
+$color w230 230 230 230
+$color w231 231 231 231
+$color w232 232 232 232
+$color w233 233 233 233
+$color w234 234 234 234
+$color w235 235 235 235
+$color w236 236 236 236
+$color w237 237 237 237
+$color w238 238 238 238
+$color w239 239 239 239
+$color w240 240 240 240
+$color w241 241 241 241
+$color w242 242 242 242
+$color w243 243 243 243
+$color w244 244 244 244
+$color w245 245 245 245
+$color w246 246 246 246
+$color w247 247 247 247
+$color w248 248 248 248
+$color w249 249 249 249
+$color w250 250 250 250
+$color w251 251 251 251
+$color w252 252 252 252
+$color w253 253 253 253
+$color w254 254 254 254
+$color w255 255 255 255
+0.038,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.038,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.028,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.028,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.028,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.028,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.023,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.023,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.023,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.023,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.023,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.02,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.02,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.02,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.02,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.02,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,Yellow,Yellow,Green,Green,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,Yellow,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Yellow,Yellow,Yellow,Green,Green,Green,Green,Teal,Teal,Teal,Teal,Blue,Blue,Blue,Purple,Purple,Purple,Purple,Purple,Red,Red,Red,Red,Red,,,,,,,,,,,,,,,,,,,,,,,,
+#
+0.019,w255,Red,Red,Red,w255,Yellow,Yellow,w255,Green,Green,Green,w255,Teal,Teal,Teal,w255,Blue,Blue,w255,Purple,Purple,Purple,w255,w255,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Purple,Purple,Purple,w255,w255,w255,Red,Red,Red,w255,Yellow,Yellow,w255,Green,Green,Green,w255,Teal,Teal,Teal,w255,Blue,Blue,w255,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Teal,w255,Blue,Blue,w255,Purple,Purple,Purple,w255,w255,w255,Red,Red,Red,w255,Yellow,Yellow,w255,Green,Green,Green,w255,Teal,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Green,w255,Teal,Teal,w255,w255,Blue,Blue,w255,Purple,Purple,w255,w255,w255,Red,Red,Red,w255,w255,Yellow,Yellow,w255,Green,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,w255,Yellow,Yellow,w255,Green,Green,Green,w255,Teal,Teal,w255,w255,Blue,Blue,w255,Purple,Purple,w255,w255,w255,Red,Red,Red,w255,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,w255,Red,Red,Red,w255,w255,Yellow,Yellow,w255,Green,Green,Green,w255,Teal,Teal,w255,w255,Blue,Blue,w255,Purple,Purple,w255,w255,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,w255,Purple,Purple,w255,w255,w255,Red,Red,Red,w255,w255,Yellow,Yellow,w255,Green,Green,Green,w255,Teal,Teal,w255,w255,Blue,Blue,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Teal,w255,w255,Blue,Blue,w255,Purple,Purple,w255,w255,w255,Red,Red,w255,w255,w255,Yellow,Yellow,w255,Green,Green,w255,w255,Teal,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,Green,Green,w255,w255,Teal,Teal,w255,w255,Blue,Blue,w255,Purple,Purple,w255,w255,w255,Red,Red,w255,w255,w255,Yellow,Yellow,w255,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,w255,w255,Yellow,Yellow,w255,Green,Green,w255,w255,Teal,Teal,w255,w255,Blue,Blue,w255,Purple,Purple,w255,w255,w255,Red,Red,w255,,,,,,,,,,,,,,,,,,,,,,,,
+0.019,w255,w255,Red,Red,w255,w255,w255,Yellow,Yellow,w255,Green,Green,w255,w255,Teal,Teal,w255,w255,Blue,Blue,w255,Purple,Purple,w255,,,,,,,,,,,,,,,,,,,,,,,,
+$sound success
+#0.01,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1
+#0.01,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17,w17
+#0.01,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33,w33
+#0.01,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49,w49
+#0.01,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65,w65
+0.038,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81,w81
+0.038,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97,w97
+0.038,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113,w113
+0.038,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129,w129
+0.038,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145,w145
+0.038,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161,w161
+0.038,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177,w177
+0.038,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193,w193
+0.068,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209,w209
+0.068,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225,w225
+0.068,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241,w241
+0.118,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255,w255
+0.068,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231,w231
+0.068,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207,w207
+0.068,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183,w183
+0.068,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159,w159
+0.068,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135,w135
+0.068,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111,w111
+0.058,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87,w87
+0.058,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63,w63
+0.048,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39,w39
+0.048,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27,w27
+0.038,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15,w15
+0.038,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11,w11
+0.028,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7,w7
+0.028,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3,w3

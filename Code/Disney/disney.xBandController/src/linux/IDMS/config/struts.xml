@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE struts PUBLIC
+	    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.multipart.maxSize" value="10291456" />
+    <constant name="struts.custom.i18n.resources" value="struts-messages" />
+    <constant name="struts.freemarker.templatesCache" value="true" />
+    <package name="default" extends="struts-default" namespace="/login">
+      <result-types>
+              <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+      </result-types>
+
+      <interceptors>
+
+          <interceptor name="breadcrumbs" class="org.softwareforge.struts2.breadcrumb.BreadCrumbInterceptor">
+              <param name="defaultRewindMode">AUTO</param>
+              <param name="defaultComparator">org.softwareforge.struts2.breadcrumb.NameComparator</param>
+              <param name="home">Home</param>
+              <param name="homeAction">home</param>
+              <param name="maxCrumbs">7</param>
+          </interceptor>
+
+          <interceptor-stack name="defaultStack">
+              <interceptor-ref name="exception" />
+              <interceptor-ref name="servletConfig" />
+              <interceptor-ref name="prepare" />
+              <interceptor-ref name="i18n" />
+              <interceptor-ref name="chain" />
+              <interceptor-ref name="debugging" />
+              <interceptor-ref name="checkbox" />
+              <interceptor-ref name="staticParams" />
+              <interceptor-ref name="params">
+                  <param name="excludeParams">dojo\..*</param>
+              </interceptor-ref>
+              <interceptor-ref name="conversionError" />
+              <interceptor-ref name="validation">
+                  <param name="excludeMethods">input,back,cancel,browse</param>
+              </interceptor-ref>
+              <interceptor-ref name="workflow">
+                  <param name="excludeMethods">input,back,cancel,browse</param>
+              </interceptor-ref>
+              <interceptor-ref name="breadcrumbs"/>
+          </interceptor-stack>
+      </interceptors>
+
+      <default-interceptor-ref name="defaultStack" />
+
+      <action name="login" class="com.disney.xband.ac.server.LoginValidation">
+          <result name="success" type="tiles">login</result>   
+          <result name="error" type="tiles">login</result>        
+          <result name="success-keystone" type="tiles">login-keystone</result>   
+          <result name="error-keystone" type="tiles">login-keystone</result>        
+          <result name="redirect-problem" type="tiles">redirect-problem</result>   
+      </action>
+
+      <action name="logout" class="com.disney.xband.ac.server.LoginValidation" method="logout">
+          <result name="success" type="tiles">logout</result>   
+     </action>
+
+      <action name="hello" class="com.disney.xband.ac.server.LoginValidation" method="hello">
+          <result name="success" type="httpheader">
+               <param name="status">200</param>
+          </result>
+     </action>
+
+      <action name="gettoken" class="com.disney.xband.ac.server.TokenService" method="getToken">
+          <result name="success" type="stream">
+		<param name="inputName">tokenInputStream</param>
+          </result>
+          <result name="error" type="httpheader">
+               <param name="status">401</param>
+          </result>
+          <result name="invalid" type="httpheader">
+               <param name="status">400</param>
+          </result>
+     </action>
+
+      <action name="gettokens2s" class="com.disney.xband.ac.server.TokenService" method="getTokenS2S">
+          <result name="success" type="stream">
+		<param name="inputName">tokenInputStream</param>
+          </result>
+          <result name="error" type="httpheader">
+               <param name="status">401</param>
+          </result>
+          <result name="invalid" type="httpheader">
+               <param name="status">400</param>
+          </result>
+     </action>
+
+      <action name="validatetoken" class="com.disney.xband.ac.server.TokenService" method="validateToken">
+          <result name="success" type="stream">
+		<param name="inputName">tokenInputStream</param>
+          </result>
+          <result name="error" type="httpheader">
+               <param name="status">401</param>
+          </result>
+          <result name="invalid" type="httpheader">
+               <param name="status">400</param>
+          </result>
+     </action>
+
+      <action name="validatetokens2s" class="com.disney.xband.ac.server.TokenService" method="validateTokenS2S">
+          <result name="success" type="stream">
+		<param name="inputName">tokenInputStream</param>
+          </result>
+          <result name="error" type="httpheader">
+               <param name="status">401</param>
+          </result>
+          <result name="invalid" type="httpheader">
+               <param name="status">400</param>
+          </result>
+     </action>
+
+      <action name="invalidatetoken" class="com.disney.xband.ac.server.TokenService" method="invalidateToken">
+          <result name="success" type="stream">
+		<param name="inputName">tokenInputStream</param>
+          </result>
+          <result name="error" type="httpheader">
+               <param name="status">401</param>
+          </result>
+          <result name="invalid" type="httpheader">
+               <param name="status">400</param>
+          </result>
+     </action>
+
+      <action name="invalidatetokens2s" class="com.disney.xband.ac.server.TokenService" method="invalidateTokenS2S">
+          <result name="success" type="stream">
+		<param name="inputName">tokenInputStream</param>
+          </result>
+          <result name="error" type="httpheader">
+               <param name="status">401</param>
+          </result>
+          <result name="invalid" type="httpheader">
+               <param name="status">400</param>
+          </result>
+     </action>
+    </package>
+</struts>

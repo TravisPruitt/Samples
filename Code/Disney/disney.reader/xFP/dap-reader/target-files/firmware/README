@@ -1,0 +1,22 @@
+*************************************************
+* Firmware
+*************************************************
+
+This directory holds the following device firmware:
+
+  1. Lumidigm Biometric Reader (xbio)
+
+The files are used by the reader software to detect
+and automatically upgrade those devices. In order for
+the software to correctly determine if an upgrade is
+necessary, the files must be named as following:
+
+  1. For xbio reader: xbio-<version>.bin
+
+The reader software will only consider the first match
+as determined by the OS, so only one file per firmware
+type should be present. In addition, the only criteria
+the reader software uses to determine if an upgrade is
+necessary is whether the current version matches the
+file version. This means that the firmware can both be
+upgraded and downgraded through this mechanism.

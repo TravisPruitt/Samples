@@ -1,0 +1,4 @@
+#!/bin/sh
+
+[ -d /etc/dhclient-enter-hooks.d ] && run-parts /etc/dhclient-enter-hooks.d
+

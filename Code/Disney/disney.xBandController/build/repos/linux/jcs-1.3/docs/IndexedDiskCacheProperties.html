@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>JCS - Indexed Disk Cache Configuration</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="Aaron Smuts"></meta><meta name="email" content="ASmuts@apache.org"></meta></head><body class="composite"><div id="banner"><a href="http://jakarta.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="./images/jakarta.png"></img></a><a href="http://jakarta.apache.org/jcs/" id="projectLogo"><span>JCS</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 30 May 2007
+                  | Doc for 1.3</div><div class="xright">
+        
+        <a href="jcs.pdf"><img title="PDF Documentation" style="border: 1px" src="images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuGeneral_Information"><h5>General Information</h5><ul><li class="none"><a href="index.html">Overview</a></li><li class="none"><a href="JCSandJCACHE.html">JCS and JCACHE</a></li><li class="none"><a href="DownloadPage.html">Downloads</a></li><li class="none"><a href="faq.html">FAQ</a></li></ul></div><div id="menuGetting_Started"><h5>Getting Started</h5><ul><li class="none"><a href="getting_started/intro.html">Overview</a></li><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="Plugins.html">Plugin Overview</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></div><div id="menuJCS_User_s_Guide"><h5>JCS User's Guide</h5><ul><li class="collapsed"><a href="LocalCacheConfig.html">Core</a></li><li class="expanded"><a href="Plugins.html">Auxiliary</a><ul><li class="none"><a href="IndexedDiskAuxCache.html">Indexed Disk Cache</a></li><li class="none"><strong><a href="IndexedDiskCacheProperties.html">Indexed Disk Properties</a></strong></li><li class="none"><a href="BlockDiskCache.html">Block Disk Cache</a></li><li class="none"><a href="JDBCDiskCache.html">JDBC Disk Cache</a></li><li class="none"><a href="JDBCDiskCacheProperties.html">JDBC Disk Properties</a></li><li class="none"><a href="MySQLDiskCacheProperties.html">MySQL Disk Properties</a></li><li class="none"><a href="RemoteAuxCache.html">Remote Cache</a></li><li class="none"><a href="RemoteCacheProperties.html">Remote Cache Properties</a></li><li class="none"><a href="LateralTCPAuxCache.html">Lateral TCP Cache</a></li><li class="none"><a href="LateralTCPProperties.html">Lateral TCP Properties</a></li><li class="none"><a href="LateralUDPDiscovery.html">Lateral UDP Discovery</a></li><li class="none"><a href="LateralJavaGroupsAuxCache.html">Lateral JGroups Cache</a></li></ul></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About JCS</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Indexed_Disk_Auxiliary_Cache_Configuration"></a><h2>Indexed Disk Auxiliary Cache Configuration</h2><p>
+				The following properties apply to the Indexed Disk Cache
+				plugin.
+			</p><div class="subsection"><a name="Indexed_Disk_Configuration_Properties"></a><h3>Indexed Disk Configuration Properties</h3><table class="bodyTable"><tr class="a"><th>Property</th><th>Description</th><th>Required</th><th>Default Value</th></tr><tr class="b"><td>DiskPath</td><td>
+							The directory where the disk cache should
+							write its files.
+						</td><td>Y</td><td>n/a</td></tr><tr class="a"><td>MaxPurgatorySize</td><td>
+							The maximum number of items allowed in the
+							queue of items to be written to disk.
+						</td><td>N</td><td>5000</td></tr><tr class="b"><td>MaxKeySize</td><td>
+							The maximum number of keys that the indexed
+							disk cache can have. Since the keys are
+							stored in memory, you may want to limit this
+							number to something reasonable. The default
+							is a bit small.
+						</td><td>N</td><td>5000</td></tr><tr class="a"><td>OptimizeAtRemoveCount</td><td>
+							At how many removes should the cache try to
+							defragment the data file. Since we recycle
+							empty spots, defragmentation is usually not
+							needed. To prevent the cache from
+							defragmenting the data file, you can set
+							this to -1. This is the default value.
+						</td><td>N</td><td>-1</td></tr><tr class="b"><td>OptimizeOnShutdown</td><td>
+							By default the Indexed Disk Cache will
+							optimize on shutdown if the free data size
+							is greater than 0. If you want to prevent
+							this behavior, you can set this parameter to
+							false.
+						</td><td>N</td><td>true</td></tr><tr class="a"><td>MaxRecycleBinSize</td><td>
+							The maximum number of empty spots the cache
+							will keep track of. The smallest are removed
+							when the maximum size is reached. Keeping
+							track of empty spots on disk allows us to
+							reuse spots, thereby keeping the file from
+							growing unncessarily.
+						</td><td>N</td><td>5000</td></tr></table></div><div class="subsection"><a name="Example_Configuration"></a><h3>Example Configuration</h3>
+    <div class="source"><pre>
+					
+jcs.auxiliary.DC=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheFactory
+jcs.auxiliary.DC.attributes=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheAttributes
+jcs.auxiliary.DC.attributes.DiskPath=target/test-sandbox/indexed-disk-cache
+jcs.auxiliary.DC.attributes.MaxPurgatorySize=10000
+jcs.auxiliary.DC.attributes.MaxKeySize=10000
+jcs.auxiliary.DC.attributes.OptimizeAtRemoveCount=300000
+jcs.auxiliary.DC.attributes.OptimizeOnShutdown=true
+jcs.auxiliary.DC.attributes.MaxRecycleBinSize=7500
+        
+				</pre></div>
+  </div><div class="subsection"><a name="Indexed_Disk_Event_Queue_Configuration"></a><h3>Indexed Disk Event Queue Configuration</h3><table class="bodyTable"><tr class="b"><th>Property</th><th>Description</th><th>Required</th><th>Default Value</th></tr><tr class="a"><td>EventQueueType</td><td>
+							This should be either SINGLE or POOLED. By
+							default the single style pool is used. The
+							single style pool uses a single thread per
+							event queue. That thread is killed whenever
+							the queue is inactive for 30 seconds. Since
+							the disk cache uses an event queue for every
+							region, if you have many regions and they
+							are all active, you will be using many
+							threads. To limit the number of threads, you
+							can configure the disk cache to use the
+							pooled event queue. Using more threads than
+							regions will not add any benefit for the
+							indexed disk cache, since only one thread
+							can read or write at a time for a single
+							region.
+						</td><td>N</td><td>SINGLE</td></tr><tr class="b"><td>EventQueuePoolName</td><td>
+							This is the name of the pool to use. It is
+							required if you choose the POOLED event
+							queue type, otherwise it is ignored.
+						</td><td>Y</td><td>n/a</td></tr></table></div><div class="subsection"><a name="Example_Configuration_Using_Thread_Pool"></a><h3>Example Configuration Using Thread Pool</h3>
+    <div class="source"><pre>
+					
+jcs.auxiliary.DC=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheFactory
+jcs.auxiliary.DC.attributes=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheAttributes
+jcs.auxiliary.DC.attributes.DiskPath=target/test-sandbox/indexed-disk-cache
+jcs.auxiliary.DC.attributes.MaxPurgatorySize=10000
+jcs.auxiliary.DC.attributes.MaxKeySize=10000
+jcs.auxiliary.DC.attributes.OptimizeAtRemoveCount=300000
+jcs.auxiliary.DC.attributes.OptimizeOnShutdown=true
+jcs.auxiliary.DC.attributes.MaxRecycleBinSize=7500
+jcs.auxiliary.DC.attributes.EventQueueType=POOLED
+jcs.auxiliary.DC.attributes.EventQueuePoolName=disk_cache_event_queue
+
+# Disk Cache pool
+thread_pool.disk_cache_event_queue.boundarySize=50
+thread_pool.disk_cache_event_queue.useBoundary=true
+thread_pool.disk_cache_event_queue.maximumPoolSize=15
+thread_pool.disk_cache_event_queue.minimumPoolSize=1
+thread_pool.disk_cache_event_queue.keepAliveTime=3500
+thread_pool.disk_cache_event_queue.startUpSize=1
+        
+				</pre></div>
+  </div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2002-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

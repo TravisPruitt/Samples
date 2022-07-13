@@ -1,0 +1,51 @@
+#
+#!/bin/bash
+
+# verify a destination has been provided
+if [ -z $1 ]; then
+	echo USAGE: pushbuild DESTINATION
+	exit
+fi
+
+destination=$1
+source=disney.xBandController/src/linux
+
+echo Copying build from $source to $destination
+
+# assemble the build locally
+rm -rf currentbuild/*
+cp $source/rpm/RPMS/i386/* currentbuild/.
+
+# include other stuff too
+cp $source/Guest/Debug/Guest currentbuild/.
+cp $source/Guest/NGEConfig.xml currentbuild/NGEGuestConfig.xml
+cp $source/Guest/SimulatedGuests.csv currentbuild/.
+cp $source/SpaceModelSimulator/Debug/SpaceModelSimulator currentbuild/.
+cp $source/SpaceModelSimulator/SpaceModelConfig.xml currentbuild/SpaceModelSimConfig.xml
+cp $source/Reader/Debug/Reader currentbuild/.
+cp $source/Reader/NGEConfig.xml currentbuild/NGEConfig.xml
+cp $source/Reader/SpaceModelConfig.xml currentbuild/SpaceModelConfig.xml
+cp $source/Reader/startreaders.sh currentbuild/.
+cp $source/Xfpe/Xfpe.war currentbuild/.
+
+#include the database scripts
+cp -r $source/Database currentbuild
+cp $source/Database/Archive/Common/reset.sql currentbuild
+cp $source/Database/Archive/Common/reset.sh currentbuild
+
+# include start/stop scripts that restarts everything with the new code
+cp restart.sh currentbuild/.
+cp stop.sh currentbuild/.
+
+# clean the destination directory
+ssh testuser@$destination "rm -rf currentbuild/*"
+
+# push files over
+scp -r currentbuild/* testuser@$destination:~/currentbuild/.
+
+# don't restart things - there are too many ways of doing this now
+# ssh testuser@$destination currentbuild/restart.sh \"$2\"
+echo "NOTE: the pushbuild script does not automatically stop old"
+echo "      code or start the new code. You must do this manually." 
+
+

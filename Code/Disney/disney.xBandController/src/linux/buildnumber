@@ -1,0 +1,35 @@
+#
+# Returns a build (release) number based on either git or on the date
+# ARGS:
+#	--version MAVENVERSION SCVERSION 		If using GIT, returns SCEVERSION else returns MAVENVERSION
+#   --number MAVENVERSION					If using GIT, returns checkin number from git else returns 0
+#
+#!/bin/bash
+#
+
+#
+# if git describe works, then we must be using it!
+#
+using_git()
+{
+	git describe > /dev/null 2> /dev/null
+}
+
+if [ "$1" = "--version" ]; then
+	if using_git ; then
+		echo $3
+	else
+		echo $2 | sed "s/-SNAPSHOT//"
+	fi
+elif [ "$1" = "--number" ]; then
+	if using_git ; then
+		git describe | sed "s/^[^-]*-//" | sed "s/\-.*$//"
+	else
+		echo $2 | sed "s/.*-SNAPSHOT/0-snap/"
+	fi
+else
+	echo Bad operator: -$1-
+	echo cat this file for usage information
+fi
+
+

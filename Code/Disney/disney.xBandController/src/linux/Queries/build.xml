@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="Queries">
+	
+<!-- properties -->
+	
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+
+	
+<!-- class paths -->
+	
+    <path id="Web App Libraries.libraryclasspath">
+        <pathelement location="WebContent/WEB-INF/lib/asm.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/c3p0.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jackson-core-asl.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jackson-jaxrs.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jackson-mapper-asl.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jackson-xc.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jersey-client.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jersey-core.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jersey-json.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jersey-server.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jettison.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jsr311-api.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/junit.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/log4j.jar"/>
+    	<pathelement location="WebContent/WEB-INF/lib/commons-lang.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/jtds.jar"/>
+    	<pathelement location="WebContent/WEB-INF/lib/jcs.jar"/>
+    	<pathelement location="WebContent/WEB-INF/lib/commons-dbutils.jar"/>
+    	<pathelement location="WebContent/WEB-INF/lib/commons-collections.jar"/>
+    	<pathelement location="WebContent/WEB-INF/lib/commons-daemon.jar"/>
+    	<pathelement location="WebContent/WEB-INF/lib/commons-lang.jar"/>
+    	<pathelement location="WebContent/WEB-INF/lib/commons-logging.jar"/>
+    	<pathelement location="WebContent/WEB-INF/lib/ezmorph.jar"/>
+    	<pathelement location="WebContent/WEB-INF/lib/json-lib.jar"/>
+    	
+    </path>
+	
+    <path id="EAR Libraries.libraryclasspath"/>
+	
+    <path id="EclipseLink 2.3.0 - Indigo.userclasspath"/>
+	
+    <path id="Apache Tomcat v6.0 [Apache Tomcat v6.0].libraryclasspath">
+    	<fileset dir="/usr/share/tomcat6/lib/">
+    		<include name="*.jar"/>
+    	</fileset>
+    </path>
+	
+    <path id="Queries.classpath">
+        <pathelement location="build/classes"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <path refid="EclipseLink 2.3.0 - Indigo.userclasspath"/>
+        <path refid="Apache Tomcat v6.0 [Apache Tomcat v6.0].libraryclasspath"/>
+    </path>
+	
+
+<!-- targets -->
+	
+	<!-- Establish a clean version number -->
+	<target name="realversion" if="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="${BUILD_VERSION}" />
+	</target>
+
+	<target name="dummyversion" unless="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="0.0.0.0" />
+		<tstamp>
+			<format property="BUILD_DATE" pattern="yyyy-MM-dd HH:mm:ss" />
+        </tstamp>
+	</target>
+
+	<target depends="realversion,dummyversion" name="setvers">
+		<echo message="BUILD_VERSION=${BUILD_VERSION}" />
+	</target>
+
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+	
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
+	
+	<target depends="build-project,war" name="build"/>
+	
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}" includeantruntime="false">
+            <src path="src"/>
+            <classpath refid="Queries.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}" includeantruntime="false">
+            <src path="WebContent/WEB-INF/lib"/>
+            <classpath refid="Queries.classpath"/>
+        </javac>
+    </target>
+	
+	<target name="war">
+		<war destfile="Queries.war" webxml="WebContent/WEB-INF/web.xml">
+			<fileset dir="WebContent"/>
+			<lib dir="WebContent/WEB-INF/lib"/>
+			<classes dir="build/classes"/>
+			<manifest>
+				<attribute name="Built-By" value="Synapse" />
+				<attribute name="Built-Date" value="${BUILD_DATE}" />
+                <attribute name="Implementation-Title" value="${BUILD_VERSION}"/>
+				<attribute name="Implementation-Vendor" value="Synapse" />
+            </manifest>
+		</war>
+	</target>
+	
+	
+</project>

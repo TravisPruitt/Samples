@@ -1,0 +1,15 @@
+load data local infile 'simulator-guests.csv' into table guest
+fields terminated by ','
+lines terminated by '\n'
+(guestid, lastName, firstName, xBMSId, birthdate, address1, address2, city, state, zip, countryCode, active, createdBy, createdDate, updatedBy, updatedDate);
+
+load data local infile 'simulator-xbands.csv' into table xband
+fields terminated by ','
+lines terminated by '\n'
+(xBandId, bandId, lRId, tapId, active, createdBy, createdDate, updatedBy, updatedDate);
+
+load data local infile 'simulator-guest-xbands.csv' into table guest_xband
+fields terminated by ','
+lines terminated by '\n'
+(guest_XBandId, guestId, xBandId, createdBy, createdDate, updatedBy, updatedDate);
+

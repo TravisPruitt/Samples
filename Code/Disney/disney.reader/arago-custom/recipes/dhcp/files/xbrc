@@ -1,0 +1,17 @@
+#!/bin/sh
+
+URL_FILE=/var/lib/dhcp/xbrc-url
+
+rm -f $URL_FILE
+
+if [ x$new_SYNAPSE_xbrc_url != x ]; then
+	echo $new_SYNAPSE_xbrc_url > $URL_FILE.new
+	mv $URL_FILE.new $URL_FILE
+	rm -f $URL_FILE.new
+fi
+if [ -f $URL_FILE ]; then
+	echo ":" $URL_FILE" = " 
+	cat $URL_FILE
+else
+	echo ":" $URL_FILE "does not exist!:"
+fi

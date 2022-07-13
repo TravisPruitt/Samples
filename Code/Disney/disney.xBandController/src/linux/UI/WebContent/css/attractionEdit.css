@@ -1,0 +1,182 @@
+/*
+* CSS file for web pages associated with editing an attraction.
+*/
+ 
+ #attractionEditContainer {
+  	width: 950px;
+ 	height: 600px;
+ 	position: relative;
+ }
+ 
+ #attractionEditContainer #attractionPlan {
+ 	position: absolute;
+ 	top: 50px;
+ 	left: 20px; 	
+ }
+ 
+ #attractionPlan .gridItem {
+ 	position: absolute;
+ 	width: 50px;
+ 	height: 50px;
+ }
+ 
+ #attractionPlan .gridItemLabel {
+ 	position: relative;
+	display: table;
+ 	width: 40px;
+ 	padding: 10px 5px 5px 5px;
+ 	text-align: center;
+ 	color: #000000;
+ }
+ 
+  #attractionPlan .gridItemType {
+  	position: absolute;
+  	top: 17px;
+ 	left: 3px;
+ 	font-size: 9px;
+  }
+ 
+ #attractionPlan .gridItem a {
+ 	position: absolute;
+ 	right: 0px;
+ 	top: 0px;
+ }
+ 
+ #attractionPlan .emptyCell {
+ 	position: absolute;
+ 	width: 50px;
+ 	height: 50px;
+ }
+ 
+ #attractionEditContainer .legend {
+ 	position: absolute;
+ 	padding: 0px 0px 0px 10px;
+ 	width: 160px;
+ 	top: 8px;
+ 	right: 10px;
+ 	background: white;
+ }
+ 
+ #attractionEditContainer h1 {
+ 	position: absolute;
+ 	top: 0px;
+ 	left: 10px;
+ }
+ 
+ #attractionEditContainer #attractionGrid {
+ 	position: absolute;
+ 	top: 50px;
+ 	left: 20px;
+ 	/*overflow: hidden;*/
+ }
+ 
+ /*#attractionEditContainer #attractionGrid #borderBottom {
+ 	position: absolute;
+ 	top: 450px;
+	left: 0px;
+ 	width: 902px;
+ 	height: 1px;
+ 	border-bottom: 1px solid #CCCCCC;
+ }
+ 
+ #attractionEditContainer #attractionGrid #borderRight {
+ 	position: absolute;
+ 	top: 0px;
+	left: 900px;
+ 	height: 451px;
+ 	width: 1px;
+ 	border-right: 1px solid #CCCCCC;
+ }*/
+ 
+#attractionGrid .gridItemTarget {
+	position: absolute;
+	border-top: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	padding: 0px;
+	margin: 0px;
+}
+ 
+#attractionEditContainer .guestStats {
+	position: absolute;
+	padding: 0px 0px 0px 10px;
+	width: 160px;
+	top: 8px;
+	left: 690px;
+	border: 1px solid #CCCCCC;
+ }
+ 
+#attractionEditContainer .guestStats h2 {
+	margin-top: 6px;
+}
+
+/* start backgroundDlg */
+#backgroundDlg {
+	background-color: #EEEEEE;
+}
+/* end backgroundDlg */
+
+/* editmenu */
+#editmenu {
+	background-color: #EEEEEE;
+}
+/* end editmenu */
+ 
+/* toolbox */
+
+#toolbox {
+	background-color: #EEEEEE;
+}
+  
+#toolbox .toolboxItem {
+	position: relative;
+	width: 50px;
+	height: 50px;
+	float: left;
+	margin: 5px;
+	padding: 0px;
+}
+
+#toolbox .path {
+	border: 1px solid #BBBBBB;
+	background-color: white;
+	margin: 4px;
+}
+
+#toolbox .garbage {
+	border: 1px solid #BBBBBB;
+	background-color: white;
+	margin: 4px;
+}
+
+#toolbox .toolboxItem .pathimage {
+   	position: absolute;
+   	top: 0px;
+   	left: 0px;
+   	width: 50px;
+	height: 50px;
+}
+
+#toolbox .toolboxItem .gridItemLabel {
+	position: relative;
+	display: table;
+ 	width: 40px;
+ 	padding: 10px 5px 5px 5px;
+ 	text-align: center;
+ 	color: #000000;
+}
+
+#editmenu dl {
+	
+}
+
+#editmenu dl dt {
+	
+}
+
+/* end toolbox */
+
+.group label:AFTER { content: ""; }
+
+#gridItemAjaxForm div { margin: 10px; }
+
+.pageTitle { margin-bottom: 0; }

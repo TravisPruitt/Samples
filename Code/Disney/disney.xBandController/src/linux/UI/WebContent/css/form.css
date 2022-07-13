@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+
+/*
+* Colors:
+* - light grey: #CCCCCC
+*/
+dl {
+	padding: 0; margin: 0;
+}
+dt {
+	padding: 0; margin: 0;
+	float: left; clear: left;
+	width: 20%;
+}
+dd {
+	padding: 0 0 0.5em 0; margin: 0 0 0 100px;
+}
+dd input {
+	padding: 0; margin: 0; width: 96%;
+}
+
+form .submit {
+	margin-top: 10px;
+}

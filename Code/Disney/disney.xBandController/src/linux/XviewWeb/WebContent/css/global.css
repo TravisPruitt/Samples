@@ -1,0 +1,665 @@
+@CHARSET "UTF-8";
+
+body {
+	padding-top: 0px;
+    margin-top: 0px;
+    font-size: 11px;
+    font-family: "Lucida Grande",Verdana,"Bitstream Vera Sans",Arial,sans-serif;
+    line-height: 16px;
+    color: #555;
+    background: #e8eef4;    
+    margin-left:auto; 
+    margin-right:auto;
+    width: 100%;
+}
+
+.container {
+	padding: 1em;
+	position: relative;
+}
+
+label:AFTER {content: ":";}
+
+#idMainContainer {
+
+	width: 100%;
+	margin: 0 auto;
+}
+
+#idHeader { width: 90%; height: 50px; background-color: #61b4cf; margin: 0 auto; border: 1px solid #CCCCCC;}
+#idMenu { width: 90%; height: 20px; background: url("../images/topnav_bg.gif") repeat-x;  text-align: center; margin: 0 auto; border: 1px solid #CCCCCC;}
+#idSubmenu { width: 90%; height: 20px;   text-align: center; margin:0 auto; background-color: white; border: 1px solid #CCCCCC;}
+#idBody { width: 90%; background-color: #FFFFFF; margin: 0 auto; min-height: 300px; border: 1px solid #CCCCCC;}
+#idFooter { width: 90%; height: 40px; background-color: #61b4cf; text-align: center; border: 1px solid #CCCCCC; margin: 0 auto;}
+
+#idHeader #idLogo { float: left; margin: 6px 8px 0px 10px; }
+#idHeader #idNgeLogo { float: right; margin: 3px 10px 0px 0px; }
+#idHeader #idProductTitle { float: right; margin: 15px 5px 0px 0px; }
+
+#idMenu a { float: left; padding: 0px 4px 0px 4px; color: #222222; }
+#idMenu a:first-child { margin-left: 10px; }
+#idMenu img:first-child { margin-left: 10px; }
+#idMenu div { float: left; }
+#idMenu img { float: left; }
+#idMenu img:hover { border: 1px solid grey; }
+
+#idSubmenu a { float: left; padding: 0px 4px 0px 4px; color: #222222;}
+#idSubmenu a:first-child { margin-left: 10px; }
+#idSubmenu img:first-child { margin-left: 10px; }
+#idSubmenu div { float: left; }
+#idSubmenu img { float: left; margin-top: 1px;}
+#idSubmenu img:hover { border: 1px solid grey; }
+
+ .round {
+ 	-moz-border-radius:5px;
+ 	-webkit-border-radius:5px;
+ 	width:90%;
+ 	behavior:url(border-radius.htc);
+	
+ }
+ 
+ /** floated div **/
+div.floated_div { 
+	display: none; clear: both;
+	border: solid 1px #d2d2d2; -moz-border-radius: 5px;
+	background: white; 
+	/*background: url("../images/blue_semi_transp.png") repeat;*/
+	padding: 0px; z-index: 95;
+}
+div.floated_div img.exiting { float: right; clear: right; padding: 0; margin: 0; }
+div.floated_div div.inner { 
+	padding: 1em; margin: 25px 0 0 0; 
+	clear: both; position: relative; 
+	background: white; -moz-border-radius: 5px; border: solid 1px #99B3CC;
+}
+div.floated_div div.inner div.floated_div_handle {
+	position: absolute; right: 0; top: 0;
+	border-left: solid 1px #99B3CC; border-bottom: solid 1px #99B3CC; -moz-border-radius: 4px;
+	width: 20px; height: 20px;
+	background: white;
+	/* background: white url(../images/icons/cursor_hand.png) 2px 2px no-repeat;*/ 
+}
+div.floated_div div.inner div.button { padding-top: 1em; text-align: center; }
+div.floated_div div.inner ul { list-style: none; padding: 0; margin: 0; }
+div.floated_div div.inner ul > li { padding: 0.3em 0 0 0; margin: 0; }
+div.floated_div div.inner ul > li div { height: 20px; vertical-align: middle; }
+div.floated_div div.inner ul > li div img { height: 20px; margin: 0 10px 0 0; padding: 0; float: left; }
+div.floated_div div.menu { width: 99%; margin: 0px; clear: both; position: absolute; left:0; top: 0; }
+/** end of floated div **/
+
+/** drag and drop stuff **/
+.dragover { border: 1px solid red; }
+/** end drag and drop **/
+
+/** tables **/
+.hor-zebra {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	margin: 0px;
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid #CCCCCC;
+}
+.hor-zebra th {
+	font-size: 110%;
+	font-weight: normal;
+	padding: 5px 5px;
+	color: #FFFFFF;
+	background-color: #388893;
+}
+.hor-zebra td {
+	padding: 5px;
+	color: #446;
+}
+.hor-zebra tbody tr:nth-child(odd) {
+	background: #e6f3f5;
+}
+
+.hor-zebra tfoot tr {
+	font-size: 110%;
+	border-top: 1px solid #CCCCCC;
+}
+
+.hor-zebra .zoomin {
+	float: right;
+}
+
+/** end tables **/
+ 
+ /********** showQueue.jsp ***************/
+ 
+ #queueAjaxContainer {
+ 	position: relative;
+ }
+ 
+ #queueAjaxContainer #guestGraph {
+ 	position: absolute;
+ 	top: 0px;
+ 	left: 0px;
+ 	width: 960px;
+ 	height: 300px;
+ 	overflow: hidden;
+ }
+ 
+ .legend {
+ 	border: 1px solid #CCCCCC;
+ }
+ 
+ .legend img {
+ 	float: left;
+ }
+ 
+ .legend h2 {
+ 	margin-top: 6px;
+ 	margin-bottom: 10px;
+ }
+ 
+ #queueAjaxContainer #attractionPlan {
+ position: absolute;
+ 	top: 0px;
+ 	left: 0px;
+ 	width: 960px;
+ 	height: 300px; 	
+ }
+ 
+ .guest {
+ 	position: absolute;
+ }
+ 
+ .reader {
+ 	position: absolute;
+ }
+ 
+ #idRide {
+ 	position: absolute;
+ 	top: 15px;
+ 	left: 380px;
+ }
+ 
+ #queueAjaxContainer .legend {
+ 	position: absolute;
+ 	padding: 0px 0px 0px 10px;
+ 	width: 120px;
+ 	top: 8px;
+ 	left: 820px;
+ }
+ 
+ #queueAjaxContainer h1 {
+ 	position: absolute;
+ 	top: 0px;
+ 	left: 10px;
+ }
+ 
+ /************ end showQueue.jsp *************/
+ 
+ 
+ 
+.labelHeader
+{
+	font-family:verdana;
+	font-size:20px;
+	font-weight:bold;
+	float:left;
+	vertical-align:middle;
+	height:20px;
+	padding-top:10px;
+	
+}
+
+.label
+{
+	padding-top:2px;
+	vertical-align:middle;
+	padding-left:2px;
+	padding-right:2px;
+	font-size: 12px;
+    font-family: "Lucida Grande",Verdana,"Bitstream Vera Sans",Arial,sans-serif;
+    line-height: 16px;
+}
+
+.boldLabel
+{
+	font-weight:bold;
+}
+
+.InfoBar
+{
+	position:relative;
+	height:78px;
+	width:90%;
+	padding-top:2px;
+	padding-left:10px;
+	padding-bottom:5px;
+	border:1px;
+	border-style:solid;
+	border-color:black;
+	border-radius:10px;
+	background-image: url('../images/lightBlue.svg');
+	background-repeat:no-repeat;
+	cursor:pointer;
+	vertical-align:middle;
+}
+
+.infobarHeader
+{
+	position:relative;
+	left:0px;
+	top:0px;
+	width:50%;
+	height:30px;
+}
+
+.guestInfoBar
+{
+	top:3px;
+	padding-left:10px;
+	padding-bottom:5px;
+	width:40%;
+	vertical-align:middle;
+	text-align:left;
+	cursor:pointer;
+}
+
+.guestInfoBarSearch
+{
+	display:inline-block;
+	float:left;
+	height:25px;
+	padding-left:10px;
+	padding-bottom:5px;
+	width:100%;
+	vertical-align:middle;
+	text-align:left;
+	cursor:pointer;
+	border-color:#e8eef4;
+	border-radius:1px;
+	border-style:solid;
+	
+}
+
+.guestInfoBarSearchAlt
+{
+	display:inline-block;
+	float:left;
+	height:25px;
+	padding-left:10px;
+	padding-bottom:5px;
+	width:100%;
+	vertical-align:middle;
+	text-align:left;
+	cursor:pointer;
+	background-color: #e8eef4;
+	border-color:#e8eef4;
+	border-radius:1px;
+	border-style:solid;
+}
+
+.subBand
+{
+
+	position:relative;
+	width:100%;
+	right:0px;
+	height:30px;
+	vertical-align:middle;
+	text-align:left;
+	
+
+	
+}
+.subBandText
+{
+	position:relative;
+	font-family:verdana;
+	font-size:16px;
+	vertical-align:middle;
+	top:5px;
+}
+
+.inputArea
+{
+	position:relative;
+	
+	background-color: white;
+	width : 90%;
+
+	margin: 0 auto;
+	border-radius:10px 10px 0 0;
+	height:100%;
+
+	
+}
+
+.xBandList
+{
+	background-color:white;
+	padding:25px;
+	margin: 0 auto;
+	border-radius:10px;
+	/* background-image: url('../images/lightBlue.svg'); */
+}
+
+.StatusIcon
+{
+	padding-top:5px;
+	padding-right:3px;
+	height:20px;
+	width:20px;
+	cursor:pointer;
+	float:left;
+}
+
+.removeButtonImg
+{
+	height: 20px;
+	width: 20px;
+	cursor: pointer;
+	float:left;
+	vertical-align:middle;
+	padding-right:3px;
+	padding-top:3px;
+}
+
+.removeButton
+{
+	cursor:pointer;
+	float:left;
+	
+}
+
+.addButtonImg
+{
+	height:20px;
+	width:20px;
+	cursor:pointer;
+	float:left;
+	padding-right: 3px;
+	padding-top: 3px;
+}
+
+.addButton
+{
+	cursor:pointer;
+	float:left;
+}
+.clearBar
+{
+	clear:both;
+}
+
+.findGuestDialog
+{
+	/*position:absolute;
+	left:0px;
+	top:0px;
+	background-color: white;
+	width : 100%;
+	margin: 0px auto;
+	border-radius:10px 10px 0px 0px;
+	padding-top:5px; */
+}
+
+.dialogContents
+{
+	padding:10px;
+}
+
+.findGuestDialog
+{
+ /* display:block; */
+
+    /*set the div in the center of the screen*/
+    /* position:absolute;*/
+    /*top:50%;
+    left:35%;*/
+    width:350px;
+    border-radius:10px;
+    border:3px;
+	border-style:solid;
+	border-color:#61b4cf;  
+	
+	 /*width:300px; */
+     margin: 100px auto;
+     background-color: #fff;
+     padding:15px;
+     text-align:center;
+     overflow:auto;
+}
+
+.dialogContents
+{
+	position:relative;
+	float: left;
+}
+
+.dialogHeader
+{
+	float:left;
+	
+}
+
+.guestSearchResults
+{
+	float: left;
+	width: 100%;
+
+}
+
+.guestList
+{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:100%;
+	max-height:400px;
+	overflow:auto;
+}
+
+.round
+{
+	width:90%;
+}
+ 
+ .overlay
+ {
+     visibility: hidden;
+     position: fixed;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background: url("../images/blockout.png");
+     left: expression(ignoreMe = document.documentElement.scrollLeft + "px");
+     top: expression(ignoreMe = document.documentElement.scrollTop + "px");
+     width: expression(document.documentElement.clientWidth + "px"); 
+     height: expression(document.documentElement.clientHeight + "px");
+     
+}
+
+.button
+{
+	display: inline-block;
+	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+	*display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+
+.searchTextBox
+{
+	font-size:25px;
+    font-family: "Lucida Grande",Verdana,"Bitstream Vera Sans",Arial,sans-serif;
+}
+
+.searchControl
+{
+	
+	width:100%;
+	float:left;
+	padding-top:8px;
+}
+ 
+
+.button:hover {
+	text-decoration: none;
+}
+
+.button:active {
+	position: relative;
+	top: 1px;
+}
+
+ 
+
+
+/* blue */
+.blue {
+	color: #d9eef7;
+	border: solid 1px #0076a3;
+	background: #0095cd;
+	background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+	background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5');
+}
+.blue:hover {
+	background: #007ead;
+	background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+	background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0095cc', endColorstr='#00678e');
+}
+.blue:active {
+	color: #80bed6;
+	background: -webkit-gradient(linear, left top, left bottom, from(#0078a5), to(#00adee));
+	background: -moz-linear-gradient(top,  #0078a5,  #00adee);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0078a5', endColorstr='#00adee');
+}
+
+#searchGuestButton
+{
+
+	float: left;
+}
+
+#cancelButton
+{
+	float:right;
+}
+
+.buttonBar
+{
+	padding-top:10px;
+	width:100%;
+}
+
+#createButton
+{
+	float:left;
+}
+
+#cancelCreateButton
+{
+	float:right;
+}
+
+#hourglass
+{
+	    width:350px;
+    border-radius:10px;
+    border:3px;
+	border-style:solid;
+	border-color:#61b4cf;  
+	
+	 /*width:300px; */
+     margin: 100px auto;
+     background-color: #fff;
+     padding:15px;
+     text-align:center;
+     overflow:auto;
+}
+
+#guestTable
+{
+	position:relative;
+	background-color: #e8eef4;
+	width : 90%;
+	margin: 0 auto;
+	height:100%;
+	padding-left: 10px;
+	
+}
+
+.tableHeader
+{
+	width : 100%;
+	/* background-color: #f8eeff; */
+	float : left;
+	padding-top: 10px;
+	border-bottom-style:none;
+	height:60px;
+	
+	
+}
+
+.columnHeader
+{
+	float : left;
+	width : 120px;
+	padding-left: 5px;
+}
+
+.tableRows
+{
+	width : 100%;
+	position:relative;
+	float: left;
+	left:0px;
+	border-bottom-style:none;
+	border-style-top:none;
+
+}
+
+.tableRow
+{
+	position:relative;
+	border:1px;
+	border-style:solid;
+	border-color:black;
+	padding-left: 5px;
+	border-bottom-style:none;
+	border-left-style:none;
+	border-right-style:none;
+	width:100%;
+	height:70px;
+}
+
+.tableCell span
+{
+	font-size: 14px;
+    font-family: "Lucida Grande",Verdana,"Bitstream Vera Sans",Arial,sans-serif;
+    valign:middle;
+    padding-top:8px;
+}
+
+.bandIds
+{   
+	padding-top:10px;
+	position:absolute;
+	width:40%;
+	vertical-align:top;
+	top:0px;
+	right:0px;
+}

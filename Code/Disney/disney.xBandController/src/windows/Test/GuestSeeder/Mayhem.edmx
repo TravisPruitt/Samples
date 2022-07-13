@@ -1,0 +1,755 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MayhemModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MayhemModelStoreContainer">
+          <EntitySet Name="configuration" EntityType="MayhemModel.Store.configuration" store:Type="Tables" Schema="mayhem_ted" />
+          <EntitySet Name="entitlement" EntityType="MayhemModel.Store.entitlement" store:Type="Tables" Schema="mayhem_ted" />
+          <EntitySet Name="events" EntityType="MayhemModel.Store.events" store:Type="Tables" Schema="mayhem_ted" />
+          <EntitySet Name="guest" EntityType="MayhemModel.Store.guest" store:Type="Tables" Schema="mayhem_ted" />
+          <EntitySet Name="guest_entitlement" EntityType="MayhemModel.Store.guest_entitlement" store:Type="Tables" Schema="mayhem_ted" />
+          <EntitySet Name="guest_info" EntityType="MayhemModel.Store.guest_info" store:Type="Tables" Schema="mayhem_ted" />
+          <EntitySet Name="guest_infotype" EntityType="MayhemModel.Store.guest_infotype" store:Type="Tables" Schema="mayhem_ted" />
+          <EntitySet Name="guest_xband" EntityType="MayhemModel.Store.guest_xband" store:Type="Tables" Schema="mayhem_ted" />
+          <EntitySet Name="guestposition" EntityType="MayhemModel.Store.guestposition" store:Type="Tables" store:Schema="mayhem_ted" store:Name="guestposition">
+            <DefiningQuery>SELECT
+      `guestposition`.`BandID`, 
+      `guestposition`.`x`, 
+      `guestposition`.`y`, 
+      `guestposition`.`HasxPass`
+      FROM `guestposition` AS `guestposition`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="messages" EntityType="MayhemModel.Store.messages" store:Type="Tables" Schema="mayhem_ted" />
+          <EntitySet Name="readers" EntityType="MayhemModel.Store.readers" store:Type="Tables" Schema="mayhem_ted" />
+          <EntitySet Name="status" EntityType="MayhemModel.Store.status" store:Type="Tables" Schema="mayhem_ted" />
+          <EntitySet Name="walls" EntityType="MayhemModel.Store.walls" store:Type="Tables" Schema="mayhem_ted" />
+          <EntitySet Name="xband" EntityType="MayhemModel.Store.xband" store:Type="Tables" Schema="mayhem_ted" />
+          <AssociationSet Name="EntitlementId_GuestId" Association="MayhemModel.Store.EntitlementId_GuestId">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="entitlement" EntitySet="entitlement" />
+          </AssociationSet>
+          <AssociationSet Name="guest_entitlements_entitlements_FK" Association="MayhemModel.Store.guest_entitlements_entitlements_FK">
+            <End Role="entitlement" EntitySet="entitlement" />
+            <End Role="guest_entitlement" EntitySet="guest_entitlement" />
+          </AssociationSet>
+          <AssociationSet Name="guest_entitlements_guest_FK" Association="MayhemModel.Store.guest_entitlements_guest_FK">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="guest_entitlement" EntitySet="guest_entitlement" />
+          </AssociationSet>
+          <AssociationSet Name="guest_guest_infoFK" Association="MayhemModel.Store.guest_guest_infoFK">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="guest_info" EntitySet="guest_info" />
+          </AssociationSet>
+          <AssociationSet Name="guestInfo_guestInfoType_FK" Association="MayhemModel.Store.guestInfo_guestInfoType_FK">
+            <End Role="guest_infotype" EntitySet="guest_infotype" />
+            <End Role="guest_info" EntitySet="guest_info" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="configuration">
+          <Key>
+            <PropertyRef Name="Property" />
+          </Key>
+          <Property Name="Property" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="Value" Type="varchar" Nullable="false" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="entitlement">
+          <Key>
+            <PropertyRef Name="entitlementId" />
+          </Key>
+          <Property Name="entitlementId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="varchar" MaxLength="255" />
+          <Property Name="experienceId" Type="bigint" />
+          <Property Name="resortReservationId" Type="bigint" />
+          <Property Name="guestId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="events">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReaderID" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="BandID" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="Timestamp" Type="bigint" Nullable="false" />
+          <Property Name="Strength" Type="int" Nullable="false" />
+          <Property Name="PacketSequence" Type="int" Nullable="false" />
+          <Property Name="Frequency" Type="int" Nullable="false" />
+          <Property Name="Channel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="guest">
+          <Key>
+            <PropertyRef Name="guestId" />
+          </Key>
+          <Property Name="guestId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="lastName" Type="varchar" MaxLength="200" />
+          <Property Name="firstName" Type="varchar" MaxLength="200" />
+          <Property Name="xBMSId" Type="bigint" />
+          <Property Name="birthdate" Type="date" />
+          <Property Name="address1" Type="varchar" MaxLength="200" />
+          <Property Name="address2" Type="varchar" MaxLength="200" />
+          <Property Name="city" Type="varchar" MaxLength="100" />
+          <Property Name="state" Type="varchar" MaxLength="5" />
+          <Property Name="zip" Type="varchar" MaxLength="12" />
+          <Property Name="countryCode" Type="varchar" MaxLength="5" />
+          <Property Name="active" Type="bool" />
+          <Property Name="createdBy" Type="varchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="guest_entitlement">
+          <Key>
+            <PropertyRef Name="Guest_EntitlementsId" />
+          </Key>
+          <Property Name="Guest_EntitlementsId" Type="bigint" Nullable="false" />
+          <Property Name="guestId" Type="bigint" Nullable="false" />
+          <Property Name="EntitlementId" Type="bigint" Nullable="false" />
+          <Property Name="createdBy" Type="varchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="guest_info">
+          <Key>
+            <PropertyRef Name="guest_infoid" />
+          </Key>
+          <Property Name="guest_infoid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="bigint" Nullable="false" />
+          <Property Name="guest_InfoTypeId" Type="int" Nullable="false" />
+          <Property Name="guest_Info" Type="text" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="createdBy" Type="varchar" MaxLength="200" />
+          <Property Name="createdDate" Type="date" />
+          <Property Name="updatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="guest_infotype">
+          <Key>
+            <PropertyRef Name="guest_InfoTypeId" />
+          </Key>
+          <Property Name="guest_InfoTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="typeName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="createdBy" Type="varchar" MaxLength="200" />
+          <Property Name="createdDate" Type="date" />
+          <Property Name="updatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="guest_xband">
+          <Key>
+            <PropertyRef Name="guest_XBandId" />
+          </Key>
+          <Property Name="guest_XBandId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="bigint" Nullable="false" />
+          <Property Name="xBandId" Type="bigint" Nullable="false" />
+          <Property Name="createdBy" Type="varchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.mayhem_ted.guestposition' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="guestposition">
+          <Key>
+            <PropertyRef Name="x" />
+            <PropertyRef Name="y" />
+          </Key>
+          <Property Name="BandID" Type="varchar" MaxLength="32" />
+          <Property Name="x" Type="double" Nullable="false" />
+          <Property Name="y" Type="double" Nullable="false" />
+          <Property Name="HasxPass" Type="bool" />
+        </EntityType>
+        <EntityType Name="messages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MessageType" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="Timestamp" Type="bigint" Nullable="false" />
+          <Property Name="Payload" Type="varchar" Nullable="false" MaxLength="4096" />
+        </EntityType>
+        <EntityType Name="readers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Tap" Type="bool" Nullable="false" />
+          <Property Name="ReaderID" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="PositionX" Type="int" />
+          <Property Name="PositionY" Type="int" />
+          <Property Name="Group" Type="varchar" MaxLength="16" />
+          <Property Name="SingulationGroup" Type="varchar" MaxLength="16" />
+          <Property Name="URL" Type="varchar" Nullable="false" MaxLength="256" />
+          <Property Name="MACAddress" Type="varchar" MaxLength="32" />
+          <Property Name="LastIDReceived" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="Property" />
+          </Key>
+          <Property Name="Property" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="Value" Type="varchar" Nullable="false" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="walls">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="x0" Type="double" Nullable="false" />
+          <Property Name="y0" Type="double" Nullable="false" />
+          <Property Name="x1" Type="double" Nullable="false" />
+          <Property Name="y1" Type="double" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="xband">
+          <Key>
+            <PropertyRef Name="xBandId" />
+          </Key>
+          <Property Name="xBandId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bandId" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="lRId" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="tapId" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="active" Type="bool" />
+          <Property Name="bandFriendlyName" Type="varchar" MaxLength="45" />
+          <Property Name="printedName" Type="varchar" MaxLength="255" />
+          <Property Name="createdBy" Type="varchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="EntitlementId_GuestId">
+          <End Role="guest" Type="MayhemModel.Store.guest" Multiplicity="1" />
+          <End Role="entitlement" Type="MayhemModel.Store.entitlement" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="entitlement">
+              <PropertyRef Name="entitlementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="guest_entitlements_entitlements_FK">
+          <End Role="entitlement" Type="MayhemModel.Store.entitlement" Multiplicity="1" />
+          <End Role="guest_entitlement" Type="MayhemModel.Store.guest_entitlement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entitlement">
+              <PropertyRef Name="entitlementId" />
+            </Principal>
+            <Dependent Role="guest_entitlement">
+              <PropertyRef Name="EntitlementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="guest_entitlements_guest_FK">
+          <End Role="guest" Type="MayhemModel.Store.guest" Multiplicity="1" />
+          <End Role="guest_entitlement" Type="MayhemModel.Store.guest_entitlement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_entitlement">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="guest_guest_infoFK">
+          <End Role="guest" Type="MayhemModel.Store.guest" Multiplicity="1" />
+          <End Role="guest_info" Type="MayhemModel.Store.guest_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_info">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="guestInfo_guestInfoType_FK">
+          <End Role="guest_infotype" Type="MayhemModel.Store.guest_infotype" Multiplicity="1" />
+          <End Role="guest_info" Type="MayhemModel.Store.guest_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest_infotype">
+              <PropertyRef Name="guest_InfoTypeId" />
+            </Principal>
+            <Dependent Role="guest_info">
+              <PropertyRef Name="guest_InfoTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MayhemModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MayhemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="configurations" EntityType="MayhemModel.configuration" />
+          <EntitySet Name="entitlements" EntityType="MayhemModel.entitlement" />
+          <EntitySet Name="events" EntityType="MayhemModel.event" />
+          <EntitySet Name="guests" EntityType="MayhemModel.guest" />
+          <EntitySet Name="guest_entitlement" EntityType="MayhemModel.guest_entitlement" />
+          <EntitySet Name="guest_info" EntityType="MayhemModel.guest_info" />
+          <EntitySet Name="guest_infotype" EntityType="MayhemModel.guest_infotype" />
+          <EntitySet Name="guest_xband" EntityType="MayhemModel.guest_xband" />
+          <EntitySet Name="guestpositions" EntityType="MayhemModel.guestposition" />
+          <EntitySet Name="messages" EntityType="MayhemModel.message" />
+          <EntitySet Name="readers" EntityType="MayhemModel.reader" />
+          <EntitySet Name="status" EntityType="MayhemModel.status" />
+          <EntitySet Name="walls" EntityType="MayhemModel.wall" />
+          <EntitySet Name="xbands" EntityType="MayhemModel.xband" />
+          <AssociationSet Name="EntitlementId_GuestId" Association="MayhemModel.EntitlementId_GuestId">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="entitlement" EntitySet="entitlements" />
+          </AssociationSet>
+          <AssociationSet Name="guest_entitlements_entitlements_FK" Association="MayhemModel.guest_entitlements_entitlements_FK">
+            <End Role="entitlement" EntitySet="entitlements" />
+            <End Role="guest_entitlement" EntitySet="guest_entitlement" />
+          </AssociationSet>
+          <AssociationSet Name="guest_entitlements_guest_FK" Association="MayhemModel.guest_entitlements_guest_FK">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="guest_entitlement" EntitySet="guest_entitlement" />
+          </AssociationSet>
+          <AssociationSet Name="guest_guest_infoFK" Association="MayhemModel.guest_guest_infoFK">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="guest_info" EntitySet="guest_info" />
+          </AssociationSet>
+          <AssociationSet Name="guestInfo_guestInfoType_FK" Association="MayhemModel.guestInfo_guestInfoType_FK">
+            <End Role="guest_infotype" EntitySet="guest_infotype" />
+            <End Role="guest_info" EntitySet="guest_info" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="configuration">
+          <Key>
+            <PropertyRef Name="Property" />
+          </Key>
+          <Property Name="Property" Type="String" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="entitlement">
+          <Key>
+            <PropertyRef Name="entitlementId" />
+          </Key>
+          <Property Name="entitlementId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" />
+          <Property Name="experienceId" Type="Int64" />
+          <Property Name="resortReservationId" Type="Int64" />
+          <Property Name="guestId" Type="Int64" />
+          <NavigationProperty Name="guest" Relationship="MayhemModel.EntitlementId_GuestId" FromRole="entitlement" ToRole="guest" />
+          <NavigationProperty Name="guest_entitlement" Relationship="MayhemModel.guest_entitlements_entitlements_FK" FromRole="entitlement" ToRole="guest_entitlement" />
+        </EntityType>
+        <EntityType Name="event">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReaderID" Type="String" Nullable="false" />
+          <Property Name="BandID" Type="String" Nullable="false" />
+          <Property Name="Timestamp" Type="Int64" Nullable="false" />
+          <Property Name="Strength" Type="Int32" Nullable="false" />
+          <Property Name="PacketSequence" Type="Int32" Nullable="false" />
+          <Property Name="Frequency" Type="Int32" Nullable="false" />
+          <Property Name="Channel" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="guest">
+          <Key>
+            <PropertyRef Name="guestId" />
+          </Key>
+          <Property Name="guestId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lastName" Type="String" />
+          <Property Name="firstName" Type="String" />
+          <Property Name="xBMSId" Type="Int64" />
+          <Property Name="birthdate" Type="DateTime" />
+          <Property Name="address1" Type="String" />
+          <Property Name="address2" Type="String" />
+          <Property Name="city" Type="String" />
+          <Property Name="state" Type="String" />
+          <Property Name="zip" Type="String" />
+          <Property Name="countryCode" Type="String" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="createdBy" Type="String" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" />
+          <Property Name="updatedDate" Type="DateTime" />
+          <NavigationProperty Name="entitlement" Relationship="MayhemModel.EntitlementId_GuestId" FromRole="guest" ToRole="entitlement" />
+          <NavigationProperty Name="guest_entitlement" Relationship="MayhemModel.guest_entitlements_guest_FK" FromRole="guest" ToRole="guest_entitlement" />
+          <NavigationProperty Name="guest_info" Relationship="MayhemModel.guest_guest_infoFK" FromRole="guest" ToRole="guest_info" />
+        </EntityType>
+        <EntityType Name="guest_entitlement">
+          <Key>
+            <PropertyRef Name="Guest_EntitlementsId" />
+          </Key>
+          <Property Name="Guest_EntitlementsId" Type="Int64" Nullable="false" />
+          <Property Name="guestId" Type="Int64" Nullable="false" />
+          <Property Name="EntitlementId" Type="Int64" Nullable="false" />
+          <Property Name="createdBy" Type="String" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" />
+          <Property Name="updatedDate" Type="DateTime" />
+          <NavigationProperty Name="entitlement" Relationship="MayhemModel.guest_entitlements_entitlements_FK" FromRole="guest_entitlement" ToRole="entitlement" />
+          <NavigationProperty Name="guest" Relationship="MayhemModel.guest_entitlements_guest_FK" FromRole="guest_entitlement" ToRole="guest" />
+        </EntityType>
+        <EntityType Name="guest_info">
+          <Key>
+            <PropertyRef Name="guest_infoid" />
+          </Key>
+          <Property Name="guest_infoid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="Int64" Nullable="false" />
+          <Property Name="guest_InfoTypeId" Type="Int32" Nullable="false" />
+          <Property Name="guest_Info1" Type="String" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="createdBy" Type="String" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" />
+          <Property Name="updatedDate" Type="DateTime" />
+          <NavigationProperty Name="guest" Relationship="MayhemModel.guest_guest_infoFK" FromRole="guest_info" ToRole="guest" />
+          <NavigationProperty Name="guest_infotype" Relationship="MayhemModel.guestInfo_guestInfoType_FK" FromRole="guest_info" ToRole="guest_infotype" />
+        </EntityType>
+        <EntityType Name="guest_infotype">
+          <Key>
+            <PropertyRef Name="guest_InfoTypeId" />
+          </Key>
+          <Property Name="guest_InfoTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeName" Type="String" Nullable="false" />
+          <Property Name="createdBy" Type="String" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" />
+          <Property Name="updatedDate" Type="DateTime" />
+          <NavigationProperty Name="guest_info" Relationship="MayhemModel.guestInfo_guestInfoType_FK" FromRole="guest_infotype" ToRole="guest_info" />
+        </EntityType>
+        <EntityType Name="guest_xband">
+          <Key>
+            <PropertyRef Name="guest_XBandId" />
+          </Key>
+          <Property Name="guest_XBandId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="Int64" Nullable="false" />
+          <Property Name="xBandId" Type="Int64" Nullable="false" />
+          <Property Name="createdBy" Type="String" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" />
+          <Property Name="updatedDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="guestposition">
+          <Key>
+            <PropertyRef Name="x" />
+            <PropertyRef Name="y" />
+          </Key>
+          <Property Name="BandID" Type="String" />
+          <Property Name="x" Type="Double" Nullable="false" />
+          <Property Name="y" Type="Double" Nullable="false" />
+          <Property Name="HasxPass" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="message">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MessageType" Type="String" Nullable="false" />
+          <Property Name="Timestamp" Type="Int64" Nullable="false" />
+          <Property Name="Payload" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reader">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tap" Type="Boolean" Nullable="false" />
+          <Property Name="ReaderID" Type="String" Nullable="false" />
+          <Property Name="PositionX" Type="Int32" />
+          <Property Name="PositionY" Type="Int32" />
+          <Property Name="Group" Type="String" />
+          <Property Name="SingulationGroup" Type="String" />
+          <Property Name="URL" Type="String" Nullable="false" />
+          <Property Name="MACAddress" Type="String" />
+          <Property Name="LastIDReceived" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="Property" />
+          </Key>
+          <Property Name="Property" Type="String" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wall">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="x0" Type="Double" Nullable="false" />
+          <Property Name="y0" Type="Double" Nullable="false" />
+          <Property Name="x1" Type="Double" Nullable="false" />
+          <Property Name="y1" Type="Double" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="xband">
+          <Key>
+            <PropertyRef Name="xBandId" />
+          </Key>
+          <Property Name="xBandId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bandId" Type="String" Nullable="false" />
+          <Property Name="lRId" Type="String" Nullable="false" />
+          <Property Name="tapId" Type="String" Nullable="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="bandFriendlyName" Type="String" />
+          <Property Name="printedName" Type="String" />
+          <Property Name="createdBy" Type="String" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" />
+          <Property Name="updatedDate" Type="DateTime" />
+        </EntityType>
+        <Association Name="EntitlementId_GuestId">
+          <End Role="guest" Type="MayhemModel.guest" Multiplicity="1" />
+          <End Role="entitlement" Type="MayhemModel.entitlement" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="entitlement">
+              <PropertyRef Name="entitlementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="guest_entitlements_entitlements_FK">
+          <End Role="entitlement" Type="MayhemModel.entitlement" Multiplicity="1" />
+          <End Role="guest_entitlement" Type="MayhemModel.guest_entitlement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entitlement">
+              <PropertyRef Name="entitlementId" />
+            </Principal>
+            <Dependent Role="guest_entitlement">
+              <PropertyRef Name="EntitlementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="guest_entitlements_guest_FK">
+          <End Role="guest" Type="MayhemModel.guest" Multiplicity="1" />
+          <End Role="guest_entitlement" Type="MayhemModel.guest_entitlement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_entitlement">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="guest_guest_infoFK">
+          <End Role="guest" Type="MayhemModel.guest" Multiplicity="1" />
+          <End Role="guest_info" Type="MayhemModel.guest_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_info">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="guestInfo_guestInfoType_FK">
+          <End Role="guest_infotype" Type="MayhemModel.guest_infotype" Multiplicity="1" />
+          <End Role="guest_info" Type="MayhemModel.guest_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest_infotype">
+              <PropertyRef Name="guest_InfoTypeId" />
+            </Principal>
+            <Dependent Role="guest_info">
+              <PropertyRef Name="guest_InfoTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MayhemModelStoreContainer" CdmEntityContainer="MayhemEntities">
+          <EntitySetMapping Name="configurations"><EntityTypeMapping TypeName="MayhemModel.configuration"><MappingFragment StoreEntitySet="configuration">
+            <ScalarProperty Name="Property" ColumnName="Property" />
+            <ScalarProperty Name="Value" ColumnName="Value" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="entitlements"><EntityTypeMapping TypeName="MayhemModel.entitlement"><MappingFragment StoreEntitySet="entitlement">
+            <ScalarProperty Name="entitlementId" ColumnName="entitlementId" />
+            <ScalarProperty Name="title" ColumnName="title" />
+            <ScalarProperty Name="experienceId" ColumnName="experienceId" />
+            <ScalarProperty Name="resortReservationId" ColumnName="resortReservationId" />
+            <ScalarProperty Name="guestId" ColumnName="guestId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="events"><EntityTypeMapping TypeName="MayhemModel.event"><MappingFragment StoreEntitySet="events">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="ReaderID" ColumnName="ReaderID" />
+            <ScalarProperty Name="BandID" ColumnName="BandID" />
+            <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+            <ScalarProperty Name="Strength" ColumnName="Strength" />
+            <ScalarProperty Name="PacketSequence" ColumnName="PacketSequence" />
+            <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+            <ScalarProperty Name="Channel" ColumnName="Channel" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="guests"><EntityTypeMapping TypeName="MayhemModel.guest"><MappingFragment StoreEntitySet="guest">
+            <ScalarProperty Name="guestId" ColumnName="guestId" />
+            <ScalarProperty Name="lastName" ColumnName="lastName" />
+            <ScalarProperty Name="firstName" ColumnName="firstName" />
+            <ScalarProperty Name="xBMSId" ColumnName="xBMSId" />
+            <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+            <ScalarProperty Name="address1" ColumnName="address1" />
+            <ScalarProperty Name="address2" ColumnName="address2" />
+            <ScalarProperty Name="city" ColumnName="city" />
+            <ScalarProperty Name="state" ColumnName="state" />
+            <ScalarProperty Name="zip" ColumnName="zip" />
+            <ScalarProperty Name="countryCode" ColumnName="countryCode" />
+            <ScalarProperty Name="active" ColumnName="active" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="guest_entitlement"><EntityTypeMapping TypeName="MayhemModel.guest_entitlement"><MappingFragment StoreEntitySet="guest_entitlement">
+            <ScalarProperty Name="Guest_EntitlementsId" ColumnName="Guest_EntitlementsId" />
+            <ScalarProperty Name="guestId" ColumnName="guestId" />
+            <ScalarProperty Name="EntitlementId" ColumnName="EntitlementId" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="guest_info"><EntityTypeMapping TypeName="MayhemModel.guest_info"><MappingFragment StoreEntitySet="guest_info">
+            <ScalarProperty Name="guest_infoid" ColumnName="guest_infoid" />
+            <ScalarProperty Name="guestId" ColumnName="guestId" />
+            <ScalarProperty Name="guest_InfoTypeId" ColumnName="guest_InfoTypeId" />
+            <ScalarProperty Name="guest_Info1" ColumnName="guest_Info" />
+            <ScalarProperty Name="active" ColumnName="active" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="guest_infotype"><EntityTypeMapping TypeName="MayhemModel.guest_infotype"><MappingFragment StoreEntitySet="guest_infotype">
+            <ScalarProperty Name="guest_InfoTypeId" ColumnName="guest_InfoTypeId" />
+            <ScalarProperty Name="typeName" ColumnName="typeName" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="guest_xband"><EntityTypeMapping TypeName="MayhemModel.guest_xband"><MappingFragment StoreEntitySet="guest_xband">
+            <ScalarProperty Name="guest_XBandId" ColumnName="guest_XBandId" />
+            <ScalarProperty Name="guestId" ColumnName="guestId" />
+            <ScalarProperty Name="xBandId" ColumnName="xBandId" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="guestpositions"><EntityTypeMapping TypeName="MayhemModel.guestposition"><MappingFragment StoreEntitySet="guestposition">
+            <ScalarProperty Name="BandID" ColumnName="BandID" />
+            <ScalarProperty Name="x" ColumnName="x" />
+            <ScalarProperty Name="y" ColumnName="y" />
+            <ScalarProperty Name="HasxPass" ColumnName="HasxPass" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="messages"><EntityTypeMapping TypeName="MayhemModel.message"><MappingFragment StoreEntitySet="messages">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+            <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+            <ScalarProperty Name="Payload" ColumnName="Payload" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="readers"><EntityTypeMapping TypeName="MayhemModel.reader"><MappingFragment StoreEntitySet="readers">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="Tap" ColumnName="Tap" />
+            <ScalarProperty Name="ReaderID" ColumnName="ReaderID" />
+            <ScalarProperty Name="PositionX" ColumnName="PositionX" />
+            <ScalarProperty Name="PositionY" ColumnName="PositionY" />
+            <ScalarProperty Name="Group" ColumnName="Group" />
+            <ScalarProperty Name="SingulationGroup" ColumnName="SingulationGroup" />
+            <ScalarProperty Name="URL" ColumnName="URL" />
+            <ScalarProperty Name="MACAddress" ColumnName="MACAddress" />
+            <ScalarProperty Name="LastIDReceived" ColumnName="LastIDReceived" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="status"><EntityTypeMapping TypeName="MayhemModel.status"><MappingFragment StoreEntitySet="status">
+            <ScalarProperty Name="Property" ColumnName="Property" />
+            <ScalarProperty Name="Value" ColumnName="Value" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="walls"><EntityTypeMapping TypeName="MayhemModel.wall"><MappingFragment StoreEntitySet="walls">
+            <ScalarProperty Name="x0" ColumnName="x0" />
+            <ScalarProperty Name="y0" ColumnName="y0" />
+            <ScalarProperty Name="x1" ColumnName="x1" />
+            <ScalarProperty Name="y1" ColumnName="y1" />
+            <ScalarProperty Name="ID" ColumnName="ID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="xbands"><EntityTypeMapping TypeName="MayhemModel.xband"><MappingFragment StoreEntitySet="xband">
+            <ScalarProperty Name="xBandId" ColumnName="xBandId" />
+            <ScalarProperty Name="bandId" ColumnName="bandId" />
+            <ScalarProperty Name="lRId" ColumnName="lRId" />
+            <ScalarProperty Name="tapId" ColumnName="tapId" />
+            <ScalarProperty Name="active" ColumnName="active" />
+            <ScalarProperty Name="bandFriendlyName" ColumnName="bandFriendlyName" />
+            <ScalarProperty Name="printedName" ColumnName="printedName" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Mayhem">
+        <EntityTypeShape EntityType="MayhemModel.configuration" Width="1.5" PointX="5.75" PointY="2.625" Height="1.4033821614583331" IsExpanded="true" />
+        <EntityTypeShape EntityType="MayhemModel.entitlement" Width="1.5" PointX="3" PointY="5.125" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="MayhemModel.event" Width="1.5" PointX="2.75" PointY="8.625" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="MayhemModel.guest" Width="1.5" PointX="0.75" PointY="4" Height="4.6725065104166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="MayhemModel.guest_entitlement" Width="1.5" PointX="5.25" PointY="5" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MayhemModel.guest_info" Width="1.5" PointX="3" PointY="0.75" Height="3.1340950520833326" IsExpanded="true" />
+        <EntityTypeShape EntityType="MayhemModel.guest_infotype" Width="1.5" PointX="0.75" PointY="9.375" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="MayhemModel.guest_xband" Width="1.5" PointX="4.75" PointY="8.625" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="MayhemModel.guestposition" Width="1.5" PointX="6.75" PointY="8.625" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="MayhemModel.message" Width="1.5" PointX="7.75" PointY="2.625" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="MayhemModel.reader" Width="1.5" PointX="8.75" PointY="5.625" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="MayhemModel.status" Width="1.5" PointX="8.75" PointY="9.625" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="MayhemModel.wall" Width="1.5" PointX="9.75" PointY="2.625" Height="1.9802864583333384" IsExpanded="true" />
+        <EntityTypeShape EntityType="MayhemModel.xband" Width="1.5" PointX="0.75" PointY="12.625" Height="3.1340950520833388" IsExpanded="true" />
+        <AssociationConnector Association="MayhemModel.EntitlementId_GuestId" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.3074446614583328" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="6.3074446614583319" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="6.3074446614583328" />
+          <ConnectorPoint PointX="3" PointY="6.3074446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="MayhemModel.guest_entitlements_entitlements_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.3074446614583328" />
+          <ConnectorPoint PointX="5.25" PointY="6.3074446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="MayhemModel.guest_entitlements_guest_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.6509407552083326" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="7.6509407552083317" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="7.6509407552083326" />
+          <ConnectorPoint PointX="5.25" PointY="7.6509407552083326" />
+        </AssociationConnector>
+        <AssociationConnector Association="MayhemModel.guest_guest_infoFK" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="4" />
+          <ConnectorPoint PointX="1.5" PointY="2.3170475260416663" />
+          <ConnectorPoint PointX="3" PointY="2.3170475260416663" />
+        </AssociationConnector>
+        <AssociationConnector Association="MayhemModel.guestInfo_guestInfoType_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="10.557444661458334" />
+          <ConnectorPoint PointX="2.5" PointY="10.557444661458334" />
+          <ConnectorPoint PointX="2.5" PointY="4.2590950520833326" />
+          <ConnectorPoint PointX="3.75" PointY="4.2590950520833326" />
+          <ConnectorPoint PointX="3.75" PointY="3.8840950520833326" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

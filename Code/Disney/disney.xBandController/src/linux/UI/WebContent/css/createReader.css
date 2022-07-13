@@ -1,0 +1,33 @@
+/*
+* CSS file for web pages associated with band c.
+*/
+
+div.container { padding: 2em; }
+
+span.deleteLocation { float: right; clear: right; }
+
+dl.firstColumn {
+	float: left; clear: left;
+	width: 31%;
+	margin: 0 2% 0 0;
+}
+dl.secondColumn {
+	float: left;
+	width: 31%;
+	margin: 0 2% 0 0;
+}
+dl.thirdColumn {
+	float: left; clear: right;
+	width: 31%;
+}
+
+ul.sortable { 
+	list-style: none;
+	padding: 0; margin: 0;
+	width: 48%;
+}
+ul.sortable li {
+	height: 16px;
+	line-height: 16px;
+	margin: 0 0 3px 0;
+}

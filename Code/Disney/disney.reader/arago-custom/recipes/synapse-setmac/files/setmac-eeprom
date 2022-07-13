@@ -1,0 +1,36 @@
+#!/bin/sh
+
+usage()
+{
+    echo "Usage: setmac <eth0|eth1> xx:xx:xx:xx:xx:xx"
+}
+
+getoct()
+{
+  echo -n "0x"
+  echo $1 | cut -d \: -f $2
+}
+
+if [ "$1" != "eth0" -a "$1" != "eth1" ]; then
+    usage; exit 1
+fi
+
+echo $2 | egrep -q '[[:xdigit:]]{2}(:[[:xdigit:]]{2}){5}'
+if [ $? != 0 ]; then
+    echo "Error: Invalid MAC address"
+    usage; exit 1
+fi
+
+echo "Setting MAC on $1 to $2"
+
+# remove any udev persistent interface name assignments
+mount -oremount,rw /
+rm -f /etc/udev/rules.d/70-persistent-net.rules
+mount -oremount,ro /
+
+ethtool -E $1 offset 0 value 0xA5
+for off in $(seq 1 6); do
+    ethtool -E $1 offset $off value `getoct $2 $off`
+done
+
+echo "Done"

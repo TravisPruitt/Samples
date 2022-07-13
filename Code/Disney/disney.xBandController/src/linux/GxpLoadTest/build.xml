@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="GxpLoadTest">
+
+<!--- Properties -->	
+	
+	<property environment="env"/>
+	<property name="debuglevel" value="source,lines,vars"/>
+	<property name="target" value="1.6"/>
+	<property name="source" value="1.6"/>
+	<property name="dir.test.src" location="src"/>
+	<property name="dir.test.classes" location="bin"/>
+	
+	
+<!--- Classpaths -->
+	
+    <path id="project.classpath">
+    	<pathelement location="lib/json-jar"/>
+    	<pathelement location="lib/log4j.jar"/>
+    	<pathelement location="lib/commons-lang-2.4.jar"/>
+		<pathelement location="lib/commons-collections3.jar"/>
+		<pathelement location="lib/commons-logging-1.1.1.jar"/>
+		<pathelement location="lib/commons-beanutils.jar"/>
+    	<pathelement location="lib/ezmorph.jar"/>
+	<pathelement location="lib/json-lib.jar" />
+    </path>
+	
+<!--- Targets -->
+	
+	<!-- Establish a clean version number -->
+	<target name="realversion" if="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="${BUILD_VERSION}" />
+	</target>
+
+	<target name="dummyversion" unless="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="0.0.0.0" />
+		<tstamp>
+			<format property="BUILD_DATE" pattern="yyyy-MM-dd HH:mm:ss" />
+        </tstamp>
+	</target>
+
+	<target depends="realversion,dummyversion" name="setvers">
+		<echo message="BUILD_VERSION=${BUILD_VERSION}" />
+	</target>
+	
+
+	<!-- Main development and production targets -->
+	<target depends="setvers,build-project,jar,tar" name="build"/>
+    <target depends="build" name="buildprod"/>
+    	
+	<!-- Creates the output directory and copies non-java sources files into it -->
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+	
+	<!-- Removes the output directory -->
+    <target name="clean">
+        <delete dir="bin"/>
+    	<delete file="GxpLoadTest.jar"/>
+    	<delete file="GxpLoadTest.tar"/>
+    </target>
+
+	<!-- Builds the GxpLoadTest code -->
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="bin"
+				source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="project.classpath"/>
+        </javac>
+    </target>
+	
+	<!-- Creates a jar for the GxpLoadTest classes -->
+	<target depends="build-project" name="jar">
+		<jar destfile="GxpLoadTest.jar">
+			<manifest>
+				<attribute name="Built-By" value="Synapse" />
+				<attribute name="Built-Date" value="${BUILD_DATE}" />
+                <attribute name="Implementation-Title" value="${BUILD_VERSION}"/>
+				<attribute name="Implementation-Vendor" value="Synapse" />
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="com.disney.xband.xbrc.gxploadtest.Test"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./"/>
+            </manifest>
+            <fileset dir="bin"/>
+			<zipfileset src="jar-in-jar-loader.zip"/>
+            <zipfileset src="lib/json-lib.jar"/>
+            <zipfileset src="lib/log4j.jar"/>
+            <zipfileset src="lib/commons-lang-2.4.jar"/>
+            <zipfileset src="lib/commons-collections3.jar"/>
+            <zipfileset src="lib/commons-logging-1.1.1.jar"/>
+            <zipfileset src="lib/commons-beanutils.jar"/>
+            <zipfileset src="lib/ezmorph.jar"/>
+		</jar>
+	</target>
+
+	<target depends="build-project" name="tar">
+		<tar destfile="GxpLoadTest.tar">
+			<tarfileset dir=".">
+				<include name="GxpLoadTest.jar" />
+				<include name="GxpLoadTest.dat" />
+				<include name="README" />
+			        <include name="src/**/*.java" />	
+				<include name="lib/**/*.jar" />
+				<include name="build.xml" />
+				<include name="jar-in-jar-loader.zip" />
+			</tarfileset>
+			<tarfileset dir="." filemode="755">
+				<include name="GxpLoadTest" />
+			</tarfileset>
+		</tar>
+	</target>
+	
+</project>

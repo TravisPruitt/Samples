@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole.csproj", "{29126286-8275-4707-80C5-7992781F1A9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FPT2LoadTestConsoleTest", "..\FPT2LoadTestConsoleTest\FPT2LoadTestConsoleTest.csproj", "{83517C1A-483E-4B26-9FB2-A61051433525}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29126286-8275-4707-80C5-7992781F1A9D}.Debug|x86.ActiveCfg = Debug|x86
+		{29126286-8275-4707-80C5-7992781F1A9D}.Debug|x86.Build.0 = Debug|x86
+		{29126286-8275-4707-80C5-7992781F1A9D}.Release|x86.ActiveCfg = Release|x86
+		{29126286-8275-4707-80C5-7992781F1A9D}.Release|x86.Build.0 = Release|x86
+		{83517C1A-483E-4B26-9FB2-A61051433525}.Debug|x86.ActiveCfg = Debug|x86
+		{83517C1A-483E-4B26-9FB2-A61051433525}.Debug|x86.Build.0 = Debug|x86
+		{83517C1A-483E-4B26-9FB2-A61051433525}.Release|x86.ActiveCfg = Release|x86
+		{83517C1A-483E-4B26-9FB2-A61051433525}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

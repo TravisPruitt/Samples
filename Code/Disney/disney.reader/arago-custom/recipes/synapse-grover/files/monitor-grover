@@ -1,0 +1,48 @@
+#!/bin/false
+#
+# Runs the grover app w/ automatic restart
+#
+# Should not be called outside of the init script; which is
+# the reason for the unusual hash bang.
+#
+
+MAX_COREDUMPS=5
+
+KERNEL=$(uname -r)
+APP=/mayhem/grover
+KMOD=/lib/modules/$KERNEL/extra/grover_radio.ko
+
+clean_coredumps() {
+    OLD_CWD=$PWD
+    cd /var/cores
+    ls -t | sed -e "1,${MAX_COREDUMPS}d" | xargs rm
+    cd $OLD_CWD
+}
+
+load_radio_driver() {
+    if [ x$(lsmod | egrep -o "grover_radio") == x ]; then
+        insmod $KMOD
+    fi
+}
+
+CURRENT_PID=`pidof grover`
+if [ -n "$CURRENT_PID" ]; then
+    # grover is already running; kill it
+    killall grover
+fi
+
+# Power off the eth1 controller (xBR3 only)
+BOARD_REV=`cat /proc/board_type`
+if [ "$BOARD_REV" == "xBR3" ]; then
+   /mayhem/eth1-ctrl disable
+fi
+
+clean_coredumps
+load_radio_driver
+
+until $APP; do
+    logger -is -t grover -p alert "exited with code $?. Respawning."
+    clean_coredumps
+    sleep 1
+    load_radio_driver
+done

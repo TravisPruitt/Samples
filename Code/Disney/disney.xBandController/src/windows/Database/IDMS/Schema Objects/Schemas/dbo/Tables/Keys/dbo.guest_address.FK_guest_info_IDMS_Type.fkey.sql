@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[guest_address]
+    ADD CONSTRAINT [FK_guest_info_IDMS_Type] FOREIGN KEY ([IDMStypeId]) REFERENCES [dbo].[IDMS_Type] ([IDMSTypeId]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+

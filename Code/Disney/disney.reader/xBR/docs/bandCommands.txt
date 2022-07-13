@@ -1,0 +1,140 @@
+xBand command scheme
+
+Four states:
+	Low Power, Slow - LPS
+	Low Power, Fast - LPF
+	Pinging, Slow - PS
+	Pinging, Fast - PF
+
+	
+Low Power, Slow:
+	Transmitting: No
+	Wakeup Interval: 30 s
+	Timeout Min: n/a
+	Timeout Max: n/a
+
+Low Power, Fast:
+	Transmitting: No
+	Wakeup Interval Min: 500 ms
+	Wakeup Interval Max: 30 s
+	Timeout Min: 1 wakeup interval
+	Timeout Max: 18 hours
+
+Pinging, Slow:
+	Transmitting: Yes
+	Wakeup Interval Min: 500 ms
+	Wakeup Interval Max: 10 s
+	Timeout Min: 1 wakeup interval
+	Timeout Max: 2 hours
+
+Pinging, Fast:
+	Transmitting: Yes
+	Wakeup Interval Min: 100 ms
+	Wakeup Interval Max: 5 s
+	Timeout Min: 1 wakeup interval
+	Timeout Max: 30 min
+
+Allowed Timeout Transitions (all others disallowed):
+	PF -> PS
+	PS -> LPF
+	LPF -> LPS
+
+Four commands:
+	Enter Low Power, Fast
+	Enter Ping, Slow
+	Enter Ping, Fast
+	Set Transmit Power
+
+Enter Low Power, Fast:
+	Byte 0:	Command Byte 0x01
+	Byte 1: Delay s msB
+	Byte 2: Delay s lsB
+	Byte 3: Delay ms (in units of 10 ms)
+	Byte 4: Timeout npings msB
+	Byte 5: Timeout s npings lsB
+
+
+Enter Ping, Slow:
+	Byte 0:	Command Byte 0x02
+	Byte 1: Delay s msB
+	Byte 2: Delay s lsB
+	Byte 3: Delay ms (in units of 10 ms)
+	Byte 4: Timeout npings msB
+	Byte 5: Timeout s npings lsB
+
+
+Enter Ping, Fast:
+	Byte 0:	Command Byte 0x03
+	Byte 1: Delay s msB
+	Byte 2: Delay s lsB
+	Byte 3: Delay ms (in units of 10 ms)
+	Byte 4: Timeout npings msB
+	Byte 5: Timeout s npings lsB
+
+Set Transmit Power:
+	Byte 0:	Command Byte 0x04
+	Byte 1: (transmit power)
+		0x00: -18 dBm
+		0x01: -12 dBm
+		0x02: -6 dBm
+		0x03: 0 dBm
+	Byte 2: n/a
+	Byte 3: n/a
+	Byte 4: n/a
+	Byte 5: n/a
+
+State Transitions, by command:
+
+Enter Low Power, Fast:
+	From LPS: 
+		Allowed 
+		No special limits
+	From LPF: 
+		Allowed
+		Wakeup Interval Min: default
+		Wakeup Interval Max: current LPF wakeup interval
+		Timeout Min: current LPF timeout
+		Timeout Max: default
+	From PS:
+		Disallowed
+	From PF:
+		Disallowed
+
+Enter Ping, Slow:
+	From LPS:
+		Allowed
+		No special limits
+	From LPF:
+		Allowed
+		No special limits
+	From PS:
+		Allowed
+		Wakeup Interval Min: default
+		Wakeup Interval Max: Current interval
+		Timeout Min: 10 minutes
+		Timeout Max: default
+	From PF:
+		Disallowed
+Enter Ping, Fast:
+	From LPS:
+		Allowed
+		No special limits
+	From LPF:
+		Allowed
+		No special limits
+	From PS:
+		Allowed
+		No special limits
+	From PF:
+		Allowed
+		Wakeup Interval Min: default
+		Wakeup Interval Max: current wakeup interval
+		Timeout Min: 10 minutes
+		Timeout Max: default
+
+Notes:
+
+-	Commands for disallowed transitions will have no effect
+-	Commands with a timeout value of zero will have no effect
+-	Commands with parameters that are out-of-range will be interpreted as having the nearest in-range value for the parameter in question.
+		

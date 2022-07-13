@@ -1,0 +1,3 @@
+day - "dbo.sp_resetSimEvents" : "dbo.sp_getSimEventsJSON" 
+week - "dbo.sp_resetSimEventsWeek" : "dbo.sp_getSimEventsJSON_Week"
+

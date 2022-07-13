@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration debug="false">
+	
+	<appender name="gxp" class="org.apache.log4j.RollingFileAppender">
+		<param name="maxFileSize" value="1024KB" />
+		<param name="maxBackupIndex" value="5" />
+		<param name="File" value="gxpStub.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd/MM/yyyy HH:mm:ss,SSS} %5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+	
+	<logger name="com.disney.xband.gxp">
+	    <level value="trace"/>
+		<appender-ref ref="gxp" />
+	</logger>
+	
+	<root>
+	    <level value="warn"/>
+		<appender-ref ref="gxp" />
+	</root>
+	
+</log4j:configuration>

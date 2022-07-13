@@ -1,0 +1,314 @@
+1394.h:DEFINE_GUID( BUS1394_CLASS_GUID, 0x6BDD1FC1, 0x810F, 0x11d0, 0xBE, 0xC7, 0x08, 0x00, 0x2B, 0xE2, 0x09, 0x2F);
+61883.h:DEFINE_GUID(GUID_61883_CLASS, 0x7ebefbc0, 0x3200, 0x11d2, 0xb4, 0xc2, 0x0, 0xa0, 0xc9, 0x69, 0x7d, 0x7);
+avc.h:DEFINE_GUIDSTRUCT("9D46279F-3432-48F3-888A-EEFF1B7EEE71", KSMEDIUMSETID_1394SerialBus);
+avc.h:#define KSMEDIUMSETID_1394SerialBus DEFINE_GUIDNAMED(KSMEDIUMSETID_1394SerialBus)
+avc.h:DEFINE_GUID(GUID_VIRTUAL_AVC_CLASS, 0x616ef4d0, 0x23ce, 0x446d, 0xa5, 0x68, 0xc3, 0x1e, 0xb0, 0x19, 0x13, 0xd0);
+avc.h:DEFINE_GUID(GUID_AVC_CLASS, 0x095780c3, 0x48a1, 0x4570, 0xbd, 0x95, 0x46, 0x70, 0x7f, 0x78, 0xc2, 0xdc);
+avcstrm.h:DEFINE_GUIDSTRUCT("73766169-0000-0010-8000-00aa00389b71", KSDATAFORMAT_TYPE_INTERLEAVED);
+avcstrm.h:#define KSDATAFORMAT_TYPE_INTERLEAVED DEFINE_GUIDNAMED(KSDATAFORMAT_TYPE_INTERLEAVED)
+avcstrm.h:DEFINE_GUIDSTRUCT("64737664-0000-0010-8000-00aa00389b71", KSDATAFORMAT_SUBTYPE_DVSD);
+avcstrm.h:#define KSDATAFORMAT_SUBTYPE_DVSD DEFINE_GUIDNAMED(KSDATAFORMAT_SUBTYPE_DVSD)
+avcstrm.h:DEFINE_GUIDSTRUCT("6C737664-0000-0010-8000-00aa00389b71", KSDATAFORMAT_SUBTYPE_DVSL);
+avcstrm.h:#define KSDATAFORMAT_SUBTYPE_DVSL DEFINE_GUIDNAMED(KSDATAFORMAT_SUBTYPE_DVSL)
+avcstrm.h:DEFINE_GUIDSTRUCT("64687664-0000-0010-8000-00aa00389b71", KSDATAFORMAT_SUBTYPE_DVHD);
+avcstrm.h:#define KSDATAFORMAT_SUBTYPE_DVHD DEFINE_GUIDNAMED(KSDATAFORMAT_SUBTYPE_DVHD)
+avcstrm.h:DEFINE_GUIDSTRUCT("35327664-0000-0010-8000-00aa00389b71", KSDATAFORMAT_SUBTYPE_dv25);
+avcstrm.h:#define KSDATAFORMAT_SUBTYPE_dv25 DEFINE_GUIDNAMED(KSDATAFORMAT_SUBTYPE_dv25)
+avcstrm.h:DEFINE_GUIDSTRUCT("30357664-0000-0010-8000-00aa00389b71", KSDATAFORMAT_SUBTYPE_dv50);
+avcstrm.h:#define KSDATAFORMAT_SUBTYPE_dv50 DEFINE_GUIDNAMED(KSDATAFORMAT_SUBTYPE_dv50)
+avcstrm.h:DEFINE_GUIDSTRUCT("31687664-0000-0010-8000-00aa00389b71", KSDATAFORMAT_SUBTYPE_dvh1);
+avcstrm.h:#define KSDATAFORMAT_SUBTYPE_dvh1 DEFINE_GUIDNAMED(KSDATAFORMAT_SUBTYPE_dvh1)
+avcstrm.h:DEFINE_GUIDSTRUCT("05589f84-c356-11ce-bf01-00aa0055595a", KSDATAFORMAT_SPECIFIER_DVINFO);
+avcstrm.h:#define KSDATAFORMAT_SPECIFIER_DVINFO DEFINE_GUIDNAMED(KSDATAFORMAT_SPECIFIER_DVINFO)
+avcstrm.h:DEFINE_GUIDSTRUCT("ddcff71a-fc9f-4bd9-b90b-197b0d44ad94", KSDATAFORMAT_SPECIFIER_DV_AVC);
+avcstrm.h:#define KSDATAFORMAT_SPECIFIER_DV_AVC DEFINE_GUIDNAMED(KSDATAFORMAT_SPECIFIER_DV_AVC)
+avcstrm.h:DEFINE_GUIDSTRUCT("f09dc377-6e51-4ec5-a0c4-cd7f39629880", KSDATAFORMAT_SPECIFIER_AVC);
+avcstrm.h:#define KSDATAFORMAT_SPECIFIER_AVC DEFINE_GUIDNAMED(KSDATAFORMAT_SPECIFIER_AVC)
+avcstrm.h:DEFINE_GUIDSTRUCT("138aa9a4-1ee2-4c5b-988e-19abfdbc8a11", KSDATAFORMAT_TYPE_MPEG2_TRANSPORT_STRIDE);
+avcstrm.h:#define KSDATAFORMAT_TYPE_MPEG2_TRANSPORT_STRIDE DEFINE_GUIDNAMED(KSDATAFORMAT_TYPE_MPEG2_TRANSPORT_STRIDE)
+avcstrm.h:DEFINE_GUIDSTRUCT("97e218b1-1e5a-498e-a954-f962cfd98cde", KSDATAFORMAT_SPECIFIER_61883_4);
+avcstrm.h:#define KSDATAFORMAT_SPECIFIER_61883_4 DEFINE_GUIDNAMED(KSDATAFORMAT_SPECIFIER_61883_4)
+dbci.h:DEFINE_GUID( GUID_CLASS_DBC, 0xf18a0e88, 0xc30c, 0x11d0, 0x88, 0x15, 0x00, \
+hidclass.h:DEFINE_GUID( GUID_DEVINTERFACE_HID, 0x4D1E55B2L, 0xF16F, 0x11CF, 0x88, 0xCB, 0x00, \
+hidclass.h:DEFINE_GUID( GUID_HID_INTERFACE_NOTIFY, 0x2c4e2e88L, 0x25e6, 0x4c33, 0x88, 0x2f, 0x3d, 0x82, 0xe6, 0x07, 0x36, 0x81 );
+hidclass.h:DEFINE_GUID( GUID_HID_INTERFACE_HIDPARSE, 0xf5c315a5, 0x69ac, 0x4bc2, 0x92, 0x79, 0xd0, 0xb6, 0x45, 0x76, 0xf4, 0x4b );
+hubbusif.h:DEFINE_GUID(USB_BUS_INTERFACE_HUB_GUID, 
+usbbusif.h:DEFINE_GUID(USB_BUS_INTERFACE_USBDI_GUID, 
+usbcamdi.h:DEFINE_GUID( GUID_USBCAMD_INTERFACE ,
+usbiodef.h:DEFINE_GUID(GUID_DEVINTERFACE_USB_HUB,    0xf18a0e88, 0xc30c, 0x11d0, 0x88, 0x15, 0x00, \
+usbiodef.h:DEFINE_GUID(GUID_DEVINTERFACE_USB_DEVICE, 0xA5DCBF10L, 0x6530, 0x11D2, 0x90, 0x1F, 0x00, \
+usbiodef.h:DEFINE_GUID(GUID_DEVINTERFACE_USB_HOST_CONTROLLER, 0x3abf6f2d, 0x71c4, 0x462a, 0x8a, 0x92, 0x1e, \
+usbiodef.h:DEFINE_GUID(GUID_USB_WMI_STD_DATA, 0x4E623B20L, 0xCB14, 0x11D1, 0xB3, 0x31, 0x00,\
+usbiodef.h:DEFINE_GUID(GUID_USB_WMI_STD_NOTIFICATION, 0x4E623B20L, 0xCB14, 0x11D1, 0xB3, 0x31, 0x00,\
+wdm.h:#ifndef DEFINE_GUIDEX
+wdm.h:    #define DEFINE_GUIDEX(name) EXTERN_C const CDECL GUID name
+wdm.h:#endif // !defined(DEFINE_GUIDEX)
+wdmguid.h:DEFINE_GUID( GUID_HWPROFILE_QUERY_CHANGE,          0xcb3a4001L, 0x46f0, 0x11d0, 0xb0, 0x8f, 0x00, 0x60, 0x97, 0x13, 0x05, 0x3f );
+wdmguid.h:DEFINE_GUID( GUID_HWPROFILE_CHANGE_CANCELLED,      0xcb3a4002L, 0x46f0, 0x11d0, 0xb0, 0x8f, 0x00, 0x60, 0x97, 0x13, 0x05, 0x3f );
+wdmguid.h:DEFINE_GUID( GUID_HWPROFILE_CHANGE_COMPLETE,       0xcb3a4003L, 0x46f0, 0x11d0, 0xb0, 0x8f, 0x00, 0x60, 0x97, 0x13, 0x05, 0x3f );
+wdmguid.h:DEFINE_GUID( GUID_DEVICE_INTERFACE_ARRIVAL,        0xcb3a4004L, 0x46f0, 0x11d0, 0xb0, 0x8f, 0x00, 0x60, 0x97, 0x13, 0x05, 0x3f );
+wdmguid.h:DEFINE_GUID( GUID_DEVICE_INTERFACE_REMOVAL,        0xcb3a4005L, 0x46f0, 0x11d0, 0xb0, 0x8f, 0x00, 0x60, 0x97, 0x13, 0x05, 0x3f );
+wdmguid.h:DEFINE_GUID( GUID_TARGET_DEVICE_QUERY_REMOVE,      0xcb3a4006L, 0x46f0, 0x11d0, 0xb0, 0x8f, 0x00, 0x60, 0x97, 0x13, 0x05, 0x3f );
+wdmguid.h:DEFINE_GUID( GUID_TARGET_DEVICE_REMOVE_CANCELLED,  0xcb3a4007L, 0x46f0, 0x11d0, 0xb0, 0x8f, 0x00, 0x60, 0x97, 0x13, 0x05, 0x3f );
+wdmguid.h:DEFINE_GUID( GUID_TARGET_DEVICE_REMOVE_COMPLETE,   0xcb3a4008L, 0x46f0, 0x11d0, 0xb0, 0x8f, 0x00, 0x60, 0x97, 0x13, 0x05, 0x3f );
+wdmguid.h:DEFINE_GUID( GUID_PNP_CUSTOM_NOTIFICATION,         0xACA73F8EL, 0x8D23, 0x11D1, 0xAC, 0x7D, 0x00, 0x00, 0xF8, 0x75, 0x71, 0xD0 );
+wdmguid.h:DEFINE_GUID( GUID_PNP_POWER_NOTIFICATION,          0xC2CF0660L, 0xEB7A, 0x11D1, 0xBD, 0x7F, 0x00, 0x00, 0xF8, 0x75, 0x71, 0xD0 );
+wdmguid.h:DEFINE_GUID( GUID_BUS_INTERFACE_STANDARD,          0x496B8280L, 0x6F25, 0x11D0, 0xBE, 0xAF, 0x08, 0x00, 0x2B, 0xE2, 0x09, 0x2F );
+wdmguid.h:DEFINE_GUID( GUID_AGP_TARGET_BUS_INTERFACE_STANDARD, 0xB15CFCE8L, 0x06D1, 0x4D37, 0x9D, 0x4C, 0xBE, 0xDD, 0xE0, 0xC2, 0xA6, 0xFF );
+wdmguid.h:DEFINE_GUID( GUID_PCI_BUS_INTERFACE_STANDARD,      0x496B8281L, 0x6F25, 0x11D0, 0xBE, 0xAF, 0x08, 0x00, 0x2B, 0xE2, 0x09, 0x2F );
+wdmguid.h:DEFINE_GUID( GUID_ARBITER_INTERFACE_STANDARD,      0xe644f185L, 0x8c0e, 0x11d0, 0xbe, 0xcf, 0x08, 0x00, 0x2b, 0xe2, 0x09, 0x2f );
+wdmguid.h:DEFINE_GUID( GUID_TRANSLATOR_INTERFACE_STANDARD,   0x6c154a92L, 0xaacf, 0x11d0, 0x8d, 0x2a, 0x00, 0xa0, 0xc9, 0x06, 0xb2, 0x44 );
+wdmguid.h:DEFINE_GUID( GUID_ACPI_INTERFACE_STANDARD,         0xb091a08aL, 0xba97, 0x11d0, 0xbd, 0x14, 0x00, 0xaa, 0x00, 0xb7, 0xb3, 0x2a );
+wdmguid.h:DEFINE_GUID( GUID_INT_ROUTE_INTERFACE_STANDARD,    0x70941bf4L, 0x0073, 0x11d1, 0xa0, 0x9e, 0x00, 0xc0, 0x4f, 0xc3, 0x40, 0xb1 );
+wdmguid.h:DEFINE_GUID( GUID_PCMCIA_BUS_INTERFACE_STANDARD,   0x76173af0L, 0xc504, 0x11d1, 0x94, 0x7f, 0x00, 0xc0, 0x4f, 0xb9, 0x60, 0xee );
+wdmguid.h:DEFINE_GUID( GUID_ACPI_REGS_INTERFACE_STANDARD,    0x06141966L, 0x7245, 0x6369, 0x46, 0x2e, 0x4e, 0x65, 0x6c, 0x73, 0x6f, 0x6e );
+wdmguid.h:DEFINE_GUID( GUID_LEGACY_DEVICE_DETECTION_STANDARD, 0x50feb0deL, 0x596a, 0x11d2, 0xa5, 0xb8, 0x00, 0x00, 0xf8, 0x1a, 0x46, 0x19);
+wdmguid.h:DEFINE_GUID( GUID_PCI_DEVICE_PRESENT_INTERFACE,    0xd1b82c26L, 0xbf49, 0x45ef, 0xb2, 0x16, 0x71, 0xcb, 0xd7, 0x88, 0x9b, 0x57 );
+wdmguid.h:DEFINE_GUID( GUID_MF_ENUMERATION_INTERFACE,        0xaeb895f0L, 0x5586, 0x11d1, 0x8d, 0x84, 0x00, 0xa0, 0xc9, 0x06, 0xb2, 0x44 );
+wdmguid.h:DEFINE_GUID( GUID_ACPI_CMOS_INTERFACE_STANDARD,    0x3a8d0384L, 0x6505, 0x40ca, 0xbc, 0x39, 0x56, 0xc1, 0x5f, 0x8c, 0x5f, 0xed );
+wdmguid.h:DEFINE_GUID( GUID_ACPI_PORT_RANGES_INTERFACE_STANDARD, 0xf14f609bL, 0xcbbd, 0x4957, 0xa6, 0x74, 0xbc, 0x0, 0x21, 0x3f, 0x1c, 0x97 );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_INTERNAL,               0x1530ea73L, 0x086b, 0x11d1, 0xa0, 0x9f, 0x00, 0xc0, 0x4f, 0xc3, 0x40, 0xb1 );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_PCMCIA,                 0x09343630L, 0xaf9f, 0x11d0, 0x92, 0xE9, 0x00, 0x00, 0xf8, 0x1e, 0x1b, 0x30 );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_PCI,                    0xc8ebdfb0L, 0xb510, 0x11d0, 0x80, 0xe5, 0x00, 0xa0, 0xc9, 0x25, 0x42, 0xe3 );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_ISAPNP,                 0xe676f854L, 0xd87d, 0x11d0, 0x92, 0xb2, 0x00, 0xa0, 0xc9, 0x05, 0x5f, 0xc5 );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_EISA,                   0xddc35509L, 0xf3fc, 0x11d0, 0xa5, 0x37, 0x00, 0x00, 0xf8, 0x75, 0x3e, 0xd1 );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_MCA,                    0x1c75997aL, 0xdc33, 0x11d0, 0x92, 0xb2, 0x00, 0xa0, 0xc9, 0x05, 0x5f, 0xc5 );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_LPTENUM,                0xc4ca1000L, 0x2ddc, 0x11d5, 0xa1, 0x7a, 0x00, 0xc0, 0x4f, 0x60, 0x52, 0x4d );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_USBPRINT,               0x441ee000L, 0x4342, 0x11d5, 0xa1, 0x84, 0x00, 0xc0, 0x4f, 0x60, 0x52, 0x4d );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_DOT4PRT,                0x441ee001L, 0x4342, 0x11d5, 0xa1, 0x84, 0x00, 0xc0, 0x4f, 0x60, 0x52, 0x4d );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_SERENUM,                0x77114a87L, 0x8944, 0x11d1, 0xbd, 0x90, 0x00, 0xa0, 0xc9, 0x06, 0xbe, 0x2d );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_USB,                    0x9d7debbcL, 0xc85d, 0x11d1, 0x9e, 0xb4, 0x00, 0x60, 0x08, 0xc3, 0xa1, 0x9a );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_1394,                   0xf74e73ebL, 0x9ac5, 0x45eb, 0xbe, 0x4d, 0x77, 0x2c, 0xc7, 0x1d, 0xdf, 0xb3 );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_HID,                    0xeeaf37d0L, 0x1963, 0x47c4, 0xaa, 0x48, 0x72, 0x47, 0x6d, 0xb7, 0xcf, 0x49 );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_AVC,                    0xc06ff265L, 0xae09, 0x48f0, 0x81, 0x2c, 0x16, 0x75, 0x3d, 0x7c, 0xba, 0x83 );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_IRDA,                   0x7ae17dc1L, 0xc944, 0x44d6, 0x88, 0x1f, 0x4c, 0x2e, 0x61, 0x05, 0x3b, 0xc1 );
+wdmguid.h:DEFINE_GUID( GUID_BUS_TYPE_SD,                     0xe700cc04L, 0x4036, 0x4e89, 0x95, 0x79, 0x89, 0xeb, 0xf4, 0x5f, 0x00, 0xcd );
+wdmguid.h:DEFINE_GUID( GUID_POWER_DEVICE_ENABLE,             0x827c0a6fL, 0xfeb0, 0x11d0, 0xbd, 0x26, 0x00, 0xaa, 0x00, 0xb7, 0xb3, 0x2a );
+wdmguid.h:DEFINE_GUID( GUID_POWER_DEVICE_TIMEOUTS,           0xa45da735L, 0xfeb0, 0x11d0, 0xbd, 0x26, 0x00, 0xaa, 0x00, 0xb7, 0xb3, 0x2a );
+wdmguid.h:DEFINE_GUID( GUID_POWER_DEVICE_WAKE_ENABLE,        0xa9546a82L, 0xfeb0, 0x11d0, 0xbd, 0x26, 0x00, 0xaa, 0x00, 0xb7, 0xb3, 0x2a );
+wmidata.h:DEFINE_GUID(MSWmi_MofData_GUID, \
+wmidata.h:DEFINE_GUID(MSWmi_ProviderInfo_GUID, \
+wmidata.h:DEFINE_GUID(MSWmi_PnPDeviceId_GUID, \
+wmidata.h:DEFINE_GUID(MSWmi_PnPInstanceNames_GUID, \
+wmidata.h:DEFINE_GUID(MSWmi_Guid_GUID, \
+wmidata.h:DEFINE_GUID(MSWmi_GuidRegistrationInfo_GUID, \
+wmidata.h:DEFINE_GUID(MSAcpiInfo_GUID, \
+wmidata.h:DEFINE_GUID(MSSmBios_RawSMBiosTables_GUID, \
+wmidata.h:DEFINE_GUID(MSSmBios_SMBiosEventlog_GUID, \
+wmidata.h:DEFINE_GUID(MSSmBios_SysidUUID_GUID, \
+wmidata.h:DEFINE_GUID(MSSmBios_SysidUUIDList_GUID, \
+wmidata.h:DEFINE_GUID(MSSmBios_Sysid1394_GUID, \
+wmidata.h:DEFINE_GUID(MSSmBios_Sysid1394List_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAEvent_Header_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAEvent_CPUError_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAEvent_MemoryError_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAEvent_PCIBusError_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAEvent_PCIComponentError_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAEvent_SystemEventError_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAEvent_SMBIOSError_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAEvent_PlatformSpecificError_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAEvent_InvalidError_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAInfo_Entry_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAInfo_RawMCAData_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAInfo_RawCMCEvent_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAInfo_RawMCAEvent_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAInfo_RawCorrectedPlatformEvent_GUID, \
+wmidata.h:DEFINE_GUID(MSMCAInfo_CPEControl_GUID, \
+wmidata.h:DEFINE_GUID(MSPower_DeviceEnable_GUID, \
+wmidata.h:DEFINE_GUID(MSPower_DeviceWakeEnable_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_NetworkAddress_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_NetworkShortAddress_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_NetworkLinkSpeed_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_EnumerateAdapter_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_NotifyAdapterRemoval_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_NotifyAdapterArrival_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_NdisEnumerateVc_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_NotifyVcRemoval_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_NotifyVcArrival_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_DeviceWakeOnMagicPacketOnly_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_HardwareStatus_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_MediaSupported_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_MediaInUse_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_MaximumLookahead_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_MaximumFrameSize_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_LinkSpeed_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_TransmitBufferSpace_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_ReceiveBufferSpace_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_TransmitBlockSize_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_ReceiveBlockSize_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_VendorID_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_VendorDescription_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CurrentPacketFilter_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CurrentLookahead_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_DriverVersion_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_MaximumTotalSize_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_MacOptions_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_MediaConnectStatus_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_MaximumSendPackets_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_VendorDriverVersion_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_VlanIdentifier_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_PhysicalMediumType_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_TransmitsOk_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_ReceivesOk_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_TransmitsError_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_ReceiveError_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_ReceiveNoBuffer_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoHardwareStatus_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoMediaSupported_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoMediaInUse_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoLinkSpeed_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoVendorId_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoVendorDescription_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoDriverVersion_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoMacOptions_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoMediaConnectStatus_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoVendorDriverVersion_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoMinimumLinkSpeed_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoTransmitPdusOk_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoReceivePdusOk_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoTransmitPduErrors_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoReceivePduErrors_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_CoReceivePdusNoBuffer_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmSupportedVcRates_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmSupportedServiceCategory_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmSupportedAalTypes_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmHardwareCurrentAddress_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmMaxActiveVcs_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmMaxActiveVciBits_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmMaxActiveVpiBits_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmMaxAal0PacketSize_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmMaxAal1PacketSize_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmMaxAal34PacketSize_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmMaxAal5PacketSize_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmReceiveCellsOk_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmTransmitCellsOk_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_AtmReceiveCellsDropped_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_EthernetPermanentAddress_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_EthernetCurrentAddress_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_EthernetMulticastList_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_EthernetMaximumMulticastListSize_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_EthernetMacOptions_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_EthernetReceiveErrorAlignment_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_EthernetOneTransmitCollision_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_EthernetMoreTransmitCollisions_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_TokenRingPermanentAddress_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_TokenRingCurrentAddress_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_TokenRingCurrentFunctional_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_TokenRingCurrentGroup_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_TokenRingLastOpenStatus_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_TokenRingCurrentRingStatus_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_TokenRingCurrentRingState_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_TokenRingLineErrors_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_TokenRingLostFrames_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiLongPermanentAddress_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiLongCurrentAddress_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiLongMulticastList_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiLongMaximumListSize_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiShortPermanentAddress_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiShortCurrentAddress_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiShortMulticastList_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiShortMaximumListSize_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiAttachmentType_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiUpstreamNodeLong_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiDownstreamNodeLong_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiFrameErrors_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiFramesLost_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiRingManagmentState_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiLctFailures_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiLemRejects_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_FddiLConnectionState_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_BaseServiceSetIdentifier_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_ServiceSetIdentifier_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_NetworkType_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_NetworkTypesSupported_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_NetworkTypeInUse_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_PowerMode_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_TransmitPowerLevel_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_ReceivedSignalStrength_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_ReceivedSignalStrengthEventTrigger_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_NetworkInfrastructure_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_ConfigurationFH_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_ConfigurationInfo_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_WLanBssId_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_BSSIList_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_InfrastructureMode_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_FragmentationThreshold_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_RTSThreshold_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_NumberOfAntennas_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_ReceiveAntennaSelected_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_TransmitAntennaSelected_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_DataRates_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_DesiredDataRates_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_Configuration_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_Statistics_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_AddWEP_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_RemoveWEP_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_Disassociate_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_BssIdListScan_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_AuthenticationMode_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_PrivacyFilter_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_WEPStatus_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_80211_ReloadDefaults_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_StatusResetStart_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_StatusResetEnd_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_StatusMediaConnect_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_StatusMediaDisconnect_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_StatusMediaSpecificIndication_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_StatusLinkSpeedChange_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_StatusProtocolBind_GUID, \
+wmidata.h:DEFINE_GUID(MSNdis_StatusProtocolUnbind_GUID, \
+wmidata.h:DEFINE_GUID(MSKeyboard_PortInformation_GUID, \
+wmidata.h:DEFINE_GUID(MSKeyboard_ExtendedID_GUID, \
+wmidata.h:DEFINE_GUID(MSMouse_PortInformation_GUID, \
+wmidata.h:DEFINE_GUID(MSMouse_ClassInformation_GUID, \
+wmidata.h:DEFINE_GUID(MSKeyboard_ClassInformation_GUID, \
+wmidata.h:DEFINE_GUID(MSAcpi_ThermalZoneTemperature_GUID, \
+wmidata.h:DEFINE_GUID(MSDiskDriver_Geometry_GUID, \
+wmidata.h:DEFINE_GUID(MSDiskDriver_PerformanceData_GUID, \
+wmidata.h:DEFINE_GUID(MSDiskDriver_Performance_GUID, \
+wmidata.h:DEFINE_GUID(MSStorageDriver_FailurePredictStatus_GUID, \
+wmidata.h:DEFINE_GUID(MSStorageDriver_FailurePredictData_GUID, \
+wmidata.h:DEFINE_GUID(MSStorageDriver_ATAPISmartData_GUID, \
+wmidata.h:DEFINE_GUID(MSStorageDriver_FailurePredictThresholds_GUID, \
+wmidata.h:DEFINE_GUID(MSStorageDriver_FailurePredictEvent_GUID, \
+wmidata.h:DEFINE_GUID(MSStorageDriver_FailurePredictFunction_GUID, \
+wmidata.h:DEFINE_GUID(MSStorageDriver_ScsiInfoExceptions_GUID, \
+wmidata.h:DEFINE_GUID(MSIde_PortDeviceInfo_GUID, \
+wmidata.h:DEFINE_GUID(MSSerial_PortName_GUID, \
+wmidata.h:DEFINE_GUID(MSSerial_CommInfo_GUID, \
+wmidata.h:DEFINE_GUID(MSSerial_HardwareConfiguration_GUID, \
+wmidata.h:DEFINE_GUID(MSSerial_PerformanceInformation_GUID, \
+wmidata.h:DEFINE_GUID(MSSerial_CommProperties_GUID, \
+wmidata.h:DEFINE_GUID(MSParallel_AllocFreeCounts_GUID, \
+wmidata.h:DEFINE_GUID(MSParallel_DeviceBytesTransferred_GUID, \
+wmidata.h:DEFINE_GUID(MSRedbook_DriverInformationGuid, \
+wmidata.h:DEFINE_GUID(MSRedbook_PerformanceGuid, \
+wmidata.h:DEFINE_GUID(RegisteredGuids_GUID, \
+wmidata.h:DEFINE_GUID(MSTapeDriveParam_GUID, \
+wmidata.h:DEFINE_GUID(MSTapeMediaCapacity_GUID, \
+wmidata.h:DEFINE_GUID(MSTapeSymbolicName_GUID, \
+wmidata.h:DEFINE_GUID(MSTapeDriveProblemEvent_GUID, \
+wmidata.h:DEFINE_GUID(MSTapeProblemIoError_GUID, \
+wmidata.h:DEFINE_GUID(MSTapeProblemDeviceError_GUID, \
+wmidata.h:DEFINE_GUID(MSChangerParameters_GUID, \
+wmidata.h:DEFINE_GUID(MSChangerProblemEvent_GUID, \
+wmidata.h:DEFINE_GUID(MSChangerProblemDeviceError_GUID, \
+wmidata.h:DEFINE_GUID(MSDeviceUI_FirmwareRevision_GUID, \
+wmiguid.h:DEFINE_GUID (DiskPerfGuid, 0xBDD865D1,0xD7C1,0x11d0,0xA5,0x01,0x00,0xA0,0xC9,0x06,0x29,0x10);
+wmiguid.h:DEFINE_GUID(MS_SYSTEM_INFORMATION_GUID, \
+wmiguid.h:DEFINE_GUID(THERMAL_ZONE_GUID,  \
+wmiguid.h:DEFINE_GUID ( /* e8908abc-aa84-11d2-9a93-00805f85d7c6 */
+wmiguid.h:DEFINE_GUID ( /* 44608a51-1851-4456-98b2-b300e931ee41 */
+wmiguid.h:DEFINE_GUID ( /* 8d40301f-ab4a-11d2-9a93-00805f85d7c6 */
+wmiguid.h:DEFINE_GUID ( /* 3d6fa8d0-fe05-11d0-9dda-00c04fd7ba7c */
+wmiguid.h:DEFINE_GUID ( /* 3d6fa8d1-fe05-11d0-9dda-00c04fd7ba7c */
+wmiguid.h:DEFINE_GUID ( /* 3d6fa8d2-fe05-11d0-9dda-00c04fd7ba7c */ /* Not used */
+wmiguid.h:DEFINE_GUID ( /* 3d6fa8d3-fe05-11d0-9dda-00c04fd7ba7c */
+wmiguid.h:DEFINE_GUID ( /* 3d6fa8d4-fe05-11d0-9dda-00c04fd7ba7c */
+wmiguid.h:DEFINE_GUID ( /* 90cbdc39-4a3e-11d1-84f4-0000f80464e3 */
+wmiguid.h:DEFINE_GUID ( /* 9a280ac0-c8e0-11d1-84e2-00c04fb998a2 */
+wmiguid.h:DEFINE_GUID ( /* bf3a50c5-a9c9-4988-a005-2df0b7c80f80 */
+wmiguid.h:DEFINE_GUID ( /* 2cb15d1d-5fc1-11d2-abe1-00a0c911f518 */
+wmiguid.h:DEFINE_GUID ( /* AE53722E-C863-11d2-8659-00C04FA321A1 */
+wmiguid.h:DEFINE_GUID( /* 13976D09-A327-438c-950B-7F03192815C7  */
+wmiguid.h:DEFINE_GUID ( /* 398191dc-2da7-11d3-8b98-00805f85d7c6 */

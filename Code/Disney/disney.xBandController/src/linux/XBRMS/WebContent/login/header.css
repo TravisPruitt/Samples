@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+#idHeader { color: #fdfdfd; }
+
+#idHeader #disneyLogo { margin: 0; padding: 0; height: 34px; }
+#idHeader #disneyLogo #idNgeLogo {float: right; clear: right; height: 45px; }
+#idHeader #disneyLogo #idLogo { float: left; clear: left; }
+
+#idHeader #idProductTitle { padding: 0; margin: 0; }
+#idHeader #idProductTitle h1 { padding: 0; margin: 5px 0 0 0; }
+#idHeader #idProductTitle h3 { padding: 0; margin: 10px 0 0 0; float: left; clear left; }
+
+#idHeader #idProductTitle #idUser { float: right; clear: right; float: right; clear: right; }
+#idHeader #idProductTitle #idUser h3 { display: inline; }
+#idHeader #idProductTitle #idUser a { text-decoration: underline; font-style: italic; }

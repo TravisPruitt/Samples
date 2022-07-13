@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<businessEvent>
+  <event_type>CHANGE</event_type>
+  <subtype></subtype>
+  <facilityid>80007936</facilityid>
+  <location>GFF.XI.KITCHENMANAGEMENT</location>
+  <timestamp>2012-05-30T09:00:00</timestamp>
+  <reference_id>80007936-45646-20120530090000</reference_id>
+  <payLoad>
+    <![CDATA[
+        <orderevent>
+          <eventtypeid>17</eventtypeid>
+          <event>Order Bumped</event>
+          <facilityonesourceid>80007936</facilityonesourceid>
+          <source>Kitchen</source>
+          <timestamp>2012-05-30T09:00:00</timestamp>
+          <timestampgmt>2012-05-30T04:00:00</timestampgmt>
+          <ordernumber>45646</ordernumber>
+          <kitcheninfo>
+            <coursenumber>123</coursenumber>
+            <coursename>{CourseName}</coursename>
+            <viewid>3</viewid>
+            <viewtype>Expo</viewtype>
+            <orderstarttime>2012-05-30T09:00:00</orderstarttime>
+            <orderstarttimegmt>2012-05-30T09:00:00</orderstarttimegmt>
+          </kitcheninfo>
+        </orderevent>
+        ]]>
+  </payLoad>
+</businessEvent>

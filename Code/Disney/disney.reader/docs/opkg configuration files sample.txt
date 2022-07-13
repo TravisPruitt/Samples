@@ -1,0 +1,39 @@
+/etc/opkg/opkg.conf:
+
+	# Offline mode (for use in constructing flash images offline)
+	#option offline_root target
+
+	dest root /
+	lists_dir ext /var/lib/opkg
+
+	# We have whole /tmp in volatile tmpfs which is better than wear leveling NAND or uSD
+	# But also bad for big upgrades where tmpfs eats whole memory,
+	# device starts swapping (possibly using more NAND/uSD than temporary unpack) and then segfaults because of lack of space
+	option tmp_dir /var/lib/opkg/tmp
+
+
+/etc/opkg/arch.conf:
+
+	arch all 1
+	arch any 6
+	arch armv7a 46
+	arch overo 51
+
+
+/etc/opkg/arago-overo-feed.conf:
+
+
+	src/gz overo http://192.168.3.104:8080/overo
+	
+
+/etc/opkg/arago-armv7a-feed.conf:
+
+
+	src/gz armv7a http://192.168.3.104:8080/armv7a
+	
+
+/etc/opkg/arago-all-feed.conf:
+
+
+	src/gz all http://192.168.3.104:8080/all
+

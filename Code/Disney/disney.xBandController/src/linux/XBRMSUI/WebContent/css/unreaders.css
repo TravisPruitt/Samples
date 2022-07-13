@@ -1,0 +1,80 @@
+.ui-tabs .ui-tabs-nav .ui-state-default { 
+	background: url("../script/jquery-ui-1.8.16.custom.darkblue/css/custom-theme/images/ui-bg_flat_0_14335d_40x100.png") repeat-x scroll 50% 50% #14335D; 
+	border: 1px solid #1a4279;
+}
+.ui-tabs .ui-tabs-nav .ui-state-default a { color: #d7d7d7; }
+.ui-tabs .ui-tabs-nav .ui-tabs-selected { 
+	background: url("../script/jquery-ui-1.8.16.custom.darkblue/css/custom-theme/images/ui-bg_glass_90_cccccc_1x400.png") repeat-x scroll 50% 50% #CCCCCC; 
+}
+.ui-tabs .ui-tabs-nav .ui-tabs-selected a{ color: #262626; }
+
+.ui-tabs .ui-tabs-panel {
+	padding: 0; margin: 0 2px 2px 3px;
+}
+
+.innerTab {
+	margin: 0; padding: 10px;
+	border-top: none;
+}
+
+table.light tbody tr td { padding: 3px; margin: 0; }
+tbody tr.captionRow td { 
+	background: #1a4279; color: white;
+}
+
+ul.perfMetrics { 
+	list-style: none; position: relative; 
+	padding: 0px 0px 0px 1.3em; margin: 0;
+}
+ul.perfMetrics li { 
+	float:left; 
+	margin: 0px 0px 1em 0px; 
+	position: relative; }
+	
+div.whatIsIt div.graphDescription {
+	border: 1px solid #CCCCCC; background: #fdfdfd;
+	-moz-border-radius:5px;
+ 	-webkit-border-radius:5px; 
+ 	margin: 0; padding: 5px;
+ 	font-size: 13px;
+ 	width: 200px;
+ 	display: none;
+ 	z-index: 1;
+}
+div.whatIsIt div.graphDescription p span {
+	color: #AAAAAA;
+}
+div.whatIsIt {
+	position: absolute; top: -5px; right: 40px;
+	width: 1em; line-height: 1em; 
+	text-align: center; 
+	border: 1px solid #CCCCCC; background: #14335d;
+	-moz-border-radius:5px;
+ 	-webkit-border-radius:5px; 
+ 	margin: 0; padding: 5px;
+}
+div.whatIsIt span {
+	color: white;
+	font-size: 11px;
+}
+div.whatIsIt:HOVER div.graphDescription {
+	display: block;
+	position: absolute; right: -180px; top: -10px;
+}
+
+div.jqplot-highlighter-tooltip { 
+	border: 1px solid #CCCCCC; background: #fdfdfd;
+	-moz-border-radius:5px;
+ 	-webkit-border-radius:5px; 
+ 	margin: 0; padding: 5px;
+ 	font-size: 13px;
+}
+#status #statusMenu {
+	foat: right; clear: right;
+}
+#status #statusMenu h3 {
+	color: #CCCCCC;
+}
+#status #statusMenu h3 span {
+	color: #14335d;
+}

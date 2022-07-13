@@ -1,0 +1,12 @@
+{
+  "name": "test-core",
+  "version": "0.1.0",
+  "description": "api testing framework",
+  "author": "Stephen M <stephenm@synapse.com>",
+  "dependencies": {
+    "request": "2.9.153",
+    "jsdom": "0.2.13"
+  },
+  "engine": "node >= 0.4.1",
+  "main": "./test_core.js"
+}

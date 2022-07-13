@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<businessEvent>
+  <event_type>CHANGE</event_type>
+  <subtype></subtype>
+  <facilityid>80007936</facilityid>
+  <location>GFF.XI.TABLEMANAGEMENT</location>
+  <timestamp>2012-05-30T09:00:00</timestamp>
+  <reference_id>80007936-9884545-20120530090000</reference_id>
+  <payLoad>
+    <![CDATA[
+        <tableevent>
+          <eventtypeid>27</eventtypeid>
+          <event>Table Dirty</event>
+          <facilityonesourceid>80007936</facilityonesourceid>
+          <locationid>9884545</locationid>
+          <source>Runner</source>
+          <terminal>Runner1</terminal>
+          <timestamp>2012-05-30T09:00:00</timestamp>
+          <timestampgmt>2012-05-30T04:00:00</timestampgmt>
+          <tableid>9</tableid>
+          <tablename>Table1</tablename>
+          <user>{User}</user>
+          <ordernumbers>
+            <ordernumber>45646</ordernumber>
+          </ordernumbers>
+        </tableevent>
+        ]]>
+  </payLoad>
+</businessEvent>

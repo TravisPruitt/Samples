@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReaderTest>
+   <name>Tap Reader Functional Test</name>
+   <acknowledgeAction>
+       <genericAction>
+          <method>PUT</method>
+          <name>Show color (acknowledge action)</name>
+          <waitMs>1000</waitMs>
+          <contentType>text/plain</contentType>
+          <path>media/color?name=green&amp;timeout=400</path>	  
+       </genericAction>
+   </acknowledgeAction>
+   <passedAction>
+       <speechAction>
+          <method>PUT</method>
+          <name>Reader test passed</name>
+          <text>Reader test passed</text>
+       </speechAction>
+   </passedAction>
+   <failedAction>
+       <speechAction>
+          <method>PUT</method>
+          <name>Reader test failed</name>
+          <text>Reader test failed</text>
+       </speechAction>
+   </failedAction>
+   <tests>
+      <test>
+         <name>Begin test actions</name>
+         <actions>	    
+            <readerActionContainer>
+               <genericAction>
+                  <method>PUT</method>
+                  <name>Show color</name>
+                  <waitMs>1000</waitMs>
+                  <contentType>text/plain</contentType>
+                  <path>media/color?name=100,100,100&amp;timeout=1000</path>
+               </genericAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <speechAction>
+                  <method>PUT</method>
+                  <name>Say being test</name>
+                  <text>Begin reader test</text>
+				  <waitMs>500</waitMs>
+               </speechAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <speechAction>
+                  <method>PUT</method>
+                  <name>Say identify location</name>
+                  <text>Location, ${VENUE}, ${READER}</text>
+				  <waitMs>500</waitMs>
+               </speechAction>
+            </readerActionContainer>           
+         </actions>
+      </test>
+      <test>
+         <name>Testing LEDs on reader</name>
+         <actions>
+	    <readerActionContainer>
+               <speechAction>
+                  <method>PUT</method>
+                  <name>LED test</name>
+                  <text>LED test</text>
+               </speechAction>
+            </readerActionContainer>
+	    <readerActionContainer>
+               <scriptAction>
+                  <method>PUT</method>
+                  <name>Play script</name>
+                  <scriptFilePath>/usr/share/xbrc/www/media/readertest/ledscripts/Final_White_Fast.csv</scriptFilePath>
+               </scriptAction>
+            </readerActionContainer>            
+            <readerActionContainer>
+               <speechAction>
+                  <method>PUT</method>
+                  <name>Color test</name>
+                  <text>Color test</text>
+               </speechAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <scriptAction>
+                  <method>PUT</method>
+                  <name>Play script</name>
+                  <scriptFilePath>/usr/share/xbrc/www/media/readertest/ledscripts/All_Colors_Test_Final.csv</scriptFilePath>
+               </scriptAction>
+            </readerActionContainer>            
+         </actions>
+      </test>
+
+      <test>
+         <name>Testing sound levels and quality</name>
+         <actions>
+	    <readerActionContainer>
+               <speechAction>
+                  <method>PUT</method>
+                  <name>Audio test</name>
+                  <text>Audio test</text>
+               </speechAction>
+            </readerActionContainer>
+	    <readerActionContainer>
+               <genericAction>
+                  <method>PUT</method>
+                  <name>Sound sweep</name>
+                  <waitMs>5000</waitMs>
+                  <path>media/sound?name=sweep1</path>
+               </genericAction>
+            </readerActionContainer>	        
+            <readerActionContainer>
+               <speechAction>
+                  <method>PUT</method>
+                  <name>Tone test</name>
+                  <text>Tone test</text>
+               </speechAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <genericAction>
+                  <method>PUT</method>
+                  <name>Play tone test</name>
+                  <waitMs>2000</waitMs>
+                  <path>media/sound?name=tone</path>
+               </genericAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <sequenceAction>
+                  <method>PUT</method>
+                  <name>Play the off sequence</name>
+                  <sequenceName>off</sequenceName>
+				  <waitMs>400</waitMs>
+               </sequenceAction>
+            </readerActionContainer>
+         </actions>
+      </test>
+
+      <test>
+         <name>Testing card for valid and invalid entitlements</name>
+         <actions>
+	    <readerActionContainer>
+               <speechAction>
+                  <method>PUT</method>
+                  <name>Success check</name>
+                  <text>Success check</text>
+               </speechAction>
+            </readerActionContainer>
+	        <readerActionContainer>
+               <sequenceAction>
+                  <method>PUT</method>
+                  <name>Play success sequence</name>
+                  <sequenceName>${SUCCESS_SEQUENCE}</sequenceName>
+                  <duration>2500</duration>
+		          <waitMs>500</waitMs>
+               </sequenceAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <speechAction>
+                  <method>PUT</method>
+                  <name>Failure check</name>
+                  <text>Failure check</text>
+               </speechAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <sequenceAction>
+                  <method>PUT</method>
+                  <name>Play failure sequence</name>
+                  <sequenceName>${FAILURE_SEQUENCE}</sequenceName>
+                  <duration>2500</duration>
+		          <waitMs>0</waitMs>
+               </sequenceAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <sequenceAction>
+                  <method>PUT</method>
+                  <name>Play off sequence</name>
+                  <sequenceName>off</sequenceName>
+				  <waitMs>500</waitMs>
+               </sequenceAction>
+            </readerActionContainer>
+         </actions>
+      </test>
+      <test>
+         <name>Test results actions</name>
+         <actions>
+	    <readerActionContainer>
+               <speechAction>
+                  <method>PUT</method>
+                  <range>100</range>
+                  <rate>160</rate>
+                  <gap>5</gap>
+                  <name>Please tap to complete</name>
+                  <text>Please tap to complete</text>
+               </speechAction>
+            </readerActionContainer>
+			<readerActionContainer>
+               <scriptAction>
+                  <method>PUT</method>
+                  <name>Play script</name>
+                  <scriptFilePath>/usr/share/xbrc/www/media/readertest/ledscripts/Final_Countdown_Timer.csv</scriptFilePath>
+				  <dontWait>true</dontWait>
+               </scriptAction>
+            </readerActionContainer>          
+         </actions>
+      </test>
+   </tests>
+   <waitForAckMs>5500</waitForAckMs>
+</ReaderTest>

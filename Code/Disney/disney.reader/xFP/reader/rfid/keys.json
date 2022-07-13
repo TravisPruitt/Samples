@@ -1,0 +1,195 @@
+{
+  "SAMKeyEntry": [
+    {
+      "KeyNumber": 0,
+      "ChangeKeyNumber": 0,
+      "ChangeKeyVersion": 0,
+      "DESFireAID": "0xFFFFFF",
+      "DESFireKeyNumber": 0,
+      "KeepInitVector": "false",
+      "KeyType": "AES128",
+      "Keys": [
+          {
+            "Version": "0",
+            "Value": "0000-0000-0000-0000-0000-0000-0000-0000"
+          },
+          {
+            "Version": "0",
+            "Value": "0000-0000-0000-0000-0000-0000-0000-0000"
+          },
+          {
+            "Version": "0",
+            "Value": "0000-0000-0000-0000-0000-0000-0000-0000"
+          }
+        ]
+    },
+    {
+      "KeyNumber": 2,
+      "ChangeKeyNumber": 0,
+      "ChangeKeyVersion": 0,
+      "DESFireAID": "0x000000",
+      "DESFireKeyNumber": 0,
+      "KeepInitVector": "true",
+      "KeyType": "TDEA_CRC32",
+      "Keys": [
+          "0000-0000-0000-0000-0000-0000-0000-0000",
+          "0000-0000-0000-0000-0000-0000-0000-0000",
+          "0000-0000-0000-0000-0000-0000-0000-0000"
+        ]
+    },
+    {
+      "KeyNumber": 3,
+      "ChangeKeyNumber": 0,
+      "ChangeKeyVersion": 0,
+      "DESFireAID": "0x000001",
+      "DESFireKeyNumber": 0,
+      "KeepInitVector": "true",
+      "KeyType": "AES128",
+      "Keys": [
+          {
+            "Version": "1",
+            "Value": "3B2F-25F9-08F0-C05C-F9D4-1C8D-59F3-A89F"
+          },
+          {
+            "Version": "0",
+            "Value": "0000-0000-0000-0000-0000-0000-0000-0000"
+          },
+          {
+            "Version": "255",
+            "Value": "0000-0000-0000-0000-0000-0000-0000-0000"
+          }
+        ]
+    },
+    {
+      "KeyNumber": 4,
+      "ChangeKeyNumber": 0,
+      "ChangeKeyVersion": 0,
+      "DESFireAID": "0x000001",
+      "DESFireKeyNumber": 1,
+      "KeepInitVector": "true",
+      "KeyType": "AES128",
+      "Keys": [
+          {
+            "Version": 1,
+            "Value": "4E48-6BDF-D663-F301-8B24-69F1-FF3C-BD85"
+          },
+          {
+            "Version": 0,
+            "Value": "0000-0000-0000-0000-0000-0000-0000-0000"
+          },
+          {
+            "Version": 255,
+            "Value": "0000-0000-0000-0000-0000-0000-0000-0000"
+          }
+        ]
+    },
+    {
+      "KeyNumber": 5,
+      "ChangeKeyNumber": 0,
+      "ChangeKeyVersion": 0,
+      "DESFireAID": "0x000001",
+      "DESFireKeyNumber": 2,
+      "KeepInitVector": "true",
+      "KeyType": "AES128",
+      "Keys": [
+          {
+            "Version": 1,
+            "Value": "1111-1111-1111-1111-1111-1111-1111-1111"
+          },
+          {
+            "Version": 0,
+            "Value": "0000-0000-0000-0000-0000-0000-0000-0000"
+          },
+          {
+            "Version": 255,
+            "Value": "0000-0000-0000-0000-0000-0000-0000-0000"
+          }
+        ]
+    },
+    {
+      "KeyNumber": 6,
+      "ChangeKeyNumber": 0,
+      "ChangeKeyVersion": 0,
+      "DESFireAID": "0x000000",
+      "DESFireKeyNumber": 0,
+      "KeepInitVector": "true",
+      "KeyType": "TDEA_CRC16",
+      "Keys": [
+          "8A9E-E268-8EA2-DEA6-B08C-BE32-3CAF-0EFE",
+          "8A9E-E268-8EA2-DEA6-B08C-BE32-3CAF-0EFE",
+          "8A9E-E268-8EA2-DEA6-B08C-BE32-3CAF-0EFE"
+        ]
+    },
+    {
+      "KeyNumber": 7,
+      "ChangeKeyNumber": 0,
+      "ChangeKeyVersion": 0,
+      "DESFireAID": "0xFFFFFF",
+      "DESFireDESFireKeyNumber": 0,
+      "KeepInitVector": "false",
+      "CanUseForCrypto": "true",
+      "KeyType": "AES128",
+      "Keys": [
+          {
+            "Version": 0,
+            "Value": "0B3B-C9A5-BE59-E02D-D996-8FA9-C090-2B54"
+          },
+          {
+            "Version": 0,
+            "Value": "0B3B-C9A5-BE59-E02D-D996-8FA9-C090-2B54"
+          },
+          {
+            "Version": 0,
+            "Value": "0B3B-C9A5-BE59-E02D-D996-8FA9-C090-2B54"
+          }
+        ]
+    },
+    {
+      "KeyNumber": 8,
+      "ChangeKeyNumber": 0,
+      "ChangeKeyVersion": 0,
+      "DESFireAID": "0x78E127",
+      "DESFireKeyNumber": 0,
+      "KeepInitVector": "true",
+      "KeyType": "AES128",
+      "Keys": [
+          {
+            "Version": 1,
+            "Value": "ED74-98C2-1678-3DA6-E76C-8F81-41FE-64E2"
+          },
+          {
+            "Version": 0,
+            "Value": "0000-0000-0000-0000-0000-0000-0000-0000"
+          },
+          {
+            "Version": 0,
+            "Value": "0000-0000-0000-0000-0000-0000-0000-0000"
+          }
+        ]
+    },
+    {
+      "KeyNumber": 9,
+      "ChangeKeyNumber": 0,
+      "ChangeKeyVersion": 0,
+      "DESFireAID": "0x78E127",
+      "DESFireKeyNumber": 1,
+      "KeepInitVector": "true",
+      "KeyType": "AES128",
+      "Keys": [
+          {
+            "Version": 1,
+            "Value": "5C6F-5DBA-4387-B466-C28D-D094-0C52-C886"
+          },
+          {
+            "Version": 0,
+            "Value": "0000-0000-0000-0000-0000-0000-0000-0000"
+          },
+          {
+            "Version": 0,
+            "Value": "0000-0000-0000-0000-0000-0000-0000-0000"
+          }
+        ]
+    }
+  ]
+}
+

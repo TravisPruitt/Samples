@@ -1,0 +1,1 @@
+sqlcmd -S %1 -U sa -P Crrctv11 -i idms-drop-subscriptions.sql -v publicationname=%2 -v sourcedb=%3 -o idms-drop-subscriptions.log

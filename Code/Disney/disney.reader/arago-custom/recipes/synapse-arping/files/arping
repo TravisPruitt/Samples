@@ -1,0 +1,6 @@
+#!/bin/sh
+
+IP=$(ifconfig $IFACE|awk  '/inet addr/ {print $2}'|awk -F : '{print $2}')
+if [ ! -z "$IP" ]; then
+	arping -q -c 3 -A -I $IFACE $IP
+fi

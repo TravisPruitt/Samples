@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="venue">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element name="bootTime" type="xs:dateTime" />
+        <xs:element name="databaseVersion" type="xs:string" />
+        <xs:element name="JMSBroker" type="xs:string" />
+        <xs:element name="lastMessageSeq" type="xs:unsignedInt" />
+        <xs:element name="lastMessageToJMS" type="xs:unsignedInt" />
+        <xs:element name="lastMessageToUpdateStream" type="xs:byte" />
+        <xs:element name="messageCount" type="xs:unsignedByte" />
+        <xs:element name="model" type="xs:string" />
+        <xs:element name="perfEKGWriteMsec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfEventAgeMsec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfEvents">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfExternalMsec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfIDMSQueryMsec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfMainLoopUtilization">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfMetricsPeriod" type="xs:unsignedShort" />
+        <xs:element name="perfModel1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfModel2">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfModel3">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfModelingMsec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfPostModelingMsec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfPreModelingMsec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfSaveGSTMsec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfSingulationMsec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfUpstreamMsec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfWriteToReaderMsec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:decimal" />
+              <xs:element name="mean" type="xs:decimal" />
+              <xs:element name="min" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="readerLocationsCount" type="xs:unsignedByte" />
+        <xs:element name="readerTestMode" type="xs:boolean" />
+        <xs:element name="startPerfTime" type="xs:dateTime" />
+        <xs:element name="status" type="xs:string" />
+        <xs:element name="statusMessage" type="xs:string" />
+        <xs:element name="totalGuestsSinceStart" type="xs:unsignedByte" />
+        <xs:element name="totalxPassGuestsSinceStart" type="xs:unsignedByte" />
+        <xs:element name="updateStreamURL" />
+        <xs:element name="version" type="xs:string" />
+      </xs:sequence>
+      <xs:attribute name="time" type="xs:dateTime" use="required" />
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="facilityId" type="xs:unsignedInt" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

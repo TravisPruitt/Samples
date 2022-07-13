@@ -1,0 +1,140 @@
+
+*****     Release Notes: 	*****
+*****     xBR-0.0.10	 	*****
+
+
+User changes - affecting user performance or features
+-------------------
+
+- Add test ping for empty air self / field test
+	test ping result in hello msg
+	strip out test ping 
+- Combine data for a single ping, which is received on multiple channels
+	lowers bandwidth, especially on version 4 with 8 channels.
+	Use SPII / TI-Radio timeouts to determine when all channels have been reported for a ping.
+	
+- Implement /application/upgrade.
+	- web interface
+	- switch to R/W file system
+	- Load manifest
+	- Store opkg-config files based on manifest.
+	- OPEN ISSUES: 
+		What happens when application / dependency needs downgraded?
+		What happens when install of application / dependency is 
+			followed by an upgrade operation?
+		What is lifetime of .ipkg files on the target?
+	- Updating the TI-radio software
+		- package it
+		- release it
+		
+- Add IPv6
+
+- System Design of security features
+	- SSL encryption 	
+	- SSL authentication 
+	- SSL certificate management
+
+- Configuration:
+	New configuration application can manipulate the logging types and other variables while grover is running.
+	RESTful interface to setup syslog, logging output, other variables.
+
+- Lock down the ssh access
+
+- Error reporting:
+	Use syslog to communicate errors and warnings to the xBRC
+	Push error reporting to the xBRC through a new message type or through the hello message
+	RESTful interface returns error codes in body of the 404 message, checks are added for formatting errors.
+	Throw a warning when the TI-radios are uncalibrated. Could refuse to run.
+	Enable previously existing statistics output.
+	- could add an optional json element to each command to xBRC, in which an error could be reported. 
+	
+- Added parameters to config file:
+	- mongoose init parameters
+- config file properly handles multilevel paramters
+
+- Software Versions
+	Version string needs spaces around the first dash to support xBRC.
+	Change the versioning of the radio-driver to match the application.
+	Review version formatting for:
+		release
+		development
+		dirty
+
+Developer changes - affecting the development process
+------------------
+
+- move .gitignore file lists to the extended directories, i.e. make them more local.
+
+- combine the two paths for retrieving stream data. The xBRC is already consistently requesting "after" stream data.
+	pass the filter parameters around this namespace as a static object to reduce copying.
+	
+- Add pc_reader to the makefile
+
+- link to radiocommands.h and grover_radio.h so that all programs use the same copy, or use a common header directory.
+
+- separate the config data from the config source files.
+
+- optimize ping address handling; should be consistent as uint64_t
+
+- Logging:
+	check what happens when several logging types write to the same file.
+	Document logging types in logging.h
+	print out logging types that are "on" and their destinations at program startup.
+- Config:
+	Add data-element hooks; when a configuration option changes, the hook is called which can act on the change.
+	Config file is watched by application for changes and updates internal settings as a result.
+- new function to limit a files' size. Creates 2 files each at 1/2 limit, FIFO the two files.
+- Properly order the RESTful replys. Multi-thread the responses so that the reply can be made before processing the returning messages.
+	Use msgQueue to send them.
+
+- fully reset radios and driver when exiting the program.
+- Other applications based on the reader link to the application and overlay differences on top so that all files stay syncronized.
+- logging: sync up source between reader and test-server; verify which version is newer and fixed an issue with writing to a file.
+
+- test server should have a HTTP interface to control it.
+
+
+TESTING Q/A SUPPORT:
+-----------------------
+GOALS OF Q/A TESTING:
+	MY GOALS:
+		Test functionality of web interface, exersizing all of the options, checking ranges for validity and robustness.
+			Must 100% meet ICD specification.
+		Test reliability of radio interface for long periods of time at a low data rate
+		Test reliability of radio interface at high-end benchmark data rate
+		Test other network interfaces
+			DHCP
+			ssh
+			syslog
+			VLAN
+			
+		Test event storage roll-over.	
+		Test and characterize DHCP delivery of xBRC address
+			- normal operation
+			- when DHCP does not supply the address
+			- when DHCP fails; what IP address gets used?
+				- when IP has never been assigned
+				- when IP was previously assigned
+		Check persistent config values
+			- persistent
+			- change properly when set
+			- default values are used when not initialized by config file
+			- default values are written to config file when they do not already exist
+		  
+	Q/A GOALS:
+		Test throughput and data reliability from a system viewpoint
+		Find the throughput limits and eliminate bottlenecks
+		Push lots-o-data
+		Check end-to-end event processing with test cases.
+		
+- PC application that runs 90%+ of same code that the target does.
+	Communication interface to get input from.
+	Configuration method to use in order to set the application up for the unusual settings required.
+	
+- XMIT only unit that uses network interface to send pings over radio connection to another or multiple xBRs for throughput testing.
+	
+2 Methods used to communicate to either of above units:
+	a.) Caller sends a list of bands and the "zones" which they inhabit, and updates the band locations.
+		Application alternatively can add noise to the bands, add delay to ss calcs, drop some packets etc. to simulate real conditions. 
+
+	b.) A list of ping events with timestamps is sent to the xBR, and resulting pings are returned at the specified times.

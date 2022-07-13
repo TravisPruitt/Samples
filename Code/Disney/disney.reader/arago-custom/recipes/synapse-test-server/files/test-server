@@ -1,0 +1,25 @@
+#!/bin/sh
+
+APP=/usr/bin/test-server
+PID=/var/run/test-server.pid
+
+testserver_start() {
+    echo -n "Starting test-server application: "
+    start-stop-daemon --start --quiet --background --pidfile $PID -m --exec $APP
+    echo "."
+}
+
+testserver_stop() {
+    echo -n "Stopping test-server application: "
+    start-stop-daemon --stop --quiet --pidfile $PID && killall test-server
+    echo "."
+}
+
+case "$1" in
+	start)    testserver_start ;;
+	stop)     testserver_stop ;;
+	*)
+	    echo "Usage: /etc/init.d/test-server {start|stop}"
+	    exit 1
+	;;
+esac

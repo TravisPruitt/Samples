@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GXP DAP UI</title>
+    <style type="text/css">
+        body
+        {
+            margin: 0;
+            padding: 0;
+            font-size: 80%;
+            font-family: sans-serif;
+        }
+        
+        #header
+        {
+            display: block;
+            height: 10%;
+            width: 100%;
+            margin: auto;
+            background-color: white;
+            position: relative;
+        }
+        
+        #logo
+        {
+        	position: relative;
+        	top: 0px;
+        	left: 0px;
+        	width: 200px;
+        }
+        
+        #facility
+        {
+        	position: absolute;
+        	top: 10px;
+        	left: 210px;
+        	vertical-align: middle;
+        	width: 100px;
+        	font-family: Verdana;
+        	
+        }
+        
+        #time
+        {
+        	position: absolute;
+        	top: 10px;
+        	left: 400px;
+        	vertical-align: middle;
+        	width: 100px;
+        	font-family: Verdana;
+        }
+        
+        #footer
+        {
+            display: block;
+            height: 10%;
+            width: 100%;
+            margin: auto;
+            background-color: white;
+            position:relative;
+        }
+        
+        #status
+        {
+        	position: absolute;
+        	top: 10px;
+        	left: 10px;
+        	vertical-align: middle;
+        	width: 490px;
+        	font-family: Verdana;
+        }
+        
+        #container
+        {
+            height: 250px;
+            width: 500px;
+            padding: 0;
+            border: 1px solid black;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+        
+        #left
+        {
+            width: 250px;
+            height: 250px;
+            padding: 1em;
+            background-image: url('images/bluedot.png');
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        
+        #right
+        {
+            width: 250px;
+            height: 250px;
+            padding: 1em;
+            background-image: url('images/bluedot.png');
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 0px;
+            left: 250px;
+        }
+        
+        #leftnext
+        {
+        	position: absolute;
+        	top: 0px;
+        	left: 25px;
+        	height: 30px;
+        	width: 180px;
+        	padding: 0px 0px 0px 0px;
+        	background-image: url('images/nextguest.png');
+        	border: none;
+        }
+        
+        #leftgrant
+        {
+        	position: absolute;
+        	bottom: 30px;
+        	left: 25px;
+        	height: 30px;
+        	width: 180px;
+        	padding: 0px 0px 0px 0px;
+        	background-image: url('images/grantaccess.png');
+        	border: none;
+        }
+        
+        #rightnext
+        {
+        	position: absolute;
+        	top: 0px;
+        	left: 25px;
+        	height: 30px;
+        	width: 180px;
+        	padding: 0px 0px 0px 0px;
+        	background-image: url('images/nextguest.png');
+        	border: none;
+        }
+        
+        #rightgrant
+        {
+        	position: absolute;
+        	bottom: 30px;
+        	left: 25px;
+        	height: 30px;
+        	width: 180px;
+        	padding: 0px 0px 0px 0px;
+        	background-image: url('images/grantaccess.png');
+        	border: none;
+        }
+    </style>
+    
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+    
+    	var iMaxEvent = -1;
+    	var blueLightEvent = null;
+    	
+        $(function () 
+        {
+        	var dt = new Date();
+        	$('#time').text(dt.toLocaleTimeString());
+        	
+        	// wire up click handlers
+        	$('#leftnext').bind('click', handleClickNext);
+        	$('#leftgrant').bind('click', handleClickGrant);
+        	$('#rightnext').bind('click', handleClickNext);
+        	$('#rightgrant').bind('click', handleClickGrant);
+        	
+			setInterval('onIntervalTimer()', 1000);
+        });
+        
+        function onIntervalTimer()
+        {
+        	var dt = new Date();
+        	$('#time').text(dt.toLocaleTimeString());
+        	
+        	// if we're not already dealing with a blue light, go handle new events
+        	if (blueLightEvent==null)
+        		handleEvents();
+        }
+        
+        function handleEvents()
+        {
+        	var url = "/uifeed";
+        	if (iMaxEvent>=0)
+        		url += "&after=" + iMaxEvent;
+        	
+        	// get ui events, but stop on first blue light
+			$.getJSON(url, '', 
+					function(d) 
+					{
+						// examine each ui event
+						var ar = d.uifeed;
+						for (i=0; i<ar.length; i++)
+						{
+							var event = ar[i];
+							if (event.id>iMaxEvent)
+								iMaxEvent = event.id;
+							
+							if (event.tres.state=='invalid')
+							{
+								if (event.treq.side=='Left')
+								{
+									$('#left').css("background-image", "url('images/litebluedot.png')");
+									$('#leftnext').attr("disabled", false);
+									$('#leftgrant').attr("disabled", false);
+								}
+								else
+								{
+									$('#right').css("background-image", "url('images/litebluedot.png')");
+									$('#rightnext').attr("disabled", false);
+									$('#rightgrant').attr("disabled", false);
+								}
+								$('#status').text(event.tres.reason);
+								blueLightEvent = event;
+								break;
+							}
+						}
+						
+	        		})
+        	
+        }
+        
+        function handleClickNext()
+        {
+        	clearError();
+        }
+        
+        function handleClickGrant()
+        {
+        	clearError();
+        }
+
+        function clearError()
+        {
+        	if (blueLightEvent.treq.side=='Left')
+        	{
+				$('#left').css("background-image", "url('images/bluedot.png')");
+				$('#leftnext').attr("disabled", true);
+				$('#leftgrant').attr("disabled", true);
+        	}
+        	else
+        	{
+				$('#right').css("background-image", "url('images/bluedot.png')");
+				$('#rightnext').attr("disabled", true);
+				$('#rightgrant').attr("disabled", true);
+        	}
+				
+        	$('#status').text("");
+        	blueLightEvent = null;
+        }
+
+    </script>
+
+</head>
+<body>
+<div id="header">
+	<div id="logo"><img src="images/walt-disney-world-logo.jpg"></div>
+	<div id="facility">xCoaster</div>
+	<div id="time"></div>
+</div>
+<div id="container">
+	<div id="left">
+		<button id="leftnext" disabled="disabled"></button>
+		<button id="leftgrant" disabled="disabled"></button>
+	</div>
+	<div id="right">
+		<button id="rightnext" disabled="disabled"></button>
+		<button id="rightgrant" disabled="disabled"></button>
+	</div>
+</div>
+<div id="footer">
+	<div id="status"></div>
+</div>
+</body>
+</html>

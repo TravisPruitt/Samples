@@ -1,0 +1,155 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.disney.xband</groupId>
+	<artifactId>xBandParent</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<organization>
+		<name>Walt Disney Corporation/Synapse</name>
+	</organization>
+	<repositories>
+		<repository>
+			<id>thirdparty</id>
+			<!-- <url>http://aws.vellon.com:8081/nexus/content/repositories/thirdparty</url> -->
+			<url>http://em-build.emtest.local:8081/nexus/content/repositories/thirdparty</url>
+		</repository>
+	</repositories>
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<!-- <url>http://aws.vellon.com:8081/nexus/content/repositories/thirdparty</url> -->
+			<url>http://em-build.emtest.local:8081/nexus/content/repositories/releases</url>
+			<snapshots><enabled>true</enabled></snapshots>
+			<releases><enabled>false</enabled></releases>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<!-- <url>http://aws.vellon.com:8081/nexus/content/repositories/thirdparty</url> -->
+			<url>http://em-build.emtest.local:8081/nexus/content/repositories/snapshots</url>
+			<snapshots><enabled>true</enabled></snapshots>
+			<releases><enabled>false</enabled></releases>
+		</snapshotRepository>
+	</distributionManagement>
+	<scm>
+		<connection>scm:git:git@git.synapse.com:disney.xBandController</connection>
+		<url>scm:git:git@git.synapse.com:disney.xBandController</url>
+		<developerConnection>scm:git:git@git.synapse.com:disney.xBandController</developerConnection>
+	</scm>
+ 	<build>
+        <plugins>
+            <plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>initializeConfig</id>
+						<phase>initialize</phase>
+						<goals><goal>run</goal></goals>
+						<configuration>
+							<exportAntProperties>true</exportAntProperties>
+							<target>
+							<copy file="${xbandhome-1.7}/src/linux/config/ac-model.xml" todir="${xbandhome-1.7}/src/linux/Controller/src/main/resources/" overwrite="true"/>
+							<copy file="${xbandhome-1.7}/src/linux/config/xbrc-resources.xml" todir="${xbandhome-1.7}/src/linux/Controller/src/main/resources/" overwrite="true"/>
+								<exec executable="cat" outputproperty="VERSION_TXT">
+									<arg value="${xbandhome-1.7}/src/linux/version.txt"/>
+								</exec>
+								<exec 	executable="${xbandhome-1.7}/src/linux/buildnumber"
+										outputproperty="CODE_BUILD_VERSION">
+									<arg value="--version" />
+									<arg value="${project.version}" />
+									<arg value="${VERSION_TXT}" />
+								</exec>
+								<exec 	executable="${xbandhome-1.7}/src/linux/buildnumber"
+										outputproperty="XBAND_BUILD_RELEASE">
+									<arg value="--number" />
+									<arg value="${project.version}" />
+								</exec>
+								<property name="XBAND_BUILD_VERSION" 
+										  value="${CODE_BUILD_VERSION}.${XBAND_BUILD_RELEASE}"/>
+								<property name="XBAND_BUILD_SHORT_VERSION" value="${CODE_BUILD_VERSION}"/>
+								<echo message="Code version:      ${CODE_BUILD_VERSION}" />
+								<echo message="Full version:      ${XBAND_BUILD_VERSION}" />
+								<echo message="Short version:     ${XBAND_BUILD_SHORT_VERSION}" />
+								<tstamp>
+									<format property="BUILD_DATE" pattern="yyyy-MM-dd HH:mm:ss" />
+								</tstamp>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-war-plugin</artifactId>
+			    <version>2.3</version>
+		        <configuration>
+					<archive>
+						<manifestEntries>
+							<Implementation-Title>${XBAND_BUILD_VERSION}</Implementation-Title>
+							<Implementation-Version>${XBAND_BUILD_VERSION}</Implementation-Version>
+						</manifestEntries>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+					</archive>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+		            <webXml>WebContent/WEB-INF/web.xml</webXml>
+		        </configuration>
+		    </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+				  <archive>
+					<manifest>
+					  <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+					</manifest>
+					<manifestEntries>
+						<Implementation-Title>${XBAND_BUILD_VERSION}</Implementation-Title>
+						<Implementation-Version>${XBAND_BUILD_VERSION}</Implementation-Version>
+					</manifestEntries>
+				  </archive>
+				</configuration>
+				<goals>
+					<goal>run</goal>
+				</goals>
+			</plugin>
+        </plugins>
+    </build>
+	<modules>
+		<module>xband-simple</module>
+		<module>CommonLib</module>
+		<module>AccessControlLib</module>
+		<module>XviewLib</module>
+		<module>IDMSLib</module>
+		<module>JmsLib</module>
+		<module>OmniTicketLib</module>
+		<module>ParkGreeterLib</module>
+		<module>ControllerLib</module>
+		<module>SwitchboardLib</module>
+		<module>AttractionModel</module>
+		<module>ParkEntryModel</module>
+		<module>SpaceModel</module>
+		<module>Controller</module>
+		<module>UI</module>
+		<module>XbrmsLib</module>
+		<module>XBRMS</module>
+		<module>XBRMSUI</module>
+		<module>Xview</module>
+		<module>Xfpe</module>
+		<module>JmsListener</module>
+		<module>Guest</module>
+		<module>Reader</module>
+		<module>SpaceModelSimulator</module>
+		<module>ParkSimulator</module>
+		<module>IDMS</module>
+                <module>XBMSSimulator</module>
+		<module>xi</module>
+		<module>rpm</module>
+	</modules>
+        <properties>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        </properties>
+</project>

@@ -1,0 +1,1 @@
+../reader/manager.cpp

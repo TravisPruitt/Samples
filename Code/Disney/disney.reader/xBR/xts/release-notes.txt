@@ -1,0 +1,10 @@
+
+
+xts version 1.1.0, June 28, 2012
+    Feature changes:
+        - Compiles and runs under Windows
+
+
+xts version 1.0.0
+
+

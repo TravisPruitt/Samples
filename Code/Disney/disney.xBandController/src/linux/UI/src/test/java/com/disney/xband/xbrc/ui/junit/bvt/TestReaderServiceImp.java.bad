@@ -1,0 +1,109 @@
+package com.disney.xband.xbrc.ui.junit.bvt;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Collection;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.disney.xband.xbrc.lib.db.ReaderService;
+import com.disney.xband.xbrc.lib.entity.Reader;
+import com.disney.xband.xbrc.ui.ServiceLocator;
+import com.disney.xband.xbrc.ui.db.UIConnectionPool;
+
+public class TestReaderServiceImp {
+	
+	/* connection defaults */
+	Connection conn;
+
+	@Before
+	public void setUp() throws Exception {
+		
+		// see if configDir set externally
+		String configDir = System.getProperty("configDir");
+		if (configDir==null)
+		{
+			String fullPathToThis = getClass().getResource("TestReaderServiceImp.class").getPath();
+			String fullPathToThisDir = fullPathToThis.substring(0, fullPathToThis.lastIndexOf("/"));
+
+			configDir = fullPathToThisDir += "/../../../../../../../../../../config/build";
+		}
+		
+		//set JVM argument -Dxbrc.properties -Djasypt.properties for the UIProperties class
+		System.setProperty("environment.properties", "file://" + configDir + "/environment.properties");
+		System.setProperty("jasypt.properties", "file://" + configDir + "/jasypt.properties");
+				
+		//open database connection
+		conn = UIConnectionPool.getInstance().getConnection();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		if (conn != null)
+			conn.close();
+	}
+
+	@Test
+	public void testFindAll() {
+        Statement stmt = null;
+        ResultSet rs = null;
+
+		try {
+			//get the current Reader count
+			stmt = conn.createStatement();
+			stmt.execute("SELECT count(*) AS count from Reader");
+			rs = stmt.getResultSet();
+			
+			int expectedReaderCount = 0;
+			if (rs.next() == true)
+				expectedReaderCount = rs.getInt("count");
+			
+			Collection<Reader> results = null;
+			
+			Connection conn = UIConnectionPool.getInstance().getConnection();
+			try
+			{
+				results = ReaderService.findAll(conn);
+			}
+			catch (Exception e)
+			{
+				fail();
+			}
+			finally
+			{
+				UIConnectionPool.getInstance().releaseConnection(conn);
+			}
+			
+			assertEquals(expectedReaderCount, results.size());
+			
+			//TODO make sure the Reader object is created correctly
+			//TODO make sure the Reader/Location association is created correctly
+			
+		} catch (Exception e) {
+			fail(e.getLocalizedMessage());
+		}
+        finally {
+            if(rs != null) {
+                try {
+                    rs.close();
+                }
+                catch (Exception e) {
+                }
+            }
+
+            if(stmt != null) {
+                try {
+                    stmt.close();
+                }
+                catch (Exception e) {
+                }
+            }
+        }
+	}
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<venue name="iwona" time="2013-05-01T22:22:16.298">
+  <configuration name="current" type="full">
+    <description/>
+    <properties>
+	  <property class="ControllerInfo" name="preferredguestidtype"/>
+	  <property class="ControllerInfo" name="readerbatterylevelred">20</property>
+	  <property class="ControllerInfo" name="readerbatterylevelyellow">40</property>
+	  <property class="ControllerInfo" name="readerdatasendperiod_msec">100</property>
+      <property class="ParkEntryModelConfig" name="abandonmenttimesec">25</property>
+	  <property class="ParkEntryModelConfig" name="castappcorethreadpoolsize">10</property>
+	  <property class="ParkEntryModelConfig" name="castappmaxthreadpoolsize">50</property>
+	  <property class="ParkEntryModelConfig" name="castappmessagetimeoutsec">15</property>
+	  <property class="ParkEntryModelConfig" name="castappnotifytimeoutsec">5</property>
+	  <property class="ParkEntryModelConfig" name="castappresponsetimeutsec">30</property>
+	  <property class="ParkEntryModelConfig" name="castappserveraddress">localhost</property>
+	  <property class="ParkEntryModelConfig" name="castappserverobserveraddress">localhost</property>
+    </properties>
+    <readerlocationinfo>
+      <readerlocation>
+        <section/>
+        <name>Load2</name>
+        <id>8</id>
+        <type>4</type>
+        <x>11.1</x>
+        <y>76.0</y>
+        <successsequence/>
+        <successtimeout>1</successtimeout>
+        <failuresequence/>
+        <failuretimeout>1</failuretimeout>
+        <errorsequence/>
+        <errortimeout>1</errortimeout>
+        <idlesequence/>
+        <tapsequence/>
+        <taptimeout>0</taptimeout>
+        <readers/>
+      </readerlocation>
+      <readerlocation>
+        <section/>
+        <name>NewLocation</name>
+        <id>7</id>
+        <type>4</type>
+        <x>76.0</x>
+        <y>76.0</y>
+        <successsequence/>
+        <successtimeout>0</successtimeout>
+        <failuresequence/>
+        <failuretimeout>0</failuretimeout>
+        <errorsequence/>
+        <errortimeout>0</errortimeout>
+        <idlesequence/>
+        <tapsequence/>
+        <taptimeout>0</taptimeout>
+        <readers/>
+      </readerlocation>
+    </readerlocationinfo>
+    <images/>
+    <model>
+      <parkEntryModelConfig><castMember><bandId>arek</bandId><enabled>true</enabled><externalId/><id>1</id><name>Arek</name><omniPassword>11111</omniPassword><omniUsername>800011</omniUsername></castMember><castMember><bandId>008023C002AC9004</bandId><enabled>true</enabled><externalId/><id>6</id><name>Cast Member Five</name><omniPassword>11111</omniPassword><omniUsername>800011</omniUsername></castMember>
+	  	<readerOmniServers><omniServer><active>false</active><hostname>localhost</hostname><id>1</id><port>0</port></omniServer></readerOmniServers>	  
+	  </parkEntryModelConfig>
+    </model>
+  </configuration>
+</venue>

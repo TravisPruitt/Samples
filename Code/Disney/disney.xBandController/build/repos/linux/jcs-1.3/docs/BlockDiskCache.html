@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>JCS - Block Disk Cache</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="Aaron Smuts"></meta><meta name="email" content="asmuts@apache.org"></meta></head><body class="composite"><div id="banner"><a href="http://jakarta.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="./images/jakarta.png"></img></a><a href="http://jakarta.apache.org/jcs/" id="projectLogo"><span>JCS</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 30 May 2007
+                  | Doc for 1.3</div><div class="xright">
+        
+        <a href="jcs.pdf"><img title="PDF Documentation" style="border: 1px" src="images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuGeneral_Information"><h5>General Information</h5><ul><li class="none"><a href="index.html">Overview</a></li><li class="none"><a href="JCSandJCACHE.html">JCS and JCACHE</a></li><li class="none"><a href="DownloadPage.html">Downloads</a></li><li class="none"><a href="faq.html">FAQ</a></li></ul></div><div id="menuGetting_Started"><h5>Getting Started</h5><ul><li class="none"><a href="getting_started/intro.html">Overview</a></li><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="Plugins.html">Plugin Overview</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></div><div id="menuJCS_User_s_Guide"><h5>JCS User's Guide</h5><ul><li class="collapsed"><a href="LocalCacheConfig.html">Core</a></li><li class="expanded"><a href="Plugins.html">Auxiliary</a><ul><li class="none"><a href="IndexedDiskAuxCache.html">Indexed Disk Cache</a></li><li class="none"><a href="IndexedDiskCacheProperties.html">Indexed Disk Properties</a></li><li class="none"><strong><a href="BlockDiskCache.html">Block Disk Cache</a></strong></li><li class="none"><a href="JDBCDiskCache.html">JDBC Disk Cache</a></li><li class="none"><a href="JDBCDiskCacheProperties.html">JDBC Disk Properties</a></li><li class="none"><a href="MySQLDiskCacheProperties.html">MySQL Disk Properties</a></li><li class="none"><a href="RemoteAuxCache.html">Remote Cache</a></li><li class="none"><a href="RemoteCacheProperties.html">Remote Cache Properties</a></li><li class="none"><a href="LateralTCPAuxCache.html">Lateral TCP Cache</a></li><li class="none"><a href="LateralTCPProperties.html">Lateral TCP Properties</a></li><li class="none"><a href="LateralUDPDiscovery.html">Lateral UDP Discovery</a></li><li class="none"><a href="LateralJavaGroupsAuxCache.html">Lateral JGroups Cache</a></li></ul></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About JCS</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Block_Disk_Auxiliary_Cache"></a><h2>Block Disk Auxiliary Cache</h2><p>
+				The Block Disk Cache stores cached values on disk. Like
+				the Indexed Disk Cache, the Block Disk Cache keeps the
+				keys in memory. The Block Disk Cache stores the values
+				in a group of fixed size blocks, whereas the Indexed
+				Disk Cache writes items to disk in one chunk.
+			</p><p>
+				The Block Disk Cache has advantages over the normal
+				indexed model for regions where the size of the items
+				varies. Since all the blocks are the same size, the
+				recycle bin is very simple. It is just a list of block
+				numbers. Also, the Block Disk Cache will never need to
+				be optimized. Once the maximum number of keys is
+				reached, blocks will be reused.
+			</p><div class="subsection"><a name="Example_cache_ccf"></a><h3>Example cache.ccf</h3>
+    <div class="source"><pre>
+					
+##############################################################
+##### DEFAULT REGION  ########################################
+
+jcs.default=blockDiskCache
+jcs.default.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.default.cacheattributes.MaxObjects=0
+jcs.default.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+
+##############################################################
+##### AUXILIARY CACHES  ######################################
+
+# Block Disk Cache
+jcs.auxiliary.blockDiskCache=org.apache.jcs.auxiliary.disk.block.BlockDiskCacheFactory
+jcs.auxiliary.blockDiskCache.attributes=org.apache.jcs.auxiliary.disk.block.BlockDiskCacheAttributes
+jcs.auxiliary.blockDiskCache.attributes.DiskPath=target/test-sandbox/block-disk-cache-huge
+jcs.auxiliary.blockDiskCache.attributes.MaxPurgatorySize=300000
+jcs.auxiliary.blockDiskCache.attributes.MaxKeySize=1000000
+jcs.auxiliary.blockDiskCache.attributes.blockSizeBytes=500
+jcs.auxiliary.blockDiskCache.attributes.EventQueueType=SINGLE
+#jcs.auxiliary.blockDiskCache.attributes.EventQueuePoolName=disk_cache_event_queue
+
+##############################################################
+################## THREAD POOL CONFIGURATION #################
+
+# Default thread pool config
+thread_pool.default.boundarySize=2000
+thread_pool.default.maximumPoolSize=150
+thread_pool.default.minimumPoolSize=4
+thread_pool.default.keepAliveTime=350000
+#RUN ABORT WAIT BLOCK DISCARDOLDEST
+thread_pool.default.whenBlockedPolicy=RUN
+thread_pool.default.startUpSize=4
+
+# Disk Cache pool
+thread_pool.disk_cache_event_queue.useBoundary=false
+thread_pool.disk_cache_event_queue.minimumPoolSize=2
+thread_pool.disk_cache_event_queue.keepAliveTime=3500
+thread_pool.disk_cache_event_queue.startUpSize=10
+        
+				</pre></div>
+  </div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2002-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

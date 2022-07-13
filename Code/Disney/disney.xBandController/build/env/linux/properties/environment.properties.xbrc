@@ -1,0 +1,36 @@
+#
+# Common properties file for all xConnect components.
+# Build: 1.5.0.3906
+#
+
+# Park ID
+nge.xconnect.parkid=12345
+
+# JMS Broker
+nge.eventserver.dataBrokerUrl=#
+nge.eventserver.mgmtBrokerUrl=#
+nge.eventserver.brokerDomain=Domain1
+nge.eventserver.idms.connectionfactory.jndi.name=NGEConnectionFactory
+nge.eventserver.xbrc.connectionfactory.jndi.name=NGEConnectionFactory
+
+# XBRC JMS Broker Creds
+nge.eventserver.xbrc.uid=Administrator
+nge.eventserver.xbrc.pwd=Administrator
+
+# XBRC Database
+nge.xconnect.xbrc.dbserver.service=jdbc:mysql://localhost/Mayhem
+nge.xconnect.xbrc.dbserver.uid=EMUser
+nge.xconnect.xbrc.dbserver.pwd=Mayhem!23
+nge.xconnect.xbrc.dbserver.rootuid=root
+nge.xconnect.xbrc.dbserver.rootpwd=
+nge.xconnect.xbrc.dbserver.newrootpwd=Mayhem!24
+nge.xconnect.xbrc.c3p0.maxPoolSize=20
+nge.xconnect.xbrc.c3p0.maxStatements=400
+nge.xconnect.xbrc.c3p0.maxStatementsPerConnection=50
+
+# XBRC SSL Certificates
+nge.xconnect.xbrc.ssl.keystore.client=/etc/nge/ssl/xconnect/.client.ks
+nge.xconnect.xbrc.ssl.keystore.client.pwd=ENC(sai+/7P4uf69LweE1nP9gae2YhPZwpGoZJ0vI9MTXOE=)
+nge.xconnect.xbrc.ssl.keystore.server=/etc/nge/ssl/xconnect/.server.ks
+nge.xconnect.xbrc.ssl.keystore.server.pwd=ENC(sai+/7P4uf69LweE1nP9gae2YhPZwpGoZJ0vI9MTXOE=)
+

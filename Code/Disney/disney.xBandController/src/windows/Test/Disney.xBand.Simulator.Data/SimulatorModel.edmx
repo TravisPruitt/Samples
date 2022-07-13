@@ -1,0 +1,839 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SimulatorModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SimulatorModelStoreContainer">
+          <EntitySet Name="Attraction" EntityType="SimulatorModel.Store.Attraction" store:Type="Tables" Schema="sim" />
+          <EntitySet Name="Controller" EntityType="SimulatorModel.Store.Controller" store:Type="Tables" Schema="sim" />
+          <EntitySet Name="Guest" EntityType="SimulatorModel.Store.Guest" store:Type="Tables" Schema="sim" />
+          <EntitySet Name="MagicBand" EntityType="SimulatorModel.Store.MagicBand" store:Type="Tables" Schema="sim" />
+          <EntitySet Name="Reader" EntityType="SimulatorModel.Store.Reader" store:Type="Tables" Schema="sim" />
+          <EntitySet Name="ReaderEvent" EntityType="SimulatorModel.Store.ReaderEvent" store:Type="Tables" Schema="sim" />
+          <EntitySet Name="ReaderLocationType" EntityType="SimulatorModel.Store.ReaderLocationType" store:Type="Tables" Schema="sim" />
+          <EntitySet Name="ReaderType" EntityType="SimulatorModel.Store.ReaderType" store:Type="Tables" Schema="sim" />
+          <AssociationSet Name="FK_Controller_Attraction" Association="SimulatorModel.Store.FK_Controller_Attraction">
+            <End Role="Attraction" EntitySet="Attraction" />
+            <End Role="Controller" EntitySet="Controller" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MagicBand_MagicBand" Association="SimulatorModel.Store.FK_MagicBand_MagicBand">
+            <End Role="Guest" EntitySet="Guest" />
+            <End Role="MagicBand" EntitySet="MagicBand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reader_Controller" Association="SimulatorModel.Store.FK_Reader_Controller">
+            <End Role="Controller" EntitySet="Controller" />
+            <End Role="Reader" EntitySet="Reader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reader_ReaderLocationType" Association="SimulatorModel.Store.FK_Reader_ReaderLocationType">
+            <End Role="ReaderLocationType" EntitySet="ReaderLocationType" />
+            <End Role="Reader" EntitySet="Reader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reader_ReaderType" Association="SimulatorModel.Store.FK_Reader_ReaderType">
+            <End Role="ReaderType" EntitySet="ReaderType" />
+            <End Role="Reader" EntitySet="Reader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReaderEvent_Reader" Association="SimulatorModel.Store.FK_ReaderEvent_Reader">
+            <End Role="Reader" EntitySet="Reader" />
+            <End Role="ReaderEvent" EntitySet="ReaderEvent" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Attraction">
+          <Key>
+            <PropertyRef Name="AttractionID" />
+          </Key>
+          <Property Name="AttractionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AttractionName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="MergeRatio" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="GuestsPerHour" Type="int" Nullable="false" />
+          <Property Name="TapOnly" Type="bit" Nullable="false" />
+          <Property Name="StandByBandRatio" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="StandByArrivalRate" Type="int" Nullable="false" />
+          <Property Name="FastPassPlusArrivalRate" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Controller">
+          <Key>
+            <PropertyRef Name="ControllerID" />
+          </Key>
+          <Property Name="ControllerID" Type="int" Nullable="false" />
+          <Property Name="ControllerURL" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="ControllerName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="GuestID" />
+          </Key>
+          <Property Name="GuestID" Type="bigint" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="MagicBand">
+          <Key>
+            <PropertyRef Name="MagicBandID" />
+          </Key>
+          <Property Name="MagicBandID" Type="bigint" Nullable="false" />
+          <Property Name="BandID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TapID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LongRangeID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="GuestID" Type="bigint" Nullable="false" />
+          <Property Name="PacketSequence" Type="int" Nullable="false" />
+          <Property Name="NextTransmit" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reader">
+          <Key>
+            <PropertyRef Name="ReaderID" />
+          </Key>
+          <Property Name="ReaderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReaderName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ControllerID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ReaderTypeID" Type="int" Nullable="false" />
+          <Property Name="ReaderLocationTypeID" Type="int" Nullable="false" />
+          <Property Name="Webport" Type="int" Nullable="false" />
+          <Property Name="UpstreamUrl" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="EventsInterval" Type="int" Nullable="false" />
+          <Property Name="MaximumEvents" Type="int" Nullable="false" />
+          <Property Name="LastUpstreamEvent" Type="bigint" Nullable="false" />
+          <Property Name="xCoordinate" Type="int" Nullable="false" />
+          <Property Name="yCoordinate" Type="int" Nullable="false" />
+          <Property Name="Range" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReaderEvent">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReaderID" Type="int" Nullable="false" />
+          <Property Name="EventNumber" Type="bigint" Nullable="false" />
+          <Property Name="Timeval" Type="datetime" Nullable="false" />
+          <Property Name="BandID" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="SignalStrength" Type="int" Nullable="false" />
+          <Property Name="Channel" Type="int" Nullable="false" />
+          <Property Name="PacketSequence" Type="int" Nullable="false" />
+          <Property Name="Frequency" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReaderLocationType">
+          <Key>
+            <PropertyRef Name="ReaderLocationTypeID" />
+          </Key>
+          <Property Name="ReaderLocationTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReaderLocationTypeName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ReaderType">
+          <Key>
+            <PropertyRef Name="ReaderTypeID" />
+          </Key>
+          <Property Name="ReaderTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReaderTypeName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Controller_Attraction">
+          <End Role="Attraction" Type="SimulatorModel.Store.Attraction" Multiplicity="1" />
+          <End Role="Controller" Type="SimulatorModel.Store.Controller" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Attraction">
+              <PropertyRef Name="AttractionID" />
+            </Principal>
+            <Dependent Role="Controller">
+              <PropertyRef Name="ControllerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MagicBand_MagicBand">
+          <End Role="Guest" Type="SimulatorModel.Store.Guest" Multiplicity="1" />
+          <End Role="MagicBand" Type="SimulatorModel.Store.MagicBand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guest">
+              <PropertyRef Name="GuestID" />
+            </Principal>
+            <Dependent Role="MagicBand">
+              <PropertyRef Name="GuestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reader_Controller">
+          <End Role="Controller" Type="SimulatorModel.Store.Controller" Multiplicity="1" />
+          <End Role="Reader" Type="SimulatorModel.Store.Reader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Controller">
+              <PropertyRef Name="ControllerID" />
+            </Principal>
+            <Dependent Role="Reader">
+              <PropertyRef Name="ControllerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reader_ReaderLocationType">
+          <End Role="ReaderLocationType" Type="SimulatorModel.Store.ReaderLocationType" Multiplicity="1" />
+          <End Role="Reader" Type="SimulatorModel.Store.Reader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReaderLocationType">
+              <PropertyRef Name="ReaderLocationTypeID" />
+            </Principal>
+            <Dependent Role="Reader">
+              <PropertyRef Name="ReaderLocationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reader_ReaderType">
+          <End Role="ReaderType" Type="SimulatorModel.Store.ReaderType" Multiplicity="1" />
+          <End Role="Reader" Type="SimulatorModel.Store.Reader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReaderType">
+              <PropertyRef Name="ReaderTypeID" />
+            </Principal>
+            <Dependent Role="Reader">
+              <PropertyRef Name="ReaderTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReaderEvent_Reader">
+          <End Role="Reader" Type="SimulatorModel.Store.Reader" Multiplicity="1" />
+          <End Role="ReaderEvent" Type="SimulatorModel.Store.ReaderEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reader">
+              <PropertyRef Name="ReaderID" />
+            </Principal>
+            <Dependent Role="ReaderEvent">
+              <PropertyRef Name="ReaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_AddGuest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="GuestID" Type="bigint" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_AddMagicBand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="GuestID" Type="bigint" Mode="In" />
+          <Parameter Name="MagicBandID" Type="bigint" Mode="In" />
+          <Parameter Name="BandID" Type="nvarchar" Mode="In" />
+          <Parameter Name="TapID" Type="nvarchar" Mode="In" />
+          <Parameter Name="LongRangeID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ClearGuestQueue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_CreateReaderEvents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+          <Parameter Name="SimulationTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_GetGuestPositions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_GetGuests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim" />
+        <Function Name="usp_GetGuestsInQueue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_GetGuestStates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_GetReaderEvents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="ReaderID" Type="int" Mode="In" />
+          <Parameter Name="BandID" Type="varchar" Mode="In" />
+          <Parameter Name="LastEventNumber" Type="bigint" Mode="In" />
+          <Parameter Name="MaximumEvents" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_GetStatistics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InitializeGuestQueue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+          <Parameter Name="SimulationTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_ResetMagicBands" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="SimulationTime" Type="datetime" Mode="In" />
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateEntered" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+          <Parameter Name="SimulationTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateExited" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+          <Parameter Name="SimulationTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateGuestPosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="GuestID" Type="bigint" Mode="In" />
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+          <Parameter Name="EntryTime" Type="time" Mode="In" />
+          <Parameter Name="HasFastPassPlus" Type="bit" Mode="In" />
+          <Parameter Name="GuestState" Type="int" Mode="In" />
+          <Parameter Name="xPosition" Type="float" Mode="In" />
+          <Parameter Name="yPosition" Type="float" Mode="In" />
+          <Parameter Name="LoadTime" Type="time" Mode="In" />
+          <Parameter Name="ExitTime" Type="time" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateInQueue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+          <Parameter Name="SimulationTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateLoading" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+          <Parameter Name="GuestsToLoad" Type="int" Mode="In" />
+          <Parameter Name="SimulationTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateMerging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+          <Parameter Name="GuestsToMerge" Type="int" Mode="In" />
+          <Parameter Name="SimulationTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateOutOfRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+          <Parameter Name="SimulationTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateRiding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="AttractionID" Type="int" Mode="In" />
+          <Parameter Name="SimulationTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_WriteReaderEvent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sim">
+          <Parameter Name="ReaderID" Type="bigint" Mode="In" />
+          <Parameter Name="BandID" Type="nvarchar" Mode="In" />
+          <Parameter Name="SignalStrength" Type="int" Mode="In" />
+          <Parameter Name="Channel" Type="int" Mode="In" />
+          <Parameter Name="PacketSequence" Type="int" Mode="In" />
+          <Parameter Name="Frequency" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SimulatorModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SimulatorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Attractions" EntityType="SimulatorModel.Attraction" />
+          <EntitySet Name="Controllers" EntityType="SimulatorModel.Controller" />
+          <EntitySet Name="Readers" EntityType="SimulatorModel.Reader" />
+          <EntitySet Name="ReaderLocationTypes" EntityType="SimulatorModel.ReaderLocationType" />
+          <EntitySet Name="ReaderTypes" EntityType="SimulatorModel.ReaderType" />
+          <AssociationSet Name="FK_Reader_ReaderType" Association="SimulatorModel.FK_Reader_ReaderType">
+            <End Role="ReaderType" EntitySet="ReaderTypes" />
+            <End Role="Reader" EntitySet="Readers" />
+          </AssociationSet>
+          <EntitySet Name="ReaderEvents" EntityType="SimulatorModel.ReaderEvent" />
+          <AssociationSet Name="FK_ReaderEvent_Reader" Association="SimulatorModel.FK_ReaderEvent_Reader">
+            <End EntitySet="Readers" Role="Reader" />
+            <End EntitySet="ReaderEvents" Role="ReaderEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Controller_Attraction" Association="SimulatorModel.FK_Controller_Attraction">
+            <End Role="Attraction" EntitySet="Attractions" />
+            <End Role="Controller" EntitySet="Controllers" />
+          </AssociationSet>
+          <FunctionImport Name="GetReaderEvents" ReturnType="Collection(SimulatorModel.GetReaderEvents_Result)">
+            <Parameter Name="ReaderID" Mode="In" Type="Int32" />
+            <Parameter Name="BandID" Mode="In" Type="String" />
+            <Parameter Name="LastEventNumber" Mode="In" Type="Int64" />
+            <Parameter Name="MaximumEvents" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <AssociationSet Name="FK_Reader_Controller" Association="SimulatorModel.FK_Reader_Controller">
+            <End Role="Controller" EntitySet="Controllers" />
+            <End Role="Reader" EntitySet="Readers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reader_ReaderLocationType" Association="SimulatorModel.FK_Reader_ReaderLocationType">
+            <End Role="ReaderLocationType" EntitySet="ReaderLocationTypes" />
+            <End Role="Reader" EntitySet="Readers" />
+          </AssociationSet>
+          <FunctionImport Name="WriteReaderEvent">
+            <Parameter Name="ReaderID" Mode="In" Type="Int64" />
+            <Parameter Name="BandID" Mode="In" Type="String" />
+            <Parameter Name="SignalStrength" Mode="In" Type="Int32" />
+            <Parameter Name="Channel" Mode="In" Type="Int32" />
+            <Parameter Name="PacketSequence" Mode="In" Type="Int32" />
+            <Parameter Name="Frequency" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ClearGuestQueue">
+          <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddGuest">
+            <Parameter Name="GuestID" Mode="In" Type="Int64" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InitializeGuestQueue">
+            <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+            <Parameter Name="SimulationTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateEntered">
+            <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+            <Parameter Name="SimulationTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateInQueue">
+            <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+            <Parameter Name="SimulationTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateMerging">
+            <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+            <Parameter Name="GuestsToMerge" Mode="In" Type="Int32" />
+            <Parameter Name="SimulationTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateLoading">
+            <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+            <Parameter Name="GuestsToLoad" Mode="In" Type="Int32" />
+            <Parameter Name="SimulationTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateRiding" ReturnType="Collection(Int32)">
+            <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+            <Parameter Name="SimulationTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateExited">
+            <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+            <Parameter Name="SimulationTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateOutOfRange">
+            <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+            <Parameter Name="SimulationTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="AddMagicBand">
+            <Parameter Name="GuestID" Mode="In" Type="Int64" />
+            <Parameter Name="MagicBandID" Mode="In" Type="Int64" />
+            <Parameter Name="BandID" Mode="In" Type="String" />
+            <Parameter Name="TapID" Mode="In" Type="String" />
+            <Parameter Name="LongRangeID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetGuestsInQueue">
+          <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Guests" EntityType="SimulatorModel.Guest" />
+          <EntitySet Name="MagicBands" EntityType="SimulatorModel.MagicBand" />
+          <AssociationSet Name="FK_MagicBand_MagicBand" Association="SimulatorModel.FK_MagicBand_MagicBand">
+            <End Role="Guest" EntitySet="Guests" />
+            <End Role="MagicBand" EntitySet="MagicBands" />
+          </AssociationSet>
+          <FunctionImport Name="CreateReaderEvents">
+            <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+            <Parameter Name="SimulationTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ResetMagicBands">
+            <Parameter Name="SimulationTime" Mode="In" Type="DateTime" />
+            <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetGuests" EntitySet="Guests" ReturnType="Collection(SimulatorModel.Guest)" />
+          <FunctionImport Name="GetStatistics" ReturnType="Collection(SimulatorModel.GetStatistics_Result)">
+          <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateGuestPosition">
+            <Parameter Name="GuestID" Mode="In" Type="Int64" />
+            <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+            <Parameter Name="EntryTime" Mode="In" Type="Time" />
+            <Parameter Name="HasFastPassPlus" Mode="In" Type="Boolean" />
+            <Parameter Name="GuestState" Mode="In" Type="Int32" />
+            <Parameter Name="xPosition" Mode="In" Type="Double" />
+            <Parameter Name="yPosition" Mode="In" Type="Double" />
+            <Parameter Name="LoadTime" Mode="In" Type="Time" />
+            <Parameter Name="ExitTime" Mode="In" Type="Time" />
+          </FunctionImport>
+          <FunctionImport Name="GetGuestPositions" ReturnType="Collection(SimulatorModel.GetGuestPositions_Result)">
+          <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetGuestStates" ReturnType="Collection(SimulatorModel.GetGuestStates_Result)">
+          <Parameter Name="AttractionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Attraction">
+          <Key>
+            <PropertyRef Name="AttractionID" />
+          </Key>
+          <Property Name="AttractionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttractionName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MergeRatio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Controller" Relationship="SimulatorModel.FK_Controller_Attraction" FromRole="Attraction" ToRole="Controller" />
+          <Property Type="Int32" Name="GuestsPerHour" Nullable="false" />
+          <Property Type="Boolean" Name="TapOnly" Nullable="false" />
+          <Property Type="Decimal" Name="StandByBandRatio" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="StandByArrivalRate" Nullable="false" />
+          <Property Type="Int32" Name="FastPassPlusArrivalRate" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Controller">
+          <Key>
+            <PropertyRef Name="ControllerID" />
+          </Key>
+          <Property Name="ControllerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ControllerURL" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="ControllerName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Attraction" Relationship="SimulatorModel.FK_Controller_Attraction" FromRole="Controller" ToRole="Attraction" />
+          <NavigationProperty Name="Readers" Relationship="SimulatorModel.FK_Reader_Controller" FromRole="Controller" ToRole="Reader" />
+        </EntityType>
+        <EntityType Name="Reader">
+          <Key>
+            <PropertyRef Name="ReaderID" />
+          </Key>
+          <Property Name="ReaderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReaderName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ReaderTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ReaderLocationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Webport" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ReaderType" Relationship="SimulatorModel.FK_Reader_ReaderType" FromRole="Reader" ToRole="ReaderType" />
+          <NavigationProperty Name="ReaderEvents" Relationship="SimulatorModel.FK_ReaderEvent_Reader" FromRole="Reader" ToRole="ReaderEvent" />
+          <Property Type="String" Name="UpstreamUrl" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="EventsInterval" Nullable="false" />
+          <Property Type="Int32" Name="MaximumEvents" Nullable="false" />
+          <Property Type="Int64" Name="LastUpstreamEvent" Nullable="false" />
+          <Property Type="Int32" Name="ControllerID" Nullable="false" />
+          <NavigationProperty Name="Controller" Relationship="SimulatorModel.FK_Reader_Controller" FromRole="Reader" ToRole="Controller" />
+          <NavigationProperty Name="ReaderLocationType" Relationship="SimulatorModel.FK_Reader_ReaderLocationType" FromRole="Reader" ToRole="ReaderLocationType" />
+          <Property Type="Int32" Name="xCoordinate" Nullable="false" />
+          <Property Type="Int32" Name="yCoordinate" Nullable="false" />
+          <Property Type="Int32" Name="Range" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReaderLocationType">
+          <Key>
+            <PropertyRef Name="ReaderLocationTypeID" />
+          </Key>
+          <Property Name="ReaderLocationTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReaderLocationTypeName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Readers" Relationship="SimulatorModel.FK_Reader_ReaderLocationType" FromRole="ReaderLocationType" ToRole="Reader" />
+        </EntityType>
+        <EntityType Name="ReaderType">
+          <Key>
+            <PropertyRef Name="ReaderTypeID" />
+          </Key>
+          <Property Name="ReaderTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReaderTypeName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Readers" Relationship="SimulatorModel.FK_Reader_ReaderType" FromRole="ReaderType" ToRole="Reader" />
+        </EntityType>
+        <Association Name="FK_Reader_ReaderType">
+          <End Role="ReaderType" Type="SimulatorModel.ReaderType" Multiplicity="1" />
+          <End Role="Reader" Type="SimulatorModel.Reader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReaderType">
+              <PropertyRef Name="ReaderTypeID" />
+            </Principal>
+            <Dependent Role="Reader">
+              <PropertyRef Name="ReaderTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ReaderEvent">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+          <Property Name="ReaderID" Nullable="false" Type="Int32" />
+          <Property Name="EventNumber" Nullable="false" Type="Int64" />
+          <Property Name="Timeval" Nullable="false" Type="DateTime" />
+          <Property Name="BandID" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="SignalStrength" Nullable="false" Type="Int32" />
+          <Property Name="Channel" Nullable="false" Type="Int32" />
+          <Property Name="PacketSequence" Nullable="false" Type="Int32" />
+          <Property Name="Frequency" Nullable="false" Type="Int32" />
+          <NavigationProperty Name="Reader" Relationship="SimulatorModel.FK_ReaderEvent_Reader" FromRole="ReaderEvent" ToRole="Reader" />
+        </EntityType>
+        <Association Name="FK_ReaderEvent_Reader">
+          <End Type="SimulatorModel.Reader" Multiplicity="1" Role="Reader" />
+          <End Type="SimulatorModel.ReaderEvent" Multiplicity="*" Role="ReaderEvent" />
+          <ReferentialConstraint>
+            <Principal Role="Reader">
+              <PropertyRef Name="ReaderID" />
+            </Principal>
+            <Dependent Role="ReaderEvent">
+              <PropertyRef Name="ReaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Controller_Attraction">
+          <End Type="SimulatorModel.Attraction" Role="Attraction" Multiplicity="1" />
+          <End Type="SimulatorModel.Controller" Role="Controller" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Attraction">
+              <PropertyRef Name="AttractionID" />
+            </Principal>
+            <Dependent Role="Controller">
+              <PropertyRef Name="ControllerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetReaderEvents_Result">
+          <Property Type="Int64" Name="EventID" Nullable="false" />
+          <Property Type="Int32" Name="ReaderID" Nullable="false" />
+          <Property Type="Int64" Name="EventNumber" Nullable="false" />
+          <Property Type="String" Name="TimeVal" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="BandID" Nullable="false" MaxLength="16" />
+          <Property Type="Int32" Name="SignalStrength" Nullable="false" />
+          <Property Type="Int32" Name="Channel" Nullable="false" />
+          <Property Type="Int32" Name="PacketSequence" Nullable="false" />
+          <Property Type="Int32" Name="Frequency" Nullable="false" />
+        </ComplexType>
+        <Association Name="FK_Reader_Controller">
+          <End Type="SimulatorModel.Controller" Role="Controller" Multiplicity="1" />
+          <End Type="SimulatorModel.Reader" Role="Reader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Controller">
+              <PropertyRef Name="ControllerID" />
+            </Principal>
+            <Dependent Role="Reader">
+              <PropertyRef Name="ControllerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reader_ReaderLocationType">
+          <End Type="SimulatorModel.ReaderLocationType" Role="ReaderLocationType" Multiplicity="1" />
+          <End Type="SimulatorModel.Reader" Role="Reader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReaderLocationType">
+              <PropertyRef Name="ReaderLocationTypeID" />
+            </Principal>
+            <Dependent Role="Reader">
+              <PropertyRef Name="ReaderLocationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="GuestID" />
+          </Key>
+          <Property Type="Int64" Name="GuestID" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MagicBands" Relationship="SimulatorModel.FK_MagicBand_MagicBand" FromRole="Guest" ToRole="MagicBand" />
+        </EntityType>
+        <EntityType Name="MagicBand">
+          <Key>
+            <PropertyRef Name="MagicBandID" />
+          </Key>
+          <Property Type="Int64" Name="MagicBandID" Nullable="false" />
+          <Property Type="String" Name="BandID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TapID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LongRangeID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="GuestID" Nullable="false" />
+          <NavigationProperty Name="Guest" Relationship="SimulatorModel.FK_MagicBand_MagicBand" FromRole="MagicBand" ToRole="Guest" />
+          <Property Type="Int32" Name="PacketSequence" Nullable="false" />
+          <Property Type="DateTime" Name="NextTransmit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MagicBand_MagicBand">
+          <End Type="SimulatorModel.Guest" Role="Guest" Multiplicity="1" />
+          <End Type="SimulatorModel.MagicBand" Role="MagicBand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guest">
+              <PropertyRef Name="GuestID" />
+            </Principal>
+            <Dependent Role="MagicBand">
+              <PropertyRef Name="GuestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetStatistics_Result">
+          <Property Type="Int32" Name="Reads" Nullable="true" />
+          <Property Type="Int32" Name="Bands" Nullable="true" />
+          <Property Type="String" Name="ReaderTypeName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ReaderLocationTypeName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetGuestPositions_Result">
+          <Property Type="Int64" Name="GuestID" Nullable="false" />
+          <Property Type="Int32" Name="AttractionID" Nullable="false" />
+          <Property Type="Time" Name="EntryTime" Nullable="false" />
+          <Property Type="Boolean" Name="HasFastPassPlus" Nullable="false" />
+          <Property Type="Int32" Name="GuestState" Nullable="false" />
+          <Property Type="Double" Name="xPosition" Nullable="false" />
+          <Property Type="Double" Name="yPosition" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="GetGuestStates_Result">
+          <Property Type="Int32" Name="GuestCount" Nullable="true" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="8" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SimulatorModelStoreContainer" CdmEntityContainer="SimulatorEntities">
+          <EntitySetMapping Name="Attractions"><EntityTypeMapping TypeName="SimulatorModel.Attraction"><MappingFragment StoreEntitySet="Attraction">
+                <ScalarProperty Name="FastPassPlusArrivalRate" ColumnName="FastPassPlusArrivalRate" />
+                <ScalarProperty Name="StandByArrivalRate" ColumnName="StandByArrivalRate" />
+                <ScalarProperty Name="StandByBandRatio" ColumnName="StandByBandRatio" />
+                <ScalarProperty Name="TapOnly" ColumnName="TapOnly" />
+                <ScalarProperty Name="GuestsPerHour" ColumnName="GuestsPerHour" />
+                <ScalarProperty Name="AttractionID" ColumnName="AttractionID" />
+            <ScalarProperty Name="AttractionName" ColumnName="AttractionName" />
+            <ScalarProperty Name="MergeRatio" ColumnName="MergeRatio" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Controllers"><EntityTypeMapping TypeName="SimulatorModel.Controller"><MappingFragment StoreEntitySet="Controller">
+                <ScalarProperty Name="ControllerID" ColumnName="ControllerID" />
+            <ScalarProperty Name="ControllerURL" ColumnName="ControllerURL" />
+            <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Readers"><EntityTypeMapping TypeName="SimulatorModel.Reader"><MappingFragment StoreEntitySet="Reader">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Range" ColumnName="Range" />
+                <ScalarProperty Name="yCoordinate" ColumnName="yCoordinate" />
+                <ScalarProperty Name="xCoordinate" ColumnName="xCoordinate" />
+                <ScalarProperty Name="ControllerID" ColumnName="ControllerID" />
+                <ScalarProperty Name="LastUpstreamEvent" ColumnName="LastUpstreamEvent" />
+                <ScalarProperty Name="MaximumEvents" ColumnName="MaximumEvents" />
+                <ScalarProperty Name="EventsInterval" ColumnName="EventsInterval" />
+                <ScalarProperty Name="UpstreamUrl" ColumnName="UpstreamUrl" />
+                <ScalarProperty Name="ReaderID" ColumnName="ReaderID" />
+            <ScalarProperty Name="ReaderName" ColumnName="ReaderName" />
+            <ScalarProperty Name="ReaderTypeID" ColumnName="ReaderTypeID" />
+            <ScalarProperty Name="ReaderLocationTypeID" ColumnName="ReaderLocationTypeID" />
+            <ScalarProperty Name="Webport" ColumnName="Webport" />
+            </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ReaderLocationTypes"><EntityTypeMapping TypeName="SimulatorModel.ReaderLocationType"><MappingFragment StoreEntitySet="ReaderLocationType">
+            <ScalarProperty Name="ReaderLocationTypeID" ColumnName="ReaderLocationTypeID" />
+            <ScalarProperty Name="ReaderLocationTypeName" ColumnName="ReaderLocationTypeName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ReaderTypes"><EntityTypeMapping TypeName="SimulatorModel.ReaderType"><MappingFragment StoreEntitySet="ReaderType">
+            <ScalarProperty Name="ReaderTypeID" ColumnName="ReaderTypeID" />
+            <ScalarProperty Name="ReaderTypeName" ColumnName="ReaderTypeName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ReaderEvents">
+            <EntityTypeMapping TypeName="SimulatorModel.ReaderEvent">
+              <MappingFragment StoreEntitySet="ReaderEvent">
+                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+                <ScalarProperty Name="PacketSequence" ColumnName="PacketSequence" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="SignalStrength" ColumnName="SignalStrength" />
+                <ScalarProperty Name="BandID" ColumnName="BandID" />
+                <ScalarProperty Name="Timeval" ColumnName="Timeval" />
+                <ScalarProperty Name="EventNumber" ColumnName="EventNumber" />
+                <ScalarProperty Name="ReaderID" ColumnName="ReaderID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetReaderEvents" FunctionName="SimulatorModel.Store.usp_GetReaderEvents">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SimulatorModel.GetReaderEvents_Result">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="ReaderID" ColumnName="ReaderID" />
+                <ScalarProperty Name="EventNumber" ColumnName="EventNumber" />
+                <ScalarProperty Name="TimeVal" ColumnName="TimeVal" />
+                <ScalarProperty Name="BandID" ColumnName="BandID" />
+                <ScalarProperty Name="SignalStrength" ColumnName="SignalStrength" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="PacketSequence" ColumnName="PacketSequence" />
+                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WriteReaderEvent" FunctionName="SimulatorModel.Store.usp_WriteReaderEvent" />
+          <FunctionImportMapping FunctionImportName="ClearGuestQueue" FunctionName="SimulatorModel.Store.usp_ClearGuestQueue" />
+          <FunctionImportMapping FunctionImportName="AddGuest" FunctionName="SimulatorModel.Store.usp_AddGuest" />
+          <FunctionImportMapping FunctionImportName="InitializeGuestQueue" FunctionName="SimulatorModel.Store.usp_InitializeGuestQueue" />
+          <FunctionImportMapping FunctionImportName="UpdateEntered" FunctionName="SimulatorModel.Store.usp_UpdateEntered" />
+          <FunctionImportMapping FunctionImportName="UpdateInQueue" FunctionName="SimulatorModel.Store.usp_UpdateInQueue" />
+          <FunctionImportMapping FunctionImportName="UpdateMerging" FunctionName="SimulatorModel.Store.usp_UpdateMerging" />
+          <FunctionImportMapping FunctionImportName="UpdateLoading" FunctionName="SimulatorModel.Store.usp_UpdateLoading" />
+          <FunctionImportMapping FunctionImportName="UpdateRiding" FunctionName="SimulatorModel.Store.usp_UpdateRiding" />
+          <FunctionImportMapping FunctionImportName="UpdateExited" FunctionName="SimulatorModel.Store.usp_UpdateExited" />
+          <FunctionImportMapping FunctionImportName="UpdateOutOfRange" FunctionName="SimulatorModel.Store.usp_UpdateOutOfRange" />
+          <FunctionImportMapping FunctionImportName="AddMagicBand" FunctionName="SimulatorModel.Store.usp_AddMagicBand" />
+          <FunctionImportMapping FunctionImportName="GetGuestsInQueue" FunctionName="SimulatorModel.Store.usp_GetGuestsInQueue" />
+          <EntitySetMapping Name="Guests">
+            <EntityTypeMapping TypeName="SimulatorModel.Guest">
+              <MappingFragment StoreEntitySet="Guest">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GuestID" ColumnName="GuestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MagicBands">
+            <EntityTypeMapping TypeName="SimulatorModel.MagicBand">
+              <MappingFragment StoreEntitySet="MagicBand">
+                <ScalarProperty Name="NextTransmit" ColumnName="NextTransmit" />
+                <ScalarProperty Name="PacketSequence" ColumnName="PacketSequence" />
+                <ScalarProperty Name="GuestID" ColumnName="GuestID" />
+                <ScalarProperty Name="LongRangeID" ColumnName="LongRangeID" />
+                <ScalarProperty Name="TapID" ColumnName="TapID" />
+                <ScalarProperty Name="BandID" ColumnName="BandID" />
+                <ScalarProperty Name="MagicBandID" ColumnName="MagicBandID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CreateReaderEvents" FunctionName="SimulatorModel.Store.usp_CreateReaderEvents" />
+          <FunctionImportMapping FunctionImportName="ResetMagicBands" FunctionName="SimulatorModel.Store.usp_ResetMagicBands" />
+          <FunctionImportMapping FunctionImportName="GetGuests" FunctionName="SimulatorModel.Store.usp_GetGuests">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetStatistics" FunctionName="SimulatorModel.Store.usp_GetStatistics">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SimulatorModel.GetStatistics_Result">
+                <ScalarProperty Name="Reads" ColumnName="Reads" />
+                <ScalarProperty Name="Bands" ColumnName="Bands" />
+                <ScalarProperty Name="ReaderTypeName" ColumnName="ReaderTypeName" />
+                <ScalarProperty Name="ReaderLocationTypeName" ColumnName="ReaderLocationTypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateGuestPosition" FunctionName="SimulatorModel.Store.usp_UpdateGuestPosition" />
+          <FunctionImportMapping FunctionImportName="GetGuestPositions" FunctionName="SimulatorModel.Store.usp_GetGuestPositions">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SimulatorModel.GetGuestPositions_Result">
+                <ScalarProperty Name="GuestID" ColumnName="GuestID" />
+                <ScalarProperty Name="AttractionID" ColumnName="AttractionID" />
+                <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+                <ScalarProperty Name="HasFastPassPlus" ColumnName="HasFastPassPlus" />
+                <ScalarProperty Name="GuestState" ColumnName="GuestState" />
+                <ScalarProperty Name="xPosition" ColumnName="xPosition" />
+                <ScalarProperty Name="yPosition" ColumnName="yPosition" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetGuestStates" FunctionName="SimulatorModel.Store.usp_GetGuestStates">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SimulatorModel.GetGuestStates_Result">
+                <ScalarProperty Name="GuestCount" ColumnName="GuestCount" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="SimulatorModel">
+        <EntityTypeShape EntityType="SimulatorModel.Attraction" Width="1.5" PointX="0.5" PointY="1.125" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimulatorModel.Controller" Width="1.5" PointX="3" PointY="1.375" Height="2.172587890625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimulatorModel.Reader" Width="1.5" PointX="5.25" PointY="1" Height="4.480205078125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimulatorModel.ReaderLocationType" Width="1.5" PointX="5.25" PointY="7" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimulatorModel.ReaderType" Width="1.5" PointX="7.25" PointY="7.5" Height="1.5956835937499996" IsExpanded="true" />
+        <AssociationConnector Association="SimulatorModel.FK_Reader_ReaderType" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.34375" PointY="7.5" />
+          <ConnectorPoint PointX="7.34375" PointY="4.8672493489583326" />
+          <ConnectorPoint PointX="6.75" PointY="4.8672493489583326" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SimulatorModel.ReaderEvent" PointX="7.5" PointY="1.25" Width="1.5" Height="2.9417936197916656" />
+        <AssociationConnector Association="SimulatorModel.FK_ReaderEvent_Reader">
+          <ConnectorPoint PointX="6.75" PointY="2.7208968098958328" />
+          <ConnectorPoint PointX="7.5" PointY="2.7208968098958328" />
+        </AssociationConnector>
+        <AssociationConnector Association="SimulatorModel.FK_Controller_Attraction" >
+          <ConnectorPoint PointX="2" PointY="2.3651432291666667" />
+          <ConnectorPoint PointX="3" PointY="2.3651432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="SimulatorModel.FK_Reader_Controller" >
+          <ConnectorPoint PointX="4.5" PointY="2.3651432291666667" />
+          <ConnectorPoint PointX="5.25" PointY="2.3651432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="SimulatorModel.FK_Reader_ReaderLocationType" >
+          <ConnectorPoint PointX="6" PointY="7" />
+          <ConnectorPoint PointX="6" PointY="5.480205078125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SimulatorModel.Guest" Width="1.5" PointX="0.875" PointY="7.75" Height="1.7879850260416665" />
+        <EntityTypeShape EntityType="SimulatorModel.MagicBand" Width="1.5" PointX="3.25" PointY="7.5" Height="2.5571907552083317" />
+        <AssociationConnector Association="SimulatorModel.FK_MagicBand_MagicBand" >
+          <ConnectorPoint PointX="2.375" PointY="8.6439925130208337" />
+          <ConnectorPoint PointX="3.25" PointY="8.6439925130208337" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,6 @@
+*.d
+obj/*
+server
+*.conf
+.cproject
+.project

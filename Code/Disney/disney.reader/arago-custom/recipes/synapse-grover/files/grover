@@ -1,0 +1,40 @@
+#!/bin/sh
+
+PID=/var/run/monitor-grover.pid
+MONITOR=/mayhem/monitor-grover
+
+grover_start() {
+    echo -n "Starting grover application: "
+
+    # enable core-dumps
+    ulimit -c unlimited
+
+    # Start the monitor script instead of grover directly
+    start-stop-daemon --start --quiet --background --pidfile $PID -m --exec sh -- $MONITOR
+    echo "."
+}
+
+grover_stop() {
+    echo -n "Stopping grover application: "
+    start-stop-daemon --stop --quiet --pidfile $PID && killall grover
+    echo "."
+}
+
+# If the application version has changed, re-write the version file
+if [ v$1 == vstart ]; then
+	grover_start
+	exit 0
+fi
+
+if [ v$1 == vstop ]; then
+    grover_stop
+    exit 0
+fi
+
+if [ v$1 == vrestart ]; then
+    # Called by opkg install - ignore
+    exit 0
+fi
+
+echo "Usage: /etc/init.d/grover {start|stop}"
+exit 1

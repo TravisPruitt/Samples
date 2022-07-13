@@ -1,0 +1,10 @@
+target
+lib
+bin
+*.jar
+*.log
+*.war
+build
+src/log4j.xml
+src/config.properties
+

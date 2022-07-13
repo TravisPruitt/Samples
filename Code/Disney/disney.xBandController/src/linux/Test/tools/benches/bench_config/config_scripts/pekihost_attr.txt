@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<venue>
+ <configuration name="current" type="incremental">
+  <description/>
+  <properties>
+   <property class="ReaderConfig"  name="maximumthreshold">0</property>
+   <property class="ControllerInfo" name="venue">10101010</property>
+   <property class="ControllerInfo" name="name">PEKI Software Reader Host</property>
+   <property class="UIConfig"  name="attractionviewimagefilename"></property>
+   <property class="ParkEntryModelConfig"  name="omniticketaddress">localhost</property>
+   <property class="ParkEntryModelConfig"  name="omniticketport">33433</property>
+  </properties>
+ </configuration>
+</venue>

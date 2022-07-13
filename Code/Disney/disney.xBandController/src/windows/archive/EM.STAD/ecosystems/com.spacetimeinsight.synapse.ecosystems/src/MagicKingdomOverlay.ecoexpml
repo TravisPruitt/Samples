@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration name="MagicKingdomOverlay">
+    <section name="artefact">
+        <section name="name">
+            <value><![CDATA[MagicKingdom]]></value>
+        </section>
+        <section name="type">
+            <value><![CDATA[com.enterprisehorizons.magma.designtime.artifact.GeoArtifact]]></value>
+        </section>
+        <section name="cache">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="sortchildren">
+            <value><![CDATA[true]]></value>
+        </section>
+        <section name="publishtorulesengine">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="issubscriber">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="issearchable">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="isfiltersearchresults">
+            <value><![CDATA[true]]></value>
+        </section>
+        <section name="enableexpressions">
+            <value><![CDATA[false]]></value>
+        </section>
+        <section name="experiencedef">
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[MagicKingdom]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.SimpleFeature]]></value>
+                </section>
+                <section name="selected">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="expand">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[onStop]]></value>
+                </section>
+                <section name="viewrefreshrate">
+                    <value><![CDATA[1]]></value>
+                </section>
+                <section name="camerasensitive">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="autozoom">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="timesensitive">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="params">
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[entrypoint]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[Artefact]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[ecoexpmodel]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[MagicKingdomOverlay.ecoexpml]]></value>
+                        </section>
+                    </section>
+                    <section name="param">
+                        <section name="name">
+                            <value><![CDATA[artefactname]]></value>
+                        </section>
+                        <section name="value">
+                            <value><![CDATA[MagicKingdom]]></value>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="blinkrate">
+            <value><![CDATA[1]]></value>
+        </section>
+        <section name="blinkloopcount">
+            <value><![CDATA[2]]></value>
+        </section>
+        <section name="listeners"/>
+        <section name="layout">
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[ParkMapImage]]></value>
+                </section>
+                <section name="fetchdescriptionatruntime">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="descriptiontype">
+                    <value><![CDATA[html]]></value>
+                </section>
+                <section name="ispercentage">
+                    <value><![CDATA[true]]></value>
+                </section>
+                <section name="label">
+                    <value><![CDATA[Image]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.GeoImageFeature]]></value>
+                </section>
+                <section name="isruntimeaccessible">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="isdefault">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="scale">
+                    <value><![CDATA[0.75]]></value>
+                </section>
+                <section name="orientation">
+                    <value><![CDATA[122.2151976116794]]></value>
+                </section>
+                <section name="refreshtype">
+                    <value><![CDATA[Never]]></value>
+                </section>
+                <section name="needsauthorization">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="authtype">
+                    <value><![CDATA[Basic]]></value>
+                </section>
+                <section name="resetchildlinks">
+                    <value><![CDATA[false]]></value>
+                </section>
+                <section name="url">
+                    <value><![CDATA[serverresources/DisneyMap.png]]></value>
+                </section>
+                <section name="preprocessor">
+                    <section name="constraints">
+                        <section name="constraint">
+                            <value><![CDATA[range]]></value>
+                            <section name="script">
+                                <value><![CDATA[]]></value>
+                                <section name="type">
+                                    <value><![CDATA[1]]></value>
+                                </section>
+                            </section>
+                            <section name="units">
+                                <value><![CDATA[m]]></value>
+                            </section>
+                            <section name="min">
+                                <value><![CDATA[500.0]]></value>
+                            </section>
+                            <section name="max">
+                                <value><![CDATA[5000.0]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="scriptor">
+            <section name="body">
+                <value><![CDATA[void bindData(){
+	Object[] data = (Object[])$BoundingBoxdatamodel;
+	$artefact.setBoundingBox(data[0],data[1],data[2],data[3]); 
+}]]></value>
+                <section name="type">
+                    <value><![CDATA[1]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="legends">
+            <section name="folder">
+                <section name="name">
+                    <value><![CDATA[MagmaLegend]]></value>
+                </section>
+                <section name="type">
+                    <value><![CDATA[com.enterprisehorizons.magma.models.ImageFeature]]></value>
+                </section>
+                <section name="url">
+                    <value><![CDATA[images/magmalogo.png]]></value>
+                </section>
+                <section name="xpos">
+                    <value><![CDATA[0.05]]></value>
+                </section>
+                <section name="ypos">
+                    <value><![CDATA[0.95]]></value>
+                </section>
+                <section name="legposunits">
+                    <value><![CDATA[fraction]]></value>
+                </section>
+            </section>
+        </section>
+        <section name="datamashups">
+            <section name="datamashup">
+                <value><![CDATA[BoundingBox]]></value>
+                <section name="driver">
+                    <value><![CDATA[com.enterprisehorizons.magma.datamashup.SimpleDataDriver]]></value>
+                </section>
+                <section name="datasource">
+                    <value><![CDATA[com.enterprisehorizons.magma.datamashup.SimpleDataSource]]></value>
+                    <section name="params">
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[north]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[47.61726242647544]]></value>
+                            </section>
+                        </section>
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[south]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[47.60095751896201]]></value>
+                            </section>
+                        </section>
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[east]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[-122.3174037186068]]></value>
+                            </section>
+                        </section>
+                        <section name="param">
+                            <section name="name">
+                                <value><![CDATA[west]]></value>
+                            </section>
+                            <section name="value">
+                                <value><![CDATA[-122.3470468135303]]></value>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section name="databinding">
+            <section name="bindingdefinition">
+                <section name="datamashup">
+                    <value><![CDATA[BoundingBox]]></value>
+                </section>
+                <section name="script">
+                    <value><![CDATA[bindData()]]></value>
+                    <section name="type">
+                        <value><![CDATA[1]]></value>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+    <section name="reload">
+        <value><![CDATA[true]]></value>
+    </section>
+    <section name="enablelogging">
+        <value><![CDATA[false]]></value>
+    </section>
+    <section name="namespace">
+        <value><![CDATA[]]></value>
+    </section>
+</configuration>

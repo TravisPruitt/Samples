@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<venue name="iwona" time="2013-05-01T22:22:16.298">
+  <configuration name="current" type="full">
+    <description/>
+    <properties/>
+    <readerlocationinfo>
+      <readerlocation>
+        <section/>
+        <name>Load2</name>
+        <id>8</id>
+        <type>4</type>
+        <x>76.0</x>
+        <y>76.0</y>
+        <successsequence/>
+        <successtimeout>0</successtimeout>
+        <failuresequence/>
+        <failuretimeout>0</failuretimeout>
+        <errorsequence/>
+        <errortimeout>0</errortimeout>
+        <idlesequence/>
+        <tapsequence/>
+        <taptimeout>0</taptimeout>
+        <readers/>
+      </readerlocation>
+      <readerlocation>
+        <section/>
+        <name>DeletedLocation</name>
+        <id>7</id>
+        <type>4</type>
+        <x>76.0</x>
+        <y>76.0</y>
+        <successsequence/>
+        <successtimeout>0</successtimeout>
+        <failuresequence/>
+        <failuretimeout>0</failuretimeout>
+        <errorsequence/>
+        <errortimeout>0</errortimeout>
+        <idlesequence/>
+        <tapsequence/>
+        <taptimeout>0</taptimeout>
+        <readers/>
+      </readerlocation>
+    </readerlocationinfo>
+    <model/>
+  </configuration>
+</venue>

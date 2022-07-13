@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="CommonLibJar">
+	
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../../eclipse"/>
+    <property name="CONTROLLERLIBLIB" value="../ControllerLib/lib" />
+    <property name="UILIB" value="../UI/WebContent/WEB-INF/lib"/>
+    <property name="XBRMSLIB" value="../XBRMS/WebContent/WEB-INF/lib"/>
+    <property name="CONTROLLERLIB" value="../Controller/lib"/>
+    <property name="ATTRACTIONMODELLIB" value="../AttractionModel/lib"/>
+    <property name="XFPELIB" value="../Xfpe/WebContent/WEB-INF/lib"/>
+    <property name="SPACEMODELLIB" value="../SpaceModel/lib"/>
+    <property name="PARKENTRYMODELLIB" value="../ParkEntryModel/lib"/>
+    <property name="JMSLISTENERLIB" value="../JmsListener/lib" />
+    <property name="IDMSLIBLIB" value="../IDMSLib/lib" />
+    <property name="IDMSLIB" value="../IDMS/WebContent/WEB-INF/lib" />
+    <property name="JMSLIB" value="../JmsLib/lib" />
+    <property name="XILIB" value="../xi/WebContent/WEB-INF/lib" />
+    <property name="ACLIB" value="../AccessControlLib/lib" />
+    <property name="AC" value="../AC/WebContent/WEB-INF/lib" />
+    <property name="PARKGREETERLIB" value="../ParkGreeterLib/lib"/>
+    <property name="PARKSIMULATOR" value="../ParkSimulator/lib"/>
+    <property name="GXPLOADTEST" value="../GxpLoadTest/lib"/>
+    <path id="CommonLib.classpath">
+        <pathelement location="bin"/>
+    </path>
+	
+    <target name="build">
+    	<copy file="CommonLib.jar" todir="${CONTROLLERLIBLIB}" />
+	<copy file="CommonLib.jar" todir="${UILIB}"/>
+    	<copy file="CommonLib.jar" todir="${XBRMSLIB}"/>
+    	<copy file="CommonLib.jar" todir="${CONTROLLERLIB}"/>
+    	<copy file="CommonLib.jar" todir="${ATTRACTIONMODELLIB}"/>
+    	<copy file="CommonLib.jar" todir="${XFPELIB}"/>
+    	<copy file="CommonLib.jar" todir="${SPACEMODELLIB}"/>
+    	<copy file="CommonLib.jar" todir="${PARKENTRYMODELLIB}"/>
+	<copy file="CommonLib.jar" todir="${IDMSLIBLIB}" />
+	<copy file="CommonLib.jar" todir="${IDMSLIB}" />
+	<copy file="CommonLib.jar" todir="${JMSLISTENERLIB}" />
+	<copy file="CommonLib.jar" todir="${JMSLIB}" />
+	<copy file="CommonLib.jar" todir="${XILIB}" />
+	<copy file="CommonLib.jar" todir="${ACLIB}" />
+	<copy file="CommonLib.jar" todir="${PARKSIMULATOR}" />
+	<copy file="CommonLib.jar" todir="${AC}" />
+	<copy file="CommonLib.jar" todir="${PARKGREETERLIB}" />
+	<copy file="CommonLib.jar" todir="${GXPLOADTEST}" />
+    </target>
+	
+</project>

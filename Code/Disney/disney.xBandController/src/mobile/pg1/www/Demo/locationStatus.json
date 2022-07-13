@@ -1,0 +1,393 @@
+{
+    "version": "1.0",
+    "type": "locationStatusResponse",
+    "clientReference": "77777777",
+    "locations": [
+    {
+        "name": "MK1-Left",
+        "cast": {
+            "portalId": "cast123",
+            "omniId" : "123123"
+        },
+        "readers": [{
+            "state": "open",
+            "lights": "off",
+            "name": "MK1-Left-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "open",
+            "lights": "off",
+            "name": "MK1-Left-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK1-Right",
+        "cast": {
+            "portalId": "cast124",
+            "omniId" : "123124"
+        },
+        "readers": [{
+            "state": "open",
+            "lights": "off",
+            "name": "MK1-Right-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "open",
+            "lights": "off",
+            "name": "MK1-Right-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK2-Left",
+        "cast": {
+            "portalId": "cast125",
+            "omniId" : "123125"
+        },
+       "readers": [{
+            "state": "open",
+            "lights": "off",
+            "name": "MK2-Left-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "open",
+            "lights": "off",
+            "name": "MK2-Left-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK2-Right",
+        "cast": {
+            "portalId": "cast126",
+            "omniId" : "123126"
+        },
+        "readers": [{
+            "state": "open",
+            "lights": "off",
+            "name": "MK2-Right-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "open",
+            "lights": "off",
+            "name": "MK2-Right-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK3-Left",
+       "readers": [{
+            "state": "closed",
+            "lights": "off",
+            "name": "MK3-Left-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "closed",
+            "lights": "off",
+            "name": "MK3-Left-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK3-Right",
+        "cast": {
+            "portalId": "cast127",
+            "omniId" : "123127"
+        },
+        "readers": [{
+            "state": "open",
+            "lights": "off",
+            "name": "MK3-Right-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "open",
+            "lights": "off",
+            "name": "MK3-Right-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK4-Left",
+        "readers": [{
+            "state": "shutdown",
+            "lights": "off",
+            "name": "MK4-Left-Front",
+            "errorCode": "readerNotResponding",
+            "errorDescription": "Reader is not saying Hello",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+            },
+        {
+            "state": "closed",
+            "lights": "off",
+            "name": "MK4-Left-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK4-Right",
+        "cast": {
+            "portalId": "cast128",
+            "omniId" : "123128"
+        },
+        "readers": [{
+            "state": "open",
+            "lights": "off",
+            "name": "MK4-Right-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "open",
+            "lights": "off",
+            "name": "MK4-Right-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK5-Left",
+        "cast": {
+            "portalId": "cast128",
+            "omniId" : "123128"
+        },
+        "readers": [{
+            "state": "open",
+            "lights": "off",
+            "name": "MK5-Left-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "open",
+            "lights": "off",
+            "name": "MK5-Left-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK5-Right",
+        "readers": [{
+            "state": "closed",
+            "lights": "off",
+            "name": "MK5-Right-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "closed",
+            "lights": "off",
+            "name": "MK5-Right-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK6-Left",
+        "cast": {
+            "portalId": "cast129",
+            "omniId" : "123129"
+        },
+        "readers": [{
+            "state": "open",
+            "lights": "off",
+            "name": "MK6-Left-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "open",
+            "lights": "off",
+            "name": "MK6-Left-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK6-Right",
+        "readers": [{
+            "state": "shutdown",
+            "lights": "off",
+            "name": "MK6-Right-Front",
+            "errorCode": "TOR Not Responding",
+            "errorDescription": "Could not connect to TOR",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "shutdown",
+            "lights": "off",
+            "name": "MK6-Right-Back",
+            "errorCode": "readerNotResponding",
+            "errorDescription": "Reader is not saying Hello",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK7-Left",
+        "cast": {
+            "portalId": "cast130",
+            "omniId" : "123130"
+        },
+        "readers": [{
+            "state": "open",
+            "lights": "off",
+            "name": "MK7-Left-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "open",
+            "lights": "off",
+            "name": "MK7-Left-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK7-Right",
+        "cast": {
+            "portalId": "cast130",
+            "omniId" : "123130"
+        },
+        "readers": [{
+            "state": "open",
+            "lights": "off",
+            "name": "MK7-Right-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "open",
+            "lights": "off",
+            "name": "MK7-Right-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK8-Left",
+        "readers": [{
+            "state": "closed",
+            "lights": "off",
+            "name": "MK8-Left-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "closed",
+            "lights": "off",
+            "name": "MK8-Left-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK8-Right",
+        "readers": [{
+            "state": "closed",
+            "lights": "off",
+            "name": "MK8-Right-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "closed",
+            "lights": "off",
+            "name": "MK8-Right-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK9-Left",
+        "readers": [{
+            "state": "closed",
+            "lights": "off",
+            "name": "MK9-Left-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "closed",
+            "lights": "off",
+            "name": "MK9-Left-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK9-Right",
+        "readers": [{
+            "state": "closed",
+            "lights": "off",
+            "name": "MK9-Right-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "closed",
+            "lights": "off",
+            "name": "MK9-Right-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK10-Left",
+        "readers": [{
+            "state": "closed",
+            "lights": "off",
+            "name": "MK10-Left-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "closed",
+            "lights": "off",
+            "name": "MK10-Left-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    },
+    {
+        "name": "MK10-Right",
+        "readers": [{
+            "state": "closed",
+            "lights": "off",
+            "name": "MK10-Right-Front",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        },
+        {
+            "state": "closed",
+            "lights": "off",
+            "name": "MK10-Right-Back",
+            "tor":"http://10.110.1.106:9920",
+            "torDescription":"Created by create_readers script"
+        }]
+    }
+    ]
+}

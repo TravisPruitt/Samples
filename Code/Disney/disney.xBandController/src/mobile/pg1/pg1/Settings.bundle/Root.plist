@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>DefaultValue</key>
+			<string>1.0.0.0</string>
+			<key>Key</key>
+			<string>version_preference</string>
+			<key>Title</key>
+			<string>Version</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Mode</string>
+			<key>Key</key>
+			<string>mode</string>
+			<key>DefaultValue</key>
+			<string>Normal</string>
+			<key>Values</key>
+			<array>
+				<string>Normal</string>
+				<string>Failover</string>
+				<string>Demo</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>Normal</string>
+				<string>Failover</string>
+				<string>Demo</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Cached values</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>Animal Kingdom</string>
+			<key>Key</key>
+			<string>venue</string>
+			<key>Values</key>
+			<array>
+				<string>Magic Kingdom</string>
+				<string>Animal Kingdom</string>
+				<string>Epcot</string>
+				<string>Hollywood Studios</string>
+				<string>Downtown Disney</string>
+				<string>Disney Quest</string>
+				<string>ESPN</string>
+				<string>Blizzard Beach</string>
+				<string>Typhoon Lagoon</string>
+				<string>Alpha Lab</string>
+				<string>Synapse SIT</string>
+				<string>Synapse Master</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>Magic Kingdom</string>
+				<string>Animal Kingdom</string>
+				<string>Epcot</string>
+				<string>Hollywood Studios</string>
+				<string>Downtown Disney</string>
+				<string>Disney Quest</string>
+				<string>ESPN</string>
+				<string>Blizzard Beach</string>
+				<string>Typhoon Lagoon</string>
+				<string>Alpha Lab</string>
+				<string>Synapse SIT</string>
+				<string>Synapse Master</string>
+			</array>
+			<key>Title</key>
+			<string>Venue</string>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>Key</key>
+			<string>xbrc1</string>
+			<key>KeyboardType</key>
+			<string>URL</string>
+			<key>Title</key>
+			<string>xBRC 1</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>Key</key>
+			<string>xbrc2</string>
+			<key>KeyboardType</key>
+			<string>URL</string>
+			<key>Title</key>
+			<string>xBRC 2</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>Key</key>
+			<string>xbrc3</string>
+			<key>KeyboardType</key>
+			<string>URL</string>
+			<key>Title</key>
+			<string>xBRC 3</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>Key</key>
+			<string>xbrc4</string>
+			<key>KeyboardType</key>
+			<string>URL</string>
+			<key>Title</key>
+			<string>xBRC 4</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>Key</key>
+			<string>xbrc5</string>
+			<key>KeyboardType</key>
+			<string>URL</string>
+			<key>Title</key>
+			<string>xBRC 5</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>Key</key>
+			<string>xbrc6</string>
+			<key>KeyboardType</key>
+			<string>URL</string>
+			<key>Title</key>
+			<string>xBRC 6</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>Key</key>
+			<string>xbrc7</string>
+			<key>KeyboardType</key>
+			<string>URL</string>
+			<key>Title</key>
+			<string>xBRC 7</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>Key</key>
+			<string>xbrc8</string>
+			<key>KeyboardType</key>
+			<string>URL</string>
+			<key>Title</key>
+			<string>xBRC 8</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>Key</key>
+			<string>xbrc9</string>
+			<key>KeyboardType</key>
+			<string>URL</string>
+			<key>Title</key>
+			<string>xBRC 9</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>Key</key>
+			<string>xbrc10</string>
+			<key>KeyboardType</key>
+			<string>URL</string>
+			<key>Title</key>
+			<string>xBRC 10</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>Key</key>
+			<string>userregistry</string>
+			<key>KeyboardType</key>
+			<string>Alphabet</string>
+			<key>Title</key>
+			<string>User Directory</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>useSSL</string>
+			<key>Title</key>
+			<string>Use SSL for Auth</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>DefaultValue</key>
+			<false/>
+			<key>TrueValue</key>
+			<string>Yes</string>
+			<key>FalseValue</key>
+			<string>No</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Connection Check Interval</string>
+			<key>Key</key>
+			<string>connectioncheckinterval</string>
+			<key>KeyboardType</key>
+			<string>NumberPad</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Polling Interval</string>
+			<key>Key</key>
+			<string>pollinginterval</string>
+			<key>KeyboardType</key>
+			<string>NumberPad</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>XBRC Timeout</string>
+			<key>Key</key>
+			<string>xbrctimeout</string>
+			<key>KeyboardType</key>
+			<string>NumberPad</string>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>

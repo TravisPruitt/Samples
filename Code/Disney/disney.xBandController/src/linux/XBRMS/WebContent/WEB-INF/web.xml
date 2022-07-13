@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>XBRMS</display-name>
+
+	<servlet>
+		<servlet-name>XBRMS REST Service</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>com.disney.xband.xbrms.server.rest;org.codehaus.jackson.jaxrs</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>XBRMS REST Service</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+		<url-pattern>/irest/*</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>XBAC</filter-name>
+		<filter-class>com.disney.xband.ac.lib.client.filter.XbHttpRequestFilter</filter-class>
+	</filter>
+
+	<filter>
+		<filter-name>CacheFilter</filter-name>
+		<filter-class>com.disney.xband.xbrms.common.caching.CacheFilter</filter-class>
+
+		<init-param>
+			<param-name>include</param-name>
+			<param-value>/rest/.*;/irest/.*</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>exclude</param-name>
+			<param-value>/rest/health/refresh.*;/irest/health/refresh.*;/rest/readers/refresh.*;/irest/readers/refresh.*</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>nge.xconnect.cache.expiration.secs</param-name>
+			<param-value>15</param-value>
+		</init-param>
+	</filter>
+
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>XBAC</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>CacheFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>org.apache.tiles.web.startup.TilesListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>com.disney.xband.xbrms.server.XbrmsServletContextListener</listener-class>
+	</listener>
+
+        <listener>
+                <listener-class>com.disney.xband.ac.server.XagInitializer</listener-class>
+        </listener>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

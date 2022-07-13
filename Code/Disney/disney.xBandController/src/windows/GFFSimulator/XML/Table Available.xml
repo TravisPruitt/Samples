@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-16"?>
+<businessEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <event_type>CHANGE</event_type>
+  <subtype />
+  <facilityid>80007936</facilityid>
+  <location>GFF.XI.TABLEMANAGEMENT</location>
+  <timestamp>2012-06-25T18:44:03.1630655+05:30</timestamp>
+  <reference_id>80007936-504-201244251844</reference_id>
+  <payLoad>
+    <![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<tableevent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>fe52ff3c-cda5-4f2c-af3c-e20ff218adfb</Id>
+  <CreatedOnUtc>2012-06-25T13:14:03.1630655Z</CreatedOnUtc>
+  <CreatedBy>WIN-IIS002</CreatedBy>
+  <Header>ProcessedAtEventChannel~2012-06-25 13:14:03.6264|</Header>
+  <eventtypeid>31</eventtypeid>
+  <event>Table Available</event>
+  <facilityonesourceid>80007936</facilityonesourceid>
+  <locationid>504</locationid>
+  <source>Runner</source>
+  <terminal>Bill</terminal>
+  <timestamp>2012-06-25T18:44:03.1630655+05:30</timestamp>
+  <timestampgmt>2012-06-25T13:14:03.1630655Z</timestampgmt>
+  <tablename>22</tablename>
+  <tableid>4</tableid>
+  <changeddetails />
+  <user>Bill</user>
+  <ordernumbers />
+</tableevent>]]>
+  </payLoad>
+</businessEvent>

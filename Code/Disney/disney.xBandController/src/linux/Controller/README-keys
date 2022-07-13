@@ -1,0 +1,15 @@
+
+To generate a new self-signed cert, use this:
+
+    keytool -genkey -keyalg RSA -validity 365 -keystore xbrc.keys -storetype JKS
+
+when prompted, use these answers:
+
+What is your first and last name? xbrcuser
+What is the name of your organizational unit? xbrc
+What is the name of your organization? disney
+What is the name of your City or Locality: orlando
+What is the name of your State or Provice? florida
+What is the two-letter country code for this unit? US
+
+When prompted for passwords, always use "xbrckeystore"

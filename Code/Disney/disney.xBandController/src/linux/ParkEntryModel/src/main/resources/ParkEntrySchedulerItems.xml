@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SchedulerMetadataList>
+      <SchedulerItemMetadata>
+         <canRunConcurrently>false</canRunConcurrently>
+         <defaultSchedulingExpression>0 0 3 * * ?</defaultSchedulingExpression>
+         <jobClassName>com.disney.xband.xbrc.parkentrymodel.scheduler.DatabaseDataExport</jobClassName>         
+         <name>Park Entry Guest Data Export Task</name>
+         <onlyOnce>false</onlyOnce>
+         <parameters>
+          <parameter>
+            <description>The name of the shell script to run excluding the path. The script must exist in the /usr/share/xbrc/scripts directory.</description>
+            <defaultValue>exportParkEntryData.sh</defaultValue>            
+            <name>script.name</name>         
+            <displayName>Shell Script Name</displayName>
+            <required>true</required>
+            <sequence>1</sequence>
+            <type>STRING</type>
+         </parameter>
+         <parameter>
+            <description>The environment.properties key for the database user to use to read from the Mayhem database.</description>
+            <name>database.user</name>
+            <displayName>Database User</displayName>
+            <defaultValue>nge.xconnect.xbrc.dbserver.view.uid</defaultValue>
+            <required>true</required>
+            <sequence>2</sequence>
+            <type>ENVPROPVALUE</type>
+         </parameter>
+         <parameter>
+            <description>The environment.properties key for the database user password.</description>
+            <name>database.password</name>
+            <displayName>Database Password</displayName>
+            <defaultValue>nge.xconnect.xbrc.dbserver.view.pwd</defaultValue>
+            <required>true</required>
+            <sequence>3</sequence>
+            <type>ENVPROPVALUE</type>
+         </parameter>
+         <parameter>
+            <description>Specify how many previous archived files to keep.</description>
+            <name>keep.files</name>
+            <displayName>How Many Archived Files to Keep</displayName>
+            <defaultValue>3</defaultValue>
+            <required>true</required>
+            <sequence>4</sequence>
+            <type>POSITIVEINTEGER</type>
+         </parameter>
+         </parameters>
+         <shortDescription>Exports all park entry guest transaction data to a file on the disk.</shortDescription>
+         <shortHtmlDescription>Exports all park entry guest transaction data to a file on the disk.</shortHtmlDescription>
+         <longHtmlDescription>This scheduler task exports all park entry guest transaction data to an external file. The data in the database tables is not truncated when this happens so a separate scheduled task should be used to truncate the data.</longHtmlDescription>
+         <systemOnly>false</systemOnly>
+      </SchedulerItemMetadata>
+      <SchedulerItemMetadata>
+         <canRunConcurrently>false</canRunConcurrently>
+         <defaultSchedulingExpression>0 0 5 * * ?</defaultSchedulingExpression>
+         <jobClassName>com.disney.xband.xbrc.parkentrymodel.scheduler.DatabaseCleanupTask</jobClassName>         
+         <name>Park Entry Guest Data Database Cleanup</name>
+         <onlyOnce>false</onlyOnce>
+         <parameters>          
+         <parameter>
+            <description>Specify how many days of guest data information to keep.</description>
+            <name>keep.days</name>
+            <displayName>Keep Days</displayName>
+            <defaultValue>120</defaultValue>
+            <required>true</required>
+            <sequence>1</sequence>
+            <type>POSITIVEINTEGER</type>
+         </parameter>
+         </parameters>
+         <shortDescription>This task deletes all guest data older than the number of days specified in keep.days parameter.</shortDescription>
+         <shortHtmlDescription>This task deletes all guest data older than the number of days specified in keep.days parameter.</shortHtmlDescription>
+         <longHtmlDescription>This task deletes all guest data from the Mayhem database that is older than the number of days specified in keep.days parameter. Data is deleted from the following tables: XbioImage, XbioTemplate and PETransaction. NOTE: This task does not backup the data to the disk before deleting it. The data must be backed up using a different task.</longHtmlDescription>
+         <systemOnly>false</systemOnly>
+      </SchedulerItemMetadata>
+</SchedulerMetadataList>
+

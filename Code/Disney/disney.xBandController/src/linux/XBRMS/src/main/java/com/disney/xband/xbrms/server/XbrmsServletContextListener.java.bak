@@ -1,0 +1,300 @@
+package com.disney.xband.xbrms.server;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Enumeration;
+import java.util.Properties;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+import com.disney.xband.ac.lib.XbUtils;
+import com.disney.xband.common.lib.audit.AuditFactory;
+import com.disney.xband.common.lib.audit.Auditor;
+import com.disney.xband.common.lib.audit.IAuditConnectionPool;
+import com.disney.xband.common.lib.audit.model.AuditConfig;
+import com.disney.xband.common.lib.audit.model.AuditEvent;
+import com.disney.xband.xbrms.server.model.XbrmsConfigBo;
+import org.apache.log4j.Logger;
+
+import com.disney.xband.common.lib.NGEPropertiesDecoder;
+import com.disney.xband.common.lib.health.StatusType;
+import com.disney.xband.xbrms.common.ConfigProperties;
+import com.disney.xband.xbrms.common.PkConstants;
+import com.disney.xband.xbrms.common.model.ProblemAreaType;
+import com.disney.xband.xbrms.server.messaging.JMSAgent;
+import com.disney.xband.xbrms.server.messaging.publisher.XbrmsConfigurationUpdatePublisher;
+import com.disney.xband.xbrms.server.messaging.publisher.XbrmsStatusRefreshPublisher;
+import com.disney.xband.xbrms.server.messaging.subscriber.XbrmsConfigurationUpdateSubscriber;
+import com.disney.xband.xbrms.server.messaging.subscriber.XbrmsStatusRefreshSubscriber;
+import com.disney.xband.xbrms.server.model.MetaDao;
+import com.disney.xband.xbrms.server.model.ProblemsReportBo;
+import com.disney.xband.xbrms.server.model.XbrmsStatusBo;
+
+public class XbrmsServletContextListener implements ServletContextListener
+{
+	private static Logger logger = Logger.getLogger(XbrmsServletContextListener.class);
+	
+	@Override
+	public void contextDestroyed(ServletContextEvent context) {
+		SystemHealthConsumer.getInstance().stopStatusThread();
+		XbrmsStatusBo.getInstance().stopTimer();
+		
+		// stop listening/sending jms messages
+		JMSAgent.getInstance().stop();
+		
+		Enumeration<Driver> drivers = DriverManager.getDrivers();
+		while (drivers.hasMoreElements())
+		{
+			try {
+				DriverManager.deregisterDriver(drivers.nextElement());
+			} catch (SQLException e) {
+				System.out.println("Failed to deregister sql driver.");
+			}
+		}
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent context) {
+        //try { Thread.sleep(10000); } catch(Exception e) { }
+
+		logger.info("Initializing xBRMS ...");
+		
+        try
+        {
+            ConfigProperties.init(true);
+        }
+        catch (Exception e)
+        {
+            logger.fatal("!! This must never happen: Failed to initialize xBRMS properties class. !!");
+            System.exit(1);
+        }
+
+		// read initial configuration options from the environment properties file
+		try
+		{
+			ConfigProperties.getInstance().readConfigurationOptionsFromEnvironmentProperties();
+		}
+		catch (IOException e)
+		{			
+			logger.fatal("!! Failed to start xBRMS. Failed to read the properties file " + NGEPropertiesDecoder.getPropertiesPath() + ". !!");
+			System.exit(1);
+		}
+
+        boolean isDatabaseConnectionProblem = false;
+
+		// initialize database connection pool
+		try
+		{
+			SSConnectionPool.getInstance().initialize();
+		}
+		catch (IllegalArgumentException e)
+		{
+			logger.fatal("!! Failed to start xBRMS. " + e.getLocalizedMessage() + ".!!");
+			System.exit(1);
+		}
+		catch(ClassNotFoundException e) {
+			logger.fatal("!! Failed to start xBRMS. Could not find the sql driver class. Failed to initialize connection pool.!!", e);
+			System.exit(1);
+		} 
+		catch(SQLException e)
+		{
+            isDatabaseConnectionProblem = true;
+            
+            String reason = SSConnectionPool.handleSqlException(e, "Attempting to initialize database connection pool");
+
+            ProblemsReportBo.getInstance().setLastError(ProblemAreaType.ConnectToXbrmsDb, reason, e);
+            XbrmsStatusBo.getInstance().setDbStatus(StatusType.Red, reason);
+		}
+		
+		// read the rest of configuration options from the database
+		try
+		{
+			ConfigProperties.getInstance().readConfigurationOptionsFromDatabase();
+		}
+		catch (ClassNotFoundException e)
+		{
+			logger.fatal("!! Failed to start xBRMS. JDBC driver not found. !!", e);
+			System.exit(1);
+		}
+		catch(SQLException e)
+		{
+            isDatabaseConnectionProblem = true;
+			
+            String reason = SSConnectionPool.handleSqlException(e, "Trying to read configuration properties from the database with URL: " 
+																	+ ConfigProperties.getInstance().getProperty(PkConstants.PROP_DB_URL)
+																	+ ", user: " + ConfigProperties.getInstance().getProperty(PkConstants.PROP_DB_USER)
+																	+ " on startup");
+
+            ProblemsReportBo.getInstance().setLastError(ProblemAreaType.ConnectToXbrmsDb, reason, e);
+            XbrmsStatusBo.getInstance().setDbStatus(StatusType.Red, reason);
+			
+		}
+		catch (IllegalAccessException e)
+		{
+			logger.fatal("!! Failed to start xBRMS. Failed to read configuration properties from the database. !!", e);
+			System.exit(1);
+		}
+
+        XbUtils.loadProperties(ConfigProperties.getInstance(), "xbrms", logger);
+        XbrmsServletContextListener.initializeAudit(ConfigProperties.getInstance());
+
+		// initialize xbrms status
+		try
+		{
+			XbrmsStatusBo.getInstance().initialize(logger, context.getServletContext(), true);
+		}
+		catch (Exception e)
+		{
+            if(isDatabaseConnectionProblem) {
+                logger.error("Failed to start xBRMS. Could not initialize xbrms status object.");
+            }
+            else {
+			    logger.fatal("!! Failed to start xBRMS. Could not initialize xbrms status object. !!", e);
+			    System.exit(1);
+            }
+		}
+		
+		// connect to jms broker to send and receive jms messages
+		try
+		{
+			boolean readyToRNR = JMSAgent.getInstance().initialize();
+			if (readyToRNR)
+				JMSAgent.getInstance().start();
+			
+			if (!JMSAgent.getInstance().isInitializedCorrectly())
+			{
+				logger.info("JMS Agent has not been started. xBRMS will start, but not all xBRMS functionality will be available !!");
+			}
+		}
+		catch (Exception e)
+		{
+			logger.error("Failed to start xBRMS. The JMSAgent failed to connect to the broker." + e.getLocalizedMessage() + ".!!", e);			
+		}
+		
+		// start discovery consumer
+		SystemHealthConsumer.getInstance().startStatusThread();
+		
+		// initialize the publisher/subscriber mechanism
+		//TODO annotate publishers and subscribers and use reflection to initialize all of this
+		try
+		{
+			// TODO sample, remove or enable as needed
+			XbrmsConfigurationUpdatePublisher.getInstance().register(
+					new XbrmsConfigurationUpdateSubscriber(XbrmsConfigurationUpdatePublisher.PUBLISH_EVENT_TYPE)
+			);
+			XbrmsStatusRefreshPublisher.getInstance().register(
+					new XbrmsStatusRefreshSubscriber(XbrmsStatusRefreshPublisher.PUBLISH_EVENT_TYPE)
+			);
+		}
+		catch (Exception e)
+		{
+			logger.error("Failed to register some or all subscribers.");
+		}
+		
+		// try to become master
+		try
+		{
+			if (MetaDao.amIMaster())
+				logger.info("This xBRMS became the master at startup.");
+			else 
+				logger.info("This xBRMS is did not become the master at startup.");
+		}
+		catch (Exception e)
+		{
+			logger.error("Detected errors while trying to become the master.");
+		}
+
+        ConfigProperties.getInstance().initXbrmsServers();
+
+		logger.info("XBRMS has been started.");
+	}
+
+    public static void initializeAudit(final Properties props) {
+        try {Thread.sleep(10000);}catch(Exception e) {}
+        final AuditConfig currentConfig = Auditor.getInstance().getConfig();
+        final AuditConfig newConfig = new AuditConfig();
+
+        Connection conn = null;
+
+        try {
+            conn = SSConnectionPool.getInstance().getConnection();
+
+            try {
+                if(!newConfig.populateAuditConfigFromDb(conn)) {
+                    //return; // !!!!!!!!!!!!!!!!!!!!! uncomment
+                }
+            }
+            catch(Exception e) {
+                logger.error("Failed to initialize audit subsystem");
+                //return; // !!!!!!!!!!!!!!!!!!!!!!!!! uncomment
+            }
+        }
+        catch(Exception e) {
+            logger.error("Failed to database connection for audit subsystem: " + e.getMessage());
+            return;
+        }
+        finally {
+            if(conn != null) {
+                try {
+                    SSConnectionPool.getInstance().releaseConnection(conn);
+                }
+                catch (Exception ignore) {
+                }
+            }
+        }
+
+        if(currentConfig.getImplStack().indexOf("AuditFileImpl") < 0) { // !!!!!!!!!!!!!!!!!!!!!!!!! Change to Db
+            XbrmsServletContextListener.initializeAudit(props, newConfig);
+        }
+        else {
+            // In case the application ID has changed
+            newConfig.setAppId(XbrmsConfigBo.getInstance().getDto().getId());
+
+            if(!newConfig.isEqual(currentConfig)) {
+                XbrmsServletContextListener.initializeAudit(props, currentConfig);
+            }
+        }
+    }
+
+    private static void initializeAudit(final Properties props, final AuditConfig config) {
+        config.setEnabled(true);
+        config.setLevel(AuditEvent.Type.INFO);
+        //!!!!!
+        //config.setImplStack("com.disney.xband.common.lib.audit.providers.AuditSqlServerDbImpl");
+        config.setImplStack("com.disney.xband.common.lib.audit.providers.AuditFileImpl");
+        config.setFileStorePath("/tmp/xbrms-global-events.txt");
+
+        config.setConnectionPool(new IAuditConnectionPool() {
+            @Override
+            public Connection getConnection() throws Exception {
+                return SSConnectionPool.getInstance().getConnection();
+            }
+
+            @Override
+            public void releaseConnection(Connection conn) {
+                SSConnectionPool.getInstance().releaseConnection(conn);
+            }
+        });
+
+        config.setAppClass(AuditEvent.AppClass.XBRMS.toString());
+
+        config.setEnabled(Boolean.parseBoolean((String) props.get(com.disney.xband.ac.lib.PkConstants.NAME_PROP_AUDIT_ENABLED)));
+        config.setKeepInCacheEventsMax(Integer.parseInt((String) props.get(com.disney.xband.ac.lib.PkConstants.NAME_PROP_AUDIT_KEEP_IN_CACHE_EVENTS_MAX)));
+        config.setKeepInGlobalDbDaysMax(Integer.parseInt((String) props.get(com.disney.xband.ac.lib.PkConstants.NAME_PROP_AUDIT_KEEP_IN_GLOBAL_DB_DAYS_MAX)));
+        config.setBatchSizeMax(Integer.parseInt((String) props.get(com.disney.xband.ac.lib.PkConstants.NAME_PROP_AUDIT_BATCH_SIZE_MAX)));
+        config.setPullIntervalSecs(Integer.parseInt((String) props.get(com.disney.xband.ac.lib.PkConstants.NAME_PROP_AUDIT_PULL_INTERVAL_SECS)));
+        config.setLevel(AuditEvent.Type.valueOf((String) props.get(com.disney.xband.ac.lib.PkConstants.NAME_PROP_AUDIT_LEVEL)));
+
+        final AuditFactory auditFactory = new AuditFactory(config);
+
+        Auditor.getInstance().setAuditor(auditFactory.getAudit());
+        //!!!!!!!!!!!!!!!!!
+        //Auditor.getInstance().setEventsProvider(auditFactory.getAuditControl().getEventsProvider("AuditSqlServerDbImpl"));
+        Auditor.getInstance().setEventsProvider(auditFactory.getAuditControl().getEventsProvider("AuditFileImpl"));
+        Auditor.getInstance().setConfig(config);
+    }
+}

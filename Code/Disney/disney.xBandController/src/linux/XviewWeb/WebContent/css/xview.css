@@ -1,0 +1,164 @@
+@CHARSET "UTF-8";
+html
+{
+	height:100%;
+}
+
+body
+{
+	/* background-color:purple; */
+	font-family: "Lucida Grande",Verdana,"Bitstream Vera Sans",Arial,sans-serif;
+	line-height: 16px;
+	color: #555;
+	font-size:11px;
+	height:100%;
+	/* background-image: url('../images/purplegrad.svg'); */
+}
+
+
+
+
+.labelHeader
+{
+	font-family:verdana;
+	font-size:20px;
+	font-weight:bold;
+	float:left;
+	vertical-align:middle;
+	
+}
+
+.label
+{
+	padding-top:2px;
+	vertical-align:middle;
+}
+
+.InfoBar
+{
+	position:relative;
+	height:75px;
+	width:90%;
+	padding-top:2px;
+	padding-left:10px;
+	padding-bottom:5px;
+	border:1px;
+	border-style:solid;
+	border-color:black;
+	border-radius:10px;
+	background-image: url('../images/grad.svg');
+	cursor:pointer;
+}
+
+.guestInfoBar
+{
+	display:inline-block;
+	float:left;
+	height:25px;
+	padding-left:10px;
+	padding-bottom:5px;
+	width:100%;
+	vertical-align:middle;
+	text-align:left;
+	cursor:pointer;
+}
+
+.subBand
+{
+	
+
+	width:100%;
+	height:30px;
+	vertical-align:middle;
+
+	
+}
+.subBandText
+{
+	position:relative;
+	font-family:verdana;
+	font-size:16px;
+	vertical-align:middle;
+	top:5px;
+}
+
+.inputArea
+{
+	position:relative;
+	margin-top: -7.5em;
+	background-color: yellow;
+	width : 90%;
+	padding: 5px;
+	margin: 0 auto;
+	border-radius:10px 10px 0 0;
+	height:100%;
+
+	
+}
+
+.xBandList
+{
+	background-color:white;
+	padding:25px;
+	margin: 0 auto;
+	border-radius:10px;
+	/* background-image: url('../images/Parchment.svg'); */
+}
+
+.StatusIcon
+{
+	height:32px;
+	width:32px;
+	cursor:pointer;
+	float:left;
+}
+
+.removeButtonImg
+{
+	height:32px;
+	width:32px;
+	cursor:pointer;
+	float:left;
+	vertical-align:middle;
+}
+
+.removeButton
+{
+	cursor:pointer;
+	float:left;
+}
+
+.addButtonImg
+{
+	height:32px;
+	width:32px;
+	cursor:pointer;
+	float:left;
+}
+
+.addButton
+{
+	cursor:pointer;
+	float:left;
+}
+.clearBar
+{
+	clear:both;
+}
+
+.findGuestDialog
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	background-color: white;
+	width : 100%;
+	margin: 0px auto;
+	border-radius:10px 10px 0px 0px;
+	padding-top:5px;
+}
+
+.dialogContents
+{
+	padding:10px;
+}

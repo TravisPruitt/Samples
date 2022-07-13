@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="AcModel" type="AcModel"/>
+
+  <xs:complexType name="AcModel">
+    <xs:sequence>
+      <xs:element name="SchemaVersion" type="xs:string" minOccurs="1"/>
+      <xs:element name="LastUpdated" type="xs:dateTime" minOccurs="1"/>
+      <xs:element name="Application" type="Application" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Application">
+    <xs:sequence>
+      <xs:element name="AppId" type="xs:string" minOccurs="1"/>
+      <xs:element name="UnprotectedUrlPattern" type="UrlPatternType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Asset" type="Asset" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="UrlPatternType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="method" default="*"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="Asset">
+    <xs:sequence>
+      <xs:element name="AssetId" type="xs:string" minOccurs="1"/>
+      <xs:element name="IsLocalAuth" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="UrlPattern" type="UrlPatternType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="AllowRole" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="DenyRole" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

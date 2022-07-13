@@ -1,0 +1,19 @@
+#!/bin/sh
+
+if [ "$reason" != "BOUND" ]; then
+    exit
+fi
+
+APP=""
+if [ "`pidof grover`" != "" ]; then
+    APP=grover
+elif [ "`pidof reader`" != "" ]; then
+    APP=reader
+elif [ "`pidof dap-reader`" != "" ]; then
+    APP=dap-reader
+fi
+
+if [ "$APP" != "" ]; then
+    logger -is -t "$APP" -p alert "Detected network change, restarting $APP..."
+    killall -SIGUSR1 $APP
+fi

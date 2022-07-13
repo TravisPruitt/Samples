@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>JCS - Frequently Asked Questions</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta></head><body class="composite"><div id="banner"><a href="http://jakarta.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="./images/jakarta.png"></img></a><a href="http://jakarta.apache.org/jcs/" id="projectLogo"><span>JCS</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 30 May 2007
+                  | Doc for 1.3</div><div class="xright">
+        
+        <a href="jcs.pdf"><img title="PDF Documentation" style="border: 1px" src="images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuGeneral_Information"><h5>General Information</h5><ul><li class="none"><a href="index.html">Overview</a></li><li class="none"><a href="JCSandJCACHE.html">JCS and JCACHE</a></li><li class="none"><a href="DownloadPage.html">Downloads</a></li><li class="none"><strong><a href="faq.html">FAQ</a></strong></li></ul></div><div id="menuGetting_Started"><h5>Getting Started</h5><ul><li class="none"><a href="getting_started/intro.html">Overview</a></li><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="Plugins.html">Plugin Overview</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></div><div id="menuJCS_User_s_Guide"><h5>JCS User's Guide</h5><ul><li class="collapsed"><a href="LocalCacheConfig.html">Core</a></li><li class="collapsed"><a href="Plugins.html">Auxiliary</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About JCS</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="expanded"><a href="maven-reports.html">Project Reports</a><ul><li class="none"><a href="jdepend-report.html">Metrics</a></li><li class="none"><a href="checkstyle-report.html">Checkstyle</a></li><li class="none"><a href="changes-report.html">Changes</a></li><li class="none"><a href="jcoverage/index.html">JCoverage</a></li><li class="none"><a href="apidocs/index.html" class="newWindow" title="New Window" target="_blank">JavaDocs</a></li><li class="none"><a href="javadoc.html">JavaDoc Report</a></li><li class="none"><a href="javadoc-warnings-report.html">JavaDoc Warnings Report</a></li><li class="none"><a href="xref/index.html" class="newWindow" title="New Window" target="_blank">Source Xref</a></li><li class="none"><a href="xref-test/index.html" class="newWindow" title="New Window" target="_blank">Test Xref</a></li><li class="none"><a href="junit-report.html">Unit Tests</a></li><li class="none"><a href="task-list.html">Task List</a></li><li class="none"><a href="pmd-report.html">PMD Report</a></li><li class="none"><a href="simian-report.html">Simian Report</a></li><li class="none"><strong><a href="faq.html">FAQs</a></strong></li></ul></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Frequently_Asked_Questions"></a><h2>Frequently Asked Questions</h2><p>
+              <strong>Configuration</strong>
+            </p><ol>
+              
+              <li>
+                
+                
+                <a href="#required-jars">
+                  What jars are required by JCS?
+                </a>
+              </li>
+              
+              <li>
+                
+                
+                <a href="#configuration-file">
+                  How do I configure JCS?
+                </a>
+              </li>
+              
+              <li>
+                
+                
+                <a href="#manual-configuration">
+                  
+				How can I configure JCS with my own properties?
+			
+                </a>
+              </li>
+              
+              <li>
+                
+                
+                <a href="#configuration-system-properties">
+                  
+				Can JCS use system properties during configuration?
+			
+                </a>
+              </li>
+              
+            </ol><p>
+              <strong>General Questions</strong>
+            </p><ol>
+              
+              <li>
+                
+                
+                <a href="#jcs-vs-ehcache">
+                  Is JCS faster than EHCache?
+                </a>
+              </li>
+              
+              <li>
+                
+                
+                <a href="#admin-jsp">
+                  Where can I get the admin jsp?
+                </a>
+              </li>
+              
+              <li>
+                
+                
+                <a href="#source-code">
+                  Where can I get the source?
+                </a>
+              </li>
+              
+              <li>
+                
+                
+                <a href="#compiling-source">
+                  How do I compile the source?
+                </a>
+              </li>
+              
+            </ol><p>
+              <strong>Elements</strong>
+            </p><ol>
+              
+              <li>
+                
+                
+                <a href="#element-attributes">
+                  How do I set the element attributes?
+                </a>
+              </li>
+              
+              <li>
+                
+                
+                <a href="#element-events">
+                  How do I register an element event?
+                </a>
+              </li>
+              
+              <li>
+                
+                
+                <a href="#hierarchical-removal">
+                  
+				Can I remove all items beginning with part of a key?
+			
+                </a>
+              </li>
+              
+            </ol><p>
+              <strong>Indexed Disk Cache</strong>
+            </p><ol>
+              
+              <li>
+                
+                
+                <a href="#thread-pool">
+                  
+				How do I limit the number of threads used by the disk
+				cache?
+			
+                </a>
+              </li>
+              
+            </ol><p>
+              <strong>Remote Cache Server</strong>
+            </p><ol>
+              
+              <li>
+                
+                
+                <a href="#classes">
+                  
+				Do I need to put my jars in the classpath of the remote
+				server?
+			
+                </a>
+              </li>
+              
+            </ol></div><div class="section"><a name="Configuration"></a><h2>Configuration</h2><title>Configuration</title><dl>
+			<dt><a name="required-jars">What jars are required by JCS?</a></dt>
+			<dd>
+				<p>
+					As of verison 1.2.7.0, the core of JCS (the LRU
+					memory cache, the indexed disk cache, the TCP
+					lateral, and the RMI remote server) requires only
+					two other jars.
+				</p>
+				<p>
+					<a href="http://gee.cs.oswego.edu/dl/classes/EDU/oswego/cs/dl/util/concurrent/intro.html" class="externalLink" title="External Link">
+						concurrent
+					</a>
+				</p>
+				<p>commons-logging</p>
+
+				<p>
+					Versions 1.2.6.9 and below also require the
+					following two additional jars:
+				</p>
+
+				<p>commons-collections</p>
+				<p>commons-lang</p>
+				<p>
+					All of the other dependencies listed on the project
+					info page are for optional plugins.
+				</p>
+			</dd>
+		</dl><dl>
+			<dt><a name="configuration-file">How do I configure JCS?</a></dt>
+			<dd>
+				<p>
+					By default JCS looks for a cache.ccf file in the
+					classpath. You must have a configuration file on the
+					classpath to use JCS. The documentation describes
+					how to configure the cache.
+				</p>
+			</dd>
+		</dl><dl>
+			<dt><a name="manual-configuration">
+				How can I configure JCS with my own properties?
+			</a></dt>
+
+			<dd>
+				<p>
+					You don't have to put the cache.ccf file in the
+					classpath; instead you can do the following:
+				</p>
+				<code>
+					CompositeCacheManager ccm =
+					CompositeCacheManager.getUnconfiguredInstance();
+
+					Properties props = new Properties();
+
+					props.load(/* load properties from some location
+					defined by your app */);
+
+					ccm.configure(props);
+				</code>
+			</dd>
+		</dl><dl>
+			<dt><a name="configuration-system-properties">
+				Can JCS use system properties during configuration?
+			</a></dt>
+			<dd>
+				<p>
+					Yes. JCS will look for a system property for any
+					name inside the delimiters ${}. Also, JCS will check
+					to see if any property key in the cache.ccf is
+					defined in the system properties. If so, the system
+					value will be used.
+				</p>
+			</dd>
+		</dl></div><div class="section"><a name="General_Questions"></a><h2>General Questions</h2><title>General Questions</title><dl>
+			<dt><a name="jcs-vs-ehcache">Is JCS faster than EHCache?</a></dt>
+			<dd>
+				<p>
+					Yes. JCS is almost twice as fast as EHCache. JCS
+					1.2.7.0, using the default LRU Memory Cache, has
+					proven to be nearly twice as fast as EHCache
+					1.2-beta4 at gets and puts. The EHCache benchmark
+					data is unsubstantiated and very old. As such the
+					EHCache site benchmark data is completely
+					inaccurate.
+					<a href="JCSvsEHCache.html">Read More</a>
+				</p>
+			</dd>
+		</dl><dl>
+			<dt><a name="admin-jsp">Where can I get the admin jsp?</a></dt>
+			<dd>
+				<p>
+					You can download the admin jsp
+					<a href="http://svn.apache.org/viewcvs.cgi/jakarta/jcs/trunk/src/java/org/apache/jcs/admin/JCSAdmin.jsp" class="externalLink" title="External Link">
+						here
+					</a>
+					.
+				</p>
+			</dd>
+		</dl><dl>
+			<dt><a name="source-code">Where can I get the source?</a></dt>
+			<dd>
+				<p>
+					You can view the source
+					<a href="http://svn.apache.org/viewcvs.cgi/jakarta/jcs/trunk/" class="externalLink" title="External Link">
+						here
+					</a>
+					or get the source code from subversion with <code>svn co
+					http://svn.apache.org/repos/asf/jakarta/jcs/trunk</code>.
+					The tagged releases are available with <code>svn co.</code> ex.
+					http://svn.apache.org/repos/asf/jakarta/jcs/tags/jcs_1_2_7_0
+				</p>
+			</dd>
+		</dl><dl>
+			<dt><a name="compiling-source">How do I compile the source?</a></dt>
+			<dd>
+				<p>
+					You first need to install
+					<a href="http://maven.apache.org/" class="externalLink" title="External Link">Maven 1.0.2</a>
+					The download is available at
+					http://maven.apache.org/maven-1.x/start/download.html.
+					Maven 2.0 is not supported yet. After installing run
+					"maven" which compiles and tests the entire package.
+					To build a jar run "maven jar".
+				</p>
+			</dd>
+		</dl></div><div class="section"><a name="Elements"></a><h2>Elements</h2><title>Elements</title><dl>
+			<dt><a name="element-attributes">How do I set the element attributes?</a></dt>
+			<dd>
+				<p>
+					Every element put into the cache has its own set of
+					attributes. By default elements are given a copy of
+					the default element attributes associated with a
+					region. You can also specify the attributes to use
+					for an element when you put it in the cache. See
+					<a href="ElementAttributes.html">
+						Element Attributes
+					</a>
+					for more information on the attributes that are
+					available.
+				</p>
+			</dd>
+		</dl><dl>
+			<dt><a name="element-events">How do I register an element event?</a></dt>
+			<dd>
+				<p>
+					Element event handlers must be added to the element
+					attributes. See
+					<a href="ElementEventHandling.html">
+						Element Event Handling
+					</a>
+					for more information on how to handle element
+					events.
+				</p>
+			</dd>
+		</dl><dl>
+			<dt><a name="hierarchical-removal">
+				Can I remove all items beginning with part of a key?
+			</a></dt>
+			<dd>
+				<p>
+					Yes, but it is somewhat expensive, since some of the
+					auxiliaries will have to iterate over their keysets.
+					Although all the auxiliaries honor this, it is not
+					part of the auxiliary API. There is no method along
+					the lines of "removeStartingWith", but all the remove
+					methods can do it.
+				</p>
+				<p>
+					By default, the hierarchical key delimiter used in
+					JCS is a colon. You cannot add a String key that
+					ends with a colon. If you call remove with a String
+					key that ends in a colon, everything that has a key
+					that starts with the argument will be removed.
+				</p>
+				<p>If your keys are in this format</p>
+				<p>TYPE:SOURCE:OBJECT</p>
+				<p>
+					And you put n objects int he cache with keys like
+					this
+				</p>
+				<p>"ABC:123:0" to "ABC:123:n"</p>
+				<p>then you could remove all the obejcts by calling</p>
+				<p>jcs.remove( "ABC:123:" );</p>
+			</dd>
+		</dl></div><div class="section"><a name="Indexed_Disk_Cache"></a><h2>Indexed Disk Cache</h2><title>Indexed Disk Cache</title><dl>
+			<dt><a name="thread-pool">
+				How do I limit the number of threads used by the disk
+				cache?
+			</a></dt>
+			<dd>
+				<p>
+					The indexed disk cache uses an event queue for each
+					region. By default these queues are worked by their
+					own dedicated threads. Hence, you will have one
+					thread per disk cache region. Although the queues
+					kill off idle threads, you may want to limit the
+					overall number of threads used by the queues. You
+					can do this by telling the disk cache to use a
+					thread pool. The configuration is described
+					<a href="IndexedDiskAuxCache.html">
+						on the disk cache configuration page
+					</a>
+					.
+				</p>
+			</dd>
+		</dl></div><div class="section"><a name="Remote_Cache_Server"></a><h2>Remote Cache Server</h2><title>Remote Cache Server</title><dl>
+			<dt><a name="classes">
+				Do I need to put my jars in the classpath of the remote
+				server?
+			</a></dt>
+			<dd>
+				<p>
+					No. The remote server never deserializes your
+					classes.
+				</p>
+			</dd>
+		</dl></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2002-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

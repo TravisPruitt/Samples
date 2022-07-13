@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<venue>
+ <configuration name="current" type="incremental">
+  <description/>
+  <properties>
+   <property class="ReaderConfig"  name="maximumthreshold">0</property>
+   <property class="ControllerInfo" name="venue">11111111</property>
+   <property class="ControllerInfo" name="name">Park Entry</property>
+   <property class="UIConfig"  name="attractionviewimagefilename"></property>
+  </properties>
+ </configuration>
+</venue>

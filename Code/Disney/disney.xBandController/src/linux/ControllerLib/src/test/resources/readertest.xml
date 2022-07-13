@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReaderTest>
+   <name>First Reader Test</name>
+   <tests>
+      <test>
+         <name>First unit test</name>
+         <actions>
+            <readerActionContainer>
+               <genericAction>
+                  <method>PUT</method>
+                  <name>Show color</name>
+                  <waitMs>1000</waitMs>
+                  <contentType>text/plain</contentType>
+                  <path>media/color?name=100,100,100</path>
+               </genericAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <genericAction>
+                  <method>PUT</method>
+                  <name>Hide color</name>
+                  <contentType>text/plain</contentType>
+                  <path>media/sequence?name=off</path>
+               </genericAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <speechAction>
+                  <method>PUT</method>
+                  <name>Say being test</name>
+                  <text>Begin reader test</text>
+               </speechAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <speechAction>
+                  <method>PUT</method>
+                  <name>Say identify location</name>
+                  <text>Location, ${VENUE}, ${READER}</text>
+               </speechAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <scriptAction>
+                  <method>PUT</method>
+                  <name>Play script</name>
+                  <scriptResourcePath>All_Colors_Test_Final.csv</scriptResourcePath>
+               </scriptAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <sequenceAction>
+                  <method>PUT</method>
+                  <name>Play success sequence</name>
+                  <sequenceName>success</sequenceName>
+                  <duration>3000</duration>
+               </sequenceAction>
+            </readerActionContainer>
+            <readerActionContainer>
+               <speechAction>
+                  <method>PUT</method>
+                  <range>100</range>
+                  <rate>160</rate>
+                  <gap>5</gap>
+                  <name>Tap to complete</name>
+                  <text>Tap to complete</text>
+               </speechAction>
+            </readerActionContainer>
+         </actions>
+      </test>
+   </tests>
+   <waitForAckMs>3000</waitForAckMs>
+</ReaderTest>

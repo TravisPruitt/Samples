@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>JCS - Configuring the Local Cache</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="Pete Kazmier"></meta><meta name="email" content="pete@kazmier.com"></meta><meta name="author" content="Aaron Smuts"></meta><meta name="email" content="ASmuts@therealm.com"></meta></head><body class="composite"><div id="banner"><a href="http://jakarta.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="./images/jakarta.png"></img></a><a href="http://jakarta.apache.org/jcs/" id="projectLogo"><span>JCS</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 30 May 2007
+                  | Doc for 1.3</div><div class="xright">
+        
+        <a href="jcs.pdf"><img title="PDF Documentation" style="border: 1px" src="images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuGeneral_Information"><h5>General Information</h5><ul><li class="none"><a href="index.html">Overview</a></li><li class="none"><a href="JCSandJCACHE.html">JCS and JCACHE</a></li><li class="none"><a href="DownloadPage.html">Downloads</a></li><li class="none"><a href="faq.html">FAQ</a></li></ul></div><div id="menuGetting_Started"><h5>Getting Started</h5><ul><li class="none"><a href="getting_started/intro.html">Overview</a></li><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="Plugins.html">Plugin Overview</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></div><div id="menuJCS_User_s_Guide"><h5>JCS User's Guide</h5><ul><li class="expanded"><strong><a href="LocalCacheConfig.html">Core</a></strong><ul><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="ElementAttributes.html">Element Config</a></li><li class="none"><a href="ElementEventHandling.html">Element Event Handling</a></li><li class="none"><a href="RegionProperties.html">Region Properties</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></li><li class="collapsed"><a href="Plugins.html">Auxiliary</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About JCS</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Configuring_the_Local_Cache"></a><h2>Configuring the Local Cache</h2><p>
+        This document is intended to provide various answers to
+        questions regarding the configuration of a local cache.  The
+        document is presented in a question / answer format.
+      </p><div class="subsection"><a name="Where_is_the_configuration_information_"></a><h3>Where is the configuration information?</h3><p>
+          Configuration of local caches involves editing the cache
+          configuration file, named <code>cache.ccf</code>.  The
+          classpath should include the directory where this file is
+          located or the file should be placed at the root of the
+          classpath, since it is discovered automatically.
+        </p></div><div class="subsection"><a name="What_is_in_the_cache_ccf_file_"></a><h3>What is in the cache.ccf file?</h3><p>
+          The <code>cache.ccf</code> file contains default configuration
+          information for cache regions and specific configuration
+          information for regions that you predefine.  Regions not using
+          default behaviors should generally be configured via the
+          <code>cache.ccf</code> file.  If you can put configuration
+          information in a class, you can edit a props file just as
+          easily.  This makes modification of the regional setting more
+          efficient and allows for startup error checking.
+        </p><p>
+          There are three main sections of the <code>cache.ccf</code>
+          file:
+        </p><ul>
+          <li> the default and system settings </li>
+          <li> the region specific settings </li>
+          <li> the auxiliary cache definitions </li>
+        </ul></div><div class="subsection"><a name="How_do_I_set_up_default_values_for_regions_"></a><h3>How do I set up default values for regions?</h3><p>
+          You can establish default values that any non-preconfigured
+          region will inherit.  The non-predefined region will be
+          created when you call
+          <code>CacheAccess.getAccess("cacheName")</code>.  The default
+          setting look like this:
+        </p>
+    <div class="source"><pre>
+# DEFAULT CACHE REGION
+
+# sets the default aux value for any non configured caches
+jcs.default=DC,RFailover
+jcs.default.cacheattributes=
+    org.apache.jcs.engine.CompositeCacheAttributes
+jcs.default.cacheattributes.MaxObjects=1000
+        </pre></div>
+  <p>
+          The most important line is
+          <code>jcs.default=DC,Rfailover</code>. This tells the cache
+          what auxiliary caches should be used.  Auxiliary caches are
+          configured in the third section of the <code>cache.ccf</code>
+          and are referenced in a comma separated list.  You can add as
+          many auxiliary caches as you want, but the behavior of remote
+          and lateral auxiliaries may conflict.  This allows you to
+          define different configurations for auxiliary caches and to
+          use these different configurations for different regions.
+        </p></div><div class="subsection"><a name="How_do_I_define_a_region_"></a><h3>How do I define a region?</h3><p>
+          Defining a region involves specifying which auxiliary caches
+          it will use and how many objects it will store in memory.  A
+          typical region definition looks like:
+        </p>
+    <div class="source"><pre>
+jcs.region.testCache=DC,RFailover
+jcs.region.testCache.cacheattributes=
+    org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.testCache.cacheattributes.MaxObjects=1000
+        </pre></div>
+  <p>
+          The region name is <code>testCache</code>.  It will have a
+          1000 item memory limit and will use the DC and RFailover
+          auxiliary caches.  If a typical element for this region was
+          very large, you might want to lower the number of items stored
+          in memory.  The size of the memory storage is dependent on the
+          priority of the cache, the size of its elements, and the
+          amount of RAM on the machine.
+        </p></div><div class="subsection"><a name="How_do_I_configure_an_auxiliary_cache_"></a><h3>How do I configure an auxiliary cache?</h3><p>
+          Each auxiliary cache is created through a factory that passes
+          an attribute object to the constructor.  The attributes are
+          set via reflection and should be fairly simple to understand.
+          Each auxiliary cache will be fully documented.  Plugging in
+          your own auxiliary cache become a simple matter given the
+          reflexive manner of initialization.
+        </p><p>
+          The most important settings for common usage are the disk path
+          and the remote cache location.  It is recommended that only
+          disk and remote auxiliaries be used.  The lateral caches are
+          functional but not as efficient.
+        </p><p>
+          The default configuration code above specifies that
+          non-preconfigured caches use the auxiliary cache by the name
+          DC.  This cache is defined in the third section of the file:
+        </p>
+    <div class="source"><pre>
+jcs.auxiliary.DC=
+    org.apache.jcs.auxiliary.disk.DiskCacheFactory
+jcs.auxiliary.DC.attributes=
+    org.apache.jcs.auxiliary.disk.DiskCacheAttributes
+jcs.auxiliary.DC.attributes.DiskPath=c:/dev/cache/raf
+        </pre></div>
+  <p>
+          The only thing that needs to be set here is the
+          <code>DiskPath</code> value.  Change it to wherever you want
+          the cache to persist unused items.
+        </p><p>
+          The default region is also set to use an auxiliary called
+          <code>RFailover</code>.  This is a remote cache that is
+          designed to failover to other remote servers in a cluster:
+        </p>
+    <div class="source"><pre>
+jcs.auxiliary.RFailover=
+    org.apache.jcs.auxiliary.remote.RemoteCacheFactory
+jcs.auxiliary.RFailover.attributes=
+    org.apache.jcs.auxiliary.remote.RemoteCacheAttributes
+jcs.auxiliary.RFailover.attributes.RemoteTypeName=LOCAL
+jcs.auxiliary.RFailover.attributes.FailoverServers=
+    localhost:1102,localhost:1101
+        </pre></div>
+  <p>
+          If you don't have more than one remote server running, just
+          specify it by itself in the <code>FailoverServers</code>
+          attribute.
+        </p></div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2002-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

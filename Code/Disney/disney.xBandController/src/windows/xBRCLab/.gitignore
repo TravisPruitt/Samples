@@ -1,0 +1,7 @@
+bin/
+obj/
+xBRCLab/bin
+xBRCLab/obj
+*.user
+*.suo
+_version.txt

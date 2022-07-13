@@ -1,0 +1,11 @@
+# ! /usr/bin/bash
+#
+
+readers=$(echo /home/root/readersName.txt | grep "IP = " | grep -o "192.*")
+
+for xbr in $readers; do
+	ssh root@$xbr killall grover
+	ssh root@$xbr rm *.txt
+	scp grover root@$xbr:/usr/bin/grover
+	ssh root@$xbr grover & 
+done;

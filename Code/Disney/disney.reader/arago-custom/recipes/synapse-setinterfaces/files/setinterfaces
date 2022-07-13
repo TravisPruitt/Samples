@@ -1,0 +1,75 @@
+#!/bin/sh
+
+# call start before "networking"
+
+MYDOMAIN=192.168.3
+MYIP=$MYDOMAIN.2
+SNET=$MYDOMAIN.0
+MASK=255.255.255.0
+
+
+setinterfaces_start() {
+
+cat << HERE > /etc/network/interfaces 
+# /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
+# NOTE: This file is generated during initialization by setinterfaces 
+# The loopback interface
+auto lo
+iface lo inet loopback
+
+# Wired or wireless interfaces
+auto eth0
+iface eth0 inet static
+	address $MYIP
+	netmask $MASK
+	network $SNET
+	gateway $MYDOMAIN.1
+
+HERE
+
+cat << HERE_DHCPD > /etc/dhcp/dhcpd.conf
+
+ddns-update-style interim;
+ignore client-updates;
+
+option space SYNAPSE;
+option SYNAPSE.xbrc-url code 2 = text;
+
+class "SYNAPSE" {
+        match if option vendor-class-identifier = "SYNAPSE";
+        vendor-option-space SYNAPSE;
+        option vendor-class-identifier "SYNAPSE";
+        option SYNAPSE.xbrc-url "http://$MYIP:8080/";
+}
+
+subnet $SNET netmask $MASK
+{
+        range   $MYDOMAIN.100 $MYDOMAIN.199;
+        option routers                  $MYDOMAIN.1;
+        option subnet-mask              $MASK;
+
+        option domain-name              "xbrc-disney.com";
+        option domain-name-servers      $MYIP;
+
+        option ntp-servers              $MYIP;
+        option broadcast-address $MYDOMAIN.255;
+
+        default-lease-time 21600;
+        max-lease-time 43200;
+}
+HERE_DHCPD
+
+}
+
+setinterfaces_stop() {
+  echo ""
+}
+
+case "$1" in
+	start)	setinterfaces_start ;;
+	stop)	setinterfaces_stop ;;
+	*)
+	  echo "Usage: $0 (start|stop)"
+	  exit 1
+	;;
+esac

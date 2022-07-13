@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A5B27ADD-C603-44EC-B73D-39507C278684}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WDW.NGE.Support.Models</RootNamespace>
+    <AssemblyName>WDW.NGE.Support.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions">
+      <HintPath>..\packages\SimpleMvvmToolkit.WPF.3.1.0.0\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess">
+      <HintPath>..\packages\odp.net.managed.121.1.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleMvvmToolkit-WPF, Version=3.1.0.0, Culture=neutral, PublicKeyToken=20fad5ed49a0c3b4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SimpleMvvmToolkit.WPF.3.1.0.0\lib\net40\SimpleMvvmToolkit-WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\packages\SimpleMvvmToolkit.WPF.3.1.0.0\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CreateBandStatus.cs" />
+    <Compile Include="BulkCompareStatistics.cs" />
+    <Compile Include="BulkCompareStatusItem.cs" />
+    <Compile Include="Common\GuestIdentifier.cs" />
+    <Compile Include="Common\GuestIdentifierResult.cs" />
+    <Compile Include="Common\IGuestProfile.cs" />
+    <Compile Include="Common\Link.cs" />
+    <Compile Include="CreateBandStatusItem.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="GuestCompare.cs" />
+    <Compile Include="GuestCompareStatus.cs" />
+    <Compile Include="GxP\BatchStep.cs" />
+    <Compile Include="GxP\BookingWindow.cs" />
+    <Compile Include="GxP\EligibilityResult.cs" />
+    <Compile Include="GxP\FastPassIntegration.cs" />
+    <Compile Include="GxP\GroupEligibility.cs" />
+    <Compile Include="GxP\AttractionHeartbeat.cs" />
+    <Compile Include="GxP\HeartbeatStatus.cs" />
+    <Compile Include="GxP\IndividualEligibility.cs" />
+    <Compile Include="GxP\MessageCode.cs" />
+    <Compile Include="GxP\ParkStatus.cs" />
+    <Compile Include="IDMS\GuestLocators.cs" />
+    <Compile Include="IDMS\GuestName.cs" />
+    <Compile Include="IDMS\GuestProfile.cs" />
+    <Compile Include="IDMS\Xband.cs" />
+    <Compile Include="IDMS\XbandAssociation.cs" />
+    <Compile Include="OneView\Entitlement.cs" />
+    <Compile Include="OneView\EntitlementGuest.cs" />
+    <Compile Include="OneView\EntitlementLinks.cs" />
+    <Compile Include="OneView\GuestEligibility.cs" />
+    <Compile Include="OneView\GuestEligibilityLinks.cs" />
+    <Compile Include="OneView\GuestProfile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GxPServiceAgent.cs" />
+    <Compile Include="Services\IDMSServiceAgent.cs" />
+    <Compile Include="Services\IGuestServiceAgent.cs" />
+    <Compile Include="Services\IGxPServiceAgent.cs" />
+    <Compile Include="Services\IIDMSServiceAgent.cs" />
+    <Compile Include="Services\IOneViewServiceAgent.cs" />
+    <Compile Include="Services\IXBMSServiceAgent.cs" />
+    <Compile Include="Services\Metrics.cs" />
+    <Compile Include="Services\OneViewServiceAgent.cs" />
+    <Compile Include="Services\ServiceAgent.cs" />
+    <Compile Include="Services\ServiceCallStatus.cs" />
+    <Compile Include="Services\ServiceResult.cs" />
+    <Compile Include="Services\XBMSServiceAgent.cs" />
+    <Compile Include="xBMS\Address.cs" />
+    <Compile Include="xBMS\CustomizationSelection.cs" />
+    <Compile Include="xBMS\QualifyingId.cs" />
+    <Compile Include="xBMS\RequestAddress.cs" />
+    <Compile Include="xBMS\ResortReservation.cs" />
+    <Compile Include="xBMS\Shipment.cs" />
+    <Compile Include="xBMS\XbandDetails.cs" />
+    <Compile Include="xBMS\XbandRequestDetails.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SimpleMvvmReadme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WDW.NGE.Support.Dto\WDW.NGE.Support.Dto.csproj">
+      <Project>{030c9007-9a03-4f13-af2d-cae32e2cb1b2}</Project>
+      <Name>WDW.NGE.Support.Dto</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

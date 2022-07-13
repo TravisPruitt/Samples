@@ -1,0 +1,70 @@
+#!/bin/sh
+
+usage()
+{
+    echo
+    echo "Usage: $1 [options] <color: green|blue> <pwm>"
+    echo
+    echo "Cycles the LEDs on and off with configurable intervals"
+    echo
+    echo "Options:"
+    echo "  -h         Prints this message"
+    echo "  -c <num>   Number of cycles to repeat (default: infinite)"
+    echo "  -d <num>   Number of seconds between cycles (default: 1)"
+    echo "  -w <num>   Number of seconds to leave LED on (default: 1)"
+    echo
+}
+
+NUMCYCYLES=-1
+DELAY=1
+LED_DELAY=1
+
+# For signaling stop
+BREAK=0
+trap 'echo "Interrupting..."; BREAK=1' SIGINT
+
+while getopts "hc:d:w:" opt
+do
+    case $opt in
+        h)
+            usage; exit;
+            ;;
+        c)
+            NUMCYCLES=$OPTARG
+            ;;
+	    d)
+	        DELAY=$OPTARG
+	        ;;
+        w)
+            LED_DELAY=$OPTARG
+            ;;
+	    ?)
+	        usage; exit 1
+	        ;;
+    esac
+done
+shift $((OPTIND-1))
+
+if [ $# != 2 ]; then
+    echo "Error: Invalid number of args" >&2
+    usage; exit 1
+fi
+
+if [ "$1" != "green" -a "$1" != "blue" ]; then
+    echo "Error: Invalid LED color" >&2
+    usage; exit 1
+fi
+
+while [ "$NUMCYCLES" != "0" -a "$BREAK" != "1" ]
+do
+    # execute command green or blue
+    echo "$1 $2"
+    /mayhem/$1 $2
+    sleep $LED_DELAY
+    echo "off"
+    /mayhem/off
+    if [ $NUMCYCLES -gt 0 ]; then
+        NUMCYCLES=$((NUMCYCLES-1))
+    fi
+    sleep $DELAY
+done

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+XBRC_HOME=/usr/share/xbrc
+
+if [ `id -u` -ne 0 ]; then
+	echo "You need root privileges to run this script"
+	exit 1
+fi
+
+CLASSPATH=$(echo "$XBRC_HOME/lib"/*.jar | tr ' ' ':')
+MAIN_CLASS=com.disney.xband.xbrc.Controller.CurrentConfigDiff
+
+# run it
+java -cp $CLASSPATH -Dlog4j.configuration=file:/usr/share/xbrc/xbrcconfiglog4j.xml $MAIN_CLASS $@
+

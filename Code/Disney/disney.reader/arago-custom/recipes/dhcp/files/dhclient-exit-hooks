@@ -1,0 +1,4 @@
+#!/bin/sh
+
+[ -d /etc/dhclient-exit-hooks.d ] && run-parts /etc/dhclient-exit-hooks.d
+

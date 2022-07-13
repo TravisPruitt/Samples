@@ -1,0 +1,23 @@
+The EventDbSimulator is a java program which simulates writing xBRC event data to an Oracle database, and has been targeted to Oracle 11g r2 Express Edition. 
+
+The createevents.sql will create the Events table.
+
+The properties.xml file contains the database and run time properties as follows:
+
+connectionString: The JDBC connection string to the Oracle database, i.e. jdbc:oracle:thin:@//localhost:1521/XE to connect to the local Oracle Express instance. 
+See http://docs.oracle.com/javase/tutorial/jdbc/basics/connecting.html for addtional details. 
+
+dbuser: Name of Oracle user used to connect to the database. The user must have the appropriate permissions to connect to Oracle, as well as truncate and write data to the Events table.
+dbpassword: Password for the user.
+
+To execute the EventDbSimulator:
+
+   ./EventDbSimulator --threads 1 --duration 60 
+
+Runs a single process that simulates a single thread writing events for 60 seconds.
+
+Use:
+
+    ./EventsDbSimulator --help
+
+to get more usage information.

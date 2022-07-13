@@ -1,0 +1,2 @@
+﻿CREATE USER [EMUser] FOR LOGIN [EMUser];
+

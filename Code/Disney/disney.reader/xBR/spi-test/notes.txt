@@ -1,0 +1,50 @@
+
+
+test variations contained in a plain text file
+for example, there would be a file named "test_A" and it would contain the following:
+
+clk 250000
+radios 0 1 2 3
+data xx xx xx xx
+data [random|incrementing]
+[stop|continue]
+
+then start the test program with the following invocation:
+
+    spi-test test_A
+
+and spi would run at 250000, radios 0 1 2 3 would be exercised in that order,
+data would be random and the program would stop on an error
+
+
+    adjustable spi clock rate
+
+    selected radio(s)
+
+    new control command in the radio that simply echoes whatever the omap sends
+
+    2-transaction sequences that do the following:
+
+        omap transmits command to set the data to be echoed
+        in the next transaction ; omap ignores data it receives
+        during this first transaction
+
+        omap transmits the same command again, but with different data ;
+        the radio should respond with the data from the first echo command ;
+        if the radio does not echo the correct data, the omap stops (so the
+        last 2 transactions may be captured on a scope)
+
+        on error detected, console prints out spi clock rate, radio mux number,
+        data sent (for comparison with what may be seen on the scope), actual data
+        echoed by the radio (also may be seen on the scope), bit differences between
+        expected and actual data
+
+    optionally continue after printing out error
+
+    maybe random, incrementing or fixed data
+
+    any suggestions for the amount of data in each transaction?  I was thinking 4 bytes
+    not including the control byte - that's not too much to capture 2 such transactions
+    on a scope, is it?
+
+

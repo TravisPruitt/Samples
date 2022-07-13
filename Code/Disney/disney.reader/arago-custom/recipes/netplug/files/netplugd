@@ -1,0 +1,26 @@
+#!/bin/sh
+
+NAME=netplugd
+APP=/usr/bin/$NAME
+PID=/var/run/$NAME.pid
+
+start() {
+    echo -n "Starting $NAME: "
+    start-stop-daemon --start --quiet --background --exec $APP -- -p $PID
+    echo "."
+}
+
+stop() {
+    echo -n "Stopping $NAME: "
+    start-stop-daemon --stop --quiet --pidfile $PID
+    echo "."
+}
+
+case "$1" in
+	start)    start ;;
+	stop)     stop ;;
+	*)
+	    echo "Usage: /etc/init.d/$0 {start|stop}"
+	    exit 1
+	;;
+esac

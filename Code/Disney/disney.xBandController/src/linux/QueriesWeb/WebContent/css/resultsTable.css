@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+
+.resultTable
+{
+	width:100%;
+}
+
+th
+{
+	text-align:left;
+	padding 5px;
+	
+}
+
+.resultHeaderRow
+{
+	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border-bottom: 1px solid #2d3642;
+    border-top: 1px solid #6d84a2;
+    padding: 5px 5px 5px 5px;
+    color:white;
+    /*background-color: #194fdb !important;*/
+    background: url(../iui/t/default/toolbar.png) #6d84a2 repeat-x;
+
+}
+
+.resultRowOdd td
+{
+	background-color:#E9ECF1;
+}
+
+td
+{
+	text-align:left;
+	padding 5px;
+}

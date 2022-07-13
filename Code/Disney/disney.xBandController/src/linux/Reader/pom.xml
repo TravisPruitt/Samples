@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>Reader</artifactId>
+	<packaging>pom</packaging>
+	<parent>
+		<groupId>com.disney.xband</groupId>
+		<artifactId>xBandParent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>ant-contrib</groupId>
+			<artifactId>ant-contrib</artifactId>
+			<version>1.0b3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant-jsch</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+	</dependencies>
+ 	<build>
+        <plugins>
+            <plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+				  <execution>
+					<id>clean</id>
+					<phase>clean</phase>
+					<configuration>
+					  <target>
+						<ant antfile="build.xml" target="clean" useNativeBaseDir="true" />
+					  </target>
+					</configuration>
+					<goals>
+						<goal>run</goal>
+					</goals>
+				  </execution>
+				  <execution>
+					<id>compile</id>
+					<phase>compile</phase>
+					<configuration>
+						<tasks>
+							<taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.dependency.classpath" />
+							<if>
+							<equals arg1="${env.XB_DEV_BUILD}" arg2="true" />
+							<then>
+								<echo message="++++++ DEV BUILD ++++++" />
+								<ant antfile="./build.xml" target="devsubstitutions"/>
+							</then>
+							<else>
+								<echo message="++++++ PROD BUILD ++++++" />
+								<ant antfile="./build.xml" target="prodsubstitutions"/>
+							</else>
+							</if>
+							<ant antfile="build.xml" target="build" useNativeBaseDir="true" />
+							<attachartifact file="Debug/Reader" type="executable"/>
+						</tasks>
+					</configuration>
+					<goals>
+						<goal>run</goal>
+					</goals>
+				  </execution>
+				</executions>
+			</plugin>
+        </plugins>
+    </build>
+        <properties>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        </properties>
+</project>

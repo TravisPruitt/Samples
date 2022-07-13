@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>JCS - Lateral UDP Discovery</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="Aaron Smuts"></meta><meta name="email" content="asmuts@apache.org"></meta></head><body class="composite"><div id="banner"><a href="http://jakarta.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="./images/jakarta.png"></img></a><a href="http://jakarta.apache.org/jcs/" id="projectLogo"><span>JCS</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 30 May 2007
+                  | Doc for 1.3</div><div class="xright">
+        
+        <a href="jcs.pdf"><img title="PDF Documentation" style="border: 1px" src="images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuGeneral_Information"><h5>General Information</h5><ul><li class="none"><a href="index.html">Overview</a></li><li class="none"><a href="JCSandJCACHE.html">JCS and JCACHE</a></li><li class="none"><a href="DownloadPage.html">Downloads</a></li><li class="none"><a href="faq.html">FAQ</a></li></ul></div><div id="menuGetting_Started"><h5>Getting Started</h5><ul><li class="none"><a href="getting_started/intro.html">Overview</a></li><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="Plugins.html">Plugin Overview</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></div><div id="menuJCS_User_s_Guide"><h5>JCS User's Guide</h5><ul><li class="collapsed"><a href="LocalCacheConfig.html">Core</a></li><li class="expanded"><a href="Plugins.html">Auxiliary</a><ul><li class="none"><a href="IndexedDiskAuxCache.html">Indexed Disk Cache</a></li><li class="none"><a href="IndexedDiskCacheProperties.html">Indexed Disk Properties</a></li><li class="none"><a href="BlockDiskCache.html">Block Disk Cache</a></li><li class="none"><a href="JDBCDiskCache.html">JDBC Disk Cache</a></li><li class="none"><a href="JDBCDiskCacheProperties.html">JDBC Disk Properties</a></li><li class="none"><a href="MySQLDiskCacheProperties.html">MySQL Disk Properties</a></li><li class="none"><a href="RemoteAuxCache.html">Remote Cache</a></li><li class="none"><a href="RemoteCacheProperties.html">Remote Cache Properties</a></li><li class="none"><a href="LateralTCPAuxCache.html">Lateral TCP Cache</a></li><li class="none"><a href="LateralTCPProperties.html">Lateral TCP Properties</a></li><li class="none"><strong><a href="LateralUDPDiscovery.html">Lateral UDP Discovery</a></strong></li><li class="none"><a href="LateralJavaGroupsAuxCache.html">Lateral JGroups Cache</a></li></ul></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About JCS</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Lateral_UDP_Discovery"></a><h2>Lateral UDP Discovery</h2><p>
+		Rather than list all the other lateral servers in the configuration
+		file, you can configure the TCP lateral to use UDP
+		discovery.  In discovery mode, lateral TCP caches will broadcast
+		to a multicast address and port, letting all listeners know where they are.
+  	  </p><p>
+		On startup each lateral will issue a special message requesting a
+		broadcast from the other caches.  Normal broadcasts occur every
+		30 seconds. (This is to be made configurable.)  Regions that don't
+		receive, are running in send only mode, don't broadcast anything but requests.
+  	  </p><p>
+	    When a lateral receives a discovery message it will try to add
+	    the lateral to the nowait facade for the region.  If it already exists
+	    nothing happens.  If a region is not configured to send laterally, nothing
+		happens,  since it doesn't have a no wait.
+  	  </p><p>
+  		This allows you to have the same configuration on every machine.
+      </p><div class="subsection"><a name="Configuration"></a><h3>Configuration</h3><p>
+          The configuration is fairly straightforward and is done in the
+          auxiliary cache section of the <code>cache.ccf</code>
+          configuration file.  In the example below, I created a TCP
+          Lateral Auxiliary Cache referenced by <code>LTCP</code>.  It uses
+          UDP Discovery to locate other servers.  It broadcasts to
+          multicast address <code>228.5.6.8</code> and port <code>6780</code>.
+          It listens to port <code>1110</code>.
+        </p>
+    <div class="source"><pre>
+jcs.auxiliary.LTCP=org.apache.jcs.auxiliary.lateral.socket.tcp.LateralTCPCacheFactory
+jcs.auxiliary.LTCP.attributes=org.apache.jcs.auxiliary.lateral.socket.tcp.TCPLateralCacheAttributes
+jcs.auxiliary.LTCP.attributes.TcpListenerPort=1110
+jcs.auxiliary.LTCP.attributes.PutOnlyMode=true
+jcs.auxiliary.LTCP.attributes.UdpDiscoveryAddr=228.5.6.8
+jcs.auxiliary.LTCP.attributes.UdpDiscoveryPort=6780
+jcs.auxiliary.LTCP.attributes.UdpDiscoveryEnabled=true
+        </pre></div>
+  </div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2002-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

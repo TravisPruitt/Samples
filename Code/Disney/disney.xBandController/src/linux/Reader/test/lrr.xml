@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<configuration>
+    <controller name="first" url="http://localhost:8080" />
+    <readers start="0" end="13661600">
+        <reader name="entry-1" webport="8011" mac="00:00:00:00:80:11" type="lrr" hwtype="xBR4" fileformat="json" file="/home/ssalley/src/data/LRR_ENTRY_30Minutes.txt"/>
+        <reader name="mergelrr-1" webport="8030" mac="00:00:00:00:80:31" type="lrr" fileformat="json" file="/home/ssalley/src/data/LRR_MERGE_30Minutes.txt"/>
+        <reader name="exit-1" webport="8061" mac="00:00:00:00:80:61" type="lrr" fileformat="json" file="/home/ssalley/src/data/LRR_EXIT_30Minutes.txt"/>
+        <reader name="load1-1" webport="8071" mac="00:00:00:00:80:71" type="lrr" fileformat="json" file="/home/ssalley/src/data/LRR_LOAD_30Minutes.txt"/>
+        <reader name="invehicle-1" webport="8015" type="lrr" fileformat="json" file="/home/ssalley/src/data/LRR_INVEHICLE_30Minutes.txt"/>
+        <reader name="car-1" webport="8016" type="car" fileformat="json" file="/home/ssalley/src/data/LRR_WDI_Car_Events_30Minutes.txt"/>
+    </readers>
+</configuration>

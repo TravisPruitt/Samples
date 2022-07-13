@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "Flushing persistent client lease database"
+rm -f /var/lib/dhcp/dhclient.leases

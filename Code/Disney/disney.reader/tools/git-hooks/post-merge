@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo -e "\033[35;1mRemember to update git submodules!\033[0m"

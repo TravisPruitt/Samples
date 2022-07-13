@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<venue name="iwona" time="2013-05-01T22:22:16.298">
+  <configuration name="current" type="full">
+    <description/>
+    <properties>
+      <property class="ControllerInfo" name="preferredguestidtype"/>
+	  <property class="ControllerInfo" name="readerbatterylevelred">20</property>
+	  <property class="ControllerInfo" name="readerbatterylevelyellow">40</property>
+	  <property class="ControllerInfo" name="readerdatasendperiod_msec">150</property>
+	  <property class="ESBInfo" name="enablejms">true</property>
+	  <property class="ESBInfo" name="jmsbroker">#</property>
+	  <property class="ParkEntryModelConfig" name="castappmaxthreadpoolsize">50</property>
+	  <property class="ParkEntryModelConfig" name="castappmessagetimeoutsec">15</property>
+	  <property class="ParkEntryModelConfig" name="castappnotifytimeoutsec">5</property>
+	  <property class="ParkEntryModelConfig" name="castappresponsetimeutsec">30</property>
+	  <property class="ParkEntryModelConfig" name="castappserveraddress">localhost</property>
+	  <property class="ParkEntryModelConfig" name="castappserverobserveraddress">localhost</property>
+    </properties>
+    <readerlocationinfo>
+      <readerlocation>
+        <section/>
+        <name>Load2</name>
+        <id>8</id>
+        <type>4</type>
+        <x>76.0</x>
+        <y>76.0</y>
+        <successsequence/>
+        <successtimeout>0</successtimeout>
+        <failuresequence/>
+        <failuretimeout>0</failuretimeout>
+        <errorsequence/>
+        <errortimeout>0</errortimeout>
+        <idlesequence/>
+        <tapsequence/>
+        <taptimeout>0</taptimeout>
+        <readers/>
+      </readerlocation>
+      <readerlocation>
+        <section/>
+        <name>DeletedLocation</name>
+        <id>7</id>
+        <type>4</type>
+        <x>76.0</x>
+        <y>76.0</y>
+        <successsequence/>
+        <successtimeout>0</successtimeout>
+        <failuresequence/>
+        <failuretimeout>0</failuretimeout>
+        <errorsequence/>
+        <errortimeout>0</errortimeout>
+        <idlesequence/>
+        <tapsequence/>
+        <taptimeout>0</taptimeout>
+        <readers/>
+      </readerlocation>
+    </readerlocationinfo>
+    <images/>
+    <model>
+      <attractionModelConfig>
+		<vaLocationConfig><carsPerTrain>0</carsPerTrain><laserBreaksAfterVehicle>0</laserBreaksAfterVehicle><laserBreaksBeforeVehicle>0</laserBreaksBeforeVehicle><locationId>1</locationId><maxAnalyzeGuestEvents>10000</maxAnalyzeGuestEvents><maxAnalyzeGuestEventsPerVehicle>2</maxAnalyzeGuestEventsPerVehicle><minReadsToAssociate>2</minReadsToAssociate><onrideTimeoutSec>2</onrideTimeoutSec><requireVehicleLaserEvent>true</requireVehicleLaserEvent><trainTimeoutSec>20</trainTimeoutSec><useVehicleEventTime>false</useVehicleEventTime><vaAlgorithm>closestpeakfallback</vaAlgorithm><vehicleHoldTimeMs>1000</vehicleHoldTimeMs><vehicleTimeOffsetMs>0</vehicleTimeOffsetMs></vaLocationConfig><vaLocationConfig><carsPerTrain>0</carsPerTrain><laserBreaksAfterVehicle>0</laserBreaksAfterVehicle><laserBreaksBeforeVehicle>0</laserBreaksBeforeVehicle><locationId>7</locationId><maxAnalyzeGuestEvents>10000</maxAnalyzeGuestEvents><maxAnalyzeGuestEventsPerVehicle>2</maxAnalyzeGuestEventsPerVehicle><minReadsToAssociate>2</minReadsToAssociate><onrideTimeoutSec>2</onrideTimeoutSec><requireVehicleLaserEvent>true</requireVehicleLaserEvent><trainTimeoutSec>20</trainTimeoutSec><useVehicleEventTime>false</useVehicleEventTime><vaAlgorithm>closestpeakfallback</vaAlgorithm><vehicleHoldTimeMs>1000</vehicleHoldTimeMs><vehicleTimeOffsetMs>0</vehicleTimeOffsetMs></vaLocationConfig>
+	  </attractionModelConfig>
+    </model>
+  </configuration>
+</venue>

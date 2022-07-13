@@ -1,0 +1,10 @@
+--- dhcp-3.1.2p1/configure.org	2011-11-14 11:05:52.628591513 -0800
++++ dhcp-3.1.2p1/configure	2011-11-14 11:05:56.304668447 -0800
+@@ -103,6 +103,7 @@
+ 	     1) sysname=linux-2.1 ;;
+ 	     2) sysname=linux-2.2 ;;
+ 	     *) sysname=linux-2.2 ;;
+ 	   esac;;
++	3) sysname=linux-2.2 ;;
+       esac;;
+     SunOS)

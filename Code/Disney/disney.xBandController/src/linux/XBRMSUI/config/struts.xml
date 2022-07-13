@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="config.struts.devMode" />
+	<constant name="struts.multipart.maxSize" value="10291456" />
+	<constant name="struts.custom.i18n.resources" value="global" />
+	<constant name="struts.freemarker.templatesCache" value="true" />
+	
+	<!-- 
+		We must tell Struts to ignore requests starting with 'rest',
+		because these are restFul calls that we want handled by jersey.
+	-->
+	<constant name="struts.action.excludePattern" value="/rest/.*?"/>
+
+	<package name="default" extends="json-default">
+	
+		<result-types>
+  			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		
+		<interceptors>
+			<interceptor name="isServerSelected" class="com.disney.xband.xbrms.client.interceptor.IsServerSelectedInterceptor"/>
+			<interceptor name="denyMaintenanceRole" class="com.disney.xband.xbrms.client.interceptor.DenyMaintenanceRoleInterceptor"/>
+			<interceptor name="audit" class="com.disney.xband.xbrms.client.interceptor.AuditInterceptor"/>
+			
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="audit"/>
+				<interceptor-ref name="isServerSelected"/>
+				<interceptor-ref name="denyMaintenanceRole"/>
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+			</interceptor-stack>
+			
+			<interceptor-stack name="doNotCheckIfServerSelectedStack">
+				<interceptor-ref name="audit"/>
+				<interceptor-ref name="denyMaintenanceRole"/>
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="defaultStack" />
+		
+		<global-results>
+			<result name="Exception" type="chain">ExceptionAction</result>
+			<result name="serverNotSet" type="redirectAction">MultiHomeAction</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Throwable" result="Exception"/>
+		</global-exception-mappings>
+
+		<action name="ExceptionAction" class="com.disney.xband.xbrms.client.action.ExceptionAction">
+			<interceptor-ref name="doNotCheckIfServerSelectedStack"/>
+  			<result name="success" type="tiles">exception</result>
+  			<result name="server_unknown" type="chain">MultiHomeAction</result>
+  			<result name="ajax_error" type="httpheader">
+           		<param name="status">500</param>
+   				<param name="headers.errMsg">${errMsg}</param>
+          	</result>
+		</action>
+
+		<action name="" >
+			<result type="redirectAction">
+  				<param name="actionName">home</param>
+            	<param name="namespace">/</param>
+            </result>  			
+		</action>
+
+		<action name="MultiHomeAction" class="com.disney.xband.xbrms.client.action.MultiHomeAction">
+			<interceptor-ref name="doNotCheckIfServerSelectedStack"/>
+  			<result name="success" type="tiles">multiHome</result>
+		</action>
+		
+		<action name="home" class="com.disney.xband.xbrms.client.action.HomeAction" >
+  			<result name="success" type="tiles">home</result>
+  			<result name="setup" type="redirectAction">
+  				<param name="actionName">setup</param>
+            	<param name="namespace">/</param>
+  			</result>
+  			<result name="input" type="tiles">home</result>
+		</action>
+		
+		<action name="setup" class="com.disney.xband.xbrms.client.action.SetupAction" >
+  			<result name="success" type="tiles">setup</result>
+  			<result name="input" type="tiles">setup</result>
+		</action>
+		
+		<action name="xbrmsstatus" class="com.disney.xband.xbrms.client.action.XbrmsStatusAction" >
+  			<result name="success" type="tiles">xbrmsstatus</result>
+  			<result name="input" type="tiles">xbrmsstatus</result>
+		</action>
+		
+		<action name="xbrmsstatusclear" class="com.disney.xband.xbrms.client.action.XbrmsStatusAction" method="clear" >
+  			<result name="success" type="tiles">xbrmsstatus</result>
+  			<result name="input" type="tiles">xbrmsstatus</result>
+		</action>
+		
+		<action name="powermanagement" class="com.disney.xband.xbrms.client.action.PowerManagementAction">
+  			<result name="success" type="tiles">powermanagement</result>
+  			<result name="input" type="tiles">powermanagement</result>
+		</action>
+		
+		<action name="overrideschedule-powermanagement" method="overrideSchedule" class="com.disney.xband.xbrms.client.action.PowerManagementAction">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+			<result name="input" type="httpheader">
+				<param name="status">200</param>
+			</result>
+		</action>
+		
+		<action name="xbrchealth" class="com.disney.xband.xbrms.client.action.XbrcHealthAction">
+  			<result name="success" type="tiles">xbrcHealth</result>
+  			<result name="input" type="tiles">xbrcHealth</result>
+		</action>
+		
+		<action name="systemhealth" class="com.disney.xband.xbrms.client.action.SystemHealthAction">
+  			<result name="success" type="tiles">systemHealth</result>
+  			<result name="input" type="tiles">systemHealth</result>
+		</action>
+		
+		<action name="systemhealthajax" class="com.disney.xband.xbrms.client.action.SystemHealthAjaxAction">
+  			<result name="success" type="json"></result>
+			<result name="input" type="json"></result>
+		</action>
+		
+		<action name="xbrclisthealthajax" class="com.disney.xband.xbrms.client.action.XbrcHealthAjaxAction">
+			<result name="success">xbrcHealthAjax.jsp</result>
+			<result name="input">xbrcHealthAjax.jsp</result>
+		</action>
+		
+		<action name="xbrchealthrefresh" class="com.disney.xband.xbrms.client.action.XbrcHealthRefreshAction" >
+  			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+			<result name="input" type="httpheader">
+  				<param name="error">500</param>
+  				<param name="errorMessage">Internal server error while processing your request.</param>
+			</result>
+		</action>
+		
+		<action name="readerhealth" class="com.disney.xband.xbrms.client.action.ReaderHealthAction">
+  			<result name="success" type="tiles">readerHealth</result>
+  			<result name="input" type="tiles">readerHealth</result>
+		</action>
+		
+		<action name="readerlisthealthajax" class="com.disney.xband.xbrms.client.action.ReaderHealthAjaxAction">
+			<result name="success">readerHealthAjax.jsp</result>
+			<result name="input">readerHealthAjax.jsp</result>
+		</action>
+		
+		<action name="locationreaders" method="locationReaders" class="com.disney.xband.xbrms.client.action.ReaderHealthAjaxAction">
+			<result name="success">readerHealthAjax_locationReaders.jsp</result>
+			<result name="input">readerHealthAjax_locationReaders.jsp</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+  				<param name="headers.errMsg">${errMsg}</param>
+			</result>
+		</action>
+		
+		<action name="readerhealthrefresh" class="com.disney.xband.xbrms.client.action.ReaderHealthRefreshAction" >
+  			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+			<result name="input" type="httpheader">
+  				<param name="error">500</param>
+  				<param name="errorMessage">Internal server error while processing your request.</param>
+			</result>
+		</action>
+		
+		<action name="unassignedreaders" class="com.disney.xband.xbrms.client.action.UnassignedReadersAction">
+  			<result name="success" type="tiles">unassignedReaders</result>
+  			<result name="input" type="tiles">unassignedReaders</result>
+		</action>
+		
+		<action name="assignreaders" class="com.disney.xband.xbrms.client.action.UnassignedReadersAction" method="assign">
+			<result name="success" type="tiles">unassignedReaders</result>
+			<result name="input" type="tiles">unassignedReaders</result>
+		</action>
+
+		<action name="removexbrc" method="removeXbrc" class="com.disney.xband.xbrms.client.action.XbrcHealthAction">
+  			<result name="success" type="tiles">xbrcHealth</result>
+  			<result name="input" type="tiles">xbrcHealth</result>
+		</action>
+		
+		<action name="inactivatexbrc" method="inactivateXbrc" class="com.disney.xband.xbrms.client.action.XbrcHealthAction">
+  			<result name="success" type="tiles">xbrcHealth</result>
+  			<result name="input" type="tiles">xbrcHealth</result>
+		</action>
+		
+		<action name="removehealthitem" method="removeHealthItem" class="com.disney.xband.xbrms.client.action.SystemHealthAjaxAction">
+  			<result name="success" type="json"></result>
+			<result name="input" type="json"></result>
+		</action>
+		
+		<action name="inactivatehealthitem" method="inactivateHealthItem" class="com.disney.xband.xbrms.client.action.SystemHealthAjaxAction">
+  			<result name="success" type="json"></result>
+			<result name="input" type="json"></result>
+		</action>
+		
+		<action name="editxbrc" class="com.disney.xband.xbrms.client.action.EditXbrcAction">
+			<result name="success" type="tiles">editXbrc</result>
+			<result name="input" type="tiles">editXbrc</result>
+		</action>
+		
+		<action name="updatexbrcconfig" method="updateXbrcConfig" class="com.disney.xband.xbrms.client.action.EditXbrcAction">
+			<result name="success" type="tiles">editXbrc</result>
+			<result name="input" type="tiles">editXbrc</result>
+		</action>
+		
+		<action name="xbrccheckchange" method="xbrcCheckChange" class="com.disney.xband.xbrms.client.action.EditXbrcAction">
+			<result name="success">xbrcEditAjax.jsp</result>
+			<result name="input">xbrcEditAjax.jsp</result>
+		</action>
+		
+		<action name="xbrc" class="com.disney.xband.xbrms.client.action.XbrcAction">
+			<result name="success" type="tiles">xbrc</result>
+			<result name="input" type="tiles">xbrcHealth</result>
+		</action>
+		
+		<action name="storedconfig" class="com.disney.xband.xbrms.client.action.StoredConfigAction">
+			<interceptor-ref name="fileUpload">
+  				<param name="allowedTypes">text/xml,text/plain</param>
+				<!-- maximumSize file size in bytes -->
+				<param name="maximumSize">10024000</param>
+			</interceptor-ref>
+			<interceptor-ref name="basicStack"/>
+  			<result name="success" type="tiles">storedconfig</result>
+  			<result name="input" type="tiles">storedconfig</result>
+		</action>
+		
+		<action name="parkssetup" class="com.disney.xband.xbrms.client.action.ParksSetupAction">
+			<interceptor-ref name="doNotCheckIfServerSelectedStack"/>
+  			<result name="success" type="tiles">parkssetup</result>
+  			<result name="input" type="tiles">parkssetup</result>
+		</action>
+
+		<action name="parkssetup2" class="com.disney.xband.xbrms.client.action.ParksSetupAction">
+  			<result name="success" type="tiles">parkssetup2</result>
+  			<result name="input" type="tiles">parkssetup2</result>
+		</action>
+
+		<action name="parkssetupvalidate" class="com.disney.xband.xbrms.client.action.ParksSetupAction" method="tryServerUrl">
+  			<result name="success" type="json"></result>
+			<result name="input" type="json"></result>
+			<result name="error" type="httpheader">
+            			<param name="status">500</param>
+            			<param name="headers.errMsg">${errMsg}</param>
+        		</result>
+		</action>
+
+		<action name="getxbrcconfig" class="com.disney.xband.xbrms.client.action.GetXbrcConfigAction">
+			<result name="success">storedConfigPopulate.jsp</result>
+			<result name="input">storedConfigPopulate.jsp</result>
+		</action>
+		
+		<action name="deployxbrcconfig" class="com.disney.xband.xbrms.client.action.DeployXbrcConfigAction">
+			<result name="success">deployXbrcConfig.jsp</result>
+			<result name="input">deployXbrcConfig.jsp</result>
+		</action>
+		
+		<action name="downloadconfig" class="com.disney.xband.xbrms.client.action.DownloadConfigAction">
+			<result name="success" type="stream">
+  				<param name="contentType">text/xml</param>
+  				<param name="inputName">inputStream</param>
+  				<param name="contentDisposition">filename="xbrcConfiguration.xml"</param>
+  				<param name="bufferSize">2048</param>
+			</result>
+
+			<result name="input" type="httpheader">
+  				<param name="error">500</param>
+  				<param name="errorMessage">Internal server error while processing your request.</param>
+			</result>
+		</action>
+
+		<action name="perfmetrics" class="com.disney.xband.xbrms.client.action.PerfMetricsAction">
+			<result name="success" type="json">
+				<param name="includeProperties">metrics</param>
+			</result>
+			<result name="input" type="httpheader">perfmetrics
+  				<param name="status">500</param>
+  				<param name="headers.errMsg">${errMsg}</param>
+			</result>
+			<result name="error" type="httpheader">
+  				<param name="status">500</param>
+  				<param name="headers.errMsg">${errMsg}</param>
+			</result>
+		</action>
+
+		<action name="idms" class="com.disney.xband.xbrms.client.action.IdmsAction">
+			<result name="success" type="tiles">idms</result>
+			<result name="input" type="tiles">idms</result>
+		</action>
+
+		<action name="jmslistener" class="com.disney.xband.xbrms.client.action.JmsListenerAction">
+			<result name="success" type="tiles">jmslistener</result>
+			<result name="input" type="tiles">jmslistener</result>
+		</action>
+		
+		<action name="xbrcajax" class="com.disney.xband.xbrms.client.action.XbrcAction">
+			<result name="success">xbrcAjax.jsp</result>
+			<result name="input" type="httpheader">
+  				<param name="status">500</param>
+  				<param name="headers.errMsg">${errMsg}</param>
+			</result>
+			<result name="error" type="httpheader">
+  				<param name="status">500</param>
+  				<param name="headers.errMsg">${errMsg}</param>
+			</result>
+		</action>
+		
+		<action name="addxbrc" class="com.disney.xband.xbrms.client.action.AddXbrcAction" >
+  			<result name="success">addXbrcSave.jsp</result>
+  			<result name="input">addXbrcSave.jsp</result>
+		</action>
+		
+		<action name="addhealthitem" method="addHealthItem" class="com.disney.xband.xbrms.client.action.SystemHealthAjaxAction" >
+  			<result name="success" type="json"></result>
+			<result name="input" type="json"></result>
+		</action>		
+		
+		<action name="properties" class="com.disney.xband.xbrms.client.action.PropertiesAction" >
+  			<result name="success" type="tiles">properties</result>
+  			<result name="input" type="tiles">properties</result>
+  			<result name="error" type="tiles">properties</result>
+		</action>
+		
+		<action name="updateProperties" method="update" class="com.disney.xband.xbrms.client.action.PropertiesAction" >
+  			<result name="success" type="tiles">properties</result>
+  			<result name="input" type="tiles">properties</result>
+		</action>
+		
+		<action name="identifyreader" method="identifyReader" class="com.disney.xband.xbrms.client.action.XbrcAction">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+			<result name="input" type="httpheader">
+				<param name="status">200</param>
+			</result>
+		</action>
+		
+		<action name="restartreader" method="restartReader" class="com.disney.xband.xbrms.client.action.XbrcAction">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+			<result name="input" type="httpheader">
+				<param name="status">200</param>
+			</result>
+		</action>
+		
+		<action name="rebootreader" method="rebootReader" class="com.disney.xband.xbrms.client.action.XbrcAction">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+			<result name="input" type="httpheader">
+				<param name="status">200</param>
+			</result>
+		</action>
+		
+		<action name="identifyreader-readerhealth" method="identifyReader" class="com.disney.xband.xbrms.client.action.ReaderHealthAction">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+			<result name="input" type="httpheader">
+				<param name="status">200</param>
+			</result>
+		</action>
+		
+		<action name="identifyreader-unasignedreaders" method="identifyReader" class="com.disney.xband.xbrms.client.action.UnassignedReadersAction">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+			<result name="input" type="httpheader">
+				<param name="status">500</param>
+				<param name="headers.errMsg">${errMsg}</param>
+			</result>
+			<result name="error" type="httpheader">
+				<param name="status">500</param>
+				<param name="headers.errMsg">${errMsg}</param>
+			</result>
+		</action>
+		
+		<action name="restartreader-readerhealth" method="restartReader" class="com.disney.xband.xbrms.client.action.ReaderHealthAction">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+			<result name="input" type="httpheader">
+				<param name="status">200</param>
+			</result>
+		</action>
+		
+		<action name="rebootreader-readerhealth" method="rebootReader" class="com.disney.xband.xbrms.client.action.ReaderHealthAction">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+			<result name="input" type="httpheader">
+				<param name="status">200</param>
+			</result>
+		</action>
+		
+		<action name="replaceReader" class="com.disney.xband.xbrms.client.action.ReplaceReaderAction">
+			<result name="success" type="tiles">replacereader</result>
+  			<result name="input" type="tiles">replacereader</result>
+		</action>
+		
+		<action name="replaceReader-refresh-ajax" method="initParksAndVenues" class="com.disney.xband.xbrms.client.action.ReplaceReaderAction">
+			<result name="success" type="json"></result>
+			<result name="input" type="json"></result>
+			<result name="error" type="httpheader">
+            	<param name="status">500</param>
+            	<param name="headers.errMsg">${errMsg}</param>
+        	</result>
+		</action>
+		
+		<action name="replaceReader-venueSelected-ajax" method="initExistingReadersByVenue" class="com.disney.xband.xbrms.client.action.ReplaceReaderAction">
+			<result name="success" type="json"></result>
+			<result name="input" type="httpheader">
+            	<param name="status">400</param>
+            	<param name="headers.errMsg">${errMsg}</param>
+        	</result>
+			<result name="error" type="httpheader">
+            	<param name="status">500</param>
+            	<param name="headers.errMsg">${errMsg}</param>
+        	</result>
+		</action>
+		
+		<action name="replaceReader-existingReaderSelected-ajax" method="initReplacementReaders" class="com.disney.xband.xbrms.client.action.ReplaceReaderAction">
+			<result name="success" type="json"></result>
+			<result name="input" type="httpheader">
+            	<param name="status">400</param>
+            	<param name="headers.errMsg">${errMsg}</param>
+        	</result>
+			<result name="error" type="httpheader">
+            	<param name="status">500</param>
+            	<param name="headers.errMsg">${errMsg}</param>
+        	</result>
+		</action>
+		
+		<action name="replaceReader-runReplace-ajax" method="runReplaceReader" class="com.disney.xband.xbrms.client.action.ReplaceReaderAction">
+			<result name="success" type="json"></result>
+			<result name="input" type="httpheader">
+            	<param name="status">400</param>
+            	<param name="headers.errMsg">${errMsg}</param>
+        	</result>
+			<result name="error" type="httpheader">
+            	<param name="status">500</param>
+            	<param name="headers.errMsg">${errMsg}</param>
+        	</result>
+		</action>
+		
+		<action name="replaceReader-lightUp-ajax" method="lightUpReader" class="com.disney.xband.xbrms.client.action.ReplaceReaderAction">
+			<result name="success" type="json"></result>
+			<result name="input" type="httpheader">
+            	<param name="status">400</param>
+            	<param name="headers.errMsg">${errMsg}</param>
+        	</result>
+			<result name="error" type="httpheader">
+            	<param name="status">500</param>
+            	<param name="headers.errMsg">${errMsg}</param>
+        	</result>
+		</action>
+		
+		<action name="scheduler" class="com.disney.xband.xbrms.client.action.SchedulerAction">
+			<result name="success" type="tiles">scheduler</result>
+			<result name="input" type="tiles">scheduler</result>
+		</action>
+		
+		<action name="scheduleritems" class="com.disney.xband.xbrms.client.action.SchedulerItemsAction">
+			<result name="success">schedulerItems.jsp</result>
+			<result name="input">schedulerItems.jsp</result>
+		</action>
+		
+		<action name="scheduleritemedit" class="com.disney.xband.xbrms.client.action.SchedulerItemAction">
+			<result name="success" type="tiles">scheduleritem</result>
+			<result name="input" type="tiles">scheduleritem</result>
+			<result name="saved" type="chain">scheduler</result>
+		</action>
+		
+		<action name="schedulerlogs" class="com.disney.xband.xbrms.client.action.SchedulerLogsAction">
+			<result name="success" type="tiles">schedulerlogs</result>
+			<result name="input" type="tiles">schedulerlogs</result>
+		</action>
+		<action name="schedulerlogsajax" class="com.disney.xband.xbrms.client.action.SchedulerLogsAjaxAction">
+			<result name="success">schedulerLogsAjax.jsp</result>
+			<result name="input">schedulerLogsAjax.jsp</result>
+		</action>
+	</package>
+
+    <package name="xag" extends="struts-default" namespace="/login">
+      <result-types>
+              <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+      </result-types>
+
+      <interceptors>
+          <interceptor-stack name="defaultStack">
+              <interceptor-ref name="exception" />
+              <interceptor-ref name="servletConfig" />
+              <interceptor-ref name="prepare" />
+              <interceptor-ref name="i18n" />
+              <interceptor-ref name="chain" />
+              <interceptor-ref name="debugging" />
+              <interceptor-ref name="checkbox" />
+              <interceptor-ref name="staticParams" />
+              <interceptor-ref name="params">
+                  <param name="excludeParams">dojo\..*</param>
+              </interceptor-ref>
+              <interceptor-ref name="conversionError" />
+              <interceptor-ref name="validation">
+                  <param name="excludeMethods">input,back,cancel,browse</param>
+              </interceptor-ref>
+              <interceptor-ref name="workflow">
+                  <param name="excludeMethods">input,back,cancel,browse</param>
+              </interceptor-ref>
+          </interceptor-stack>
+      </interceptors>
+
+      <default-interceptor-ref name="defaultStack" />
+
+      <action name="login" class="com.disney.xband.ac.server.LoginValidation">
+          <result name="success" type="tiles">login</result>   
+          <result name="error" type="tiles">login</result>        
+          <result name="success-keystone" type="tiles">login-keystone</result>   
+          <result name="error-keystone" type="tiles">login-keystone</result>        
+          <result name="redirect-problem" type="tiles">redirect-problem</result>   
+      </action>
+
+      <action name="logout" class="com.disney.xband.ac.server.LoginValidation" method="logout">
+          <result name="success" type="tiles">logout</result>   
+     </action>
+
+      <action name="hello" class="com.disney.xband.ac.server.LoginValidation" method="hello">
+          <result name="success" type="httpheader">
+               <param name="status">200</param>
+          </result>
+     </action>
+
+      <action name="gettoken" class="com.disney.xband.ac.server.TokenService" method="getToken">
+          <result name="success" type="stream">
+		<param name="inputName">tokenInputStream</param>
+          </result>
+          <result name="error" type="httpheader">
+               <param name="status">401</param>
+          </result>
+          <result name="invalid" type="httpheader">
+               <param name="status">400</param>
+          </result>
+     </action>
+
+      <action name="gettokens2s" class="com.disney.xband.ac.server.TokenService" method="getTokenS2S">
+          <result name="success" type="stream">
+		<param name="inputName">tokenInputStream</param>
+          </result>
+          <result name="error" type="httpheader">
+               <param name="status">401</param>
+          </result>
+          <result name="invalid" type="httpheader">
+               <param name="status">400</param>
+          </result>
+     </action>
+
+      <action name="validatetoken" class="com.disney.xband.ac.server.TokenService" method="validateToken">
+          <result name="success" type="stream">
+		<param name="inputName">tokenInputStream</param>
+          </result>
+          <result name="error" type="httpheader">
+               <param name="status">401</param>
+          </result>
+          <result name="invalid" type="httpheader">
+               <param name="status">400</param>
+          </result>
+     </action>
+
+      <action name="validatetokens2s" class="com.disney.xband.ac.server.TokenService" method="validateTokenS2S">
+          <result name="success" type="stream">
+		<param name="inputName">tokenInputStream</param>
+          </result>
+          <result name="error" type="httpheader">
+               <param name="status">401</param>
+          </result>
+          <result name="invalid" type="httpheader">
+               <param name="status">400</param>
+          </result>
+     </action>
+
+      <action name="invalidatetoken" class="com.disney.xband.ac.server.TokenService" method="invalidateToken">
+          <result name="success" type="stream">
+		<param name="inputName">tokenInputStream</param>
+          </result>
+          <result name="error" type="httpheader">
+               <param name="status">401</param>
+          </result>
+          <result name="invalid" type="httpheader">
+               <param name="status">400</param>
+          </result>
+     </action>
+
+      <action name="invalidatetokens2s" class="com.disney.xband.ac.server.TokenService" method="invalidateTokenS2S">
+          <result name="success" type="stream">
+		<param name="inputName">tokenInputStream</param>
+          </result>
+          <result name="error" type="httpheader">
+               <param name="status">401</param>
+          </result>
+          <result name="invalid" type="httpheader">
+               <param name="status">400</param>
+          </result>
+     </action>
+    </package>
+</struts>

@@ -1,0 +1,7 @@
+
+
+
+1.1.2 - Oct 19, 2012
+    - Added one retry on failed initializations of the radio
+    - Previous version was unecessarily trying to authenticate the tag when
+      asked to read public ID only.

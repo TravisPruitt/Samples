@@ -1,0 +1,56 @@
+#!/bin/sh
+
+APP=/mayhem/dap-reader
+PID=/var/run/monitor-dap-reader.pid
+MONITOR=/mayhem/monitor-dap-reader
+
+dap_reader_start() {
+    echo -n "Starting dap-reader application: "
+
+    # install pwm driver
+    insmod /lib/modules/$(uname -r)/extra/pwm.ko frequency=100 2>/dev/null
+
+    # Enable 'tune start' and 'reset' as outputs to auto-tune tune circuit
+    devmem2 0x480020dc w 0x00040004 >/dev/null
+
+    # Enable 'tune done' as input from auto-tune circuit
+    devmem2 0x480020e0 w 0x00000104 >/dev/null
+
+    # TuneStart line 
+    echo 70 >/sys/class/gpio/export
+    sh -c "echo out >/sys/class/gpio/gpio70/direction" 2>/dev/null
+    echo 0 >/sys/class/gpio/gpio70/value
+
+    # ~RST_Relays line
+    echo 71 >/sys/class/gpio/export
+    sh -c "echo out >/sys/class/gpio/gpio71/direction" 2>/dev/null
+    echo 1 >/sys/class/gpio/gpio71/value
+
+    # TuneDone line
+    echo 72 >/sys/class/gpio/export
+    sh -c "echo in >/sys/class/gpio/gpio72/direction" 2>/dev/null
+
+    # enable core-dumps
+    ulimit -c unlimited
+
+    # run the app
+    cd /mayhem
+    start-stop-daemon --start --quiet --background --pidfile $PID -m --exec sh -- $MONITOR
+    echo "."
+}
+
+dap_reader_stop() {
+    echo -n "Stopping dap-reader application: "
+    start-stop-daemon --stop --quiet --pidfile $PID && killall dap-reader
+    echo "."
+}
+
+case "$1" in
+	start)    dap_reader_start ;;
+	stop)     dap_reader_stop ;;
+	restart)  : ;; # Called by opkg install - ignore
+	*)
+	    echo "Usage: /etc/init.d/dap-reader {start|stop}"
+	    exit 1
+	;;
+esac

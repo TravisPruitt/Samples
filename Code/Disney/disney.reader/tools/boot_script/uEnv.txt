@@ -1,0 +1,21 @@
+mlo_offs=0
+mlo_size=20000
+uboot_offs=80000
+uboot_size=200000
+kernel_offs=280000
+kernel_size=500000
+fs_offs=780000
+fs_size=F880000
+set_ecc=nandecc hw 2
+load_mlo=fatload mmc 0 ${loadaddr} MLO
+load_uboot=fatload mmc 0 ${loadaddr} u-boot.img
+load_kernel=fatload mmc 0 ${loadaddr} uImage
+load_rootfs=fatload mmc 0 ${loadaddr} rootfs.ubi
+erase_mlo=nand erase ${mlo_offs} ${mlo_size}
+erase_uboot=nand erase ${uboot_offs} ${uboot_size}
+erase_kernel=nand erase ${kernel_offs} ${kernel_size}
+erase_rootfs=nand erase ${fs_offs} ${fs_size}
+flash_system=run set_ecc ; if run load_mlo; then run erase_mlo; nand write ${loadaddr} ${mlo_offs} ${filesize}; fi ; if run load_uboot; then run erase_uboot; nand write ${loadaddr} ${uboot_offs} ${filesize}; fi ; if run load_kernel; then run erase_kernel; nand write ${loadaddr} ${kernel_offs} ${filesize}; fi ; if run load_rootfs; then run erase_rootfs; nand write ${loadaddr} ${fs_offs} ${filesize}; fi
+leds_on=i2c mw 39 3 0
+uenvcmd=run flash_system ; echo "Flashing finished!"; run leds_on ; while true; do sleep 1; done
+

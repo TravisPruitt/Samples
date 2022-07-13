@@ -1,0 +1,1 @@
+sqlcmd -S %1 -U %3 -P %4 -i xbrms-1.6.0.0001.sql -v databasename=%2 -o xbrms-1.6.0.0001.log

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+NTPDATE_CONF='/etc/default/ntpdate'
+
+if [ ! -z "$new_ntp_servers" ]; then
+    echo NTPSERVERS=\"$new_ntp_servers\" > $NTPDATE_CONF
+fi
+

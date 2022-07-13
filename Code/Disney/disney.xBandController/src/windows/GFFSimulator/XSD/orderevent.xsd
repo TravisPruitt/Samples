@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="orderevent">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Identifier of Event Type-->
+        <xs:element name="eventtypeid" type="xs:integer" />
+        <!-- Name of the Event -->
+        <xs:element name="event" type="xs:string" />
+        <!-- One Source Id of Restaurant (Facility) -->
+        <xs:element name="facilityonesourceid" type="xs:string" />
+        <!-- Source (Application) that captured the event -->
+        <xs:element name="source" type="xs:string" />
+        <!-- Source Type where order is created - Fixed/Kiosk/Mobile -->
+        <xs:element name="sourcetype" type="xs:string" minOccurs="0" />
+        <!-- Time when event is captured-->
+        <xs:element name="timestamp" type="xs:string" />
+        <!-- Time in GMT when event is captured-->
+        <xs:element name="timestampgmt" type="xs:string" />
+        <!-- Name of the device (machine name) where source application is running -->
+        <xs:element name="terminal" type="xs:string" minOccurs="0" />
+        <!-- Order Number associated with the guest and event -->
+        <xs:element name="ordernumber" type="xs:string" />
+        <!-- Details as provided by Kitchen-->
+        <xs:element name="kitcheninfo" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- Item SKU -->
+              <xs:element name="itemid" type="xs:string" minOccurs="0" />
+              <!--POS assigned number to keep count of the items on an order-->
+              <xs:element name="itemnumber" type="xs:string" minOccurs="0" />
+              <!-- Time (Seconds) taken to cook the item-->
+              <xs:element name="cooktime" type="xs:integer" minOccurs="0" />
+              <!-- POS assigned number to keep count of the courses on an order -->
+              <xs:element name="coursenumber" type="xs:string" minOccurs="0" />
+              <!-- Name of the course-->
+              <xs:element name="coursename" type="xs:string" minOccurs="0" />
+              <!-- ID given to the view (in Kitchen Builder) that triggered the event -->
+              <xs:element name="viewid" type="xs:string" minOccurs="0" />
+              <!-- Type of the view that triggered the event.
+                  Prep: These views are generally where the food is cooked.
+                  Assembler: These views are where a food items will be put together for an order, i.e., put the burger and fries together. You probably won’t have one of these.
+                  Expo: These views are where the entire order is put together (on a tray or cart) and organized for delivery.
+                  -->
+              <xs:element name="viewtype" type="xs:string" minOccurs="0" />
+              <!-- POS assigned ID (SKU) of an item modifier (i.e. rare, medium-well, small, large) -->
+              <xs:element name="modifier1id" type="xs:string" minOccurs="0" />
+              <xs:element name="modifier2id" type="xs:string" minOccurs="0" />
+              <xs:element name="modifier3id" type="xs:string" minOccurs="0" />
+              <!-- Seconds from course start time to the time the item was tagged -->
+              <xs:element name="itemtag" type="xs:string" minOccurs="0" />
+              <!-- Number (ordinal) of the item that is the parent of this item (0 if the item doesn’t have a parent) -->
+              <xs:element name="parentitemnumber" type="xs:string" minOccurs="0" />
+              <!-- Contains "Left" or "Right" to identify part of kitchen -->
+              <xs:element name="sostag" type="xs:string" minOccurs="0" />
+              <!-- State of Order /Item - Normal/ Priority/ Rush  -->
+              <xs:element name="state" type="xs:string" minOccurs="0" />
+              <!-- Order Start Time -->
+              <xs:element name="orderstarttime" type="xs:string" minOccurs="0" />
+              <!-- Order Start Time in GMT -->
+              <xs:element name="orderstarttimegmt" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <!-- Amount of Order -->
+        <xs:element name="orderamount" type="xs:double" minOccurs="0" />
+        <!-- Party Size -->
+        <xs:element name="partysize" type="xs:integer" minOccurs="0" />
+        <!-- User who updated the order -->
+        <xs:element name="user" type="xs:string" minOccurs="0" />
+        <!-- Guests of the order -->
+        <xs:element name="guests" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="guest" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <!-- Gxp Link Id of the guest-->
+                    <xs:element name="gxplinkid" type="xs:string" minOccurs="0" />
+                    <!-- XBand Id of the guest-->
+                    <xs:element name="xbandid" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <!-- Tables where guest of this order are sitting -->
+        <xs:element name="tables" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="table" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <!-- Table Id -->
+                    <xs:element name="id" type="xs:integer" minOccurs="0" />
+                    <!-- Table name -->
+                    <xs:element name="name" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

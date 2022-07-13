@@ -1,0 +1,9 @@
+/*
+* CSS file for web pages associated with band c.
+*/
+
+div.container { padding: 2em; }
+
+span.deleteLocation { float: right; clear: right; }
+
+.leftJustified .timeout {width: 80px; }

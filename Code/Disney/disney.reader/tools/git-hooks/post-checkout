@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ ! -z "`git submodule status | grep '^\+'`" ]; then
+	echo -e "\033[35;1mFollowing submodules do not match! Remember to update git submodules!\033[0m"
+	git submodule summary
+fi

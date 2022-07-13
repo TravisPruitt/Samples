@@ -1,0 +1,9 @@
+#queueAjaxContainer #guestGraph {
+ 	height: 500px; 	
+ }
+ 
+ #queueAjaxContainer #attractionPlan {
+ 	height: 500px;
+ }
+ 
+ #idBody { min-height: 500px; }

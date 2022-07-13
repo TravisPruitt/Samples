@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDMS", "IDMS\IDMS.csproj", "{A67E4807-62FA-449F-9D5D-48C36F2225C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDMSLib", "IDMSLib\IDMSLib.csproj", "{DAC727BF-7DC2-4727-8AD3-9DFA9C558C28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A67E4807-62FA-449F-9D5D-48C36F2225C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A67E4807-62FA-449F-9D5D-48C36F2225C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A67E4807-62FA-449F-9D5D-48C36F2225C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A67E4807-62FA-449F-9D5D-48C36F2225C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAC727BF-7DC2-4727-8AD3-9DFA9C558C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC727BF-7DC2-4727-8AD3-9DFA9C558C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC727BF-7DC2-4727-8AD3-9DFA9C558C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC727BF-7DC2-4727-8AD3-9DFA9C558C28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>
+Run-time parameters for Event Test
+</comment>
+
+<entry key="connectionString">jdbc:oracle:thin:@//localhost:1521/XE</entry>
+<entry key="dbuser">EMUser</entry>
+<entry key="dbpassword">Mayhem!23</entry>
+<entry key="threads">3</entry>
+<entry key="runtimeSeconds">60</entry>
+
+</properties>

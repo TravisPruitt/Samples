@@ -1,0 +1,30 @@
+#!/bin/false
+#
+# Runs the dap-reader app w/ automatic restart
+#
+# Should not be called outside of the init script; which is
+# the reason for the unusual hash bang.
+#
+
+MAX_COREDUMPS=5
+
+clean_coredumps() {
+    OLD_CWD=$PWD
+    cd /var/cores
+    ls -t | sed -e "1,${MAX_COREDUMPS}d" | xargs rm
+    cd $OLD_CWD
+}
+
+CURRENT_PID=`pidof reader`
+if [ -n "$CURRENT_PID" ]; then
+    # reader is already running; kill it
+    killall reader
+fi
+
+clean_coredumps
+
+until /mayhem/reader; do
+    logger -is -t reader -p alert "exited with code $?. Respawning."
+    clean_coredumps
+    sleep 1
+done

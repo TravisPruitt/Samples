@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AcModel>
+    <SchemaVersion>1.0.0</SchemaVersion>
+    <LastUpdated>2012-07-24T14:44:45.533-07:00</LastUpdated>
+
+    <Application>
+        <AppId>XBRMS</AppId>
+
+        <!-- Unprotected Resources -->
+        <UnprotectedUrlPattern>/css/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/fragments/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/images/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/script/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*ExceptionAction.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/rest/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/struts/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.css</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.js</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/login.*</UnprotectedUrlPattern>
+
+        <!-- Protected Resources -->
+        <Asset>
+            <AssetId>Test Page</AssetId>
+            <UrlPattern>/test\.jsp.*</UrlPattern>
+            <AllowRole>_ALL_</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>All Content</AssetId>
+            <UrlPattern>/.*</UrlPattern>
+            <AllowRole>x-admin</AllowRole>
+            <AllowRole>xbrms-admin</AllowRole>
+            <AllowRole>x-operator</AllowRole>
+            <AllowRole>xbrms-operator</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Editable Content</AssetId>
+            <DenyRole>x-operator</DenyRole>
+            <DenyRole>xbrms-operator</DenyRole>
+            <!-- Struts Actions and Views -->
+            <UrlPattern>/setup.*</UrlPattern>
+            <UrlPattern>/add.*</UrlPattern>
+            <UrlPattern>/update.*</UrlPattern>
+            <UrlPattern>/deploy.*</UrlPattern>
+            <!-- Addional Struts Views not covered by the above patterns -->
+            <UrlPattern>/.*Edit.*\.jsp</UrlPattern>
+            <UrlPattern>/assign.*</UrlPattern>
+            <UrlPattern>/storedconfig.*delete.*</UrlPattern>
+            <UrlPattern>/storedconfig.*uploadFromXbrc.*</UrlPattern>
+            <UrlPattern>/storedconfig.*uploadFromFile.*</UrlPattern>
+            <UrlPattern method="POST">/storedconfig.*</UrlPattern>
+            <UrlPattern method="PUT">/storedconfig.*</UrlPattern>
+            <UrlPattern method="DELETE">/storedconfig.*</UrlPattern>
+        </Asset>
+
+        <!--
+        <Asset>
+            <AssetId>RESTful Web Services</AssetId>
+            <IsLocalAuth>true</IsLocalAuth>
+            <UrlPattern>/facilities</UrlPattern>
+            <UrlPattern>/id</UrlPattern>
+            <UrlPattern>/id/.*</UrlPattern>
+            <UrlPattern>/ip</UrlPattern>
+            <UrlPattern>/ip/.*</UrlPattern>
+            <AllowRole>xconnect-service</AllowRole>
+        </Asset>
+        -->
+
+    </Application>
+
+    <Application>
+        <AppId>UI</AppId>
+
+        <!-- Unprotected Resources -->
+        <UnprotectedUrlPattern>/css/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/fragments/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/images/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/script/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*ExceptionAction.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/struts/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.css</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.js</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/login.*</UnprotectedUrlPattern>
+
+        <!-- Protected Resources -->
+        <Asset>
+            <AssetId>Test Page</AssetId>
+            <UrlPattern>/test\.jsp.*</UrlPattern>
+            <AllowRole>_ALL_</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>All Content</AssetId>
+            <UrlPattern>/.*</UrlPattern>
+            <AllowRole>x-admin</AllowRole>
+            <AllowRole>xbrc-admin</AllowRole>
+            <AllowRole>x-operator</AllowRole>
+            <AllowRole>xbrc-operator</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Editable Content</AssetId>
+            <DenyRole>x-operator</DenyRole>
+            <DenyRole>xbrc-operator</DenyRole>
+            <!-- Struts Actions and Views -->
+            <UrlPattern>/attractionedit.*</UrlPattern>
+            <UrlPattern>/attractioneditajax.*</UrlPattern>
+            <UrlPattern>/griditemedit.*</UrlPattern>
+            <UrlPattern>/griditemsave.*</UrlPattern>
+            <UrlPattern>/gainupdate.*</UrlPattern>
+            <UrlPattern>/thresholdupdate.*</UrlPattern>
+            <UrlPattern>/removereader.*</UrlPattern>
+            <UrlPattern>/deletereader.*</UrlPattern>
+            <UrlPattern>/replacereader.*</UrlPattern>
+            <UrlPattern>/addreader.*</UrlPattern>
+            <UrlPattern>/transmitreadersave.*</UrlPattern>
+            <UrlPattern>/savetransmitcommand.*</UrlPattern>
+            <UrlPattern>/deletetransmitcommand.*</UrlPattern>
+            <UrlPattern>/locationsave.*</UrlPattern>
+            <UrlPattern>/deletelocation.*</UrlPattern>
+            <UrlPattern>/readersave.*</UrlPattern>
+            <UrlPattern>/newlocation.*</UrlPattern>
+            <UrlPattern>/newlocationsave.*</UrlPattern>
+            <UrlPattern>/newreader.*</UrlPattern>
+            <UrlPattern>/newreadersave.*</UrlPattern>
+            <!-- Addional Struts Views not covered by the above patterns -->
+            <UrlPattern>/.*Edit.*\.jsp</UrlPattern>
+            <UrlPattern>/.*Save.*\.jsp</UrlPattern>
+        </Asset>
+
+    </Application>
+
+    <Application>
+        <AppId>xi</AppId>
+
+        <!-- Unprotected Resources -->
+        <UnprotectedUrlPattern>/1/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/logos/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.png</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.css</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.otf</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.html</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/index.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/struts/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*ExceptionAction.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/login.*</UnprotectedUrlPattern>
+
+        <!-- Protected Resources -->
+        <Asset>
+            <AssetId>Test Page</AssetId>
+            <UrlPattern>/test\.jsp.*</UrlPattern>
+            <AllowRole>_ALL_</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>All Content</AssetId>
+            <UrlPattern>/.*</UrlPattern>
+            <AllowRole>x-admin</AllowRole>
+            <AllowRole>xi-admin</AllowRole>
+            <AllowRole>x-operator</AllowRole>
+            <AllowRole>xi-operator</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Application Configuration Content</AssetId>
+            <DenyRole>x-operator</DenyRole>
+            <DenyRole>xi-operator</DenyRole>
+            <!-- Struts Actions and Views -->
+            <UrlPattern>/config.*</UrlPattern>
+        </Asset>
+
+    </Application>
+
+    <Application>
+        <AppId>IDMS</AppId>
+
+        <UnprotectedUrlPattern>/login.*</UnprotectedUrlPattern>
+
+        <Asset>
+            <AssetId>Test Page</AssetId>
+            <UrlPattern>/test.jsp</UrlPattern>
+            <AllowRole>_ALL_</AllowRole>
+        </Asset>
+
+    </Application>
+
+</AcModel>

@@ -1,0 +1,112 @@
+/*
+	xBreadcrumbs (Extended Breadcrumbs) jQuery Plugin
+	� 2009 ajaxBlender.com
+	For any questions please visit www.ajaxblender.com 
+	or email us at support@ajaxblender.com
+*/
+
+.xbreadcrumbs {
+	position: relative;
+	z-index: 1000;	
+}
+.xbreadcrumbs UL {
+	display: none;
+}
+.xbreadcrumbs LI UL { 
+	position: absolute;
+	float: left;	
+}
+.xbreadcrumbs, .xbreadcrumbs LI, .xbreadcrumbs UL, .xbreadcrumbs UL LI {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.xbreadcrumbs { clear: both; }
+.xbreadcrumbs, .xbreadcrumbs LI {
+	float: left;
+}
+
+/*  Base style of xBreadcrumbs  */
+/*  Top Level  */
+.xbreadcrumbs {
+	width: 100%;
+}
+
+.xbreadcrumbs LI A {
+	font-size: 12px;
+	line-height: 32px;
+	color: #262626;
+	text-decoration: none;
+}
+.xbreadcrumbs LI A:HOVER, .xbreadcrumbs LI.hover A {
+	color: #0A8ECC;
+}
+/*  Top Level - Current Page  */
+.xbreadcrumbs LI.current A {
+	color: #333333;
+	font-weight: bold;
+}
+/*  Sub-level  */
+.xbreadcrumbs LI UL {
+	padding: 3px;
+	background: #e2e2e2;
+	font-size: 11px;
+	width: 140px;
+	top: 25px;
+	border: 1px solid #CCCCCC;
+}
+.xbreadcrumbs LI UL LI {
+	float: left;
+	width: 100%;
+	border-right: none;
+	height: auto;
+}
+.xbreadcrumbs LI UL LI A {
+	text-decoration: none;
+	color: #101010 !important;
+	display: block;
+	padding: 0px;
+	border-bottom: 1px dotted #CCCCCC;
+}
+.xbreadcrumbs LI UL LI:last-child A {
+	border-bottom: none;
+}
+.xbreadcrumbs LI UL LI A:HOVER {
+    background: #d0d0d0;
+}
+
+.xbreadcrumbs LI {
+	padding: 0; margin: 1px 0 0 0;
+	z-index: 1001;
+	text-align: center;
+}
+.xbreadcrumbs LI.only {
+	height: 32px; width: 130px;
+	background: url("../login/bc-only.png") no-repeat left center;
+}
+.xbreadcrumbs LI.first {
+	height: 32px; width: 120px;
+	background: url("../login/bc-first.png") no-repeat left center;
+}
+.xbreadcrumbs LI.middle {
+	height: 32px; width: 120px;
+	background: url("../login/bc-middle.png") no-repeat left center;
+}
+.xbreadcrumbs LI.last {
+	height: 32px; width: 132px;
+	background: url("../login/bc-last.png") no-repeat left center;
+}
+
+.xbreadcrumbs LI.current { 
+	background: none; 
+}
+
+.xbreadcrumbs LI UL LI { 
+	background: none; 
+}
+
+.xbreadcrumbs LI A.home {
+    background: url("../login/home.gif") no-repeat left center;
+    padding-left: 25px;
+    z-index: 1001;
+}

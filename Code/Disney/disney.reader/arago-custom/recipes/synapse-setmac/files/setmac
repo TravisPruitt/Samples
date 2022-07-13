@@ -1,0 +1,86 @@
+#!/bin/sh
+
+get_dieid_byte() {
+  addr=$((0x4830a218 + $1))
+  devmem2 $addr byte|awk '/^Read/ { print $6 }'|cut -b 3,4
+}
+
+generate_mac() {
+  offset=$1
+
+  MAC=02
+  MAC=$MAC:`get_dieid_byte 0`
+  MAC=$MAC:`get_dieid_byte 1`
+  MAC=$MAC:`get_dieid_byte 2`
+  MAC=$MAC:`get_dieid_byte 3`
+  MAC=$MAC:$(printf "%02x" $((0x`get_dieid_byte 4` + $offset)))
+  
+  echo $MAC
+}
+
+# Checks if MAC address in interface is locally administered
+needs_mac_address() {
+  interface=$1
+  MAC=$(ifconfig $interface|awk '/HWaddr/ { print $5 }')
+  FIRST_BYTE=0x$(echo $MAC|awk -F : '{ print $1 }')
+  # Check if MAC is locally administered
+  RESULT=$(($FIRST_BYTE & 0x02))
+
+  if [ $RESULT -eq 0 ]; then
+    # Non-zero is failure, no mac address needed
+    return 1
+  else
+    # Zero is success, we need mac address
+    return 0
+  fi
+}
+
+get_mac() {
+  #  Use the serial number of the OMAP to create
+  #  a unit-specific locally-administered MAC address
+  offset=$1
+  if [ -z "$offset" ]; then
+    offset=0
+  fi
+  generate_mac $offset
+}
+
+# 1. If MAC address file exists use it
+# 2. If interface already has a valid MAC address, leave it
+# 3. If not, generate new one from OMAP serial # 
+check_interface() {
+  local IF=$1
+  local MAC=""
+
+  local offs=`expr index $IF 0123456789`
+  offs=`expr substr $IF $offs 1`
+
+  if [ -f /etc/init.d/mac ]; then
+    MAC=$(cat /etc/init.d/mac)
+  elif ( needs_mac_address "$IF" ); then
+    MAC=$(get_mac $offs)
+  fi
+
+  # Set MAC if needed
+  if [ ! -z "$MAC" ]; then
+    ifconfig $IF hw ether $MAC
+  fi
+}
+
+setmac_start() {
+  check_interface "eth0"
+  check_interface "eth1"
+}
+
+setmac_stop() {
+  echo ""
+}
+
+case "$1" in
+	start)	setmac_start ;;
+	stop)	  setmac_stop ;;
+	*)
+	  echo "Usage: $0 (start|stop)"
+	  exit 1
+	;;
+esac

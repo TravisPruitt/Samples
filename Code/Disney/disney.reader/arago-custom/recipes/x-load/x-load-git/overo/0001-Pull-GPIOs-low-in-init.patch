@@ -1,0 +1,31 @@
+--- git//board/overo/overo.c	2011-05-23 04:53:15.000000000 -0700
++++ x-load-mod//board/overo/overo.c	2011-10-21 12:53:04.539373714 -0700
+@@ -96,6 +96,8 @@
+  *****************************************/
+ int board_init(void)
+ {
++	omap_set_gpio_direction(144, 0);
++	omap_set_gpio_direction(147, 0);
+ 	return 0;
+ }
+ 
+@@ -852,8 +854,8 @@
+ #endif
+ 
+ 	/* Enable GPIO 4, 5, & 6 clocks */
+-	sr32(CM_FCLKEN_PER, 17, 3, 0x7);
+-	sr32(CM_ICLKEN_PER, 17, 3, 0x7);
++	sr32(CM_FCLKEN_PER, 13, 5, 0x1F);
++	sr32(CM_ICLKEN_PER, 13, 5, 0x1F);
+ 
+ #ifdef CONFIG_DRIVER_OMAP34XX_I2C
+ 	/* Turn on all 3 I2C clocks */
+@@ -1054,6 +1056,8 @@
+ void set_muxconf_regs(void)
+ {
+ 	MUX_DEFAULT();
++	MUX_VAL(CP(UART2_CTS),		(IEN  | PTD | EN  | M4)); /*GPIO_144 - LCD_EN*/
++	MUX_VAL(CP(UART2_RX),		(IEN  | PTD | EN  | M4)); /*GPIO_147*/
+ }
+ 
+ /**********************************************************

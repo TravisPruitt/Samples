@@ -1,0 +1,8 @@
+{
+  "name": "rdata",
+  "version": "0.0.2",
+  "description": "Generate test data using stochastic methods",
+  "author": "Scott Salley <scottsa@synapse.com>",
+  "engine": "node >= 0.4.1",
+  "main": "./rdata.js"
+}

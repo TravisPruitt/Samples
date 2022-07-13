@@ -1,0 +1,5 @@
+mysql -u root Mayhem -e "delete from Location where name = 'UNKNOWN'"
+mysql -u root Mayhem -e "insert into Location VALUES (0,0,'UNKNOWN',0, 1,1,0,0)"
+mysql -u root Mayhem -e "update Location set id='0' where name='UNKNOWN'"
+mysql -u root Mayhem -e "create user 'outsider'@'%' identified by 'Crrctv11'"
+mysql -u root Mayhem -e "grant all privileges on *.* to 'outsider'@'%'"

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="GxpStub">
+
+<!--- Properties -->	
+	
+	<property environment="env"/>
+	<property name="debuglevel" value="source,lines,vars"/>
+	<property name="target" value="1.6"/>
+	<property name="source" value="1.6"/>
+	<property name="dir.test.src" location="src"/>
+	<property name="dir.test.classes" location="bin"/>
+	
+	
+<!--- Classpaths -->
+	
+    <path id="Gxp.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="lib/commons-beanutils.jar"/>
+        <pathelement location="lib/commons-collections3.jar"/>
+        <pathelement location="lib/commons-lang-2.4.jar"/>
+        <pathelement location="lib/commons-logging-1.1.1.jar"/>
+        <pathelement location="lib/ezmorph.jar"/>
+        <pathelement location="lib/json-lib.jar"/>
+    	<pathelement location="lib/log4j.jar"/>
+		<pathelement location="lib/simple-4.1.21.jar" />
+    </path>
+	
+<!--- Targets -->
+	
+	<!-- Builds the xbrc code -->
+    <target depends="init" name="build">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="Gxp.classpath"/>
+        </javac>
+    </target>
+	
+	<!-- Creates the output directory and copies non-java sources files into it -->
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+	
+	<!-- Removes the output directory -->
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+
+	<!-- Runs GxpStub -->
+    <target name="GxpStub">
+        <java classname="com.disney.xband.gxp.Gxp" failonerror="true" fork="yes">
+            <classpath refid="Gxp.classpath"/>
+        </java>
+    </target>
+	
+	<!-- Tests GxpStub -->
+    <target name="test">
+        <java classname="com.disney.xband.gxp.test.Test" failonerror="true" fork="yes">
+            <classpath refid="Gxp.classpath"/>
+        </java>
+    </target>
+	
+</project>

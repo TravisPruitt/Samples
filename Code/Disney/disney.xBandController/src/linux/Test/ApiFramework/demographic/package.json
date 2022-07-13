@@ -1,0 +1,11 @@
+{
+  "name": "demographic",
+  "version": "0.0.1",
+  "description": "Provide demographic data such as names",
+  "author": "Scott Salley <scottsa@synapse.com>",
+  "engine": "node >= 0.4.1",
+  "main": "./demographic.js",
+  "directories": {
+    "data": "data"
+  }
+}

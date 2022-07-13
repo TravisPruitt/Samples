@@ -1,0 +1,67 @@
+#!
+
+WL12XX=/lib/modules/$(uname -r)/kernel/drivers/net/wireless/wl12xx/wl12xx.ko
+WL12XX_SDIO=/lib/modules/$(uname -r)/kernel/drivers/net/wireless/wl12xx/wl12xx_sdio.ko
+NVS=/lib/firmware/ti-connectivity/wl1271-nvs.bin
+INI_FILE=/usr/share/grover-wifi/grover.ini
+CALIBRATOR=/usr/bin/calibrator
+
+UDEV_RULE=/etc/udev/rules.d/70-persistent-net.rules
+
+get_mac_byte() {
+	addr=$((0x44e10638 + $1))
+	devmem2 $addr byte|awk '/^Read/ { print $6 }'|cut -b 3,4
+}
+
+get_fuse_mac() {
+	MAC=`get_mac_byte 4`
+	MAC=$MAC:`get_mac_byte 5`
+	MAC=$MAC:`get_mac_byte 6`
+	MAC=$MAC:`get_mac_byte 7`
+	MAC=$MAC:`get_mac_byte 0`
+	MAC=$MAC:`get_mac_byte 1`
+	echo $MAC
+}
+
+calibrate() {
+	if [ ! -x $CALIBRATOR ]; then
+		echo "Cannot find $CALIBRATOR"
+		return 1
+	fi
+
+	# Delete persistent udev rule file
+	rm -f $UDEV_RULE
+
+	MAC=$(get_fuse_mac)
+	
+	$CALIBRATOR plt autocalibrate wlan0 $WL12XX_SDIO $INI_FILE $NVS $MAC
+}
+
+case "$1" in
+	start)
+		if [ ! -f $WL12XX ]; then
+			echo "Cannot find wl12xx driver module!"
+			exit 0
+		fi
+		if [ ! -f $WL12XX_SDIO ]; then
+			echo "Cannot find wl12xx sdio driver module!"
+			exit 0
+		fi
+
+		insmod $WL12XX
+		if [ ! -s $NVS ]; then
+			calibrate
+		fi
+		if [ ! -s $NVS ]; then
+			echo "Calibration failed!"
+			exit 1
+		fi
+		insmod $WL12XX_SDIO
+	;;
+
+	stop)
+		ifconfig wlan0 down
+		rmmod $WL12XX_SDIO
+		rmmod $WL12XX
+	;;
+esac

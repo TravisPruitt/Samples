@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SeedData>
+  <TravelSegmentId>677000000</TravelSegmentId>
+  <TravelComponentId>577000000</TravelComponentId>
+  <TravelPlanId>10000</TravelPlanId>
+  <TransactionalGuestId>25000</TransactionalGuestId>
+  <SecureId>10000000000000</SecureId>
+  <PublicId>900000000000</PublicId>
+  <ShortRangeTag>3600000000</ShortRangeTag>
+  <ExternalNumber>38269616128</ExternalNumber>
+</SeedData>

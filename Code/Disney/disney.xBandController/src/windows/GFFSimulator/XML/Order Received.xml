@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-16"?>
+<businessEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <event_type>CHANGE</event_type>
+  <subtype />
+  <location>GFF.XI.KITCHENMANAGEMENT</location>
+  <timestamp>2012-06-18T16:48:41.795</timestamp>
+  <reference_id>-121-51-201248181648</reference_id>
+  <payLoad>
+    <![CDATA[<orderevent>
+  <eventtypeid>6</eventtypeid>
+  <event>Order Received</event>
+  <facilityonesourceid>80007936</facilityonesourceid>
+  <source>Kitchen</source>
+  <timestamp>Jun 25 2012  5:59PM</timestamp>
+  <timestampgmt>Jun 25 2012 12:29PM</timestampgmt>
+  <ordernumber>130</ordernumber>
+  <kitcheninfo>
+    <coursenumber>123</coursenumber>
+    <coursename>CourseName</coursename>
+    <orderstarttime>2012-05-30T09:00:00</orderstarttime>
+    <orderstarttimegmt>2012-05-30T04:00:00</orderstarttimegmt>
+  </kitcheninfo>
+</orderevent>
+]]>
+  </payLoad>
+</businessEvent>

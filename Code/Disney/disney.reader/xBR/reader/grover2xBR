@@ -1,0 +1,9 @@
+# ! /usr/bin/bash
+#
+
+remote=root@192.168.3.$1
+
+
+ssh $remote /etc/init.d/grover stop
+scp *.cpp *.h .gdbinit eval.awk $remote:/home/root
+scp grover $remote:/usr/bin

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<venue>
+ <configuration name="current" type="incremental">
+  <description/>
+  <properties>
+   <property class="AttractionModelConfig" name="gxpurl">#http://10.110.1.116:8081/dap/services/redemption</property>
+   <property class="ControllerInfo" name="xviewurl">#http://10.110.1.103:8090/IDMS</property>
+   <property class="ESBInfo" name="jmsbroker">#10.110.1.2:2506</property>
+   <property class="UIConfig" name="xviewurl">#http://10.110.1.103:8090/IDMS</property>
+  </properties>
+ </configuration>
+</venue>
+

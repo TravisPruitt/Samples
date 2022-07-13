@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="XViewModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="XViewModelStoreContainer">
+          <EntitySet Name="guest" EntityType="XViewModel.Store.guest" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="guest_info" EntityType="XViewModel.Store.guest_info" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="guest_xband" EntityType="XViewModel.Store.guest_xband" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="source_type" EntityType="XViewModel.Store.source_type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="xband" EntityType="XViewModel.Store.xband" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_guest_info_guest" Association="XViewModel.Store.FK_guest_info_guest">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="guest_info" EntitySet="guest_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_xband_guest" Association="XViewModel.Store.FK_guest_xband_guest">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="guest_xband" EntitySet="guest_xband" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_xband_xband" Association="XViewModel.Store.FK_guest_xband_xband">
+            <End Role="xband" EntitySet="xband" />
+            <End Role="guest_xband" EntitySet="guest_xband" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="guest">
+          <Key>
+            <PropertyRef Name="guestId" />
+          </Key>
+          <Property Name="guestId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="200" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="200" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="active" Type="bit" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+          <Property Name="sourceId" Type="nvarchar" MaxLength="200" />
+          <Property Name="sourceTypeId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="guest_info">
+          <Key>
+            <PropertyRef Name="guestInfoId" />
+          </Key>
+          <Property Name="guestInfoId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="bigint" Nullable="false" />
+          <Property Name="cellPhone" Type="nvarchar" MaxLength="15" />
+          <Property Name="address1" Type="nvarchar" MaxLength="200" />
+          <Property Name="address2" Type="nvarchar" MaxLength="200" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" />
+          <Property Name="state" Type="nvarchar" MaxLength="3" />
+          <Property Name="countryCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="postalCode" Type="nvarchar" MaxLength="12" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+          <Property Name="sourceId" Type="nvarchar" MaxLength="200" />
+          <Property Name="sourceTypeId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="guest_xband">
+          <Key>
+            <PropertyRef Name="guest_xband_id" />
+          </Key>
+          <Property Name="guest_xband_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="bigint" />
+          <Property Name="xbandId" Type="bigint" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+          <Property Name="sourceId" Type="nvarchar" MaxLength="200" />
+          <Property Name="sourceTypeId" Type="bigint" />
+          <Property Name="active" Type="bit" />
+        </EntityType>
+        <EntityType Name="source_type">
+          <Key>
+            <PropertyRef Name="sourceTypeId" />
+          </Key>
+          <Property Name="sourceTypeId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="sourceTypeName" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="xband">
+          <Key>
+            <PropertyRef Name="xbandId" />
+          </Key>
+          <Property Name="xbandId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bandId" Type="bigint" />
+          <Property Name="longRangeId" Type="bigint" />
+          <Property Name="tapId" Type="bigint" />
+          <Property Name="secureId" Type="bigint" />
+          <Property Name="UID" Type="bigint" />
+          <Property Name="bandFriendlyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="printedName" Type="nvarchar" MaxLength="255" />
+          <Property Name="active" Type="bit" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+          <Property Name="sourceId" Type="nvarchar" MaxLength="200" />
+          <Property Name="sourceTypeId" Type="bigint" />
+        </EntityType>
+        <Association Name="FK_guest_info_guest">
+          <End Role="guest" Type="XViewModel.Store.guest" Multiplicity="1" />
+          <End Role="guest_info" Type="XViewModel.Store.guest_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_info">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_xband_guest">
+          <End Role="guest" Type="XViewModel.Store.guest" Multiplicity="0..1" />
+          <End Role="guest_xband" Type="XViewModel.Store.guest_xband" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_xband">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_xband_xband">
+          <End Role="xband" Type="XViewModel.Store.xband" Multiplicity="0..1" />
+          <End Role="guest_xband" Type="XViewModel.Store.guest_xband" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="xband">
+              <PropertyRef Name="xbandId" />
+            </Principal>
+            <Dependent Role="guest_xband">
+              <PropertyRef Name="xbandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="XViewModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="XViewEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="guests" EntityType="XViewModel.guest" />
+          <EntitySet Name="guest_info" EntityType="XViewModel.guest_info" />
+          <EntitySet Name="guest_xband" EntityType="XViewModel.guest_xband" />
+          <EntitySet Name="source_type" EntityType="XViewModel.source_type" />
+          <EntitySet Name="xbands" EntityType="XViewModel.xband" />
+          <AssociationSet Name="FK_guest_info_guest" Association="XViewModel.FK_guest_info_guest">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="guest_info" EntitySet="guest_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_xband_guest" Association="XViewModel.FK_guest_xband_guest">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="guest_xband" EntitySet="guest_xband" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_xband_xband" Association="XViewModel.FK_guest_xband_xband">
+            <End Role="xband" EntitySet="xbands" />
+            <End Role="guest_xband" EntitySet="guest_xband" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="guest">
+          <Key>
+            <PropertyRef Name="guestId" />
+          </Key>
+          <Property Type="Int64" Name="guestId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="lastName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="firstName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DOB" />
+          <Property Type="Boolean" Name="active" />
+          <Property Type="String" Name="createdBy" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="createdDate" />
+          <Property Type="String" Name="updatedBy" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="updatedDate" />
+          <Property Type="String" Name="sourceId" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="sourceTypeId" />
+          <NavigationProperty Name="guest_info" Relationship="XViewModel.FK_guest_info_guest" FromRole="guest" ToRole="guest_info" />
+          <NavigationProperty Name="guest_xband" Relationship="XViewModel.FK_guest_xband_guest" FromRole="guest" ToRole="guest_xband" />
+        </EntityType>
+        <EntityType Name="guest_info">
+          <Key>
+            <PropertyRef Name="guestInfoId" />
+          </Key>
+          <Property Type="Int64" Name="guestInfoId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="guestId" Nullable="false" />
+          <Property Type="String" Name="cellPhone" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="address1" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="address2" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="city" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="state" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="countryCode" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="postalCode" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="createdBy" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="createdDate" />
+          <Property Type="String" Name="updatedBy" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="updatedDate" />
+          <Property Type="String" Name="sourceId" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="sourceTypeId" />
+        </EntityType>
+        <EntityType Name="guest_xband">
+          <Key>
+            <PropertyRef Name="guest_xband_id" />
+          </Key>
+          <Property Type="Int64" Name="guest_xband_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="guestId" />
+          <Property Type="Int64" Name="xbandId" />
+          <Property Type="String" Name="createdBy" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="createdDate" />
+          <Property Type="String" Name="updatedBy" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="updatedDate" />
+          <Property Type="String" Name="sourceId" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="sourceTypeId" />
+          <Property Type="Boolean" Name="active" />
+        </EntityType>
+        <EntityType Name="source_type">
+          <Key>
+            <PropertyRef Name="sourceTypeId" />
+          </Key>
+          <Property Type="Int64" Name="sourceTypeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="sourceTypeName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="createdBy" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="createdDate" />
+          <Property Type="String" Name="updatedBy" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="updatedDate" />
+        </EntityType>
+        <EntityType Name="xband">
+          <Key>
+            <PropertyRef Name="xbandId" />
+          </Key>
+          <Property Type="Int64" Name="xbandId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="bandId" />
+          <Property Type="Int64" Name="longRangeId" />
+          <Property Type="Int64" Name="tapId" />
+          <Property Type="Int64" Name="secureId" />
+          <Property Type="Int64" Name="UID" />
+          <Property Type="String" Name="bandFriendlyName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="printedName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="active" />
+          <Property Type="String" Name="createdBy" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="createdDate" />
+          <Property Type="String" Name="updatedBy" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="updatedDate" />
+          <Property Type="String" Name="sourceId" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="sourceTypeId" />
+          <NavigationProperty Name="guest_xband" Relationship="XViewModel.FK_guest_xband_xband" FromRole="xband" ToRole="guest_xband" />
+        </EntityType>
+        <Association Name="FK_guest_info_guest">
+          <End Type="XViewModel.guest" Role="guest" Multiplicity="1" />
+          <End Type="XViewModel.guest_info" Role="guest_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_info">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_xband_guest">
+          <End Type="XViewModel.guest" Role="guest" Multiplicity="0..1" />
+          <End Type="XViewModel.guest_xband" Role="guest_xband" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_xband">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_xband_xband">
+          <End Type="XViewModel.xband" Role="xband" Multiplicity="0..1" />
+          <End Type="XViewModel.guest_xband" Role="guest_xband" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="xband">
+              <PropertyRef Name="xbandId" />
+            </Principal>
+            <Dependent Role="guest_xband">
+              <PropertyRef Name="xbandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="XViewModelStoreContainer" CdmEntityContainer="XViewEntities">
+          <EntitySetMapping Name="guests">
+            <EntityTypeMapping TypeName="XViewModel.guest">
+              <MappingFragment StoreEntitySet="guest">
+                <ScalarProperty Name="sourceTypeId" ColumnName="sourceTypeId" />
+                <ScalarProperty Name="sourceId" ColumnName="sourceId" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="guestId" ColumnName="guestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="guest_info">
+            <EntityTypeMapping TypeName="XViewModel.guest_info">
+              <MappingFragment StoreEntitySet="guest_info">
+                <ScalarProperty Name="sourceTypeId" ColumnName="sourceTypeId" />
+                <ScalarProperty Name="sourceId" ColumnName="sourceId" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+                <ScalarProperty Name="countryCode" ColumnName="countryCode" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="address2" ColumnName="address2" />
+                <ScalarProperty Name="address1" ColumnName="address1" />
+                <ScalarProperty Name="cellPhone" ColumnName="cellPhone" />
+                <ScalarProperty Name="guestId" ColumnName="guestId" />
+                <ScalarProperty Name="guestInfoId" ColumnName="guestInfoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="guest_xband">
+            <EntityTypeMapping TypeName="XViewModel.guest_xband">
+              <MappingFragment StoreEntitySet="guest_xband">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="sourceTypeId" ColumnName="sourceTypeId" />
+                <ScalarProperty Name="sourceId" ColumnName="sourceId" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="xbandId" ColumnName="xbandId" />
+                <ScalarProperty Name="guestId" ColumnName="guestId" />
+                <ScalarProperty Name="guest_xband_id" ColumnName="guest_xband_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="source_type">
+            <EntityTypeMapping TypeName="XViewModel.source_type">
+              <MappingFragment StoreEntitySet="source_type">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="sourceTypeName" ColumnName="sourceTypeName" />
+                <ScalarProperty Name="sourceTypeId" ColumnName="sourceTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xbands">
+            <EntityTypeMapping TypeName="XViewModel.xband">
+              <MappingFragment StoreEntitySet="xband">
+                <ScalarProperty Name="sourceTypeId" ColumnName="sourceTypeId" />
+                <ScalarProperty Name="sourceId" ColumnName="sourceId" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="printedName" ColumnName="printedName" />
+                <ScalarProperty Name="bandFriendlyName" ColumnName="bandFriendlyName" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="secureId" ColumnName="secureId" />
+                <ScalarProperty Name="tapId" ColumnName="tapId" />
+                <ScalarProperty Name="longRangeId" ColumnName="longRangeId" />
+                <ScalarProperty Name="bandId" ColumnName="bandId" />
+                <ScalarProperty Name="xbandId" ColumnName="xbandId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="XViewModel.guest" Width="1.5" PointX="0.75" PointY="6" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="XViewModel.guest_info" Width="1.5" PointX="3" PointY="5.75" Height="3.9033007812499996" />
+        <EntityTypeShape EntityType="XViewModel.guest_xband" Width="1.5" PointX="6" PointY="6.125" Height="2.9417936197916656" />
+        <EntityTypeShape EntityType="XViewModel.source_type" Width="1.5" PointX="5.75" PointY="10.25" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="XViewModel.xband" Width="1.5" PointX="3.75" PointY="0.75" Height="4.095602213541671" />
+        <AssociationConnector Association="XViewModel.FK_guest_info_guest" >
+          <ConnectorPoint PointX="2.25" PointY="7.7593489583333337" />
+          <ConnectorPoint PointX="3" PointY="7.7593489583333337" />
+        </AssociationConnector>
+        <AssociationConnector Association="XViewModel.FK_guest_xband_guest" >
+          <ConnectorPoint PointX="1.5" PointY="6" />
+          <ConnectorPoint PointX="1.5" PointY="5.5" />
+          <ConnectorPoint PointX="5.625" PointY="5.5" />
+          <ConnectorPoint PointX="5.625" PointY="7.5958968098958337" />
+          <ConnectorPoint PointX="6" PointY="7.5958968098958337" />
+        </AssociationConnector>
+        <AssociationConnector Association="XViewModel.FK_guest_xband_xband" >
+          <ConnectorPoint PointX="5.25" PointY="2.7978011067708355" />
+          <ConnectorPoint PointX="6.75" PointY="2.7978011067708355" />
+          <ConnectorPoint PointX="6.75" PointY="6.125" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

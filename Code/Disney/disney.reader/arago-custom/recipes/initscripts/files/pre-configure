@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# If running on NAND this script will remount the root FS as
+# read-write on first boot.
+#
+
+# Exit if rootfs is not on NAND
+TESTFS=`grep 'root=ubi0:rootfs' /proc/cmdline`
+if [ -z "$TESTFS" ]; then
+   exit
+fi
+
+if [ ! -e /etc/.configured ]; then
+   /etc/init.d/rootfs-rw
+
+   # Create ssh keys
+   echo "Generating ssh RSA key..."
+   ssh-keygen -q -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
+   echo "Generating ssh DSA key..."
+   ssh-keygen -q -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa
+
+   # Symlink the shell history file to /tmp
+   ln -s /tmp/.ash_history /home/root/.ash_history
+fi

@@ -1,0 +1,2 @@
+http://10.110.1.92:8080/newconfiguration, spce_sub.txt
+http://10.110.1.92:8080/newconfiguration, buzz_rdrs_sit.txt

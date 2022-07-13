@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<venue name="26068" time="2013-02-27T23:53:57.112">
+    <configuration name="current" type="full">
+        <description/>
+        <properties>
+            <property class="AttractionModelConfig" name="abandonmenttimeout">60</property>
+            <property class="AttractionModelConfig" name="castmemberdetectdelay_msec">0</property>
+            <property class="AttractionModelConfig" name="chirprate_msec">1000</property>
+            <property class="AttractionModelConfig" name="cmsecreaderlockexpiry">30000</property>
+            <property class="AttractionModelConfig" name="confidencedelta">10</property>
+            <property class="AttractionModelConfig" name="deferentrymessages">true</property>
+            <property class="AttractionModelConfig" name="exitstatetimeout">60</property>
+            <property class="AttractionModelConfig" name="gstsaveperiod">1000</property>
+            <property class="AttractionModelConfig" name="guestdetectdelay_msec">0</property>
+            <property class="AttractionModelConfig" name="gxpurl">#</property>
+            <property class="AttractionModelConfig" name="loadtype">trailing</property>
+            <property class="AttractionModelConfig" name="locationabandonmenttimeout">3000</property>
+            <property class="AttractionModelConfig" name="locationeventratio">70</property>
+            <property class="AttractionModelConfig" name="metricsperiod">600</property>
+            <property class="AttractionModelConfig" name="onridetimeout">2</property>
+            <property class="AttractionModelConfig" name="puckdetectdelay_msec">0</property>
+            <property class="com.disney.xband.xbrc.ui.ParkEntryConfigOptions" name="omniticketport">0</property>
+            <property class="ControllerInfo" name="adjusteventtimes">true</property>
+            <property class="ControllerInfo" name="bioimagecapure">false</property>
+            <property class="ControllerInfo" name="dateformat">yyyy-MM-dd HH:mm:ss z</property>
+            <property class="ControllerInfo" name="discoverynetprefix"/>
+            <property class="ControllerInfo" name="enableha">false</property>
+            <property class="ControllerInfo" name="errorsequence">blue</property>
+            <property class="ControllerInfo" name="errortimeout_msec">2000</property>
+            <property class="ControllerInfo" name="eventdumpfile">/var/log/xbrc/eventdump.txt</property>
+            <property class="ControllerInfo" name="eventdumpmaxfiles">30</property>
+            <property class="ControllerInfo" name="eventdumpmaxsizemb">1000</property>
+            <property class="ControllerInfo" name="eventprocessingperiod_msec">200</property>
+            <property class="ControllerInfo" name="failuresequence">exception</property>
+            <property class="ControllerInfo" name="failuretimeout_msec">30000</property>
+            <property class="ControllerInfo" name="httpport">8080</property>
+            <property class="ControllerInfo" name="httpsport">0</property>
+            <property class="ControllerInfo" name="idlesequence">off</property>
+            <property class="ControllerInfo" name="idmscachetime_sec">1800</property>
+            <property class="ControllerInfo" name="jmsretryperiod">60000</property>
+            <property class="ControllerInfo" name="maxreadsbeforepurge">8</property>
+            <property class="ControllerInfo" name="messagestorageperiod">3600</property>
+            <property class="ControllerInfo" name="model">com.disney.xband.xbrc.attractionmodel.CEP</property>
+            <property class="ControllerInfo" name="name">Expedition Everest</property>
+            <property class="ControllerInfo" name="ownipprefix">192.</property>
+            <property class="ControllerInfo" name="park_id"/>
+            <property class="ControllerInfo" name="perfmetricsperiod">300</property>
+            <property class="ControllerInfo" name="preferredguestidtype"/>
+            <property class="ControllerInfo" name="readerbatterylevelred">-1</property>
+            <property class="ControllerInfo" name="readerbatterylevelyellow">-1</property>
+            <property class="ControllerInfo" name="readerdatasendperiod_msec">100</property>
+            <property class="ControllerInfo" name="readereventbuffersize">200</property>
+            <property class="ControllerInfo" name="readerhellotimeoutsec">90</property>
+            <property class="ControllerInfo" name="readerhttptimeout_msec">3000</property>
+            <property class="ControllerInfo" name="readerpoweroffperiod">15</property>
+            <property class="ControllerInfo" name="readerpowerofftime"/>
+            <property class="ControllerInfo" name="readerpowerontime"/>
+            <property class="ControllerInfo" name="readerpoweroverridedate"/>
+            <property class="ControllerInfo" name="readerpoweroverrideminutes">0</property>
+            <property class="ControllerInfo" name="readertemperaturemaxred">2000</property>
+            <property class="ControllerInfo" name="readertemperaturemaxyellow">2000</property>
+            <property class="ControllerInfo" name="readertemperatureminred">-100</property>
+            <property class="ControllerInfo" name="readertemperatureminyellow">-100</property>
+            <property class="ControllerInfo" name="readertimeprecisionms">1000</property>
+            <property class="ControllerInfo" name="reducedataslicing">true</property>
+            <property class="ControllerInfo" name="rfidtestmode">false</property>
+            <property class="ControllerInfo" name="securetapid">true</property>
+            <property class="ControllerInfo" name="setreadertime">true</property>
+            <property class="ControllerInfo" name="singulationalgorithm">max</property>
+            <property class="ControllerInfo" name="snmp_enabled">false</property>
+            <property class="ControllerInfo" name="statesaveperiod_msec">1000</property>
+            <property class="ControllerInfo" name="successsequence">GXP_success</property>
+            <property class="ControllerInfo" name="successtimeout_msec">2500</property>
+            <property class="ControllerInfo" name="tapsequence">GXP_tap</property>
+            <property class="ControllerInfo" name="taptimeout_msec">10000</property>
+            <property class="ControllerInfo" name="transmitxbrperiod_msec">100</property>
+            <property class="ControllerInfo" name="updatestreambatchsize">1</property>
+            <property class="ControllerInfo" name="updatestreamcorepoolsize">16</property>
+            <property class="ControllerInfo" name="updatestreamhttptimeout_msec">3000</property>
+            <property class="ControllerInfo" name="updatestreammaxpoolsize">80</property>
+            <property class="ControllerInfo" name="updatestreammessagetypes">INVEHICLE</property>
+            <property class="ControllerInfo" name="updatestreampostretry_sec">60</property>
+            <property class="ControllerInfo" name="updatestreamqueuesize">1000</property>
+            <property class="ControllerInfo" name="updatestreamurl">#</property>
+            <property class="ControllerInfo" name="updatestreamuseasync">true</property>
+            <property class="ControllerInfo" name="venue">26068</property>
+            <property class="ControllerInfo" name="verbose">false</property>
+            <property class="ControllerInfo" name="vipaddress"/>
+            <property class="ControllerInfo" name="watchedbandtimeout">180</property>
+            <property class="ControllerInfo" name="webserverthreadcount">32</property>
+            <property class="ControllerInfo" name="wwwdir">/usr/share/xbrc/www</property>
+            <property class="ControllerInfo" name="xviewurl"/>
+            <property class="ESBInfo" name="jmsdiscoverytimesec">60</property>
+            <property class="ESBInfo" name="jmssendintervalms">100</property>
+            <property class="ESBInfo" name="jmstopic">XCONNECT.INTERACTIONS</property>
+            <property class="ReaderConfig" name="gainsliderincrement">0.1</property>
+            <property class="ReaderConfig" name="maximumgain">2.0</property>
+            <property class="ReaderConfig" name="maximumthreshold">-40</property>
+            <property class="ReaderConfig" name="minimumgain">-1.0</property>
+            <property class="ReaderConfig" name="minimumthreshold">-90</property>
+            <property class="ReaderConfig" name="minnormaltemperature">19.0</property>
+            <property class="ReaderConfig" name="mmaxnormaltemperature">22.0</property>
+            <property class="ReaderConfig" name="temperaturetoohigh">25.0</property>
+            <property class="ReaderConfig" name="thresholdsliderincrement">1</property>
+            <property class="ServiceLocator" name="service_implementor_suffix">Imp</property>
+            <property class="UIAttractionViewConfig" name="gridheight">10</property>
+            <property class="UIAttractionViewConfig" name="gridsize">50</property>
+            <property class="UIAttractionViewConfig" name="gridwidth">18</property>
+            <property class="UIAttractionViewConfig" name="guesticonheight">24</property>
+            <property class="UIAttractionViewConfig" name="guesticonspacing">10</property>
+            <property class="UIAttractionViewConfig" name="guesticonstagger">4</property>
+            <property class="UIAttractionViewConfig" name="guesticonwidth">24</property>
+            <property class="UIAttractionViewConfig" name="maxguestspericon">5</property>
+            <property class="UIAttractionViewConfig" name="maxiconspergriditem">3</property>
+            <property class="UIConfig" name="attractionviewimagefilename"/>
+            <property class="UIConfig" name="controllerurl">http://localhost:8080</property>
+            <property class="UIConfig" name="guestxviewcachetimesec">1800</property>
+            <property class="UIConfig" name="producttitle">Walt Disney World</property>
+            <property class="UIConfig" name="showsubwaymap">true</property>
+            <property class="XfpeSimConfig" name="biomatchthreshold">75</property>
+            <property class="XfpeSimConfig" name="castmemberrfid">008023C002AC9004</property>
+            <property class="XfpeSimConfig" name="controllerurl">http://localhost:8080/ControllerServer</property>
+            <property class="XfpeSimConfig" name="guestentryloop">1</property>
+            <property class="XfpeSimConfig" name="guestqueuestartx">0</property>
+            <property class="XfpeSimConfig" name="guestqueuestarty">7</property>
+            <property class="XfpeSimConfig" name="hellointervalsec">20</property>
+            <property class="XfpeSimConfig" name="maxscanretry">1</property>
+            <property class="XfpeSimConfig" name="omnithreadport">9920</property>
+            <property class="XfpeSimConfig" name="reportreadertestresults">false</property>
+            <property class="XfpeSimConfig" name="simulateclosedreaderontor">false</property>
+            <property class="XfpeSimConfig" name="simulatewalking">true</property>
+        </properties>
+        <readerlocationinfo>
+            <readerlocation>
+                <section/>
+                <name>Entry2</name>
+                <id>7</id>
+                <type>1</type>
+                <x>0.0</x>
+                <y>0.0</y>
+                <usesecureid>null</usesecureid>
+                <successsequence/>
+                <successtimeout>0</successtimeout>
+                <failuresequence/>
+                <failuretimeout>0</failuretimeout>
+                <errorsequence/>
+                <errortimeout>0</errortimeout>
+                <idlesequence/>
+                <tapsequence/>
+                <taptimeout>0</taptimeout>
+                                <readers>
+                    <reader>
+                        <name>car2-1</name>
+                        <id>42</id>
+                        <type>VID</type>
+                        <macaddress>7f:00:00:01:-1:67</macaddress>
+                        <ipaddress>127.0.0.1</ipaddress>
+                        <port>8080</port>
+                        <gain>1.0</gain>
+                        <threshold>-90</threshold>
+                        <lane>0</lane>
+                        <deviceid>0</deviceid>
+                        <x>0</x>
+                        <y>0</y>
+                        <timelasthello>1362008589860</timelasthello>
+                        <version>1.0.0-0</version>
+                        <minxbrcversion>1.0.0-0</minxbrcversion>
+                        <istransmitter>false</istransmitter>
+                        <enabled>true</enabled>
+                        <disabledReason/>
+                        <transmitPayload>null</transmitPayload>
+                        <signalStrengthTransitThreshold>-127</signalStrengthTransitThreshold>
+                        <bioDeviceType>3</bioDeviceType>
+                    </reader>
+                    <reader>
+                        <name>car2-laser</name>
+                        <id>41</id>
+                        <type>xTPra</type>
+                        <macaddress>00:00:00:00:00:0A</macaddress>
+                        <ipaddress>127.0.0.1</ipaddress>
+                        <port>8020</port>
+                        <gain>1.0</gain>
+                        <threshold>-90</threshold>
+                        <lane>0</lane>
+                        <deviceid>0</deviceid>
+                        <x>0</x>
+                        <y>0</y>
+                        <timelasthello>1362008605752</timelasthello>
+                        <version>9.0.0.0</version>
+                        <minxbrcversion>0.0.0.0</minxbrcversion>
+                        <istransmitter>false</istransmitter>
+                        <enabled>true</enabled>
+                        <disabledReason/>
+                        <transmitPayload>null</transmitPayload>
+                        <signalStrengthTransitThreshold>-127</signalStrengthTransitThreshold>
+                        <bioDeviceType>3</bioDeviceType>
+                    </reader>
+                    <reader>
+                        <name>invehicle-2</name>
+                        <id>40</id>
+                        <type>Long Range</type>
+                        <macaddress>00:00:00:00:00:08</macaddress>
+                        <ipaddress>127.0.0.1</ipaddress>
+                        <port>8018</port>
+                        <gain>1.0</gain>
+                        <threshold>-90</threshold>
+                        <lane>0</lane>
+                        <deviceid>0</deviceid>
+                        <x>0</x>
+                        <y>0</y>
+                        <timelasthello>1362008605711</timelasthello>
+                        <version>9.0.0.0</version>
+                        <minxbrcversion>0.0.0.0</minxbrcversion>
+                        <istransmitter>false</istransmitter>
+                        <enabled>true</enabled>
+                        <disabledReason/>
+                        <transmitPayload>null</transmitPayload>
+                        <signalStrengthTransitThreshold>-90</signalStrengthTransitThreshold>
+                        <bioDeviceType>3</bioDeviceType>
+                    </reader>
+                </readers>
+            </readerlocation>
+            <readerlocation>
+                <section/>
+                <name>Exit</name>
+                <id>6</id>
+                <type>3</type>
+                <x>101.0</x>
+                <y>101.0</y>
+                <usesecureid>false</usesecureid>
+                <successsequence/>
+                <successtimeout>0</successtimeout>
+                <failuresequence/>
+                <failuretimeout>0</failuretimeout>
+                <errorsequence/>
+                <errortimeout>0</errortimeout>
+                <idlesequence/>
+                <tapsequence/>
+                <taptimeout>0</taptimeout>
+                                <readers>
+                    <reader>
+                        <name>exit-1</name>
+                        <id>39</id>
+                        <type>Long Range</type>
+                        <macaddress>00:00:00:00:00:02</macaddress>
+                        <ipaddress>127.0.0.1</ipaddress>
+                        <port>8012</port>
+                        <gain>1.0</gain>
+                        <threshold>-90</threshold>
+                        <lane>0</lane>
+                        <deviceid>0</deviceid>
+                        <x>0</x>
+                        <y>0</y>
+                        <timelasthello>1362008635688</timelasthello>
+                        <version>9.0.0.0</version>
+                        <minxbrcversion>0.0.0.0</minxbrcversion>
+                        <istransmitter>false</istransmitter>
+                        <enabled>true</enabled>
+                        <disabledReason/>
+                        <transmitPayload>null</transmitPayload>
+                        <signalStrengthTransitThreshold>-90</signalStrengthTransitThreshold>
+                        <bioDeviceType>0</bioDeviceType>
+                    </reader>
+                </readers>
+            </readerlocation>
+            <readerlocation>
+                <section/>
+                <name>Entry</name>
+                <id>1</id>
+                <type>1</type>
+                <x>1.0</x>
+                <y>1.0</y>
+                <usesecureid>false</usesecureid>
+                <successsequence/>
+                <successtimeout>0</successtimeout>
+                <failuresequence/>
+                <failuretimeout>0</failuretimeout>
+                <errorsequence/>
+                <errortimeout>0</errortimeout>
+                <idlesequence/>
+                <tapsequence/>
+                <taptimeout>0</taptimeout>
+                                <readers>
+                    <reader>
+                        <name>invehicle-1</name>
+                        <id>35</id>
+                        <type>Long Range</type>
+                        <macaddress>00:00:00:00:00:05</macaddress>
+                        <ipaddress>127.0.0.1</ipaddress>
+                        <port>8015</port>
+                        <gain>1.0</gain>
+                        <threshold>-90</threshold>
+                        <lane>0</lane>
+                        <deviceid>0</deviceid>
+                        <x>0</x>
+                        <y>0</y>
+                        <timelasthello>1362008605705</timelasthello>
+                        <version>9.0.0.0</version>
+                        <minxbrcversion>0.0.0.0</minxbrcversion>
+                        <istransmitter>false</istransmitter>
+                        <enabled>true</enabled>
+                        <disabledReason/>
+                        <transmitPayload>null</transmitPayload>
+                        <signalStrengthTransitThreshold>-90</signalStrengthTransitThreshold>
+                        <bioDeviceType>0</bioDeviceType>
+                    </reader>
+                    <reader>
+                        <name>car-laser</name>
+                        <id>36</id>
+                        <type>xTPra</type>
+                        <macaddress>00:00:00:00:00:07</macaddress>
+                        <ipaddress>127.0.0.1</ipaddress>
+                        <port>8017</port>
+                        <gain>1.0</gain>
+                        <threshold>-90</threshold>
+                        <lane>0</lane>
+                        <deviceid>0</deviceid>
+                        <x>0</x>
+                        <y>0</y>
+                        <timelasthello>1362008605736</timelasthello>
+                        <version>9.0.0.0</version>
+                        <minxbrcversion>0.0.0.0</minxbrcversion>
+                        <istransmitter>false</istransmitter>
+                        <enabled>true</enabled>
+                        <disabledReason/>
+                        <transmitPayload>null</transmitPayload>
+                        <signalStrengthTransitThreshold>-127</signalStrengthTransitThreshold>
+                        <bioDeviceType>0</bioDeviceType>
+                    </reader>
+                    <reader>
+                        <name>car-1</name>
+                        <id>38</id>
+                        <type>VID</type>
+                        <macaddress>00:00:00:00:00:06</macaddress>
+                        <ipaddress>127.0.0.1</ipaddress>
+                        <port>8016</port>
+                        <gain>1.0</gain>
+                        <threshold>-90</threshold>
+                        <lane>0</lane>
+                        <deviceid>0</deviceid>
+                        <x>0</x>
+                        <y>0</y>
+                        <timelasthello>1362008589863</timelasthello>
+                        <version>9.0.0.0</version>
+                        <minxbrcversion>0.0.0.0</minxbrcversion>
+                        <istransmitter>false</istransmitter>
+                        <enabled>true</enabled>
+                        <disabledReason/>
+                        <transmitPayload>null</transmitPayload>
+                        <signalStrengthTransitThreshold>-127</signalStrengthTransitThreshold>
+                        <bioDeviceType>0</bioDeviceType>
+                    </reader>
+                </readers>
+            </readerlocation>
+            <readerlocation>
+                <section/>
+                <name>UNKNOWN</name>
+                <id>0</id>
+                <type>0</type>
+                <x>0.0</x>
+                <y>0.0</y>
+                <usesecureid>false</usesecureid>
+                <successsequence/>
+                <successtimeout>0</successtimeout>
+                <failuresequence/>
+                <failuretimeout>0</failuretimeout>
+                <errorsequence/>
+                <errortimeout>0</errortimeout>
+                <idlesequence/>
+                <tapsequence/>
+                <taptimeout>0</taptimeout>
+                                <readers>
+                </readers>
+            </readerlocation>
+        </readerlocationinfo>
+        <griditems>
+            <griditem id="1" type="Gate" xgrid="7" ygrid="5">
+                <state>HASENTERED</state>
+                <label>Entry</label>
+                <description>Entry for non-XPass guests</description>
+                <image/>
+                <sequence>0</sequence>
+                <gueststoshow>2</gueststoshow>
+                <locationid>0</locationid>
+            </griditem>
+            <griditem id="2" type="HPath" xgrid="8" ygrid="5">
+                <state>HASENTERED</state>
+                <label/>
+                <description>Guests have entered the attraction</description>
+                <image/>
+                <sequence>1</sequence>
+                <gueststoshow>2</gueststoshow>
+                <locationid>0</locationid>
+            </griditem>
+            <griditem id="3" type="HPath" xgrid="9" ygrid="5">
+                <state>HASENTERED</state>
+                <label/>
+                <description>Guests have entered the attraction</description>
+                <image/>
+                <sequence>2</sequence>
+                <gueststoshow>2</gueststoshow>
+                <locationid>0</locationid>
+            </griditem>
+            <griditem id="20" type="HPath" xgrid="12" ygrid="5">
+                <state>RIDING</state>
+                <label/>
+                <description>Guests are riding</description>
+                <image/>
+                <sequence>4</sequence>
+                <gueststoshow>0</gueststoshow>
+                <locationid>0</locationid>
+            </griditem>
+            <griditem id="21" type="Gate" xgrid="13" ygrid="5">
+                <state>EXITED</state>
+                <label>Exit</label>
+                <description>Attraction exit</description>
+                <image/>
+                <sequence>0</sequence>
+                <gueststoshow>0</gueststoshow>
+                <locationid>0</locationid>
+            </griditem>
+            <griditem id="22" type="HPath" xgrid="14" ygrid="5">
+                <state>EXITED</state>
+                <label/>
+                <description>Guests left the attaction</description>
+                <image/>
+                <sequence>1</sequence>
+                <gueststoshow>0</gueststoshow>
+                <locationid>0</locationid>
+            </griditem>
+            <griditem id="36" type="HPath" xgrid="11" ygrid="5">
+                <state>RIDING</state>
+                <label/>
+                <description/>
+                <image>HPath.png</image>
+                <sequence>0</sequence>
+                <gueststoshow>0</gueststoshow>
+                <locationid>0</locationid>
+            </griditem>
+            <griditem id="39" type="Gate" xgrid="10" ygrid="5">
+                <state>INDETERMINATE</state>
+                <label>Vehicle</label>
+                <description/>
+                <image>GateYellow.png</image>
+                <sequence>0</sequence>
+                <gueststoshow>0</gueststoshow>
+                <locationid>1</locationid>
+            </griditem>
+        </griditems>
+<images/>        <model>
+<attractionModelConfig><vaLocationConfig><laserBreaksAfterVehicle>0</laserBreaksAfterVehicle><laserBreaksBeforeVehicle>0</laserBreaksBeforeVehicle><locationId>1</locationId><maxAnalyzeGuestEvents>10000</maxAnalyzeGuestEvents><maxAnalyzeGuestEventsPerVehicle>4</maxAnalyzeGuestEventsPerVehicle><minReadsToAssociate>2</minReadsToAssociate><onrideTimeoutSec>2</onrideTimeoutSec><requireVehicleLaserEvent>true</requireVehicleLaserEvent><trainTimeoutSec>20</trainTimeoutSec><useVehicleEventTime>false</useVehicleEventTime><vaAlgorithm>closestpeakfallback</vaAlgorithm><vehicleHoldTimeMs>1000</vehicleHoldTimeMs><vehicleTimeOffsetMs>0</vehicleTimeOffsetMs></vaLocationConfig><vaLocationConfig><laserBreaksAfterVehicle>0</laserBreaksAfterVehicle><laserBreaksBeforeVehicle>0</laserBreaksBeforeVehicle><locationId>7</locationId><maxAnalyzeGuestEvents>10000</maxAnalyzeGuestEvents><maxAnalyzeGuestEventsPerVehicle>4</maxAnalyzeGuestEventsPerVehicle><minReadsToAssociate>2</minReadsToAssociate><onrideTimeoutSec>2</onrideTimeoutSec><requireVehicleLaserEvent>true</requireVehicleLaserEvent><trainTimeoutSec>20</trainTimeoutSec><useVehicleEventTime>false</useVehicleEventTime><vaAlgorithm>closestpeakfallback</vaAlgorithm><vehicleHoldTimeMs>1000</vehicleHoldTimeMs><vehicleTimeOffsetMs>0</vehicleTimeOffsetMs></vaLocationConfig></attractionModelConfig>        </model>
+    </configuration>
+</venue>

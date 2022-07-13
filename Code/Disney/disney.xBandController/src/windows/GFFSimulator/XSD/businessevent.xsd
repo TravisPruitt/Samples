@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="businessEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="guest_identifier" type="xs:string" minOccurs="0"/>
+        <xs:element name="event_type" type="xs:string" />
+        <xs:element name="subtype" type="xs:string" />
+        <xs:element name="facilityid" type="xs:string" />
+        <xs:element name="location" type="xs:string" />
+        <xs:element name="timestamp" type="xs:string" />
+        <xs:element name="reference_id" type="xs:string" />
+        <xs:element name="payLoad" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,14 @@
+#
+# Logrotate configuration for xbrc
+#
+
+/var/log/xbrc/xbrcInit.log {
+	daily
+	rotate 7
+	missingok
+	compress
+	nocreate
+	postrotate
+		/etc/init.d/xbrc restart
+	endscript
+}

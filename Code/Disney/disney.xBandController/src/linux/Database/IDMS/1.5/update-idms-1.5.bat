@@ -1,0 +1,10 @@
+sqlcmd -S %1 -U %3 -P %4 -i idms-1.5.0.0001.sql -v databasename=%2 -o idms-1.5.0.0001.log
+sqlcmd -S %1 -U %3 -P %4 -i idms-1.5.0.0002.sql -v databasename=%2 -o idms-1.5.0.0002.log
+sqlcmd -S %1 -U %3 -P %4 -i idms-1.5.0.0003.sql -v databasename=%2 -o idms-1.5.0.0003.log
+sqlcmd -S %1 -U %3 -P %4 -i idms-1.5.0.0004.sql -v databasename=%2 -o idms-1.5.0.0004.log
+sqlcmd -S %1 -U %3 -P %4 -i idms-1.5.0.0005.sql -v databasename=%2 -o idms-1.5.0.0005.log
+sqlcmd -S %1 -U %3 -P %4 -i idms-1.5.0.0006.sql -v databasename=%2 -o idms-1.5.0.0006.log
+sqlcmd -S %1 -U %3 -P %4 -i idms-1.5.0.0007.sql -v databasename=%2 -o idms-1.5.0.0007.log
+sqlcmd -S %1 -U %3 -P %4 -i idms-1.5.0.0008.sql -v databasename=%2 -o idms-1.5.0.0008.log
+sqlcmd -S %1 -U %3 -P %4 -i idms-1.5.0.0009.sql -v databasename=%2 -o idms-1.5.0.0009.log
+sqlcmd -S %1 -U %3 -P %4 -i idms-1.5.0.0010.sql -v databasename=%2 -o idms-1.5.0.0010.log

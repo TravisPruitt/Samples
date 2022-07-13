@@ -1,0 +1,60 @@
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta http-equiv="Refresh" content="300">
+</head>
+<body>
+
+<!--[if IE]>
+<script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+
+<style>
+  .chromeFrameInstallDefaultStyle {
+    border: none;
+    overflow: visible;
+  }
+  .chromeFrameInstallDefaultStyle iframe {
+    border: none;
+    overflow: visible;
+  }
+</style>
+
+<div id="prompt">
+</div>
+
+<script>
+  // The conditional ensures that this code will only execute in IE,
+  // Therefore we can use the IE-specific attachEvent without worry
+  window.attachEvent("onload", function() {
+    CFInstall.check({
+      mode: "inline", // the default
+      node: "prompt"
+    });
+  });
+</script>
+
+<![endif]-->
+<script>
+  var need = 'querySelector' in document;
+  var install = function() {
+    CFInstall.check({
+      mode: "inline", // the default
+      node: "prompt",
+      url: 'http://www.google.com/chromeframe/?user=true'
+    });
+  };
+  var ready = function() {
+    document.write('<h1 style="cursor:pointer;margin-top: 1.5em;font-size: 8em;" onclick="window.close();">Ready. Please close all open browser windows to continue.</h1>');
+  };
+  if (window.addEventListener) {
+    window.addEventListener('load', function() {
+      if(!window.CFInstall) {
+        ready();
+      }
+    }, false);
+  }
+
+</script>
+</body>
+</html>

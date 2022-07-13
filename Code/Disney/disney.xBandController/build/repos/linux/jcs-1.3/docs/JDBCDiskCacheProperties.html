@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>JCS - JDBC Disk Cache Configuration</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="Aaron Smuts"></meta><meta name="email" content="asmuts@apache.org"></meta></head><body class="composite"><div id="banner"><a href="http://jakarta.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="./images/jakarta.png"></img></a><a href="http://jakarta.apache.org/jcs/" id="projectLogo"><span>JCS</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 30 May 2007
+                  | Doc for 1.3</div><div class="xright">
+        
+        <a href="jcs.pdf"><img title="PDF Documentation" style="border: 1px" src="images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuGeneral_Information"><h5>General Information</h5><ul><li class="none"><a href="index.html">Overview</a></li><li class="none"><a href="JCSandJCACHE.html">JCS and JCACHE</a></li><li class="none"><a href="DownloadPage.html">Downloads</a></li><li class="none"><a href="faq.html">FAQ</a></li></ul></div><div id="menuGetting_Started"><h5>Getting Started</h5><ul><li class="none"><a href="getting_started/intro.html">Overview</a></li><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="Plugins.html">Plugin Overview</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></div><div id="menuJCS_User_s_Guide"><h5>JCS User's Guide</h5><ul><li class="collapsed"><a href="LocalCacheConfig.html">Core</a></li><li class="expanded"><a href="Plugins.html">Auxiliary</a><ul><li class="none"><a href="IndexedDiskAuxCache.html">Indexed Disk Cache</a></li><li class="none"><a href="IndexedDiskCacheProperties.html">Indexed Disk Properties</a></li><li class="none"><a href="BlockDiskCache.html">Block Disk Cache</a></li><li class="none"><a href="JDBCDiskCache.html">JDBC Disk Cache</a></li><li class="none"><strong><a href="JDBCDiskCacheProperties.html">JDBC Disk Properties</a></strong></li><li class="none"><a href="MySQLDiskCacheProperties.html">MySQL Disk Properties</a></li><li class="none"><a href="RemoteAuxCache.html">Remote Cache</a></li><li class="none"><a href="RemoteCacheProperties.html">Remote Cache Properties</a></li><li class="none"><a href="LateralTCPAuxCache.html">Lateral TCP Cache</a></li><li class="none"><a href="LateralTCPProperties.html">Lateral TCP Properties</a></li><li class="none"><a href="LateralUDPDiscovery.html">Lateral UDP Discovery</a></li><li class="none"><a href="LateralJavaGroupsAuxCache.html">Lateral JGroups Cache</a></li></ul></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About JCS</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="JDBC_Disk_Auxiliary_Cache_Configuration"></a><h2>JDBC Disk Auxiliary Cache Configuration</h2><p>
+				The following properties apply to the JDBC Disk Cache
+				plugin.
+			</p><div class="subsection"><a name="JDBC_Disk_Configuration_Properties"></a><h3>JDBC Disk Configuration Properties</h3><table class="bodyTable"><tr class="a"><th>Property</th><th>Description</th><th>Required</th><th>Default Value</th></tr><tr class="b"><td>MaxPurgatorySize</td><td>
+							The maximum number of items allowed in the
+							queue of items to be written to disk.
+						</td><td>N</td><td>5000</td></tr><tr class="a"><td>url</td><td>
+							The database url. The database name will be
+							added to this value to create the full
+							database url.
+						</td><td>Y</td><td></td></tr><tr class="b"><td>database</td><td>This is appended to the url.</td><td>Y</td><td></td></tr><tr class="a"><td>driverClassName</td><td>
+							The class name of the driver to talk to your
+							database.
+						</td><td>Y</td><td></td></tr><tr class="b"><td>tableName</td><td>The name of the table.</td><td>N</td><td>JCS_STORE</td></tr><tr class="a"><td>testBeforeInsert</td><td>
+							Should the disk cache do a select before
+							trying to insert new element on update, or
+							should it try to insert and handle the
+							error.
+						</td><td>N</td><td>true</td></tr><tr class="b"><td>maxActive</td><td>
+							This sets the maximum number of connections
+							allowed.
+						</td><td>Y</td><td></td></tr><tr class="a"><td>allowRemoveAll</td><td>
+							Should the disk cache honor remove all (i.e.
+							clear) requests. You might set this to false
+							to prevent someone from accidentally
+							clearing out an entire database.
+						</td><td>N</td><td>true</td></tr><tr class="b"><td>UseDiskShrinker</td><td>
+							Should the disk cache try to delete expired
+							items from the database.
+						</td><td>N</td><td>true</td></tr><tr class="a"><td>ShrinkerIntervalSeconds</td><td>How often should the disk shrinker run.</td><td>N</td><td>300</td></tr></table></div><div class="subsection"><a name="Example_Configuration"></a><h3>Example Configuration</h3>
+    <div class="source"><pre>
+					
+##############################################################
+################## AUXILIARY CACHES AVAILABLE ################
+# JDBC disk cache
+jcs.auxiliary.JDBC=org.apache.jcs.auxiliary.disk.jdbc.JDBCDiskCacheFactory
+jcs.auxiliary.JDBC.attributes=org.apache.jcs.auxiliary.disk.jdbc.JDBCDiskCacheAttributes
+jcs.auxiliary.JDBC.attributes.userName=sa
+jcs.auxiliary.JDBC.attributes.password=
+jcs.auxiliary.JDBC.attributes.url=jdbc:hsqldb:
+jcs.auxiliary.JDBC.attributes.database=target/cache_hsql_db
+jcs.auxiliary.JDBC.attributes.driverClassName=org.hsqldb.jdbcDriver
+jcs.auxiliary.JDBC.attributes.tableName=JCS_STORE2
+jcs.auxiliary.JDBC.attributes.testBeforeInsert=false
+jcs.auxiliary.JDBC.attributes.maxActive=15
+jcs.auxiliary.JDBC.attributes.allowRemoveAll=true
+jcs.auxiliary.JDBC.attributes.MaxPurgatorySize=10000000
+jcs.auxiliary.JDBC.attributes.UseDiskShrinker=true
+jcs.auxiliary.JDBC.attributes.ShrinkerIntervalSeconds=300
+        
+				</pre></div>
+  </div><div class="subsection"><a name="JDBC_Disk_Event_Queue_Configuration"></a><h3>JDBC Disk Event Queue Configuration</h3><table class="bodyTable"><tr class="b"><th>Property</th><th>Description</th><th>Required</th><th>Default Value</th></tr><tr class="a"><td>EventQueueType</td><td>
+							This should be either SINGLE or POOLED. By
+							default the single style pool is used. The
+							single style pool uses a single thread per
+							event queue. That thread is killed whenever
+							the queue is inactive for 30 seconds. Since
+							the disk cache uses an event queue for every
+							region, if you have many regions and they
+							are all active, you will be using many
+							threads. To limit the number of threads, you
+							can configure the disk cache to use the
+							pooled event queue. Using more threads than
+							regions will not add any benefit for the
+							indexed disk cache, since only one thread
+							can read or write at a time for a single
+							region.
+						</td><td>N</td><td>SINGLE</td></tr><tr class="b"><td>EventQueuePoolName</td><td>
+							This is the name of the pool to use. It is
+							required if you choose the POOLED event
+							queue type, otherwise it is ignored.
+						</td><td>Y</td><td>n/a</td></tr></table></div><div class="subsection"><a name="Example_Configuration_Using_Thread_Pool"></a><h3>Example Configuration Using Thread Pool</h3>
+    <div class="source"><pre>
+					
+##############################################################
+################## AUXILIARY CACHES AVAILABLE ################
+# JDBC disk cache
+jcs.auxiliary.JDBC=org.apache.jcs.auxiliary.disk.jdbc.JDBCDiskCacheFactory
+jcs.auxiliary.JDBC.attributes=org.apache.jcs.auxiliary.disk.jdbc.JDBCDiskCacheAttributes
+jcs.auxiliary.JDBC.attributes.userName=sa
+jcs.auxiliary.JDBC.attributes.password=
+jcs.auxiliary.JDBC.attributes.url=jdbc:hsqldb:
+jcs.auxiliary.JDBC.attributes.database=target/cache_hsql_db
+jcs.auxiliary.JDBC.attributes.driverClassName=org.hsqldb.jdbcDriver
+jcs.auxiliary.JDBC.attributes.tableName=JCS_STORE2
+jcs.auxiliary.JDBC.attributes.testBeforeInsert=false
+jcs.auxiliary.JDBC.attributes.maxActive=15
+jcs.auxiliary.JDBC.attributes.allowRemoveAll=true
+jcs.auxiliary.JDBC.attributes.MaxPurgatorySize=10000000
+jcs.auxiliary.JDBC.attributes.UseDiskShrinker=true
+jcs.auxiliary.JDBC.attributes.ShrinkerIntervalSeconds=300
+jcs.auxiliary.JDBC.attributes.EventQueueType=POOLED
+jcs.auxiliary.JDBC.attributes.EventQueuePoolName=disk_cache_event_queueue
+
+##############################################################
+################## OPTIONAL THREAD POOL CONFIGURATION #########
+# Disk Cache pool
+thread_pool.disk_cache_event_queue.useBoundary=false
+thread_pool.disk_cache_event_queue.boundarySize=500
+thread_pool.disk_cache_event_queue.maximumPoolSize=15
+thread_pool.disk_cache_event_queue.minimumPoolSize=10
+thread_pool.disk_cache_event_queue.keepAliveTime=3500
+thread_pool.disk_cache_event_queue.whenBlockedPolicy=RUN
+thread_pool.disk_cache_event_queue.startUpSize=10
+        
+				</pre></div>
+  </div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2002-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

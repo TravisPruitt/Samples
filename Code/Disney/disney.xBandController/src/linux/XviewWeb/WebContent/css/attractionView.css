@@ -1,0 +1,79 @@
+/********** attractionView.jsp css ***************/
+ 
+ #attractionViewContainer {
+ 	position: relative;
+ 	height: 500px;
+ }
+ 
+ #attractionViewContainer #attractionPlan {
+ position: absolute;
+ 	top: 50px;
+ 	left: 0px;
+ 	width: 960px;
+ 	height: 400px; 	
+ }
+ 
+ #attractionPlan .gridItem {
+ 	position: absolute;
+ 	width: 50px;
+ 	height: 50px;
+ }
+ 
+ #attractionPlan .divlink:hover { 
+ 	border: 1px solid blue;
+ 	-moz-border-radius:10px;
+ 	-webkit-border-radius:10px;
+ 	behavior:url(border-radius.htc);
+ 	cursor: pointer;
+ }
+ 
+ #attractionPlan .divlink .gridItemLabel:hover {
+ 	cursor: pointer;
+ }
+ 
+ #attractionPlan .gridItemLabel {
+ 	display: table;
+ 	position: absolute;
+ 	z-index: 1;
+ 	width: 40px;
+ 	padding: 10px 5px 5px 5px;
+ 	text-align: center;
+ 	color: #000000;
+ }
+ 
+ 
+ #attractionViewContainer .legend {
+ 	position: absolute;
+ 	padding: 0px 0px 0px 10px;
+ 	width: 120px;
+ 	top: 8px;
+ 	left: 820px;
+ }
+ 
+ #attractionViewContainer h1 {
+ 	position: absolute;
+ 	top: 0px;
+ 	left: 10px;
+ }
+ 
+ #attractionViewContainer .guestCount {
+ 	position: absolute;
+ 	font-weight: bold;
+ 	color: #000000;
+ 	font-size: 11pt;
+ }
+ 
+ #attractionViewContainer .guestStats {
+ 	position: absolute;
+ 	padding: 0px 0px 0px 10px;
+ 	width: 110px;
+ 	top: -42px;
+ 	left: 690px;
+ 	border: 1px solid #CCCCCC;
+ }
+ 
+ #attractionViewContainer .guestStats h2 {
+ 	margin-top: 6px;
+ 	margin-bottom: 3px;
+ }
+ 

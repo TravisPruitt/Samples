@@ -1,0 +1,141 @@
+/*
+* CSS file for web pages associated with editing an attraction.
+*/
+ 
+ #attractionEditContainer {
+ 	position: relative;
+ 	height: 510px;
+ }
+ 
+ #attractionEditContainer #attractionPlan {
+ 	position: absolute;
+ 	top: 50px;
+ 	left: 30px;
+ 	width: 930px;
+ 	height: 460px; 	
+ }
+ 
+ #attractionPlan .gridItem {
+ 	position: absolute;
+ 	width: 50px;
+ 	height: 50px;
+ }
+ 
+ #attractionPlan .gridItemLabel {
+ 	position: relative;
+	display: table;
+ 	width: 40px;
+ 	padding: 10px 5px 5px 5px;
+ 	text-align: center;
+ 	color: #000000;
+ }
+ 
+ #attractionPlan .emptyCell {
+ 	position: absolute;
+ 	width: 50px;
+ 	height: 50px;
+ }
+ 
+ #attractionEditContainer .legend {
+ 	position: absolute;
+ 	padding: 0px 0px 0px 10px;
+ 	width: 120px;
+ 	top: 8px;
+ 	left: 820px;
+ }
+ 
+ #attractionEditContainer h1 {
+ 	position: absolute;
+ 	top: 0px;
+ 	left: 10px;
+ }
+ 
+ #attractionEditContainer #attractionGrid {
+ 	position: absolute;
+ 	top: 50px;
+ 	left: 30px;
+ 	width: 930px;
+ 	height: 460px;
+ 	overflow: hidden;
+ }
+ 
+ #attractionEditContainer #attractionGrid #borderBottom {
+ 	position: absolute;
+ 	top: 450px;
+	left: 0px;
+ 	width: 902px;
+ 	height: 1px;
+ 	border-bottom: 1px solid #CCCCCC;
+ }
+ 
+ #attractionEditContainer #attractionGrid #borderRight {
+ 	position: absolute;
+ 	top: 0px;
+	left: 900px;
+	width: 1px;
+ 	height: 451px;
+ 	border-right: 1px solid #CCCCCC;
+ }
+ 
+#attractionGrid .gridItemTarget {
+	position: absolute;
+	border-top: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	padding: 0px;
+	margin: 0px;
+}
+ 
+#attractionEditContainer .guestStats {
+	position: absolute;
+	padding: 0px 0px 0px 10px;
+	width: 110px;
+	top: 8px;
+	left: 690px;
+	border: 1px solid #CCCCCC;
+ }
+ 
+#attractionEditContainer .guestStats h2 {
+	margin-top: 6px;
+}
+ 
+#toolbox {
+	background-color: #EEEEEE;
+}
+  
+#toolbox .toolboxItem {
+	position: relative;
+	width: 50px;
+	height: 50px;
+	float: left;
+	margin: 5px;
+	padding: 0px;
+}
+
+#toolbox .path {
+	border: 1px solid #BBBBBB;
+	background-color: white;
+	margin: 4px;
+}
+
+#toolbox .garbage {
+	border: 1px solid #BBBBBB;
+	background-color: white;
+	margin: 4px;
+}
+
+#toolbox .toolboxItem .pathimage {
+   	position: absolute;
+   	top: 0px;
+   	left: 0px;
+   	width: 50px;
+	height: 50px;
+}
+
+#toolbox .toolboxItem .gridItemLabel {
+	position: relative;
+	display: table;
+ 	width: 40px;
+ 	padding: 10px 5px 5px 5px;
+ 	text-align: center;
+ 	color: #000000;
+}

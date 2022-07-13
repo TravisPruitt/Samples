@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Class-Path: log4j-1.2.17.jar bcprov-jdk15on-147.jar AccessControlLib-1
+ .0-SNAPSHOT.jar CommonLib-1.0-SNAPSHOT.jar nge-jasypt-1.3.jar jasypt-
+ 1.9.0.jar jackson-annotations-2.0.6.jar jackson-core-2.0.6.jar jackso
+ n-databind-2.0.6.jar xband-simple-4.1.21.jar struts2-core-2.2.3.jar x
+ work-core-2.2.3.jar commons-lang-2.5.jar ognl-3.0.1.jar javassist-3.1
+ 1.0.GA.jar asm-3.1.jar asm-commons-3.1.jar asm-tree-3.1.jar freemarke
+ r-2.3.16.jar commons-fileupload-1.2.2.jar commons-io-2.0.1.jar httpcl
+ ient-cache-4.2.jar httpclient-4.2.jar httpcore-4.2.jar commons-loggin
+ g-1.1.1.jar commons-codec-1.6.jar httpmime-4.2.jar HtmlParser-1.6.2.j
+ ar KeystoneJavaAuthComponent-1.0.0.jar KeystoneJavaAuthComponentForWe
+ bvan-1.0.0.jar c3p0-0.9.1.2.jar commons-beanutils-1.7.0.jar Controlle
+ rLib-1.0-SNAPSHOT.jar IDMSLib-1.0-SNAPSHOT.jar asm-3.1.jar commons-db
+ utils-1.4.jar ezmorph-1.0.6.jar jackson-core-asl-1.7.1.jar jackson-ja
+ xrs-1.7.1.jar jackson-mapper-asl-1.7.1.jar jackson-xc-1.7.1.jar jerse
+ y-client-1.8.jar jersey-core-1.8.jar jersey-json-1.8.jar jettison-1.1
+ .jar stax-api-1.0.1.jar jaxb-impl-2.2.3-1.jar jaxb-api-2.2.2.jar stax
+ -api-1.0-2.jar activation-1.1.jar jersey-server-1.8.jar json-lib-2.4-
+ jdk15.jar commons-collections-3.2.1.jar jsr311-api-1.1.1.jar jtds-1.2
+ .jar sonic_ASPI-8.0.0.jar sonic_Client-8.0.0.jar sonic_Crypto-8.0.0.j
+ ar sonic_XA-8.0.0.jar XviewLib-1.0-SNAPSHOT.jar mysql-connector-java-
+ 5.1.21.jar snmp4j-2.0.2.jar snmp4j-agent-2.0.4.jar jasypt-1.9.0-lite.
+ jar jstl-api-1.2.jar jsp-api-2.1.jar jstl-impl-1.2.jar logging-interf
+ ace-1.1.18.jar nge-logging-common-2.5.jar oauth-logging-1.4.8.jar oau
+ th-signature-1.4.4.jar struts2-arianna-plugin-0.5.1.jar struts2-dojo-
+ plugin-2.2.3.jar struts2-embeddedjsp-plugin-2.2.3.jar juli-6.0.18.jar
+

@@ -1,0 +1,10 @@
+
+On Ubuntu, "sudo apt-get install nodejs npm"
+
+After nodejs and npm are installed on your system:
+
+1. ./hottest.sh    # Install required components locally.
+
+2. Edit config.js to point to IDMS system you want to test.
+
+3. node ./test-idms.js

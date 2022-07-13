@@ -1,0 +1,18 @@
+--- alsa-utils-1.0.24.2/aplay/aplay.c.org	2012-03-28 10:32:58.608905296 -0700
++++ alsa-utils-1.0.24.2/aplay/aplay.c	2012-03-28 10:33:58.950036088 -0700
+@@ -1220,12 +1220,15 @@
+ static void done_stdin(void)
+ {
+ 	struct termios term;
++	long flags;
+ 
+ 	if (fd == fileno(stdin) || term_c_lflag == -1)
+ 		return;
+ 	tcgetattr(fileno(stdin), &term);
+ 	term.c_lflag = term_c_lflag;
+ 	tcsetattr(fileno(stdin), TCSANOW, &term);
++	flags = fcntl(fileno(stdin), F_GETFL);
++	fcntl(fileno(stdin), F_SETFL, flags & ~O_NONBLOCK);
+ }
+ 
+ static void do_pause(void)

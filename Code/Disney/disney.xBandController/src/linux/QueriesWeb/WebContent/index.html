@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+   <link rel="stylesheet" href="iui/iui.css" type="text/css" />
+    <link rel="stylesheet" href="css/resultsTable.css" type="text/css" />
+   <link rel="stylesheet" href="iui/t/default/default-theme.css" type="text/css"/>
+   <script type="application/x-javascript" src="iui/iui.js"></script>
+   
+   <script type=application/javascript>
+   
+   var baseURL = "http://10.92.63.92:8080/Queries/query/"
+   //var baseURL = "http://localhost:8080/Queries/query/"
+   var lastQuery = "";
+   var interval = 15000;
+   var timer = null;
+   
+   function getQuery(query)
+   {
+	   lastQuery = query;
+	   var xmlhttp = new XMLHttpRequest();
+	   var url = baseURL + query;
+	   
+	   xmlhttp.onreadystatechange=function(){
+		   if (xmlhttp.readyState==4)
+			   if(xmlhttp.status==200){
+				   var response = xmlhttp.responseText;
+				   displayTable(response);
+				   xmlhttp.abort();
+			   }
+			   else
+			   {
+				   displayTable("<p>No results to display.</p>");
+				   xmlhttp.abort();
+				}
+		   
+	   }
+	   xmlhttp.open("GET", url, true);
+	   xmlhttp.send(null);
+   }
+   
+   function displayTable(results)
+   {
+	   var divelement = document.getElementById("resultTable");
+	   divelement.innerHTML ="<p>"+ results + "</p>";
+   }
+   
+   function clearTable()
+   {
+	   var divelement = document.getElementById("resultTable");
+	   divelement.innerHTML ="<p>"+ "     Loading..." + "</p>";
+   }
+   
+   function customQuery()
+   {
+	   var txtBox = document.getElementById("keyword");
+	   
+	   	if (txtBox)
+		{
+		   getQuery(txtBox.value);
+		}
+	   
+   }
+   
+   function resetHome()
+   {
+	   clearTable();
+	   disableAutoRefresh();
+   }
+   
+   
+   
+   function disableAutoRefresh()
+   {
+	   var autoRefresh = document.getElementById("autoRefresh");
+	   autoRefresh.checked=false;
+	   clearTimeout(timer);
+   }
+   
+   function setAutoRefresh()
+   {
+	   var autoRefresh = document.getElementById("autoRefresh");
+	   if (autoRefresh.checked)
+		   {
+		      timer = setTimeout(timerEvent, interval);
+		   }
+	   else
+		   {
+		   		clearTimeout(timer);
+		   }
+   }
+   
+   function timerEvent()
+   {
+	   
+	   if (lastQuery != null || lastQuery !="")
+		   {
+		   getQuery(lastQuery);
+		   }
+	   
+	   setAutoRefresh();
+   }
+   
+   </script>
+   
+</head>
+<body>
+   
+   <div class="toolbar">
+      <h1 id="pageTitle"></h1>
+      <a id="backButton" class="button" href="#" onclick="resetHome();"></a>
+   </div>
+
+	<ul id="screen1" title="Select a Query" selected="true">
+		<li onclick="getQuery('rpt.usp_GetDMEBookingCounts');"><a href="#screen3" ">Get DME Booking Counts</a></li>
+		<li onclick="getQuery('rpt.usp_GetBlueLaneCounts');"><a href="#screen3">Get Bluelane Counts</a></li>
+		<li onclick="getQuery('rpt.usp_GetKioskTaps');"><a href="#screen3">Get Kiosk Taps</a></li>
+		<li onclick="getQuery('rpt.usp_GetMultipleEmails');"><a href="#screen3">Get Multiple Emails</a></li>
+		<li onclick="getQuery('rpt.usp_GetUnassignedBands');"><a href="#screen3">Get Unassigned Bands</a></li>
+		<li onclick="getQuery('rpt.usp_GetRedemptionCounts');"><a href="#screen3">Get Redemption Counts</a></li>
+		<li onclick="getQuery('rpt.usp_GetAbandonEvents');"><a href="#screen3">Get Abandon Events Counts</a></li>
+		<li onclick="getQuery('rpt.usp_GetQueueCounts');"><a href="#screen3">Get Queue Counts</a></li>
+		<li onclick="getQuery('rpt.usp_GetQueueMetrics');"><a href="#screen3">Get Queue Metrics</a></li>
+		<li><a href="#screen4">Custom Query</a></li>
+	</ul>
+	
+   <div id="screen2" title="Screen 2">
+      <a href="#screen3">Go to screen #3</a>
+   </div>
+   
+   <div id="screen3" title="Result" class="panel">
+      <fieldset>
+      <div class="row"><div><label style="margin-left:5px;">Auto refresh:</label>
+      <input type="checkbox" id="autoRefresh" value="1" onclick="setAutoRefresh();"></div>
+      </div>
+      <div class="row" id="resultTable"></div>
+      </fieldset>
+   </div>
+
+   <!-- form id="screen4" title="Query" class="dialog" target="_self" name="formname" action="" method="" -->
+   <div id="screen4" title="Query" class="panel">
+   	 
+   	 <fieldset>
+   	 
+   	  <div class="row">
+      <label for="keyword" style="margin-left:5px;">Query: </label>
+      </div>
+      <div class="row">
+      <input type="text" name="q" id="keyword" placeholder=" Type your query here.">
+      </div>
+      <div class="row">
+      <a class="button blueButton" onclick="customQuery();" href="#screen3">Execute</a>
+      </div>
+ 
+   </fieldset>
+   </div>
+   <!-- /form -->
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "Remounting root filesystem as read-only"
+mount / -oremount,ro

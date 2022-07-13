@@ -1,0 +1,29 @@
+# ! /bin/bash
+
+# test each radio individually
+# at 1 Mhz
+spi-test 1000 0 R12 100 1000 STOP
+spi-test 1000 1 R12 100 1000
+spi-test 1000 2 R12 100 1000
+spi-test 1000 3 R12 100 1000
+spi-test 1000 4 R12 100 1000
+spi-test 1000 5 R12 100 1000
+spi-test 1000 6 R12 100 1000
+spi-test 1000 7 R12 100 1000
+
+# test each radio individually
+# at 3 Mhz
+spi-test 3000 0 R12 100 1000
+spi-test 3000 1 R12 100 1000
+spi-test 3000 2 R12 100 1000
+spi-test 3000 3 R12 100 1000
+spi-test 3000 4 R12 100 1000
+spi-test 3000 5 R12 100 1000
+spi-test 3000 6 R12 100 1000
+spi-test 3000 7 R12 100 1000
+
+# test the muxing - writes to all, unique to each radio. Then read the data back and check it.
+spi-test 1000 01234567 R12 100 1000
+
+# write 050000 to radio 4, 5 times
+spi-test 1000 4 0x050000 100 5

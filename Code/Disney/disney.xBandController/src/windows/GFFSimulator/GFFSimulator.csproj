@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CCCECD2C-EAAC-43AF-B3F1-8BDF700DFA37}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GFFSimulator</RootNamespace>
+    <AssemblyName>GFFSimulator</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Org.Mentalis.Security">
+      <HintPath>SonicLibs\Org.Mentalis.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Sonic.Client">
+      <HintPath>SonicLibs\Sonic.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Sonic.Client.Jms.Impl">
+      <HintPath>SonicLibs\Sonic.Client.Jms.Impl.dll</HintPath>
+    </Reference>
+    <Reference Include="Sonic.Jms">
+      <HintPath>SonicLibs\Sonic.Jms.dll</HintPath>
+    </Reference>
+    <Reference Include="Sonic.Jms.Cf.Impl">
+      <HintPath>SonicLibs\Sonic.Jms.Cf.Impl.dll</HintPath>
+    </Reference>
+    <Reference Include="Sonic.Security">
+      <HintPath>SonicLibs\Sonic.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CLOptions.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Publisher.cs" />
+    <Compile Include="Sender.cs" />
+    <Compile Include="Session.cs" />
+    <Compile Include="Simulator.cs" />
+    <Compile Include="Model\tapevent.designer.cs" />
+    <Compile Include="Model\businessevent.designer.cs" />
+    <Compile Include="Model\orderevent.designer.cs" />
+    <Compile Include="Model\tableevent.designer.cs" />
+    <Compile Include="Table.cs" />
+    <Compile Include="TableManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="XML\1-GuestDetectStandby.xml" />
+    <Content Include="XML\1a-GuestTappedAtMobileDAP.xml" />
+    <Content Include="XML\2-GuestTapMerge.xml" />
+    <Content Include="XML\3-OrderPlaced.xml" />
+    <Content Include="XML\4-TableGuestDetected.xml" />
+    <Content Include="XML\5-OrderBumped.xml" />
+    <Content Include="XML\6-OrderCleared.xml" />
+    <Content Include="XML\7-TableDirty.xml" />
+    <Content Include="XML\8-TableCleaned.xml" />
+    <Content Include="XML\GuestTapped at POS.xml" />
+    <Content Include="XML\Order Delivered.xml" />
+    <Content Include="XML\Order Placed.xml" />
+    <Content Include="XML\Order Prepared.xml" />
+    <Content Include="XML\Order Received.xml" />
+    <Content Include="XML\Table Available.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="JMS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="XSD\businessevent.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\orderevent.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\tableevent.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\tapevent.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration debug="true">
+	
+	<!-- logs jmslistener specific messages -->
+	<appender name="jmslistener" class="org.apache.log4j.RollingFileAppender">
+		<param name="maxFileSize" value="10024KB" />
+		<param name="maxBackupIndex" value="32" />
+		<param name="File" value="/var/log/jmslistener/jmslistener.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd/MM/yyyy HH:mm:ss,SSS} %5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+	<appender name="jmslistenerMessages" class="org.apache.log4j.RollingFileAppender">
+		<param name="maxFileSize" value="10024KB" />
+		<param name="maxBackupIndex" value="32" />
+		<param name="File" value="/var/log/jmslistener/jmslistener.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd/MM/yyyy HH:mm:ss,SSS} %5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+	<!-- use 'console' only for development, exclude it for production in config/log4j.xml -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="target" value="System.out"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} %5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- logger for jmslistener -->
+	<logger name="com.disney.xband" additivity="false">
+	    <level value="trace"/>
+		<appender-ref ref="jmslistener" />
+	</logger>
+	
+	<logger name="JmsMessageLogger" additivity="false">
+	    <level value="trace"/>
+		<appender-ref ref="jmslistener" />
+	</logger>
+		
+        <logger name="com.mchange" additivity="false" >
+                <level value="ERROR"/>
+        </logger>
+	<!-- catch-all logger for other packages -->
+	<root>
+	    <level value="ERROR"/>
+		<appender-ref ref="jmslistener" />
+	</root>
+	
+</log4j:configuration>

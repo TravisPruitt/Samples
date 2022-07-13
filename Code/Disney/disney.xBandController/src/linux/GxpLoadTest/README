@@ -1,0 +1,2 @@
+GxpLoadTest can generate requests to a GxP dap controller in order to measure its performance.
+Run ./GxpLoadTest --help for more information

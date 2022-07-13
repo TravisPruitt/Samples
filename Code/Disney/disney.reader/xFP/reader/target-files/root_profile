@@ -1,0 +1,3 @@
+
+PATH=/mayhem:$PATH
+cd /mayhem

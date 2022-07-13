@@ -1,0 +1,9 @@
+{ "events" :
+ [ 
+{ "CarID":"T1", "dt":"41200", "sceid":"car", "locid":"1" },
+{ "CarID":"T2", "dt":"44300", "sceid":"car", "locid":"1" },
+{ "CarID":"T3", "dt":"48300", "sceid":"car", "locid":"1" },
+{ "CarID":"T4", "dt":"52300", "sceid":"car", "locid":"1" },
+{ "CarID":"T5", "dt":"56300", "sceid":"car", "locid":"1" }
+]
+}

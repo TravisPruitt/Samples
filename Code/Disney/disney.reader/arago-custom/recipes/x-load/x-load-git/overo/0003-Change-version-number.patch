@@ -1,0 +1,11 @@
+--- git.org/lib/board.c	2011-05-23 04:53:15.000000000 -0700
++++ git/lib/board.c	2012-03-26 11:04:38.666293785 -0700
+@@ -36,7 +36,7 @@
+ #include <asm/arch/mem.h>
+ 
+ const char version_string[] =
+-	"Texas Instruments X-Loader 1.5.0 (" __DATE__ " - " __TIME__ ")";
++	"Texas Instruments X-Loader 1.5.0-400MHz (" __DATE__ " - " __TIME__ ")";
+ 
+ int print_info(void)
+ {

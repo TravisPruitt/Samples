@@ -1,0 +1,99 @@
+.fg-menu-container {
+	z-index: 1030; /*must be bigger than jquery dialog z-index*/
+}
+
+div.inner-menu {
+	display: block;
+}
+div.inner-menu div.view-toggle {
+	float: right; clear: right;
+}
+
+div#readers-container {
+	padding: 0; margin: 1em 0 0 0;
+}
+div#readers-container .ui-icon { width: 16px; height: 16px; background-image: url(../images/ui-icons_262626_256x240.png); }
+
+div.innerTab {
+	padding: 10px;
+}
+ul#xbrcs {
+	padding: 0; margin: 0;
+	list-style: none;
+	position: relative;
+}
+div.xbrc-caption {
+	padding: 10px; margin: 0;
+}
+div.location {
+	position: relative;
+	float: left;
+	width: 19.65%;
+	padding: 0; margin: 1px;
+}
+div.location-caption {
+	padding: 5px; margin: 0;
+	background-color: #0e2441;
+	max-height: 16px;
+	overflow: hidden;
+}
+div.location-caption em {
+	word-wrap: break-word;
+}
+
+ul.background-grid {
+	padding: 0; margin: 0;
+	list-style: none;
+}
+ul.background-grid li {
+	float: left;
+	width: 35.8px; height: 30px;
+	padding: 0; margin: 0;
+	text-align: center;
+}
+ul.background-grid li a {
+	padding: 0; margin: 0;
+	line-height: 30px;
+}
+
+ul.readers {
+	padding: 0; margin: 0;
+	list-style: none;
+	position: absolute; top: 26px; left: 1px;
+}
+
+li.item-small-grid {
+	float: left;
+	width: 34.5px; height: 30px;
+	padding: 0; margin: 1px;
+	text-align: center;
+	background-color: #112b4f;
+	overflow: hidden;
+}
+li.item-small-grid a {
+	padding: 0; margin: 0;
+	line-height: 30px;
+}
+
+.Green { color: green; font-weight: bold; text-transform: uppercase; }
+.Yellow { color: yellow; font-weight: bold; text-transform: uppercase; }
+.Red { color: red; font-weight: bold; text-transform: uppercase; }
+
+li.xbrc { 
+	padding: 0 0 2px 1px; margin: 0 0 5px 0;
+}
+
+/* detail reader info dialog */
+div.reader-detail-info {
+	position: relative;
+}
+div.reader-detail-info ul {
+	list-style: none;
+}
+div.reader-detail-info label {
+	margin-right: 10px;
+}
+div.reader-detail-info div {
+	float: left; clear: left;
+}
+/* end of detail reader info dialog */

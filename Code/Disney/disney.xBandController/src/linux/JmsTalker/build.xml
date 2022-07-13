@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="JmsTalker">
+	
+<!-- properties -->
+	
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+	<property name="dir.test.src" location="src"/>
+	<property name="dir.test.classes" location="bin"/>
+	
+<!-- class path -->
+    <path id="JmsTalker.classpath">
+        <pathelement location="bin"/>
+	<pathelement location="lib/c3p0.jar" />
+    	<pathelement location="lib/junit.jar"/>
+    	<pathelement location="lib/jtds-1.2.jar"/>
+    	<pathelement location="lib/log4j.jar"/>
+    	<pathelement location="lib/sonic_ASPI.jar"/>
+    	<pathelement location="lib/sonic_Client.jar"/>
+    	<pathelement location="lib/sonic_Crypto.jar"/>
+    	<pathelement location="lib/sonic_XA.jar"/>
+    	<pathelement location="lib/jackson-core-asl.jar"/>
+    	<pathelement location="lib/jackson-mapper-asl.jar"/>
+	<pathelement location="lib/commons-daemon-1.0.7.jar" />
+	<pathelement location="lib/commons-collections3.jar" />
+    </path>
+	
+	<path id="test.classpath">
+		<pathelement location="lib/junit.jar"/>
+		<pathelement location="lib/log4j.jar"/>
+		<pathelement location="${dir.test.src}"/>
+		<pathelement location="${dir.test.classes}"/>
+	</path>
+
+<!-- targets -->
+	
+	<!-- Establish a clean version number -->
+	<target name="realversion" if="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="${BUILD_VERSION}" />
+	</target>
+
+	<target name="dummyversion" unless="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="0.0.0.0" />
+		<tstamp>
+			<format property="BUILD_DATE" pattern="yyyy-MM-dd HH:mm:ss" />
+        </tstamp>
+	</target>
+
+	<target depends="realversion,dummyversion" name="setvers">
+		<echo message="BUILD_VERSION=${BUILD_VERSION}" />
+	</target>
+	
+	<target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+	
+	<!-- Removes the output directory -->
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+	
+	<target depends="setvers,build-project,jar" name="buildprod"/>
+	
+    <target depends="setvers,build-project,jar" name="build"/>
+	
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}" includeantruntime="false">
+            <src path="src"/>
+            <classpath refid="JmsTalker.classpath"/>
+        </javac>
+    </target>
+	
+	<target depends="build-project" name="jar">
+		<jar destfile="JmsTalker.jar">
+			<manifest>
+				<attribute name="Built-By" value="Synapse" />
+				<attribute name="Built-Date" value="${BUILD_DATE}" />
+                <attribute name="Implementation-Title" value="${BUILD_VERSION}"/>
+				<attribute name="Implementation-Vendor" value="Synapse" />
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="com.disney.xband.jmstalker.JmsTalker"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./"/>
+             </manifest>
+            <fileset dir="bin"/>
+			<zipfileset src="jar-in-jar-loader.zip"/>
+            <zipfileset src="lib/junit.jar"/>
+            <zipfileset src="lib/jtds-1.2.jar"/>
+            <zipfileset src="lib/log4j.jar"/>
+            <zipfileset src="lib/sonic_ASPI.jar"/>
+            <zipfileset src="lib/sonic_Crypto.jar"/>
+            <zipfileset src="lib/sonic_XA.jar"/>
+            <zipfileset src="lib/sonic_Client.jar"/>
+            <zipfileset src="lib/jackson-core-asl.jar"/>
+            <zipfileset src="lib/jackson-mapper-asl.jar"/>
+		</jar>
+	</target>
+	
+	<!-- Installs the talker in its prod environment -->
+	<target name="install">
+		<mkdir dir="/usr/share/jmstalker" />
+		<mkdir dir="/usr/share/jmstalker/lib" />
+		<copy file="JmsTalker.jar" todir="/usr/share/jmstalker" overwrite="true" />
+		<copy todir="/usr/share/jmstalker/lib">
+			<fileset dir="lib"/>
+		</copy>
+		<mkdir dir="/var/run/jmstalker" />
+		<mkdir dir="/var/log/jmstalker" />
+		<chown owner="xbrcuser">
+			<dirset dir="/usr/share/jmstalker" />
+			<fileset dir="/usr/share/jmstalker" />
+		</chown>		
+		<chmod perm="755">
+			<dirset dir="/usr/share/jmstalker" />
+		</chmod>
+		<chmod perm="740" file="/usr/share/jmstalker/JmsTalker.jar" />
+	</target>
+
+    <target name="JmsTalker">
+        <java classname="com.disney.xband.jmstalker.JmsTalker" failonerror="true" fork="yes">
+            <classpath refid="JmsTalker.classpath"/>
+        </java>
+    </target>
+</project>

@@ -1,0 +1,33 @@
+
+day=$(date)
+output () {
+  : # NOP to prevent errors due to empty function
+
+  # Uncomment these lines to troubleshoot DHCP issues
+  #if [ x$2 != x ]; then
+  #  echo "$day: $1 $2"
+  #  echo "$day: $1 $2" >> /var/log/dhcp.log
+  #fi
+}
+
+output "dhclient-exit-hooks.d:"
+ 
+output "reason          = " $reason 			
+output "interface       = " $interface 		
+output "medium          = " $medium			
+							
+output "old_ip_address  = " $old_ip_address 	
+output "new_ip_address  = " $new_ip_address 	
+output "old_subnet_mask = " $old_subnet_mask 	
+output "new_subnet_mask = " $new_subnet_mask 	
+output "old_domain_name = " $old_domain_name 	
+output "new_domain_name = " $new_domain_name 	
+output "old_routers	    = " $old_routers  		
+output "new_routers     = " $new_routers  	
+output "old_dom._search = " $old_domain_search 
+output "new_dom._search = " $new_domain_search
+output "old_d._name_svs = " $old_domain_name_servers 
+output "new_d._name_svs = " $new_domain_name_servers 
+output "alias_ip_addr.  = " $alias_ip_address 
+output "new_stat._route = " $new_static_routes 
+output "========================================" ":"

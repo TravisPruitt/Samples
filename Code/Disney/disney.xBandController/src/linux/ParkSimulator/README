@@ -1,0 +1,61 @@
+The ParkSimulator is a java program which simulates JMS activity on a park-wide
+basis according to operational metrics received from the xi team. As data is
+only available for 9 attractions, only these nine are simulated. 
+
+The parkdata.dat file contains the metrics that drive the simulation. Numbers
+(guests/hour) are provided for both standby and fastpass queues for each of
+the nine attractions. Additionally, wait times are provided for both queues
+as well.
+
+The simulator can work with or without a JMS broker. If no broker is available
+the simulator schedules and generates the messages but doesn't send them.
+Statistics are provided for the number of messages generated per hour as well
+as a messages/second value. If the broker is available, the simulator will
+send messages using a provided publish-subscribe topic (by default, this is
+com.synapse.parksimulator).
+
+The simulator can work in "real-time" where messages delivery is governed by
+actual time (an hour's worth of simulation takes an hour) or in "fast" mode
+where the simulation runs as fast as possible although messages are still
+stamped with simulated times (the simulator will generate messages whose
+time stamps are in the future).
+
+Although the ParkSimulator can simulate multiple attractions at once, if you're
+running it in fast mode (--fast), it is more efficient to run multiple 
+processes each running a single attraction. This is also more realistic as
+each attraction will have its own xBRC in deployment.
+
+To facilitate running a full simulation as separate processes, the "runall"
+script is provided. This script runs each attraction as a separate process
+then waits for all of them to complete. The output of each process is
+sent to a different log file for later analysis. Here are some example uses
+of runall:
+
+   ./runall --fast
+
+Simulates a full day for all attractions in fast mode, without sending any 
+data to JMS. The simulator output will appear in files of the form:
+ATTRACTION.log (for example, Buzz.log or Pooh.log) and ATTRACTION.messages.log.
+The former log file contains the simulation statistics while the latter 
+contains the generated XML messages.
+
+   ./runall --from 10 --to 11 --broker jmssrv:2506 --user Joe --password f00 
+
+Simulates all attractions from 1000 to 1100, in real-time (this will take an
+hour), sending messages to jmssrv:2506 using user Joe with password f00.
+
+The ParkSimulator may also be run on its own:
+
+   ./ParkSimulator --from 10 --to 11 --fast --attractions Buzz,Pooh 
+
+Runs a single process that simulates the Buzz and Pooh attractions from 1000
+to 1100 in fast mode. No message log is created and no JMS messages are
+written.
+
+Use:
+
+    ./ParkSimulator --help
+
+to get more usage information. The arguments to runall are identical to
+those of ParkSimulator except that neither "--attractions" nor "--logfile"
+should be specified as they're already present in the runall script.

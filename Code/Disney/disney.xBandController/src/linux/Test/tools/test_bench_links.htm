@@ -1,0 +1,1307 @@
+<html>
+<head>
+<title>EM Test Links</title>
+</head>
+<body>
+<a name="bvt"/>
+<a href="#bvt">BVT</a> | <a href="#sit">SIT</a> | <a href="#int">INT</a> | <a href="#alpha">ALPHA</a> | <a href="#mk">MK</a>
+<br/>
+<h1>BVT Environment</h1>
+<b>xBRMS (.104) [JMS: 10.110.1.2 com.synapse.xbrc.qa.bvt]</b>
+<br/> +[UI]
+<a href="http://10.110.1.104:8090/XBRMS/">Admin</a> | 
+<a href="http://10.110.1.104:8090/XBRMS/xbrchealth">Health</a> | 
+<a href="http://10.110.1.104:8090/XBRMS/editxbrc">XbrcEd</a> | 
+<a href="http://10.110.1.104:8090/XBRMS/storedconfig">ConfigEd</a> |
+<a href="http://10.110.1.104:8090/xi/">XI exec</a> | 
+<a href="http://10.110.1.104:8090/xi/1">XI details</a> | 
+<a href="http://10.110.1.104:8090/xi/daily.html">XI recruiting</a> | 
+<a href="http://10.110.1.104:8090/xi/dashboard/testresource">xi res</a>
+<br/> +[API]
+<a href="http://10.110.1.104:8090/XBRMS/rest/facilities">facilities</a>
+<br/> +[UIE]
+<a href="http://10.110.1.104:8090/labdemo/tasks?task=GetMKSchedule&params=30/04/2012,30/05/2012">Make Schedule</a> | 
+<a href="http://10.110.1.104:8090/labdemo/timestamp.txt">Timestamp</a> | 
+<a href="http://10.110.1.104:8090/labdemo/data/ParkSchedule?park=80007944">Park Schedule</a> |
+<a href="http://10.110.1.104:8090/labdemo/data/ParkSchedule?park=80010144">Buzz Schedule</a>
+<br/>
+<b>IDMS (.110) [DB:10.110.1.72:IDMS_BVT]</b>
+<br/> +[Service]
+<a href="http://10.110.1.110:8090/IDMS/metrics">Metrics</a> | 
+<a href="http://10.110.1.110:8090/IDMS/metrics/reset">Reset</a> | 
+<br/> +[Bands]
+<a href="http://10.110.1.110:8090/IDMS/xbands/tapid/F009260BF51800">TapID 800</a> | 
+<a href="http://10.110.1.110:8090/IDMS/xband/secureid/35171313">Secure ID 313</a>
+<br/> +[Guests]
+<a href="http://10.110.1.110:8090/IDMS/guest/1658">Guest 1658</a> |
+<a href="http://10.110.1.110:8090/IDMS/guest/id;gxp-link-id=35200106/identifiers">Gxp Link</a>
+<br/>
+<b>GXP (.118)</b>
+<a href="http://10.110.1.118:8081/gxp-dap-ui">Admin</a> | 
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Space%20Mountain&leftReader=1084144&rightReader=1084133&type=Merge&entertainmentid=80010190&locationid=80010190">SPCE DAP MERGE UI</a> | 
+<a href="http://10.110.1.118:8081/dap/services/">services</a>
+<br/>
+<b>xBRC BUZZ (.113) [Buzz Lightyear | 80010114]</b>
+<br/> +[UI] 
+<a href="http://10.110.1.113:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.113:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.113:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.113:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.113:8080/status">status</a> | 
+<a href="http://10.110.1.113:8080/messages">messages</a> | 
+<a href="http://10.110.1.113:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.113:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.113:8080/currentconfiguration">config</a>
+<br/>
+  + Supports these attractions: 
+  <br/>--BIG--
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Big%20Thunder%20Mountain&leftReader=1011144&rightReader=1011133&type=Entrance&entertainmentid=80010114&locationid=80010114">BIG DAP ENTRY UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/big-entry-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Entry L 22</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/big-entry-r/rfid/tap?uid=F03187D929D400&sid=36001121">Entry R 21</a> | 
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Big%20Thunder%20Mountain&leftReader=1014144&rightReader=1014133&type=Merge&entertainmentid=80010114&locationid=80010114">BIG DAP MERGE UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/big-merge-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Merge L 22</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/big-merge-r/rfid/tap?uid=F03187D929D400&sid=36001121">Merge R 21</a> 
+  <br/>--BUZZ--
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Buzz%20Lightyear&leftReader=1021144&rightReader=1021133&type=Entrance&entertainmentid=80010114&locationid=80010114">BUZZ DAP ENTRY UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/buzz-entry-l/rfid/tap?uid=F063666D62D400&sid=36001120">Entry L 20</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/buzz-entry-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Entry R 19</a> | 
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Buzz%20Lightyear&leftReader=1024144&rightReader=1024133&type=Merge&entertainmentid=80010114&locationid=80010114">BUZZ DAP MERGE UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/buzz-merge-l/rfid/tap?uid=F063666D62D400&sid=36001120">Merge L 20</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/buzz-merge-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Merge R 19</a> 
+  <br/>---HM---
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Haunted%20Mansion&leftReader=1031144&rightReader=1031133&type=Entrance&entertainmentid=80010114&locationid=80010114">HM DAP ENTRY UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/hm-entry-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Entry L 18</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/hm-entry-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Entry R 17</a> | 
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Haunted%20Mansion&leftReader=1034144&rightReader=1034133&type=Merge&entertainmentid=80010114&locationid=80010114">HM DAP MERGE UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/hm-merge-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Merge L 18</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/hm-merge-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Merge R 17</a> 
+  <br/>--JUNG--
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Jungle%20Cruise&leftReader=1041144&rightReader=1041133&type=Entrance&entertainmentid=80010114&locationid=80010114">JUNG DAP ENTRY UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/jung-entry-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Entry L 16</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/jung-entry-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Entry R 15</a> | 
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Jungle%20Cruise&leftReader=1044144&rightReader=1044133&type=Merge&entertainmentid=80010114&locationid=80010114">JUNG DAP MERGE UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/jung-merge-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Merge L 16</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/jung-merge-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Merge R 15</a> 
+  <br/>---PAN--
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Peter%20Pan&leftReader=1051144&rightReader=1051133&type=Entrance&entertainmentid=80010114&locationid=80010114">PAN DAP ENTRY UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/pan-entry-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Entry L 14</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/pan-entry-r/rfid/tap?uid=F049083AA92400&sid=36001113">Entry R 13</a> | 
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Peter%20Pan&leftReader=1054144&rightReader=1054133&type=Merge&entertainmentid=80010114&locationid=80010114">PAN DAP MERGE UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/pan-merge-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Merge L 14</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/pan-merge-r/rfid/tap?uid=F049083AA92400&sid=36001113">Merge R 13</a> 
+  <br/>--PHIL--
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Mickey%27s%20Philmargic&leftReader=1061144&rightReader=1061133&type=Entrance&entertainmentid=80010114&locationid=80010114">PHIL DAP ENTRY UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/phil-entry-l/rfid/tap?uid=F00A4E26371540&sid=36001112">Entry L 12</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/phil-entry-r/rfid/tap?uid=F0DC907E411C00&sid=36001111">Entry R 11</a> | 
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Mickey%27s%20Philmargic&leftReader=1064144&rightReader=1064133&type=Merge&entertainmentid=80010114&locationid=80010114">PHIL DAP MERGE UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/phil-merge-l/rfid/tap?uid=F00A4E26371540&sid=36001112">Merge L 12</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/phil-merge-r/rfid/tap?uid=F0DC907E411C00&sid=36001111">Merge R 11</a> 
+<br/>
+<b>xBRC SPCE (.120) [Space Mountain | 80010190]</b>
+<br/> +[UI]
+<a href="http://10.110.1.120:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.120:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.120:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.120:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.120:8080/status">status</a> | 
+<a href="http://10.110.1.120:8080/messages">messages</a> | 
+<a href="http://10.110.1.120:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.120:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.120:8080/currentconfiguration">config</a>
+<br/>
+  + Supports these attractions:
+  <br/>--MICK--
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Mickey%20Mouse%20at%20Town%20Square%20Theatre&leftReader=1101144&rightReader=1101133&type=Entrance&entertainmentid=80010190&locationid=80010190">MICK DAP ENTRY UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/mick-entry-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Entry L 22</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/mick-entry-r/rfid/tap?uid=F03187D929D400&sid=36001121">Entry R 21</a> | 
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Mickey%20Mouse%20at%20Town%20Square%20Theatre&leftReader=1104144&rightReader=1104133&type=Merge&entertainmentid=80010190&locationid=80010190">MICK DAP MERGE UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/mick-merge-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Merge L 22</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/mick-merge-r/rfid/tap?uid=F03187D929D400&sid=36001121">Merge R 21</a> 
+  <br/>--POOH--
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Winny%20the%20Pooh&leftReader=1071144&rightReader=1071133&type=Entrance&entertainmentid=80010190&locationid=80010190">POOH DAP ENTRY UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/pooh-entry-l/rfid/tap?uid=F063666D62D400&sid=36001120">Entry L 20</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/pooh-entry-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Entry R 19</a> | 
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Winny%20the%20Pooh&leftReader=1074144&rightReader=1074133&type=Merge&entertainmentid=80010190&locationid=80010190">POOH DAP MERGE UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/pooh-merge-l/rfid/tap?uid=F063666D62D400&sid=36001120">Merge L 20</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/pooh-merge-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Merge R 19</a> 
+  <br/>--PRCS--
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Disney%20Princess%20at%20Town%20Square%20Theatre&leftReader=1111144&rightReader=1111133&type=Entrance&entertainmentid=80010190&locationid=80010190">PRCS DAP ENTRY UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/prcs-entry-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Entry L 18</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/prcs-entry-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Entry R 17</a> | 
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Disney%20Princess%20at%20Town%20Square%20Theatre&leftReader=1114144&rightReader=1114133&type=Merge&entertainmentid=80010190&locationid=80010190">PRCS DAP MERGE UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/prcs-merge-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Merge L 18</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/prcs-merge-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Merge R 17</a> 
+  <br/>--SPCE--
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Space%20Mountain&leftReader=1081144&rightReader=1081133&type=Entrance&entertainmentid=80010190&locationid=80010190">SPCE DAP ENTRY UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/spce-entry-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Entry L 16</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/spce-entry-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Entry R 15</a> | 
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Space%20Mountain&leftReader=1084144&rightReader=1084133&type=Merge&entertainmentid=80010190&locationid=80010190">SPCE DAP MERGE UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/spce-merge-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Merge L 16</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/spce-merge-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Merge R 15</a> 
+  <br/>---SPL--
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Splash%20Mountain&leftReader=1091144&rightReader=1091133&type=Entrance&entertainmentid=80010190&locationid=80010190">SPL DAP ENTRY UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/spl-entry-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Entry L 14</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/spl-entry-r/rfid/tap?uid=F049083AA92400&sid=36001113">Entry R 13</a> | 
+<a href="http://10.110.1.118:8081/gxp-dap-ui/enter.html?name=Splash%20Mountain&leftReader=1094144&rightReader=1094133&type=Merge&entertainmentid=80010190&locationid=80010190">SPL DAP MERGE UI</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/spl-merge-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Merge L 14</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/restful/spl-merge-r/rfid/tap?uid=F049083AA92400&sid=36001113">Merge R 13</a> 
+<br/>
+<b>xBRC KI (.86)</b>
+<br/> +[UI]
+<a href="http://10.110.1.86:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.86:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.86:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.86:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.86:8080/status">status</a> | 
+<a href="http://10.110.1.86:8080/messages">messages</a> | 
+<a href="http://10.110.1.86:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.86:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.86:8080/currentconfiguration">config</a>
+<br/>
+--TAP KIOSK--
+<a href="http://10.110.1.112:8090/Xfpe/restful/ki-wp-1/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 1 22</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/restful/ki-wp-2/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 2 22</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/restful/ki-wp-3/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 3 22</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/restful/ki-wp-4/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 4 22</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/restful/ki-wp-5/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 5 22</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/restful/ki-wp-6/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 6 22</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/restful/ki-wp-7/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 7 22</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/restful/ki-wp-8/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 8 22</a> | 
+<br/>
+<b>HW xTP (.96)</b> <a href="http://10.110.1.96:8080/rfid/tap?uid=35021134&sid=35021134&pid=35021134">TAP HW xTP blue</a> | 
+<a href="http://10.110.1.96:8080/rfid/tap?uid=F09AA18BB83C00&sid=F09AA18BB83C00&pid=F09AA18BB83C00">TAP HW xTP green</a>
+<br/>
+<b>Reader ATT (.108)</b>
+<br/> +[UI]
+<a href="http://10.110.1.108:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.108:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.108:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.108:8090/UI/attractionview">FacView</a>
+<br/> +[API] 
+<a href="http://10.110.1.108:8080/status">status</a> | 
+<a href="http://10.110.1.108:8080/messages">messages</a> | 
+<a href="http://10.110.1.108:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.108:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.108:8080/currentconfiguration">config</a>
+<br/> +[SIM] 
+<a href="http://10.110.1.108:8090/Xfpe/">Sim Home</a>  | 
+<a href="http://10.110.1.108:8090/Xfpe/showreaders.action?locationId=7">Sim Entry</a> | 
+<a href="http://10.110.1.108:8090/Xfpe/showreaders.action?locationId=6">Sim Merge</a>
+<br/>
+<b>Reader PEKI (.112)</b>
+<br/> +[UI]
+<a href="http://10.110.1.112:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.112:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.112:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.112:8090/UI/attractionview">FacView</a>
+<br/> +[API] 
+<a href="http://10.110.1.112:8080/status">status</a> | 
+<a href="http://10.110.1.112:8080/messages">messages</a> | 
+<a href="http://10.110.1.112:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.112:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.112:8080/currentconfiguration">config</a>
+<br/> +[SIM] 
+<a href="http://10.110.1.112:8090/Xfpe/">Sim Home</a>  | 
+<a href="http://10.110.1.112:8090/Xfpe/showreaders.action?locationId=7">Sim Entry</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/showreaders.action?locationId=6">Sim Merge</a>
+<br/>
+<b>xBRC PE (.99)</b> <a href="http://10.110.1.99:8080/status">Status</a> | <a href="http://10.110.1.99:8090/UI/">Admin</a> | <a href="http://10.110.1.99:8090/UI/locationlistedit">LocEd</a> | <a href="http://10.110.1.99:8090/UI/attractionedit">FacEd</a> | <a href="http://10.110.1.99:8090/UI/attractionview">FacView</a>
+<br/>
+-TAP PE (.112->.99)  
+<a href="http://10.110.1.112:8090/Xfpe/restful/pe-entry-1/rfid/tap?sid=008023C002A50904&uid=008023C002A50904">Entry 1 04</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/restful/pe-entry-2/rfid/tap?sid=TEST-EC002A50950&uid=TEST-EC002A50950">Entry 2 50</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/restful/pe-entry-3/rfid/tap?sid=123456789012354&uid=1234567890123541">Entry 3 41</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/restful/pe-entry-4/rfid/tap?sid=123456789012355&uid=123456789012355">Entry 4 55</a>
+<br/>
+-CLEAR PE (.112->.99)  
+<a href="http://10.110.1.112:8090/Xfpe/restful/pe-entry-1/rfid/tap?sid=arek&uid=arek">Clear 1</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/restful/pe-entry-2/rfid/tap?sid=arek&uid=arek">Clear 2</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/restful/pe-entry-3/rfid/tap?sid=arek&uid=arek">Clear 3</a> | 
+<a href="http://10.110.1.112:8090/Xfpe/restful/pe-entry-4/rfid/tap?sid=arek&uid=arek">Clear 4</a>
+<br/>
+<a name="sit"/>
+<a href="#bvt">BVT</a> | <a href="#sit">SIT</a> | <a href="#int">INT</a> | <a href="#alpha">ALPHA</a> | <a href="#mk">MK</a>
+<h1>SIT Environment</h1>
+<b>xBRMS (.102) [JMS: 10.110.1.2 com.synapse.xbrc.qa.sit]</b>
+<br/> +[UI]
+<a href="http://10.110.1.102:8090/XBRMS/">Admin</a> | 
+<a href="http://10.110.1.102:8090/XBRMS/xbrchealth">Health</a> | 
+<a href="http://10.110.1.102:8090/XBRMS/editxbrc">XbrcEd</a> | 
+<a href="http://10.110.1.102:8090/XBRMS/storedconfig">ConfigEd</a> |
+<a href="http://10.110.1.102:8090/xi/">XI exec</a> | 
+<a href="http://10.110.1.102:8090/xi/1">XI details</a> | 
+<a href="http://10.110.1.102:8090/xi/daily.html">XI recruiting</a> | 
+<a href="http://10.110.1.102:8090/xi/dashboard/testresource">xi res</a>
+<br/> +[API]
+<a href="http://10.110.1.102:8090/XBRMS/rest/facilities">facilities</a>
+<br/>
+<b>IDMS (.103) [DB:10.110.1.72:IDMS_SIT]</b>
+<br/> +[Service]
+<a href="http://10.110.1.103:8090/IDMS/metrics">Metrics</a> | 
+<a href="http://10.110.1.103:8090/IDMS/metrics/reset">Reset</a> | 
+<br/> +[Bands]
+<a href="http://10.110.1.103:8090/IDMS/xbands/tapid/F009260BF51800">TapID 800</a> | 
+<a href="http://10.110.1.103:8090/IDMS/xband/secureid/35171313">Secure ID 313</a>
+<br/> +[Guests]
+<a href="http://10.110.1.103:8090/IDMS/guest/1658">Guest 1658</a> |
+<a href="http://10.110.1.103:8090/IDMS/guest/id;gxp-link-id=35200106/identifiers">Gxp Link</a>
+<br/>
+<b>GXP (.116)</b>
+<a href="http://10.110.1.116:8081/gxp-dap-ui">Admin</a> | 
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?leftReader=spce-entry-l&rightReader=spce-entry-r&type=Entrance&entertainmentid=80010190&locationid=80010190">Blue Lane App Space Mtn on (.95)</a> | 
+<a href="http://10.110.1.116:8081/dap/services/">services</a>
+<br/>
+<b>xBRC BUZZ (.92) [Buzz Lightyear | 80010114]</b>
+<br/> +[UI] 
+<a href="http://10.110.1.92:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.92:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.92:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.92:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.92:8080/status">status</a> | 
+<a href="http://10.110.1.92:8080/messages">messages</a> | 
+<a href="http://10.110.1.92:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.92:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.92:8080/currentconfiguration">config</a>
+<br/>
+  + Supports these attractions: 
+  <br/>--BIG--
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Big%20Thunder%20Mountain&leftReader=2011144&rightReader=2011133&type=Entrance&entertainmentid=80010114&locationid=80010114">BIG DAP ENTRY UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/big-entry-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Entry L 22</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/big-entry-r/rfid/tap?uid=F03187D929D400&sid=36001121">Entry R 21</a> | 
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Big%20Thunder%20Mountain&leftReader=2014144&rightReader=2014133&type=Merge&entertainmentid=80010114&locationid=80010114">BIG DAP MERGE UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/big-merge-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Merge L 22</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/big-merge-r/rfid/tap?uid=F03187D929D400&sid=36001121">Merge R 21</a> 
+  <br/>--BUZZ--
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Buzz%20Lightyear&leftReader=2021144&rightReader=2021133&type=Entrance&entertainmentid=80010114&locationid=80010114">BUZZ DAP ENTRY UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/buzz-entry-l/rfid/tap?uid=F063666D62D400&sid=36001120">Entry L 20</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/buzz-entry-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Entry R 19</a> | 
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Buzz%20Lightyear&leftReader=2024144&rightReader=2024133&type=Merge&entertainmentid=80010114&locationid=80010114">BUZZ DAP MERGE UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/buzz-merge-l/rfid/tap?uid=F063666D62D400&sid=36001120">Merge L 20</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/buzz-merge-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Merge R 19</a> 
+  <br/>---HM---
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Haunted%20Mansion&leftReader=2031144&rightReader=2031133&type=Entrance&entertainmentid=80010114&locationid=80010114">HM DAP ENTRY UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/hm-entry-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Entry L 18</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/hm-entry-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Entry R 17</a> | 
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Haunted%20Mansion&leftReader=2034144&rightReader=2034133&type=Merge&entertainmentid=80010114&locationid=80010114">HM DAP MERGE UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/hm-merge-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Merge L 18</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/hm-merge-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Merge R 17</a> 
+  <br/>--JUNG--
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Jungle%20Cruise&leftReader=2041144&rightReader=2041133&type=Entrance&entertainmentid=80010114&locationid=80010114">JUNG DAP ENTRY UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/jung-entry-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Entry L 16</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/jung-entry-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Entry R 15</a> | 
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Jungle%20Cruise&leftReader=2044144&rightReader=2044133&type=Merge&entertainmentid=80010114&locationid=80010114">JUNG DAP MERGE UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/jung-merge-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Merge L 16</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/jung-merge-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Merge R 15</a> 
+  <br/>---PAN--
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Peter%20Pan&leftReader=2051144&rightReader=2051133&type=Entrance&entertainmentid=80010114&locationid=80010114">PAN DAP ENTRY UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/pan-entry-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Entry L 14</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/pan-entry-r/rfid/tap?uid=F049083AA92400&sid=36001113">Entry R 13</a> | 
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Peter%20Pan&leftReader=2054144&rightReader=2054133&type=Merge&entertainmentid=80010114&locationid=80010114">PAN DAP MERGE UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/pan-merge-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Merge L 14</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/pan-merge-r/rfid/tap?uid=F049083AA92400&sid=36001113">Merge R 13</a> 
+  <br/>--PHIL--
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Mickey%27s%20Philmargic&leftReader=2061144&rightReader=2061133&type=Entrance&entertainmentid=80010114&locationid=80010114">PHIL DAP ENTRY UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/phil-entry-l/rfid/tap?uid=F00A4E26371540&sid=36001112">Entry L 12</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/phil-entry-r/rfid/tap?uid=F0DC907E411C00&sid=36001111">Entry R 11</a> | 
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Mickey%27s%20Philmargic&leftReader=2064144&rightReader=2064133&type=Merge&entertainmentid=80010114&locationid=80010114">PHIL DAP MERGE UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/phil-merge-l/rfid/tap?uid=F00A4E26371540&sid=36001112">Merge L 12</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/phil-merge-r/rfid/tap?uid=F0DC907E411C00&sid=36001111">Merge R 11</a> 
+<br/>
+<b>xBRC SPCE (.95) [Space Mountain | 80010190]</b>
+<br/> +[UI]
+<a href="http://10.110.1.95:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.95:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.95:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.95:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.95:8080/status">status</a> | 
+<a href="http://10.110.1.95:8080/messages">messages</a> | 
+<a href="http://10.110.1.95:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.95:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.95:8080/currentconfiguration">config</a>
+<br/>
+  + Supports these attractions:
+  <br/>--MICK--
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Mickey%20Mouse%20at%20Town%20Square%20Theatre&leftReader=2101144&rightReader=2101133&type=Entrance&entertainmentid=80010190&locationid=80010190">MICK DAP ENTRY UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/mick-entry-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Entry L 22</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/mick-entry-r/rfid/tap?uid=F03187D929D400&sid=36001121">Entry R 21</a> | 
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Mickey%20Mouse%20at%20Town%20Square%20Theatre&leftReader=2104144&rightReader=2104133&type=Merge&entertainmentid=80010190&locationid=80010190">MICK DAP MERGE UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/mick-merge-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Merge L 22</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/mick-merge-r/rfid/tap?uid=F03187D929D400&sid=36001121">Merge R 21</a> 
+  <br/>--POOH--
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Winny%20the%20Pooh&leftReader=2071144&rightReader=2071133&type=Entrance&entertainmentid=80010190&locationid=80010190">POOH DAP ENTRY UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/pooh-entry-l/rfid/tap?uid=F063666D62D400&sid=36001120">Entry L 20</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/pooh-entry-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Entry R 19</a> | 
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Winny%20the%20Pooh&leftReader=2074144&rightReader=2074133&type=Merge&entertainmentid=80010190&locationid=80010190">POOH DAP MERGE UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/pooh-merge-l/rfid/tap?uid=F063666D62D400&sid=36001120">Merge L 20</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/pooh-merge-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Merge R 19</a> 
+  <br/>--PRCS--
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Disney%20Princess%20at%20Town%20Square%20Theatre&leftReader=2111144&rightReader=2111133&type=Entrance&entertainmentid=80010190&locationid=80010190">PRCS DAP ENTRY UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/prcs-entry-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Entry L 18</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/prcs-entry-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Entry R 17</a> | 
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Disney%20Princess%20at%20Town%20Square%20Theatre&leftReader=2114144&rightReader=2114133&type=Merge&entertainmentid=80010190&locationid=80010190">PRCS DAP MERGE UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/prcs-merge-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Merge L 18</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/prcs-merge-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Merge R 17</a> 
+  <br/>--SPCE--
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Space%20Mountain&leftReader=2081144&rightReader=2081133&type=Entrance&entertainmentid=80010190&locationid=80010190">SPCE DAP ENTRY UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/spce-entry-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Entry L 16</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/spce-entry-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Entry R 15</a> | 
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Space%20Mountain&leftReader=2084144&rightReader=2084133&type=Merge&entertainmentid=80010190&locationid=80010190">SPCE DAP MERGE UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/spce-merge-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Merge L 16</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/spce-merge-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Merge R 15</a> 
+  <br/>---SPL--
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Splash%20Mountain&leftReader=2091144&rightReader=2091133&type=Entrance&entertainmentid=80010190&locationid=80010190">SPL DAP ENTRY UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/spl-entry-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Entry L 14</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/spl-entry-r/rfid/tap?uid=F049083AA92400&sid=36001113">Entry R 13</a> | 
+<a href="http://10.110.1.116:8081/gxp-dap-ui/enter.html?name=Splash%20Mountain&leftReader=2094144&rightReader=2094133&type=Merge&entertainmentid=80010190&locationid=80010190">SPL DAP MERGE UI</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/spl-merge-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Merge L 14</a> | 
+<a href="http://10.110.1.114:8090/Xfpe/restful/spl-merge-r/rfid/tap?uid=F049083AA92400&sid=36001113">Merge R 13</a> 
+<br/>
+<b>xBRC KI (.111)</b>
+<br/> +[UI]
+<a href="http://10.110.1.111:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.111:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.111:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.111:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.111:8080/status">status</a> | 
+<a href="http://10.110.1.111:8080/messages">messages</a> | 
+<a href="http://10.110.1.111:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.111:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.111:8080/currentconfiguration">config</a>
+<br/>
+--TAP KIOSK--
+<a href="http://10.110.1.117:8090/Xfpe/restful/ki-wp-1/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 1 22</a> | 
+<a href="http://10.110.1.117:8090/Xfpe/restful/ki-wp-2/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 2 22</a> | 
+<a href="http://10.110.1.117:8090/Xfpe/restful/ki-wp-3/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 3 22</a> | 
+<a href="http://10.110.1.117:8090/Xfpe/restful/ki-wp-4/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 4 22</a> | 
+<a href="http://10.110.1.117:8090/Xfpe/restful/ki-wp-5/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 5 22</a> | 
+<a href="http://10.110.1.117:8090/Xfpe/restful/ki-wp-6/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 6 22</a> | 
+<a href="http://10.110.1.117:8090/Xfpe/restful/ki-wp-7/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 7 22</a> | 
+<a href="http://10.110.1.117:8090/Xfpe/restful/ki-wp-8/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 8 22</a> | 
+<br/>
+<b>HW xTP (.96)</b> <a href="http://10.110.1.96:8080/rfid/tap?uid=35021134&sid=35021134&pid=35021134">TAP HW xTP blue</a> | 
+<a href="http://10.110.1.96:8080/rfid/tap?uid=F09AA18BB83C00&sid=F09AA18BB83C00&pid=F09AA18BB83C00">TAP HW xTP green</a>
+<br/>
+<b>Reader ATT (.114)</b> <a href="http://10.110.1.114:8080/status">Status</a> | <a href="http://10.110.1.114:8090/UI/">Admin</a> | <a href="http://10.110.1.114:8090/UI/locationlistedit">LocEd</a> | <a href="http://10.110.1.114:8090/UI/attractionedit">FacEd</a> | <a href="http://10.110.1.114:8090/UI/attractionview">FacView</a>
+| <a href="http://10.110.1.114:8090/Xfpe/">Sim Home</a> | <a href="http://10.110.1.114:8090/Xfpe/showreaders.action?locationId=7">Sim Entry</a> | <a href="http://10.110.1.114:8090/Xfpe/showreaders.action?locationId=6">Sim Merge</a> | 
+<br/>
+<b>Reader PEKI (.117)</b> <a href="http://10.110.1.117:8080/status">Status</a> | <a href="http://10.110.1.117:8090/UI/">Admin</a> | <a href="http://10.110.1.117:8090/UI/locationlistedit">LocEd</a> | <a href="http://10.110.1.117:8090/UI/attractionedit">FacEd</a> | <a href="http://10.110.1.117:8090/UI/attractionview">FacView</a>
+| <a href="http://10.110.1.117:8090/Xfpe/">Sim Home</a> | <a href="http://10.110.1.117:8090/Xfpe/showreaders.action?locationId=1">Sim PE</a> | <a href="http://10.110.1.117:8090/Xfpe/showreaders.action?locationId=2">Sim Kiosk</a> | 
+<br/>
+<b>xBRC PE (.99)</b> <a href="http://10.110.1.99:8080/status">Status</a> | <a href="http://10.110.1.99:8090/UI/">Admin</a> | <a href="http://10.110.1.99:8090/UI/locationlistedit">LocEd</a> | <a href="http://10.110.1.99:8090/UI/attractionedit">FacEd</a> | <a href="http://10.110.1.99:8090/UI/attractionview">FacView</a>
+<br/>
+-TAP PE (.117->.99)  
+<a href="http://10.110.1.117:8090/Xfpe/restful/pe-entry-1/rfid/tap?sid=008023C002A50904&uid=008023C002A50904">Entry 1 04</a> | 
+<a href="http://10.110.1.117:8090/Xfpe/restful/pe-entry-2/rfid/tap?sid=TEST-EC002A50950&uid=TEST-EC002A50950">Entry 2 50</a> | 
+<a href="http://10.110.1.117:8090/Xfpe/restful/pe-entry-3/rfid/tap?sid=123456789012354&uid=1234567890123541">Entry 3 41</a> | 
+<a href="http://10.110.1.117:8090/Xfpe/restful/pe-entry-4/rfid/tap?sid=123456789012355&uid=123456789012355">Entry 4 55</a>
+<br/>
+-CLEAR PE (.117->.99)  
+<a href="http://10.110.1.117:8090/Xfpe/restful/pe-entry-1/rfid/tap?sid=arek&uid=arek">Clear 1</a> | 
+<a href="http://10.110.1.117:8090/Xfpe/restful/pe-entry-2/rfid/tap?sid=arek&uid=arek">Clear 2</a> | 
+<a href="http://10.110.1.117:8090/Xfpe/restful/pe-entry-3/rfid/tap?sid=arek&uid=arek">Clear 3</a> | 
+<a href="http://10.110.1.117:8090/Xfpe/restful/pe-entry-4/rfid/tap?sid=arek&uid=arek">Clear 4</a>
+<br/>
+<a name="int"/>
+<a href="#bvt">BVT</a> | <a href="#sit">SIT</a> | <a href="#int">INT</a> | <a href="#alpha">ALPHA</a> | <a href="#mk">MK</a>
+<h1>INT Environment</h1>
+<b>xBRMS (.239) [JMS: 10.110.1.186 com.synapse.xbrc]</b>
+<br/> +[UI]
+<a href="http://10.110.1.239:8090/XBRMS/">Admin</a> | 
+<a href="http://10.110.1.239:8090/XBRMS/xbrchealth">Health</a> | 
+<a href="http://10.110.1.239:8090/XBRMS/editxbrc">XbrcEd</a> | 
+<a href="http://10.110.1.239:8090/XBRMS/storedconfig">ConfigEd</a> |
+<a href="http://10.110.1.239:8090/xi/">XI exec</a> | 
+<a href="http://10.110.1.239:8090/xi/1">XI details</a> | 
+<a href="http://10.110.1.239:8090/xi/daily.html">XI recruiting</a> | 
+<a href="http://10.110.1.239:8090/xi/dashboard/testresource">xi res</a>
+<br/> +[API]
+<a href="http://10.110.1.239:8090/XBRMS/rest/facilities">facilities</a>
+<br/>
+<b>IDMS (.178) [DB:10.110.1.178:IDMS_INT]</b>
+<br/> +[Service]
+<a href="http://10.110.1.178:8090/IDMS/metrics">Metrics</a> | 
+<a href="http://10.110.1.178:8090/IDMS/metrics/reset">Reset</a> | 
+<br/> +[Bands]
+<a href="http://10.110.1.178:8090/IDMS/xbands/tapid/F009260BF51800">TapID 800</a> | 
+<a href="http://10.110.1.178:8090/IDMS/xband/secureid/35171313">Secure ID 313</a>
+<br/> +[Guests]
+<a href="http://10.110.1.178:8090/IDMS/guest/1658">Guest 1658</a> |
+<a href="http://10.110.1.178:8090/IDMS/guest/id;gxp-link-id=35200106/identifiers">Gxp Link</a>
+<br/>
+<b>GXP (.144)</b>
+<a href="http://10.110.1.144:8081/gxp-dap-ui">Admin</a> | 
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?leftReader=4074144&rightReader=4074133&type=Merge&entertainmentid=80010190&locationid=80010190">SPCE DAP MERGE UI</a> | 
+<a href="http://10.110.1.144:8081/dap/services/">services</a>
+<br/><b>xBRC BUZZ (.205) [Buzz Lightyear | 80010114]</b>
+<br/> +[UI] 
+<a href="http://10.110.1.205:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.205:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.205:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.205:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.205:8080/status">status</a> | 
+<a href="http://10.110.1.205:8080/messages">messages</a> | 
+<a href="http://10.110.1.205:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.205:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.205:8080/currentconfiguration">config</a>
+  <br/>--BIG--
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Big%20Thunder%20Mountain&leftReader=4011144&rightReader=4011133&type=Entrance&entertainmentid=80010110&locationid=80010110">BIG DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/big-entry-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Entry L 22</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/big-entry-r/rfid/tap?uid=F03187D929D400&sid=36001121">Entry R 21</a> | 
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Big%20Thunder%20Mountain&leftReader=4014144&rightReader=4014133&type=Merge&entertainmentid=80010110&locationid=80010110">BIG DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/big-merge-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Merge L 22</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/big-merge-r/rfid/tap?uid=F03187D929D400&sid=36001121">Merge R 21</a> 
+  <br/>--BUZZ--
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Buzz%20Lightyear&leftReader=4021144&rightReader=4021133&type=Entrance&entertainmentid=80010114&locationid=80010114">BUZZ DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/buzz-entry-l/rfid/tap?uid=F063666D62D400&sid=36001120">Entry L 20</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/buzz-entry-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Entry R 19</a> | 
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Buzz%20Lightyear&leftReader=4024144&rightReader=4024133&type=Merge&entertainmentid=80010114&locationid=80010114">BUZZ DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/buzz-merge-l/rfid/tap?uid=F063666D62D400&sid=36001120">Merge L 20</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/buzz-merge-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Merge R 19</a> 
+<br/>
+<b>xBRC HM (.204) [Haunted Mansion | 80010208]</b>
+<br/> +[UI] 
+<a href="http://10.110.1.204:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.204:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.204:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.204:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.204:8080/status">status</a> | 
+<a href="http://10.110.1.204:8080/messages">messages</a> | 
+<a href="http://10.110.1.204:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.204:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.204:8080/currentconfiguration">config</a>
+  <br/>---HM---
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Haunted%20Mansion&leftReader=4031144&rightReader=4031133&type=Entrance&entertainmentid=80010208&locationid=80010208">HM DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/hm-entry-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Entry L 18</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/hm-entry-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Entry R 17</a> | 
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Haunted%20Mansion&leftReader=4034144&rightReader=4034133&type=Merge&entertainmentid=80010208&locationid=80010208">HM DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/hm-merge-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Merge L 18</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/hm-merge-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Merge R 17</a> 
+<br/>
+<b>xBRC JUNG (.202) [Jungle Cruise | 80010153]</b>
+<br/> +[UI] 
+<a href="http://10.110.1.202:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.202:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.202:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.202:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.202:8080/status">status</a> | 
+<a href="http://10.110.1.202:8080/messages">messages</a> | 
+<a href="http://10.110.1.202:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.202:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.202:8080/currentconfiguration">config</a>
+  <br/>--JUNG--
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Jungle%20Cruise&leftReader=4041144&rightReader=4041133&type=Entrance&entertainmentid=80010153&locationid=80010153">JUNG DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/jung-entry-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Entry L 16</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/jung-entry-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Entry R 15</a> | 
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Jungle%20Cruise&leftReader=4044144&rightReader=4044133&type=Merge&entertainmentid=80010153&locationid=80010153">JUNG DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/jung-merge-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Merge L 16</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/jung-merge-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Merge R 15</a> 
+<br/>
+<b>xBRC PAN (.201) [Peter Pan | 80010176]</b>
+<br/> +[UI] 
+<a href="http://10.110.1.201:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.201:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.201:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.201:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.201:8080/status">status</a> | 
+<a href="http://10.110.1.201:8080/messages">messages</a> | 
+<a href="http://10.110.1.201:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.201:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.201:8080/currentconfiguration">config</a>
+  <br/>---PAN--
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Peter%20Pan&leftReader=4051144&rightReader=4051133&type=Entrance&entertainmentid=80010176&locationid=80010176">PAN DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pan-entry-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Entry L 14</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pan-entry-r/rfid/tap?uid=F049083AA92400&sid=36001113">Entry R 13</a> | 
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Peter%20Pan&leftReader=4054144&rightReader=4054133&type=Merge&entertainmentid=80010176&locationid=80010176">PAN DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pan-merge-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Merge L 14</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pan-merge-r/rfid/tap?uid=F049083AA92400&sid=36001113">Merge R 13</a> 
+<br/>
+<b>xBRC PHIL (.245) [Philharmagic | 80010170]</b>
+<br/> +[UI] 
+<a href="http://10.110.1.245:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.245:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.245:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.245:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.245:8080/status">status</a> | 
+<a href="http://10.110.1.245:8080/messages">messages</a> | 
+<a href="http://10.110.1.245:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.245:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.245:8080/currentconfiguration">config</a>
+  <br/>--PHIL--
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Mickey%27s%20Philmargic&leftReader=4061144&rightReader=4061133&type=Entrance&entertainmentid=80010170&locationid=80010170">PHIL DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/phil-entry-l/rfid/tap?uid=F00A4E26371540&sid=36001112">Entry L 12</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/phil-entry-r/rfid/tap?uid=F0DC907E411C00&sid=36001111">Entry R 11</a> | 
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Mickey%27s%20Philmargic&leftReader=4064144&rightReader=4064133&type=Merge&entertainmentid=80010170&locationid=80010170">PHIL DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/phil-merge-l/rfid/tap?uid=F00A4E26371540&sid=36001112">Merge L 12</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/phil-merge-r/rfid/tap?uid=F0DC907E411C00&sid=36001111">Merge R 11</a> 
+<br/>
+<b>xBRC MICK (.203) [Mickey Mouse at Town Square Theatre | 15850196]</b>
+<br/> +[UI]
+<a href="http://10.110.1.203:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.203:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.203:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.203:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.203:8080/status">status</a> | 
+<a href="http://10.110.1.203:8080/messages">messages</a> | 
+<a href="http://10.110.1.203:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.203:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.203:8080/currentconfiguration">config</a>
+  <br/>--MICK--
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Mickey%20Mouse%20at%20Town%20Square%20Theatre&leftReader=4101144&rightReader=4101133&type=Entrance&entertainmentid=15850196&locationid=15850196">MICK DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/mick-entry-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Entry L 22</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/mick-entry-r/rfid/tap?uid=F03187D929D400&sid=36001121">Entry R 21</a> | 
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Mickey%20Mouse%20at%20Town%20Square%20Theatre&leftReader=4104144&rightReader=4104133&type=Merge&entertainmentid=15850196&locationid=15850196">MICK DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/mick-merge-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Merge L 22</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/mick-merge-r/rfid/tap?uid=F03187D929D400&sid=36001121">Merge R 21</a> 
+<br/>
+<b>xBRC POOH (.237) [Winny the Pooh | 80010213]</b>
+<br/> +[UI] 
+<a href="http://10.110.1.237:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.237:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.237:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.237:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.237:8080/status">status</a> | 
+<a href="http://10.110.1.237:8080/messages">messages</a> | 
+<a href="http://10.110.1.237:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.237:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.237:8080/currentconfiguration">config</a>
+  <br/>--POOH--
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Winny%20the%20Pooh&leftReader=4071144&rightReader=4071133&type=Entrance&entertainmentid=80010213&locationid=80010213">POOH DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pooh-entry-l/rfid/tap?uid=F063666D62D400&sid=36001120">Entry L 20</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pooh-entry-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Entry R 19</a> | 
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Winny%20the%20Pooh&leftReader=4074144&rightReader=4074133&type=Merge&entertainmentid=80010213&locationid=80010213">POOH DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pooh-merge-l/rfid/tap?uid=F063666D62D400&sid=36001120">Merge L 20</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pooh-merge-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Merge R 19</a> 
+<br/>
+<b>xBRC PRCS (.235) [Disney Princess at Town Square Theatre | 15850198]</b>
+<br/> +[UI] 
+<a href="http://10.110.1.235:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.235:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.235:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.235:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.235:8080/status">status</a> | 
+<a href="http://10.110.1.235:8080/messages">messages</a> | 
+<a href="http://10.110.1.235:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.235:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.235:8080/currentconfiguration">config</a>
+  <br/>--PRCS--
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Disney%20Princess%20at%20Town%20Square%20Theatre&leftReader=4111144&rightReader=4111133&type=Entrance&entertainmentid=15850198&locationid=15850198">PRCS DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/prcs-entry-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Entry L 18</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/prcs-entry-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Entry R 17</a> | 
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Disney%20Princess%20at%20Town%20Square%20Theatre&leftReader=4114144&rightReader=4114133&type=Merge&entertainmentid=15850198&locationid=15850198">PRCS DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/prcs-merge-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Merge L 18</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/prcs-merge-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Merge R 17</a> 
+<br/>
+<b>xBRC SPCE (.237) [Space Mountain | 80010190]</b>
+<br/> +[UI] 
+<a href="http://10.110.1.234:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.234:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.234:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.234:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.234:8080/status">status</a> | 
+<a href="http://10.110.1.234:8080/messages">messages</a> | 
+<a href="http://10.110.1.234:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.234:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.234:8080/currentconfiguration">config</a>
+  <br/>--SPCE--
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Space%20Mountain&leftReader=4081144&rightReader=4081133&type=Entrance&entertainmentid=80010190&locationid=80010190">SPCE DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spce-entry-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Entry L 16</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spce-entry-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Entry R 15</a> | 
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Space%20Mountain&leftReader=4084144&rightReader=4084133&type=Merge&entertainmentid=80010190&locationid=80010190">SPCE DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spce-merge-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Merge L 16</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spce-merge-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Merge R 15</a> 
+<br/>
+<b>xBRC SPL (.206) [Splash Mountain | 80010192]</b>
+<br/> +[UI] 
+<a href="http://10.110.1.206:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.206:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.206:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.206:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.206:8080/status">status</a> | 
+<a href="http://10.110.1.206:8080/messages">messages</a> | 
+<a href="http://10.110.1.206:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.206:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.206:8080/currentconfiguration">config</a>
+  <br/>---SPL--
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Splash%20Mountain&leftReader=4091144&rightReader=4091133&type=Entrance&entertainmentid=80010192&locationid=80010192">SPL DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spl-entry-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Entry L 14</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spl-entry-r/rfid/tap?uid=F049083AA92400&sid=36001113">Entry R 13</a> | 
+<a href="http://10.110.1.144:8081/gxp-dap-ui/enter.html?name=Splash%20Mountain&leftReader=4094144&rightReader=4094133&type=Merge&entertainmentid=80010192&locationid=80010192">SPL DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spl-merge-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Merge L 14</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spl-merge-r/rfid/tap?uid=F049083AA92400&sid=36001113">Merge R 13</a> 
+<br/>
+<b>xBRC KI (.225)</b>
+<br/> +[UI]
+<a href="http://10.110.1.225:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.225:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.225:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.225:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.110.1.225:8080/status">status</a> | 
+<a href="http://10.110.1.225:8080/messages">messages</a> | 
+<a href="http://10.110.1.225:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.225:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.225:8080/currentconfiguration">config</a>
+<br/>
+--TAP KIOSK--
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-1/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 1 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-2/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 2 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-3/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 3 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-4/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 4 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-5/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 5 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-6/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 6 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-7/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 7 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-8/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 8 22</a> | 
+<br/>
+<b>Reader ATT (.170)</b> 
+<br/> +[UI]
+<a href="http://10.110.1.170:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.170:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.170:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.170:8090/UI/attractionview">FacView</a>
+<br/> +[API] 
+<a href="http://10.110.1.170:8080/status">status</a> | 
+<a href="http://10.110.1.170:8080/messages">messages</a> | 
+<a href="http://10.110.1.170:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.170:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.170:8080/currentconfiguration">config</a>
+<br/> +[SIM] 
+<a href="http://10.110.1.170:8090/Xfpe/">Sim Home</a>  | 
+<a href="http://10.110.1.170:8090/Xfpe/showreaders.action?locationId=7">Sim Entry</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/showreaders.action?locationId=6">Sim Merge</a>
+<br/>
+<b>Reader PEKI (.174)</b>
+<br/> +[UI]
+<a href="http://10.110.1.174:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.174:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.174:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.174:8090/UI/attractionview">FacView</a>
+<br/> +[API] 
+<a href="http://10.110.1.174:8080/status">status</a> | 
+<a href="http://10.110.1.174:8080/messages">messages</a> | 
+<a href="http://10.110.1.174:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.174:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.174:8080/currentconfiguration">config</a>
+<br/> +[SIM] 
+<a href="http://10.110.1.174:8090/Xfpe/">Sim Home</a>  | 
+<a href="http://10.110.1.174:8090/Xfpe/showreaders.action?locationId=7">Sim Entry</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/showreaders.action?locationId=6">Sim Merge</a>
+<br/>
+<b>xBRC PE (.236)</b> 
+<br/> +[UI]
+<a href="http://10.110.1.236:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.236:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.236:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.236:8090/UI/attractionview">FacView</a>
+<br/> +[API] 
+<a href="http://10.110.1.236:8080/status">status</a> | 
+<a href="http://10.110.1.236:8080/messages">messages</a> | 
+<a href="http://10.110.1.236:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.236:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.236:8080/currentconfiguration">config</a>
+<br/> +[SIM] 
+<a href="http://10.110.1.236:8090/Xfpe/">Sim Home</a>  | 
+<a href="http://10.110.1.236:8090/Xfpe/showreaders.action?locationId=7">Sim Entry</a> | 
+<a href="http://10.110.1.236:8090/Xfpe/showreaders.action?locationId=6">Sim Merge</a>
+<br/>
+-TAP PE (.117->.236)  
+<a href="http://10.110.1.174:8090/Xfpe/restful/pe-entry-1/rfid/tap?sid=008023C002A50904&uid=008023C002A50904">Entry 1 04</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/pe-entry-2/rfid/tap?sid=TEST-EC002A50950&uid=TEST-EC002A50950">Entry 2 50</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/pe-entry-3/rfid/tap?sid=123456789012354&uid=1234567890123541">Entry 3 41</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/pe-entry-4/rfid/tap?sid=123456789012355&uid=123456789012355">Entry 4 55</a>
+<br/>
+-CLEAR PE (.117->.236)  
+<a href="http://10.110.1.174:8090/Xfpe/restful/pe-entry-1/rfid/tap?sid=arek&uid=arek">Clear 1</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/pe-entry-2/rfid/tap?sid=arek&uid=arek">Clear 2</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/pe-entry-3/rfid/tap?sid=arek&uid=arek">Clear 3</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/pe-entry-4/rfid/tap?sid=arek&uid=arek">Clear 4</a>
+<br/>
+<a name="alpha"/>
+<a href="#bvt">BVT</a> | <a href="#sit">SIT</a> | <a href="#int">INT</a> | <a href="#alpha">ALPHA</a> | <a href="#mk">MK</a>
+<h1>ALPHA Environment</h1>
+<b>xBRMS (.92) [JMS: 10.92.63.66 com.synapse.xbrc]</b>
+<br/> +[UI]
+<a href="http://10.92.63.92:8080/XBRMS/">Admin</a> | 
+<a href="http://10.92.63.92:8080/XBRMS/xbrchealth">Health</a> | 
+<a href="http://10.92.63.92:8080/XBRMS/editxbrc">XbrcEd</a> | 
+<a href="http://10.92.63.92:8080/XBRMS/storedconfig">ConfigEd</a> |
+<a href="http://10.92.63.92:8090/xi/">XI</a> | 
+<a href="http://10.92.63.92:80/xi/dashboard/testresource">xi res</a>
+<br/> +[API]
+<a href="http://10.92.63.92:8080/XBRMS/rest/facilities">facilities</a>
+<br/>
+<b>IDMS (.28) [DB:10.92.63.103:IDMS]</b>
+<br/> +[Service]
+<a href="http://10.92.65.27:8090/IDMS/metrics">Metrics</a> | 
+<a href="http://10.92.65.27:8090/IDMS/metrics/reset">Reset</a> | 
+<br/> +[Bands]
+<a href="http://10.92.65.27:8090/IDMS/xbands/tapid/F009260BF51800">TapID 800</a> | 
+<a href="http://10.92.65.27:8090/IDMS/xband/secureid/35171313">Secure ID 313</a>
+<br/> +[Guests]
+<a href="http://10.92.65.27:8090/IDMS/guest/1658">Guest 1658</a> |
+<a href="http://10.92.65.27:8090/IDMS/guest/id;gxp-link-id=35200106/identifiers">Gxp Link</a>
+<br/>
+<b>GXP (.21)</b>
+<a href="http://10.92.65.21:8081/gxp-dap-ui">Admin</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?leftReader=4074144&rightReader=4074133&type=Merge&entertainmentid=80010190&locationid=80010190">SPCE DAP MERGE UI</a> | 
+<a href="http://10.92.65.21:8081/dap/services/">services</a>
+<br/>
+<b>xBRC BUZZ (.38) [Buzz Lightyear | 80010114]</b>
+<br/> +[UI] 
+<a href="http://10.92.65.38:8090/UI/">Admin</a> | 
+<a href="http://10.92.65.38:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.92.65.38:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.92.65.38:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.92.65.38:8080/status">status</a> | 
+<a href="http://10.92.65.38:8080/messages">messages</a> | 
+<a href="http://10.92.65.38:8080/gueststatus">guests</a> | 
+<a href="http://10.92.65.38:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.92.65.38:8080/currentconfiguration">config</a>
+  <br/>--BUZZ--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Buzz%20Lightyear&leftReader=4021144&rightReader=4021133&type=Entrance&entertainmentid=80010114&locationid=80010114">BUZZ DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/buzz-entry-l/rfid/tap?uid=F063666D62D400&sid=36001120">Entry L 20</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/buzz-entry-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Entry R 19</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Buzz%20Lightyear&leftReader=4024144&rightReader=4024133&type=Merge&entertainmentid=80010114&locationid=80010114">BUZZ DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/buzz-merge-l/rfid/tap?uid=F063666D62D400&sid=36001120">Merge L 20</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/buzz-merge-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Merge R 19</a> 
+<br/>
+<b>xBRC HM (.33) [Haunted Mansion | 80010208]</b>
+<br/> +[UI] 
+<a href="http://10.92.65.33:8090/UI/">Admin</a> | 
+<a href="http://10.92.65.33:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.92.65.33:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.92.65.33:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.92.65.33:8080/status">status</a> | 
+<a href="http://10.92.65.33:8080/messages">messages</a> | 
+<a href="http://10.92.65.33:8080/gueststatus">guests</a> | 
+<a href="http://10.92.65.33:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.92.65.33:8080/currentconfiguration">config</a>
+  <br/>---HM---
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Haunted%20Mansion&leftReader=4031144&rightReader=4031133&type=Entrance&entertainmentid=80010208&locationid=80010208">HM DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/hm-entry-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Entry L 18</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/hm-entry-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Entry R 17</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Haunted%20Mansion&leftReader=4034144&rightReader=4034133&type=Merge&entertainmentid=80010208&locationid=80010208">HM DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/hm-merge-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Merge L 18</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/hm-merge-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Merge R 17</a> 
+<br/>
+<b>xBRC JUNG (.68) [Jungle Cruise | 80010153]</b>
+<br/> +[UI] 
+<a href="http://10.92.65.68:8090/UI/">Admin</a> | 
+<a href="http://10.92.65.68:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.92.65.68:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.92.65.68:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.92.65.68:8080/status">status</a> | 
+<a href="http://10.92.65.68:8080/messages">messages</a> | 
+<a href="http://10.92.65.68:8080/gueststatus">guests</a> | 
+<a href="http://10.92.65.68:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.92.65.68:8080/currentconfiguration">config</a>
+  <br/>--JUNG--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Jungle%20Cruise&leftReader=4041144&rightReader=4041133&type=Entrance&entertainmentid=80010153&locationid=80010153">JUNG DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/jung-entry-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Entry L 16</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/jung-entry-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Entry R 15</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Jungle%20Cruise&leftReader=4044144&rightReader=4044133&type=Merge&entertainmentid=80010153&locationid=80010153">JUNG DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/jung-merge-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Merge L 16</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/jung-merge-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Merge R 15</a> 
+<br/>
+<b>xBRC PAN (.70) [Peter Pan | 80010176]</b>
+<br/> +[UI] 
+<a href="http://10.92.65.70:8090/UI/">Admin</a> | 
+<a href="http://10.92.65.70:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.92.65.70:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.92.65.70:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.92.65.70:8080/status">status</a> | 
+<a href="http://10.92.65.70:8080/messages">messages</a> | 
+<a href="http://10.92.65.70:8080/gueststatus">guests</a> | 
+<a href="http://10.92.65.70:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.92.65.70:8080/currentconfiguration">config</a>
+  <br/>---PAN--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Peter%20Pan&leftReader=4051144&rightReader=4051133&type=Entrance&entertainmentid=80010176&locationid=80010176">PAN DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pan-entry-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Entry L 14</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pan-entry-r/rfid/tap?uid=F049083AA92400&sid=36001113">Entry R 13</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Peter%20Pan&leftReader=4054144&rightReader=4054133&type=Merge&entertainmentid=80010176&locationid=80010176">PAN DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pan-merge-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Merge L 14</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pan-merge-r/rfid/tap?uid=F049083AA92400&sid=36001113">Merge R 13</a> 
+<br/>
+<b>xBRC PHIL (.74) [Philharmagic | 80010170]</b>
+<br/> +[UI] 
+<a href="http://10.92.65.74:8090/UI/">Admin</a> | 
+<a href="http://10.92.65.74:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.92.65.74:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.92.65.74:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.92.65.74:8080/status">status</a> | 
+<a href="http://10.92.65.74:8080/messages">messages</a> | 
+<a href="http://10.92.65.74:8080/gueststatus">guests</a> | 
+<a href="http://10.92.65.74:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.92.65.74:8080/currentconfiguration">config</a>
+  <br/>--PHIL--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Mickey%27s%20Philmargic&leftReader=4061144&rightReader=4061133&type=Entrance&entertainmentid=80010170&locationid=80010170">PHIL DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/phil-entry-l/rfid/tap?uid=F00A4E26371540&sid=36001112">Entry L 12</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/phil-entry-r/rfid/tap?uid=F0DC907E411C00&sid=36001111">Entry R 11</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Mickey%27s%20Philmargic&leftReader=4064144&rightReader=4064133&type=Merge&entertainmentid=80010170&locationid=80010170">PHIL DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/phil-merge-l/rfid/tap?uid=F00A4E26371540&sid=36001112">Merge L 12</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/phil-merge-r/rfid/tap?uid=F0DC907E411C00&sid=36001111">Merge R 11</a> 
+<br/>
+<b>xBRC MICK (.69) [Mickey Mouse at Town Square Theatre | 15850196]</b>
+<br/> +[UI]
+<a href="http://10.92.65.69:8090/UI/">Admin</a> | 
+<a href="http://10.92.65.69:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.92.65.69:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.92.65.69:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.92.65.69:8080/status">status</a> | 
+<a href="http://10.92.65.69:8080/messages">messages</a> | 
+<a href="http://10.92.65.69:8080/gueststatus">guests</a> | 
+<a href="http://10.92.65.69:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.92.65.69:8080/currentconfiguration">config</a>
+  <br/>--MICK--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Mickey%20Mouse%20at%20Town%20Square%20Theatre&leftReader=4101144&rightReader=4101133&type=Entrance&entertainmentid=15850196&locationid=15850196">MICK DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/mick-entry-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Entry L 22</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/mick-entry-r/rfid/tap?uid=F03187D929D400&sid=36001121">Entry R 21</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Mickey%20Mouse%20at%20Town%20Square%20Theatre&leftReader=4104144&rightReader=4104133&type=Merge&entertainmentid=15850196&locationid=15850196">MICK DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/mick-merge-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Merge L 22</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/mick-merge-r/rfid/tap?uid=F03187D929D400&sid=36001121">Merge R 21</a> 
+<br/>
+<b>xBRC POOH (.72) [Winny the Pooh | 80010213]</b>
+<br/> +[UI] 
+<a href="http://10.92.65.72:8090/UI/">Admin</a> | 
+<a href="http://10.92.65.72:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.92.65.72:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.92.65.72:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.92.65.72:8080/status">status</a> | 
+<a href="http://10.92.65.72:8080/messages">messages</a> | 
+<a href="http://10.92.65.72:8080/gueststatus">guests</a> | 
+<a href="http://10.92.65.72:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.92.65.72:8080/currentconfiguration">config</a>
+  <br/>--POOH--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Winny%20the%20Pooh&leftReader=4071144&rightReader=4071133&type=Entrance&entertainmentid=80010213&locationid=80010213">POOH DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pooh-entry-l/rfid/tap?uid=F063666D62D400&sid=36001120">Entry L 20</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pooh-entry-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Entry R 19</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Winny%20the%20Pooh&leftReader=4074144&rightReader=4074133&type=Merge&entertainmentid=80010213&locationid=80010213">POOH DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pooh-merge-l/rfid/tap?uid=F063666D62D400&sid=36001120">Merge L 20</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pooh-merge-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Merge R 19</a> 
+<br/>
+<b>xBRC PRCS (.71) [Disney Princess at Town Square Theatre | 15850198]</b>
+<br/> +[UI] 
+<a href="http://10.92.65.71:8090/UI/">Admin</a> | 
+<a href="http://10.92.65.71:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.92.65.71:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.92.65.71:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.92.65.71:8080/status">status</a> | 
+<a href="http://10.92.65.71:8080/messages">messages</a> | 
+<a href="http://10.92.65.71:8080/gueststatus">guests</a> | 
+<a href="http://10.92.65.71:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.92.65.71:8080/currentconfiguration">config</a>
+  <br/>--PRCS--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Disney%20Princess%20at%20Town%20Square%20Theatre&leftReader=4111144&rightReader=4111133&type=Entrance&entertainmentid=15850198&locationid=15850198">PRCS DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/prcs-entry-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Entry L 18</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/prcs-entry-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Entry R 17</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Disney%20Princess%20at%20Town%20Square%20Theatre&leftReader=4114144&rightReader=4114133&type=Merge&entertainmentid=15850198&locationid=15850198">PRCS DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/prcs-merge-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Merge L 18</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/prcs-merge-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Merge R 17</a> 
+<br/>
+<b>xBRC SPCE (.76) [Space Mountain | 80010190]</b>
+<br/> +[UI] 
+<a href="http://10.92.65.76:8090/UI/">Admin</a> | 
+<a href="http://10.92.65.76:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.92.65.76:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.92.65.76:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.92.65.76:8080/status">status</a> | 
+<a href="http://10.92.65.76:8080/messages">messages</a> | 
+<a href="http://10.92.65.76:8080/gueststatus">guests</a> | 
+<a href="http://10.92.65.76:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.92.65.76:8080/currentconfiguration">config</a>
+  <br/>--SPCE--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Space%20Mountain&leftReader=4081144&rightReader=4081133&type=Entrance&entertainmentid=80010190&locationid=80010190">SPCE DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spce-entry-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Entry L 16</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spce-entry-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Entry R 15</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Space%20Mountain&leftReader=4084144&rightReader=4084133&type=Merge&entertainmentid=80010190&locationid=80010190">SPCE DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spce-merge-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Merge L 16</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spce-merge-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Merge R 15</a> 
+<br/>
+<b>xBRC SPL (.78) [Splash Mountain | 80010192]</b>
+<br/> +[UI] 
+<a href="http://10.92.65.78:8090/UI/">Admin</a> | 
+<a href="http://10.92.65.78:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.92.65.78:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.92.65.78:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.92.65.78:8080/status">status</a> | 
+<a href="http://10.92.65.78:8080/messages">messages</a> | 
+<a href="http://10.92.65.78:8080/gueststatus">guests</a> | 
+<a href="http://10.92.65.78:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.92.65.78:8080/currentconfiguration">config</a>
+  <br/>---SPL--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Splash%20Mountain&leftReader=4091144&rightReader=4091133&type=Entrance&entertainmentid=80010192&locationid=80010192">SPL DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spl-entry-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Entry L 14</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spl-entry-r/rfid/tap?uid=F049083AA92400&sid=36001113">Entry R 13</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Splash%20Mountain&leftReader=4094144&rightReader=4094133&type=Merge&entertainmentid=80010192&locationid=80010192">SPL DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spl-merge-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Merge L 14</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spl-merge-r/rfid/tap?uid=F049083AA92400&sid=36001113">Merge R 13</a> 
+<br/>
+<b>xBRC KI (.35)</b>
+<br/> +[UI]
+<a href="http://10.92.65.35:8090/UI/">Admin</a> | 
+<a href="http://10.92.65.35:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.92.65.35:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.92.65.35:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.92.65.35:8080/status">status</a> | 
+<a href="http://10.92.65.35:8080/messages">messages</a> | 
+<a href="http://10.92.65.35:8080/gueststatus">guests</a> | 
+<a href="http://10.92.65.35:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.92.65.35:8080/currentconfiguration">config</a>
+<br/>
+--TAP KIOSK--
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-1/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 1 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-2/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 2 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-3/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 3 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-4/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 4 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-5/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 5 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-6/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 6 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-7/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 7 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-8/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 8 22</a> | 
+<br/>
+<b>Reader ATT (.170)</b> 
+<br/> +[UI]
+<a href="http://10.110.1.170:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.170:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.170:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.170:8090/UI/attractionview">FacView</a>
+<br/> +[API] 
+<a href="http://10.110.1.170:8080/status">status</a> | 
+<a href="http://10.110.1.170:8080/messages">messages</a> | 
+<a href="http://10.110.1.170:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.170:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.170:8080/currentconfiguration">config</a>
+<br/> +[SIM] 
+<a href="http://10.110.1.170:8090/Xfpe/">Sim Home</a>  | 
+<a href="http://10.110.1.170:8090/Xfpe/showreaders.action?locationId=7">Sim Entry</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/showreaders.action?locationId=6">Sim Merge</a>
+<br/>
+<b>Reader PEKI (.174)</b>
+<br/> +[UI]
+<a href="http://10.110.1.174:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.174:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.174:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.174:8090/UI/attractionview">FacView</a>
+<br/> +[API] 
+<a href="http://10.110.1.174:8080/status">status</a> | 
+<a href="http://10.110.1.174:8080/messages">messages</a> | 
+<a href="http://10.110.1.174:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.174:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.174:8080/currentconfiguration">config</a>
+<br/> +[SIM] 
+<a href="http://10.110.1.174:8090/Xfpe/">Sim Home</a>  | 
+<a href="http://10.110.1.174:8090/Xfpe/showreaders.action?locationId=7">Sim Entry</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/showreaders.action?locationId=6">Sim Merge</a>
+<br/>
+<a name="mk"/>
+<a href="#bvt">BVT</a> | <a href="#sit">SIT</a> | <a href="#int">INT</a> | <a href="#alpha">ALPHA</a> | <a href="#mk">MK</a>
+<h1>MK Park</h1>
+<b>xBRMS (.197) [JMS: 10.93.1.197.???  com.synapse.xbrc]</b>
+<br/> +[UI]
+<a href="http://10.93.1.197:8080/XBRMS/">Admin</a> | 
+<a href="http://10.93.1.197:8080/XBRMS/xbrchealth">Health</a> | 
+<a href="http://10.93.1.197:8080/XBRMS/editxbrc">XbrcEd</a> | 
+<a href="http://10.93.1.197:8080/XBRMS/storedconfig">ConfigEd</a> |
+<a href="http://10.93.1.197:8080/xi/">XI</a> | 
+<a href="http://10.93.1.197:8080/xi/dashboard/testresource">xi res</a>
+<br/> +[API]
+<a href="http://10.93.1.197:8080/XBRMS/rest/facilities">facilities</a>
+<br/>
+<b>IDMS (.184) [DB:10.93.1.198:IDMS]</b>
+<br/> +[Service]
+<a href="http://10.93.1.184:8080/IDMS/metrics">Metrics</a> | 
+<a href="http://10.93.1.184:8080/IDMS/metrics/reset">Reset</a> | 
+<br/> +[Bands]
+<a href="http://10.93.1.184:8080/IDMS/xbands/tapid/F009260BF51800">TapID 800</a> | 
+<a href="http://10.93.1.184:8080/IDMS/xband/secureid/35171313">Secure ID 313</a>
+<br/> +[Guests]
+<a href="http://10.93.1.184:8080/IDMS/guest/1658">Guest 1658</a> |
+<a href="http://10.93.1.184:8080/IDMS/guest/id;gxp-link-id=35200106/identifiers">Gxp Link</a>
+<br/>
+<b>GXP (.21 ???)</b>
+<a href="http://10.92.65.21:8081/gxp-dap-ui">Admin</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?leftReader=4074144&rightReader=4074133&type=Merge&entertainmentid=80010190&locationid=80010190">SPCE DAP MERGE UI</a> | 
+<a href="http://10.92.65.21:8081/dap/services/">services</a>
+<br/>
+<b>xBRC BUZZ (.180) [Buzz Lightyear | 80010114]</b>
+<br/> +[UI] 
+<a href="http://10.93.1.180:8090/UI/">Admin</a> | 
+<a href="http://10.93.1.180:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.93.1.180:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.93.1.180:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.93.1.180:8080/status">status</a> | 
+<a href="http://10.93.1.180:8080/messages">messages</a> | 
+<a href="http://10.93.1.180:8080/gueststatus">guests</a> | 
+<a href="http://10.93.1.180:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.93.1.180:8080/currentconfiguration">config</a>
+  <br/>--BUZZ--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Buzz%20Lightyear&leftReader=4021144&rightReader=4021133&type=Entrance&entertainmentid=80010114&locationid=80010114">BUZZ DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/buzz-entry-l/rfid/tap?uid=F063666D62D400&sid=36001120">Entry L 20</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/buzz-entry-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Entry R 19</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Buzz%20Lightyear&leftReader=4024144&rightReader=4024133&type=Merge&entertainmentid=80010114&locationid=80010114">BUZZ DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/buzz-merge-l/rfid/tap?uid=F063666D62D400&sid=36001120">Merge L 20</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/buzz-merge-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Merge R 19</a> 
+<br/>
+<b>xBRC HM (.182) [Haunted Mansion | 80010208]</b>
+<br/> +[UI] 
+<a href="http://10.93.1.182:8090/UI/">Admin</a> | 
+<a href="http://10.93.1.182:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.93.1.182:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.93.1.182:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.93.1.182:8080/status">status</a> | 
+<a href="http://10.93.1.182:8080/messages">messages</a> | 
+<a href="http://10.93.1.182:8080/gueststatus">guests</a> | 
+<a href="http://10.93.1.182:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.93.1.182:8080/currentconfiguration">config</a>
+  <br/>---HM---
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Haunted%20Mansion&leftReader=4031144&rightReader=4031133&type=Entrance&entertainmentid=80010208&locationid=80010208">HM DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/hm-entry-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Entry L 18</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/hm-entry-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Entry R 17</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Haunted%20Mansion&leftReader=4034144&rightReader=4034133&type=Merge&entertainmentid=80010208&locationid=80010208">HM DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/hm-merge-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Merge L 18</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/hm-merge-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Merge R 17</a> 
+<br/>
+<b>xBRC JUNG (.181) [Jungle Cruise | 80010153]</b>
+<br/> +[UI] 
+<a href="http://10.93.1.181:8090/UI/">Admin</a> | 
+<a href="http://10.93.1.181:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.93.1.181:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.93.1.181:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.93.1.181:8080/status">status</a> | 
+<a href="http://10.93.1.181:8080/messages">messages</a> | 
+<a href="http://10.93.1.181:8080/gueststatus">guests</a> | 
+<a href="http://10.93.1.181:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.93.1.181:8080/currentconfiguration">config</a>
+  <br/>--JUNG--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Jungle%20Cruise&leftReader=4041144&rightReader=4041133&type=Entrance&entertainmentid=80010153&locationid=80010153">JUNG DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/jung-entry-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Entry L 16</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/jung-entry-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Entry R 15</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Jungle%20Cruise&leftReader=4044144&rightReader=4044133&type=Merge&entertainmentid=80010153&locationid=80010153">JUNG DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/jung-merge-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Merge L 16</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/jung-merge-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Merge R 15</a> 
+<br/>
+<b>xBRC PAN (.178) [Peter Pan | 80010176]</b>
+<br/> +[UI] 
+<a href="http://10.93.1.178:8090/UI/">Admin</a> | 
+<a href="http://10.93.1.178:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.93.1.178:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.93.1.178:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.93.1.178:8080/status">status</a> | 
+<a href="http://10.93.1.178:8080/messages">messages</a> | 
+<a href="http://10.93.1.178:8080/gueststatus">guests</a> | 
+<a href="http://10.93.1.178:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.93.1.178:8080/currentconfiguration">config</a>
+  <br/>---PAN--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Peter%20Pan&leftReader=4051144&rightReader=4051133&type=Entrance&entertainmentid=80010176&locationid=80010176">PAN DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pan-entry-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Entry L 14</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pan-entry-r/rfid/tap?uid=F049083AA92400&sid=36001113">Entry R 13</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Peter%20Pan&leftReader=4054144&rightReader=4054133&type=Merge&entertainmentid=80010176&locationid=80010176">PAN DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pan-merge-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Merge L 14</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pan-merge-r/rfid/tap?uid=F049083AA92400&sid=36001113">Merge R 13</a> 
+<br/>
+<b>xBRC PHIL (.183) [Philharmagic | 80010170]</b>
+<br/> +[UI] 
+<a href="http://10.93.1.183:8090/UI/">Admin</a> | 
+<a href="http://10.93.1.183:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.93.1.183:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.93.1.183:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.93.1.183:8080/status">status</a> | 
+<a href="http://10.93.1.183:8080/messages">messages</a> | 
+<a href="http://10.93.1.183:8080/gueststatus">guests</a> | 
+<a href="http://10.93.1.183:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.93.1.183:8080/currentconfiguration">config</a>
+  <br/>--PHIL--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Mickey%27s%20Philmargic&leftReader=4061144&rightReader=4061133&type=Entrance&entertainmentid=80010170&locationid=80010170">PHIL DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/phil-entry-l/rfid/tap?uid=F00A4E26371540&sid=36001112">Entry L 12</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/phil-entry-r/rfid/tap?uid=F0DC907E411C00&sid=36001111">Entry R 11</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Mickey%27s%20Philmargic&leftReader=4064144&rightReader=4064133&type=Merge&entertainmentid=80010170&locationid=80010170">PHIL DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/phil-merge-l/rfid/tap?uid=F00A4E26371540&sid=36001112">Merge L 12</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/phil-merge-r/rfid/tap?uid=F0DC907E411C00&sid=36001111">Merge R 11</a> 
+<br/>
+<b>xBRC MICK (.174) [Mickey Mouse at Town Square Theatre | 15850196]</b>
+<br/> +[UI]
+<a href="http://10.93.1.174:8090/UI/">Admin</a> | 
+<a href="http://10.93.1.174:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.93.1.174:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.93.1.174:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.93.1.174:8080/status">status</a> | 
+<a href="http://10.93.1.174:8080/messages">messages</a> | 
+<a href="http://10.93.1.174:8080/gueststatus">guests</a> | 
+<a href="http://10.93.1.174:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.93.1.174:8080/currentconfiguration">config</a>
+  <br/>--MICK--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Mickey%20Mouse%20at%20Town%20Square%20Theatre&leftReader=4101144&rightReader=4101133&type=Entrance&entertainmentid=15850196&locationid=15850196">MICK DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/mick-entry-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Entry L 22</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/mick-entry-r/rfid/tap?uid=F03187D929D400&sid=36001121">Entry R 21</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Mickey%20Mouse%20at%20Town%20Square%20Theatre&leftReader=4104144&rightReader=4104133&type=Merge&entertainmentid=15850196&locationid=15850196">MICK DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/mick-merge-l/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Merge L 22</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/mick-merge-r/rfid/tap?uid=F03187D929D400&sid=36001121">Merge R 21</a> 
+<br/>
+<b>xBRC POOH (.176) [Winny the Pooh | 80010213]</b>
+<br/> +[UI] 
+<a href="http://10.93.1.176:8090/UI/">Admin</a> | 
+<a href="http://10.93.1.176:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.93.1.176:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.93.1.176:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.93.1.176:8080/status">status</a> | 
+<a href="http://10.93.1.176:8080/messages">messages</a> | 
+<a href="http://10.93.1.176:8080/gueststatus">guests</a> | 
+<a href="http://10.93.1.176:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.93.1.176:8080/currentconfiguration">config</a>
+  <br/>--POOH--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Winny%20the%20Pooh&leftReader=4071144&rightReader=4071133&type=Entrance&entertainmentid=80010213&locationid=80010213">POOH DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pooh-entry-l/rfid/tap?uid=F063666D62D400&sid=36001120">Entry L 20</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pooh-entry-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Entry R 19</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Winny%20the%20Pooh&leftReader=4074144&rightReader=4074133&type=Merge&entertainmentid=80010213&locationid=80010213">POOH DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pooh-merge-l/rfid/tap?uid=F063666D62D400&sid=36001120">Merge L 20</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/pooh-merge-r/rfid/tap?uid=F044BC8D9C8C00&sid=36001119">Merge R 19</a> 
+<br/>
+<b>xBRC PRCS (.179) [Disney Princess at Town Square Theatre | 15850198]</b>
+<br/> +[UI] 
+<a href="http://10.93.1.179:8090/UI/">Admin</a> | 
+<a href="http://10.93.1.179:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.93.1.179:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.93.1.179:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.93.1.179:8080/status">status</a> | 
+<a href="http://10.93.1.179:8080/messages">messages</a> | 
+<a href="http://10.93.1.179:8080/gueststatus">guests</a> | 
+<a href="http://10.93.1.179:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.93.1.179:8080/currentconfiguration">config</a>
+  <br/>--PRCS--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Disney%20Princess%20at%20Town%20Square%20Theatre&leftReader=4111144&rightReader=4111133&type=Entrance&entertainmentid=15850198&locationid=15850198">PRCS DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/prcs-entry-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Entry L 18</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/prcs-entry-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Entry R 17</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Disney%20Princess%20at%20Town%20Square%20Theatre&leftReader=4114144&rightReader=4114133&type=Merge&entertainmentid=15850198&locationid=15850198">PRCS DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/prcs-merge-l/rfid/tap?uid=F088DF7C543400&sid=36001118">Merge L 18</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/prcs-merge-r/rfid/tap?uid=F0BA5B7F66F400&sid=36001117">Merge R 17</a> 
+<br/>
+<b>xBRC SPCE (.175) [Space Mountain | 80010190]</b>
+<br/> +[UI] 
+<a href="http://10.93.1.175:8090/UI/">Admin</a> | 
+<a href="http://10.93.1.175:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.93.1.175:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.93.1.175:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.93.1.175:8080/status">status</a> | 
+<a href="http://10.93.1.175:8080/messages">messages</a> | 
+<a href="http://10.93.1.175:8080/gueststatus">guests</a> | 
+<a href="http://10.93.1.175:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.93.1.175:8080/currentconfiguration">config</a>
+  <br/>--SPCE--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Space%20Mountain&leftReader=4081144&rightReader=4081133&type=Entrance&entertainmentid=80010190&locationid=80010190">SPCE DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spce-entry-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Entry L 16</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spce-entry-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Entry R 15</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Space%20Mountain&leftReader=4084144&rightReader=4084133&type=Merge&entertainmentid=80010190&locationid=80010190">SPCE DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spce-merge-l/rfid/tap?uid=F0C038C529F000&sid=36001116">Merge L 16</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spce-merge-r/rfid/tap?uid=F069679CBDDF80&sid=36001115">Merge R 15</a> 
+<br/>
+<b>xBRC SPL (.185) [Splash Mountain | 80010192]</b>
+<br/> +[UI] 
+<a href="http://10.93.1.185:8090/UI/">Admin</a> | 
+<a href="http://10.93.1.185:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.93.1.185:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.93.1.185:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.93.1.185:8080/status">status</a> | 
+<a href="http://10.93.1.185:8080/messages">messages</a> | 
+<a href="http://10.93.1.185:8080/gueststatus">guests</a> | 
+<a href="http://10.93.1.185:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.93.1.185:8080/currentconfiguration">config</a>
+  <br/>---SPL--
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Splash%20Mountain&leftReader=4091144&rightReader=4091133&type=Entrance&entertainmentid=80010192&locationid=80010192">SPL DAP ENTRY UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spl-entry-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Entry L 14</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spl-entry-r/rfid/tap?uid=F049083AA92400&sid=36001113">Entry R 13</a> | 
+<a href="http://10.92.65.21:8081/gxp-dap-ui/enter.html?name=Splash%20Mountain&leftReader=4094144&rightReader=4094133&type=Merge&entertainmentid=80010192&locationid=80010192">SPL DAP MERGE UI</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spl-merge-l/rfid/tap?uid=F04FAAAAB53800&sid=36001114">Merge L 14</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/restful/spl-merge-r/rfid/tap?uid=F049083AA92400&sid=36001113">Merge R 13</a> 
+<br/>
+<b>xBRC KI (.183)</b>
+<br/> +[UI]
+<a href="http://10.93.1.183:8090/UI/">Admin</a> | 
+<a href="http://10.93.1.183:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.93.1.183:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.93.1.183:8090/UI/attractionview">FacView</a> | 
+<br/> +[API] 
+<a href="http://10.93.1.183:8080/status">status</a> | 
+<a href="http://10.93.1.183:8080/messages">messages</a> | 
+<a href="http://10.93.1.183:8080/gueststatus">guests</a> | 
+<a href="http://10.93.1.183:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.93.1.183:8080/currentconfiguration">config</a>
+<br/>
+--TAP KIOSK--
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-1/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 1 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-2/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 2 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-3/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 3 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-4/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 4 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-5/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 5 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-6/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 6 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-7/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 7 22</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/restful/ki-wp-8/rfid/tap?uid=F0CACEB04ED800&sid=36001122">Kiosk 8 22</a> | 
+<br/>
+<b>Reader ATT (.???)</b> 
+<br/> +[UI]
+<a href="http://10.110.1.170:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.170:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.170:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.170:8090/UI/attractionview">FacView</a>
+<br/> +[API] 
+<a href="http://10.110.1.170:8080/status">status</a> | 
+<a href="http://10.110.1.170:8080/messages">messages</a> | 
+<a href="http://10.110.1.170:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.170:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.170:8080/currentconfiguration">config</a>
+<br/> +[SIM] 
+<a href="http://10.110.1.170:8090/Xfpe/">Sim Home</a>  | 
+<a href="http://10.110.1.170:8090/Xfpe/showreaders.action?locationId=7">Sim Entry</a> | 
+<a href="http://10.110.1.170:8090/Xfpe/showreaders.action?locationId=6">Sim Merge</a>
+<br/>
+<b>Reader PEKI (.???)</b>
+<br/> +[UI]
+<a href="http://10.110.1.174:8090/UI/">Admin</a> | 
+<a href="http://10.110.1.174:8090/UI/locationlistedit">LocEd</a> | 
+<a href="http://10.110.1.174:8090/UI/attractionedit">FacEd</a> | 
+<a href="http://10.110.1.174:8090/UI/attractionview">FacView</a>
+<br/> +[API] 
+<a href="http://10.110.1.174:8080/status">status</a> | 
+<a href="http://10.110.1.174:8080/messages">messages</a> | 
+<a href="http://10.110.1.174:8080/gueststatus">guests</a> | 
+<a href="http://10.110.1.174:8080/readerlocationinfo">readers</a> | 
+<a href="http://10.110.1.174:8080/currentconfiguration">config</a>
+<br/> +[SIM] 
+<a href="http://10.110.1.174:8090/Xfpe/">Sim Home</a>  | 
+<a href="http://10.110.1.174:8090/Xfpe/showreaders.action?locationId=7">Sim Entry</a> | 
+<a href="http://10.110.1.174:8090/Xfpe/showreaders.action?locationId=6">Sim Merge</a>
+<br/>

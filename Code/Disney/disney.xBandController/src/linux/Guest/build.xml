@@ -1,0 +1,51 @@
+<project name="Guest" default="build" >
+	<!-- The following substitution sets the queues directory on each dev machine relative to 
+		     the directory of this ant build.xml file -->
+	<property name="queues.dir" location="../../../../queues" />
+	<property name="queues.dir.prod" location="/usr/share/xbrc/simulator/queues" />
+	<target name="devsubstitutions">
+		<copy file="config/NGEConfig.xml" todir="." overwrite="true"/> 
+		<replace file="./NGEConfig.xml">
+		  <replacefilter 
+		    token="config.queues.path" 
+		    value="${queues.dir}"/>
+		</replace>
+		<copy file="config/SimulatedGuests.csv" todir="." overwrite="true"/> 
+		<replace file="./SimulatedGuests.csv">
+		  <replacefilter 
+		    token="config.queues.path" 
+		    value="${queues.dir}"/>
+		</replace>
+	</target>
+	<target name="prodsubstitutions">
+		<copy file="config/NGEConfig.xml" todir="." overwrite="true"/> 
+		<replace file="./NGEConfig.xml">
+		  <replacefilter 
+		    token="config.queues.path" 
+		    value="${queues.dir.prod}"/>
+		</replace>
+		<copy file="config/SimulatedGuests.csv" todir="." overwrite="true"/> 
+		<replace file="./SimulatedGuests.csv">
+		  <replacefilter 
+		    token="config.queues.path" 
+		    value="${queues.dir}"/>
+		</replace>
+	</target>
+	<target name="make" description="Invoke make to build the Guest code">
+		<exec executable="make" failonerror="true" >
+			<arg value="-C"/>
+			<arg value="Debug"/>
+			<arg value="all"/>
+		</exec>
+	</target>
+	<target depends="devsubstitutions,make" name="build" description="dev build" />
+	<target depends="prodsubstitutions,make" name="buildprod" description="production build" />
+	<target name="clean" description="Invoke make to clean the Guest code">
+		<exec executable="make" failonerror="true">
+			<arg value="-C"/>
+			<arg value="Debug"/>
+			<arg value="clean"/>
+		</exec>
+	</target>
+</project>
+

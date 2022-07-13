@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>JCS - MySQL Disk Cache Configuration</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="Aaron Smuts"></meta><meta name="email" content="asmuts@apache.org"></meta></head><body class="composite"><div id="banner"><a href="http://jakarta.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="./images/jakarta.png"></img></a><a href="http://jakarta.apache.org/jcs/" id="projectLogo"><span>JCS</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 30 May 2007
+                  | Doc for 1.3</div><div class="xright">
+        
+        <a href="jcs.pdf"><img title="PDF Documentation" style="border: 1px" src="images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuGeneral_Information"><h5>General Information</h5><ul><li class="none"><a href="index.html">Overview</a></li><li class="none"><a href="JCSandJCACHE.html">JCS and JCACHE</a></li><li class="none"><a href="DownloadPage.html">Downloads</a></li><li class="none"><a href="faq.html">FAQ</a></li></ul></div><div id="menuGetting_Started"><h5>Getting Started</h5><ul><li class="none"><a href="getting_started/intro.html">Overview</a></li><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="Plugins.html">Plugin Overview</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></div><div id="menuJCS_User_s_Guide"><h5>JCS User's Guide</h5><ul><li class="collapsed"><a href="LocalCacheConfig.html">Core</a></li><li class="expanded"><a href="Plugins.html">Auxiliary</a><ul><li class="none"><a href="IndexedDiskAuxCache.html">Indexed Disk Cache</a></li><li class="none"><a href="IndexedDiskCacheProperties.html">Indexed Disk Properties</a></li><li class="none"><a href="BlockDiskCache.html">Block Disk Cache</a></li><li class="none"><a href="JDBCDiskCache.html">JDBC Disk Cache</a></li><li class="none"><a href="JDBCDiskCacheProperties.html">JDBC Disk Properties</a></li><li class="none"><strong><a href="MySQLDiskCacheProperties.html">MySQL Disk Properties</a></strong></li><li class="none"><a href="RemoteAuxCache.html">Remote Cache</a></li><li class="none"><a href="RemoteCacheProperties.html">Remote Cache Properties</a></li><li class="none"><a href="LateralTCPAuxCache.html">Lateral TCP Cache</a></li><li class="none"><a href="LateralTCPProperties.html">Lateral TCP Properties</a></li><li class="none"><a href="LateralUDPDiscovery.html">Lateral UDP Discovery</a></li><li class="none"><a href="LateralJavaGroupsAuxCache.html">Lateral JGroups Cache</a></li></ul></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About JCS</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="MySQL_Disk_Auxiliary_Cache_Configuration"></a><h2>MySQL Disk Auxiliary Cache Configuration</h2><p>
+				The MySQL Disk Cache uses all of the JDBC Disk Cache
+				properties. It adds a few of its own. The following
+				properties only apply to the MySQL Disk Cache plugin.
+			</p><div class="subsection"><a name="MySQL_Disk_Configuration_Properties"></a><h3>MySQL Disk Configuration Properties</h3><table class="bodyTable"><tr class="a"><th>Property</th><th>Description</th><th>Required</th><th>Default Value</th></tr><tr class="b"><td>optimizationSchedule</td><td>
+							For now this is a simple comma delimited
+							list of HH:MM:SS times to optimize the
+							table. If none is supplied, then no
+							optimizations will be performed.
+
+							In the future we can add a cron like
+							scheduling system. This was created to meet
+							a pressing need to optimize fragmented
+							MyISAM tables. When the table becomes
+							fragmented, it starts to take a long time to
+							run the shrinker that deletes expired
+							elements.
+
+							Setting the value to "03:01,15:00" will
+							cause the optimizer to run at 3 am and at 3
+							pm.
+						</td><td>N</td><td>null</td></tr><tr class="a"><td>balkDuringOptimization</td><td>
+							If this is true, then when JCS is optimizing
+							the table it will return null from get
+							requests and do nothing for put requests.
+
+							If you are using the remote cache and have a
+							failover server configured in a remote cache
+							cluster, and you allow clustered gets, the
+							primary server will act as a proxy to the
+							failover. This way, optimization should have
+							no impact for clients of the remote cache.
+						</td><td>N</td><td>true</td></tr></table></div><div class="subsection"><a name="Example_Configuration"></a><h3>Example Configuration</h3>
+    <div class="source"><pre>
+					
+##############################################################
+################## AUXILIARY CACHES AVAILABLE ################
+# MYSQL disk cache
+jcs.auxiliary.MYSQL=org.apache.jcs.auxiliary.disk.jdbc.mysql.MySQLDiskCacheFactory
+jcs.auxiliary.MYSQL.attributes=org.apache.jcs.auxiliary.disk.jdbc.mysql.MySQLDiskCacheAttributes
+jcs.auxiliary.MYSQL.attributes.userName=sa
+jcs.auxiliary.MYSQL.attributes.password=
+jcs.auxiliary.MYSQL.attributes.url=jdbc:hsqldb:target/cache_hsql_db
+jcs.auxiliary.MYSQL.attributes.driverClassName=org.hsqldb.jdbcDriver
+jcs.auxiliary.MYSQL.attributes.tableName=JCS_STORE_MYSQL
+jcs.auxiliary.MYSQL.attributes.testBeforeInsert=false
+jcs.auxiliary.MYSQL.attributes.maxActive=15
+jcs.auxiliary.MYSQL.attributes.allowRemoveAll=true
+jcs.auxiliary.MYSQL.attributes.MaxPurgatorySize=10000000
+jcs.auxiliary.MYSQL.attributes.optimizationSchedule=12:34:56,02:34:54
+jcs.auxiliary.MYSQL.attributes.balkDuringOptimization=true
+        
+				</pre></div>
+  </div><div class="subsection"><a name="MySQL_Disk_Event_Queue_Configuration"></a><h3>MySQL Disk Event Queue Configuration</h3><table class="bodyTable"><tr class="b"><th>Property</th><th>Description</th><th>Required</th><th>Default Value</th></tr><tr class="a"><td>EventQueueType</td><td>
+							This should be either SINGLE or POOLED. By
+							default the single style pool is used. The
+							single style pool uses a single thread per
+							event queue. That thread is killed whenever
+							the queue is inactive for 30 seconds. Since
+							the disk cache uses an event queue for every
+							region, if you have many regions and they
+							are all active, you will be using many
+							threads. To limit the number of threads, you
+							can configure the disk cache to use the
+							pooled event queue. Using more threads than
+							regions will not add any benefit for the
+							indexed disk cache, since only one thread
+							can read or write at a time for a single
+							region.
+						</td><td>N</td><td>SINGLE</td></tr><tr class="b"><td>EventQueuePoolName</td><td>
+							This is the name of the pool to use. It is
+							required if you choose the POOLED event
+							queue type, otherwise it is ignored.
+						</td><td>Y</td><td>n/a</td></tr></table></div><div class="subsection"><a name="Example_Configuration_Using_Thread_Pool"></a><h3>Example Configuration Using Thread Pool</h3>
+    <div class="source"><pre>
+					
+##############################################################
+################## AUXILIARY CACHES AVAILABLE ################
+# MYSQL disk cache
+jcs.auxiliary.MYSQL=org.apache.jcs.auxiliary.disk.jdbc.mysql.MySQLDiskCacheFactory
+jcs.auxiliary.MYSQL.attributes=org.apache.jcs.auxiliary.disk.jdbc.mysql.MySQLDiskCacheAttributes
+jcs.auxiliary.MYSQL.attributes.userName=sa
+jcs.auxiliary.MYSQL.attributes.password=
+jcs.auxiliary.MYSQL.attributes.url=jdbc:hsqldb:target/cache_hsql_db
+jcs.auxiliary.MYSQL.attributes.driverClassName=org.hsqldb.jdbcDriver
+jcs.auxiliary.MYSQL.attributes.tableName=JCS_STORE_MYSQL
+jcs.auxiliary.MYSQL.attributes.testBeforeInsert=false
+jcs.auxiliary.MYSQL.attributes.maxActive=15
+jcs.auxiliary.MYSQL.attributes.allowRemoveAll=true
+jcs.auxiliary.MYSQL.attributes.MaxPurgatorySize=10000000
+jcs.auxiliary.MYSQL.attributes.optimizationSchedule=12:34:56,02:34:54
+jcs.auxiliary.MYSQL.attributes.balkDuringOptimization=true
+jcs.auxiliary.MYSQL.attributes.EventQueueType=POOLED
+jcs.auxiliary.MYSQL.attributes.EventQueuePoolName=disk_cache_event_queue
+
+##############################################################
+################## OPTIONAL THREAD POOL CONFIGURATION #########
+# Disk Cache pool
+thread_pool.disk_cache_event_queue.useBoundary=false
+thread_pool.disk_cache_event_queue.boundarySize=500
+thread_pool.disk_cache_event_queue.maximumPoolSize=15
+thread_pool.disk_cache_event_queue.minimumPoolSize=10
+thread_pool.disk_cache_event_queue.keepAliveTime=3500
+thread_pool.disk_cache_event_queue.whenBlockedPolicy=RUN
+thread_pool.disk_cache_event_queue.startUpSize=10
+        
+				</pre></div>
+  </div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2002-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

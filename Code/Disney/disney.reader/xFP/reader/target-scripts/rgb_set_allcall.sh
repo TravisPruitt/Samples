@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Set allcall address to 0x6F
+i2cset -y 3 0x68 0x1b 0xde

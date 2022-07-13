@@ -1,0 +1,40 @@
+﻿<Window x:Class="RGBDesigner.ColorPicker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Width="879" Height="768" ResizeMode="CanMinimize"
+        xmlns:c="clr-namespace:RGBDesigner">    
+    
+    <Grid Height="227" Width="332">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="572*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="545*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Red" />
+        <TextBlock Text="Green" Grid.Row="1" />
+        <TextBlock Text="Blue" Grid.Row="2" />
+        <TextBlock Text="Alpha" Grid.Row="3" />
+
+        <Slider Name="redSlider" Grid.Column="1" Minimum="0" Maximum="255"  Width="200" Height="20" Grid.ColumnSpan="2" Value="{Binding ElementName=rect, Path=(c:BrushExtender.RedChannel), Mode=TwoWay}" />
+        <Slider Name="greenSlider" Grid.Column="1" Grid.Row="1" Minimum="0" Maximum="255" Width="200" Height="20" Grid.ColumnSpan="2" Value="{Binding ElementName=rect, Path=(c:BrushExtender.GreenChannel), Mode=TwoWay}"  />
+        <Slider Name="blueSlider" Grid.Column="1" Grid.Row="2" Minimum="0" Maximum="255" Width="200" Height="20" Grid.ColumnSpan="2" Value="{Binding ElementName=rect, Path=(c:BrushExtender.BlueChannel), Mode=TwoWay}"  />
+        <Slider Name="alphaSlider" Grid.Column="1" Grid.Row="3" Minimum="0" Maximum="255" Width="200" Height="20" Grid.ColumnSpan="2" Value="{Binding ElementName=rect, Path=(c:BrushExtender.AlphaChannel), Mode=TwoWay}"  />
+
+        <Rectangle Fill="SandyBrown" Name="rect" Width="200" Height="50" Grid.Row="4" Grid.ColumnSpan="3" Margin="0,20,0,10"
+            c:BrushExtender.Brush="{Binding RelativeSource={RelativeSource Self}, Path=Fill, Mode=TwoWay}"/>
+        <TextBlock Text="Colour Value" Margin="5,0,5,0" Grid.Row="5" HorizontalAlignment="Center"  />
+        <TextBox Text="{Binding ElementName=rect, Path=(c:BrushExtender.ColourValue), Mode=TwoWay}" Margin="0,0,0,0" Grid.Row="5" Grid.Column="1" Width="100" HorizontalAlignment="Center" />
+        <Button Content="Update" IsEnabled="{Binding ElementName=grid, Path=SelectedItem.SomeValue}" Margin="0,6,0,519" Grid.Row="6" />
+    </Grid>
+</Window>

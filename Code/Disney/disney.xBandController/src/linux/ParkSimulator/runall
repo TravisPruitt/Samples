@@ -1,0 +1,19 @@
+#
+#!/bin/bash
+#
+
+echo Starting simulations at `date`
+
+./ParkSimulator --attractions BTM         --log BTM.message.log      $@ > BTM.log      2>&1 &
+./ParkSimulator --attractions Buzz        --log Buzz.message.log     $@ > Buzz.log     2>&1 &
+./ParkSimulator --attractions Jungle      --log Jungle.message.log   $@ > Jungle.log   2>&1 &
+./ParkSimulator --attractions Pan         --log Pan.message.log      $@ > Pan.log      2>&1 &
+./ParkSimulator --attractions Philhar     --log Philhar.message.log  $@ > Philhar.log  2>&1 &
+./ParkSimulator --attractions Pooh        --log Pooh.message.log     $@ > Pooh.log     2>&1 &
+./ParkSimulator --attractions "Space Mtn" --log SpaceMtn.message.log $@ > SpaceMtn.log 2>&1 &
+./ParkSimulator --attractions Splash      --log Splash.message.log   $@ > Splash.log   2>&1 &
+./ParkSimulator --attractions Stitch      --log Stitch.message.log   $@ > Stitch.log   2>&1 &
+wait
+
+echo Simulations done at     `date`
+

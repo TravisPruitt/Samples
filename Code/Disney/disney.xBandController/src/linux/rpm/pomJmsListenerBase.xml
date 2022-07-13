@@ -1,0 +1,319 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>JMSListener</artifactId>
+	<packaging>rpm</packaging>
+	<parent>
+		<groupId>com.disney.xband</groupId>
+		<artifactId>xBandParent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<description>
+		Disney/Synapse JMS Listener code to listen to JMS messages and store them in the XBRMS database.
+	</description>
+	<organization>
+		<name>Walt Disney Corporation></name>
+		<url>www.disney.com</url>
+	</organization>
+	<dependencies>
+		<dependency>
+			<groupId>com.disney.xband</groupId>
+			<artifactId>JmsListenerJar</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+ 	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rpm-maven-plugin</artifactId>
+                <version>2.1-alpha-2</version>
+				<extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>rpm</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <copyright>2012, Walt DisneyCorporation</copyright>
+                    <distribution>Proprietary</distribution>
+                    <group>System Environment/Daemons</group>
+					<version>${XBAND_BUILD_SHORT_VERSION}</version>
+					<release>${XBAND_BUILD_RELEASE}</release>
+					<needarch>i386</needarch>
+					<provides>
+						<provide>jmslistener</provide>
+					</provides>
+					<requires>
+						<require>java-1.6.0-openjdk &gt;= 1.6.0.0</require>
+					</requires>
+                    <mappings>
+                        <mapping>
+                            <directory>/usr/share/jmslistener/lib</directory>
+                            <filemode>740</filemode>
+                            <username>xbrcuser</username>
+                            <groupname>xbrcuser</groupname>
+							<sources>
+								<source>
+									<location>
+										${settings.localRepository}/com/disney/xband/JmsListenerJar/1.0-SNAPSHOT/JmsListenerJar-1.0-SNAPSHOT.jar
+									</location>
+									<destination>JmsListener.jar</destination>
+								</source>
+							</sources>
+                        </mapping>
+                        <mapping>
+                            <directory>/usr/share/jmslistener</directory>
+                            <filemode>740</filemode>
+                            <username>xbrcuser</username>
+                            <groupname>xbrcuser</groupname>
+							<sources>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/JmsListener/src/main/resources/log4j.xml
+									</location>
+								</source>
+							</sources>
+                        </mapping>
+                        <mapping>
+                            <directory>/usr/share/jmslistener</directory>
+                            <filemode>740</filemode>
+                            <username>xbrcuser</username>
+                            <groupname>xbrcuser</groupname>
+							<sources>
+								<source>
+									<location>
+										${xbandhome-1.7}/build/repos/linux/commons-daemon-1.0.7-native-src/unix/jsvc-Centos-5.6
+									</location>
+									<destination>jsvc-jmslistener</destination>
+								</source>
+							</sources>
+                        </mapping>
+                        <mapping>
+                            <directory>/usr/share/jmslistener</directory>
+                            <filemode>440</filemode>
+                            <username>xbrcuser</username>
+                            <groupname>xbrcuser</groupname>
+							<sources>
+								<source>
+									<location>
+										${xbandhome-1.7}/build/repos/linux/commons-daemon-1.0.7-native-src/unix/jsvc-RHEL-64.gz
+									</location>
+								</source>
+							</sources>
+                        </mapping>
+                        <mapping>
+                            <directory>/etc/init.d</directory>
+                            <directoryIncluded>false</directoryIncluded>
+                            <filemode>744</filemode>
+                            <username>root</username>
+			    <directoryIncluded>false</directoryIncluded>
+                            <groupname>root</groupname>
+							<sources>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/JmsListener/initscript.sh
+									</location>
+									<destination>jmslistener</destination>
+								</source>
+							</sources>
+                        </mapping>
+                        <mapping>
+                            <directory>/usr/share/jmslistener/lib</directory>
+                            <filemode>740</filemode>
+                            <username>xbrcuser</username>
+                            <groupname>xbrcuser</groupname>
+                            <dependency/>
+                        </mapping>
+                    </mappings>
+                    <preinstallScriptlet>
+                        <script>
+LOG=/var/log/jmslistener-install.log
+TLOG=/tmp/jmslistener-install.tmp
+
+# Display to screen and log file with no blank line.
+_log()
+{
+    echo $@
+    echo $@ &gt;&gt; $LOG
+}
+
+# Display to file.
+logfile()
+{
+    echo $@ &gt;&gt; $LOG
+    echo &gt;&gt; $LOG
+}
+
+logfile "Running preun"
+
+if [ $1 -eq 0 ]; then
+    run /etc/init.d/jmslistener stop
+fi
+			</script>
+                    </preinstallScriptlet>
+                    <postinstallScriptlet>
+						<script>
+LOG=/var/log/jmslistener-install.log
+TLOG=/tmp/jmslistener-install.tmp
+
+# Display to screen and log file with a blank line between entries.
+log()
+{
+    echo $@
+    echo
+    echo $@ &gt;&gt; $LOG
+    echo &gt;&gt; $LOG
+}
+
+# Display to screen and log file with no blank line.
+_log()
+{
+    echo $@
+    echo $@ &gt;&gt; $LOG
+}
+
+# Display to file.
+logfile()
+{
+    echo $@ &gt;&gt; $LOG
+    echo &gt;&gt; $LOG
+}
+
+# Execute command.
+# If successful, note in log file.
+# If not successful, note on screen and log file.
+run()
+{
+    "$@" &gt; $TLOG 2&gt;&amp;1
+    err=$?
+    if [ $err -eq 0 ]; then
+        echo "Success: $@" &gt;&gt; $LOG
+        cat $TLOG &gt;&gt; $LOG
+        echo &gt;&gt; $LOG
+    else
+        _log "Error: $@ returned $err"
+        _log `cat $TLOG`
+        _log
+    fi
+    rm -f $TLOG &gt; /dev/null 2&gt;&amp;1
+    return $err
+}
+
+# Execute command.
+# Log only to file.
+run_quiet()
+{
+    "$@" &gt; $TLOG 2&gt;&amp;1
+    err=$?
+    if [ $err -eq 0 ]; then
+        echo "Success: $@" &gt;&gt; $LOG
+    else
+        echo "Error: $@ returned $err  (ignoring and continuing)" &gt;&gt; $LOG
+    fi
+    cat $TLOG &gt;&gt; $LOG
+    echo &gt;&gt; $LOG
+    rm -f $TLOG &gt; /dev/null 2&gt;&amp;1
+    return $err
+}
+
+# Execute command.
+# If successful, note in log file.
+# If not successful, note on screen and log file and then exit.
+run_or_fail()
+{
+    "$@" &gt; $TLOG 2&gt;&amp;1
+    err=$?
+    if [ $err -eq 0 ]; then
+        echo "Success: $@" &gt;&gt; $LOG
+        cat $TLOG &gt;&gt; $LOG
+        echo &gt;&gt; $LOG
+    else
+        _log "Error: $@ returned $err  (aborting this script)"
+        _log `cat $TLOG`
+        _log
+        rm -f $TLOG &gt; /dev/null 2&gt;&amp;1
+        exit 1
+    fi
+    rm -f $TLOG &gt; /dev/null 2&gt;&amp;1
+    return $err
+}
+
+logfile "Running post"
+
+run /etc/init.d/jmslistener stop
+
+run_quiet /usr/sbin/useradd xbrcuser
+run_quiet /usr/sbin/usermod -a -G xbrcuser tcapp
+run_quiet /usr/sbin/usermod -a -G tcapp xbrcuser
+run /sbin/chkconfig --add jmslistener
+run chmod -R 755 /usr/share/jmslistener
+run chgrp -R xbrcuser /usr/share/jmslistener
+run mkdir -p /var/log/jmslistener
+run chown xbrcuser:xbrcuser /var/log/jmslistener
+run chmod 770 /var/log/jmslistener
+run mkdir -p /var/run/jmslistener
+run chgrp xbrcuser /var/run/jmslistener
+run chmod 770 /var/run/jmslistener
+run gunzip -f /usr/share/jmslistener/jsvc-RHEL-64.gz
+run chmod 744 /usr/share/jmslistener/jsvc-RHEL-64
+
+run /etc/init.d/jmslistener restart
+
+exit 0
+						</script>
+                    </postinstallScriptlet>
+					<preremoveScriptlet>
+						<script>
+LOG=/var/log/jmslistener-install.log
+TLOG=/tmp/jmslistener-install.tmp
+
+# Display to file.
+logfile()
+{
+    echo $@ &gt;&gt; $LOG
+    echo &gt;&gt; $LOG
+}
+
+
+# Execute command.
+# If successful, note in log file.
+# If not successful, note on screen and log file.
+run()
+{
+    "$@" &gt; $TLOG 2&gt;&amp;1
+    err=$?
+    if [ $err -eq 0 ]; then
+        echo "Success: $@" &gt;&gt; $LOG
+        cat $TLOG &gt;&gt; $LOG
+        echo &gt;&gt; $LOG
+    else
+        _log "Error: $@ returned $err"
+        _log `cat $TLOG`
+        _log
+    fi
+    rm -f $TLOG &gt; /dev/null 2&gt;&amp;1
+    return $err
+}
+
+# Display to file.
+logfile()
+{
+    echo $@ &gt;&gt; $LOG
+    echo &gt;&gt; $LOG
+}
+
+logfile "Running preun"
+
+if [ $1 -eq 0 ]; then
+    run /etc/init.d/jmslistener stop
+fi
+
+						</script>
+					</preremoveScriptlet>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<venue>
+ <configuration name="current" type="incremental">
+  <description/>
+  <properties>
+   <property class="ReaderConfig"  name="maximumthreshold">0</property>
+   <property class="ControllerInfo" name="venue">80010153</property>
+   <property class="ControllerInfo" name="name">Jungle Cruise</property>
+   <property class="UIConfig"  name="attractionviewimagefilename">IMG6087423703235305954.png</property>
+  </properties>
+ </configuration>
+</venue>

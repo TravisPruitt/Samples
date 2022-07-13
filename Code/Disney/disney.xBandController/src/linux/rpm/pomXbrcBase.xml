@@ -1,0 +1,306 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<properties>
+		<model>attraction</model>
+	</properties>
+
+	<artifactId>xbrc-${model}</artifactId>
+	<packaging>rpm</packaging>
+	<parent>
+		<groupId>com.disney.xband</groupId>
+		<artifactId>xBandParent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<description>
+		Disney/Synapse xBRC code to control and concentrate data from xBR and xFPE readers. This RPM implements the "${model}" model.
+	</description>
+	<organization>
+		<name>Walt Disney Corporation></name>
+		<url>www.disney.com</url>
+	</organization>
+	<dependencies>
+		<dependency>
+			<groupId>com.disney.xband</groupId>
+			<artifactId>Controller</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+ 	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rpm-maven-plugin</artifactId>
+                <version>2.1-alpha-2</version>
+				<extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>rpm</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <copyright>2012, Walt DisneyCorporation</copyright>
+                    <distribution>Proprietary</distribution>
+                    <group>System Environment/Daemons</group>
+					<version>${XBAND_BUILD_SHORT_VERSION}</version>
+					<release>${XBAND_BUILD_RELEASE}</release>
+					<needarch>i386</needarch>
+					<provides>
+						<provide>xbrc</provide>
+					</provides>
+					<requires>
+						<require>mysql-server &gt;= 5.0.0</require>					
+						<require>tcserver-nge-ssp1 &gt;= 2.6.5</require>
+						<require>xBR &gt;= 2.4.5.3179</require>
+						<require>xBRv4 &gt;= 2.4.5.3179</require>
+						<require>xTP2 &gt;= 2.6.1.3179</require>
+						<require>java-1.6.0-openjdk &gt;= 1.6.0.0</require>
+					</requires>
+                    <mappings>
+                        <mapping>
+                            <directory>/usr/share/xbrc/lib</directory>
+                            <filemode>740</filemode>
+                            <username>xbrcuser</username>
+                            <groupname>xbrcuser</groupname>
+							<sources>
+								<source>
+									<location>
+										${settings.localRepository}/com/disney/xband/Controller/1.0-SNAPSHOT/Controller-1.0-SNAPSHOT.jar
+									</location>
+								</source>
+							</sources>
+                        </mapping>
+                        <mapping>
+                            <directory>/usr/share/xbrc</directory>
+                            <filemode>640</filemode>
+                            <username>xbrcuser</username>
+                            <groupname>xbrcuser</groupname>
+							<sources>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/Controller/src/main/resources/xbrc-resources.xml
+									</location>
+								</source>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/Controller/src/main/resources/ac-model.xml
+									</location>
+								</source>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/Controller/src/main/resources/log4j.xml
+									</location>
+								</source>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/Controller/xbrcconfiglog4j.xml
+									</location>
+								</source>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/Controller/xbrc.keys
+									</location>
+								</source>
+							</sources>
+                        </mapping>
+                        <mapping>
+                            <directory>/usr/share/xbrc</directory>
+                            <filemode>740</filemode>
+                            <username>xbrcuser</username>
+                            <groupname>xbrcuser</groupname>
+							<sources>
+								<source>
+									<location>
+										${xbandhome-1.7}/build/repos/linux/commons-daemon-1.0.7-native-src/unix/jsvc-Centos-5.6
+									</location>
+								</source>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/Controller/xbrcconfig
+									</location>
+								</source>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/Controller/readertest/readertest.xml
+									</location>
+								</source>
+							</sources>
+                        </mapping>
+						<mapping>
+                            <directory>/usr/share/xbrc/scripts</directory>
+                            <filemode>750</filemode>
+                            <username>xbrcuser</username>
+                            <groupname>xbrcuser</groupname>
+							<sources>								
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/ParkEntryModel/exportParkEntryData.sh
+									</location>
+								</source>
+							</sources>
+                        </mapping>
+						<mapping>
+                            <directory>/usr/share/xbrc/www/media/readertest/ledscripts</directory>
+                            <filemode>740</filemode>
+                            <username>xbrcuser</username>
+                            <groupname>xbrcuser</groupname>
+							<sources>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/Controller/readertest/ledscripts
+									</location>
+									<includes>
+										<include>*.*</include>
+									</includes>
+								</source>
+							</sources>
+                        </mapping>
+                        <mapping>
+                            <directory>/etc/init.d</directory>
+                            <directoryIncluded>false</directoryIncluded>
+                            <filemode>744</filemode>
+                            <username>root</username>
+                            <groupname>root</groupname>
+							<sources>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/Controller/initscript.sh
+									</location>
+									<destination>xbrc</destination>
+								</source>
+							</sources>
+                        </mapping>
+                        <mapping>
+                            <directory>/usr/share/xbrc</directory>
+                            <filemode>440</filemode>
+                            <username>xbrcuser</username>
+                            <groupname>xbrcuser</groupname>
+							<sources>
+								<source>
+									<location>
+										${xbandhome-1.7}/build/repos/linux/commons-daemon-1.0.7-native-src/unix/jsvc-RHEL-64.gz
+									</location>
+								</source>
+							</sources>
+                        </mapping>
+                        <mapping>
+                            <directory>/usr/share/xbrc/lib</directory>
+                            <filemode>740</filemode>
+                            <username>xbrcuser</username>
+                            <groupname>xbrcuser</groupname>
+                            <dependency/>
+                        </mapping>
+                        <mapping>
+                            <directory>/usr/share/xbrc/dbscripts</directory>
+                            <filemode>640</filemode>
+                            <username>xbrcuser</username>
+                            <groupname>xbrcuser</groupname>
+							<sources>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/Database/${model}/prod
+									</location>
+									<includes>
+										<include>*.sql</include>
+									</includes>
+								</source>
+							</sources>
+                        </mapping>
+						<mapping>
+							<directory>/opt/apps/tcserverApp/tcServer-2.6.5/ssp-tcserver1/webapps</directory>
+                            <directoryIncluded>false</directoryIncluded>
+							<filemode>744</filemode>
+                            <username>root</username>
+                            <groupname>tcapp</groupname>
+							<sources>
+								<source>
+									<location>
+										${settings.localRepository}/com/disney/xband/UI/1.0-SNAPSHOT/UI-1.0-SNAPSHOT.war
+									</location>
+									<destination>UI.war</destination>
+								</source>
+							</sources>
+						</mapping>
+						<mapping>
+							<directory>/etc/nge/config</directory>
+                            <directoryIncluded>false</directoryIncluded>
+							<filemode>644</filemode>
+                            <username>root</username>
+                            <groupname>tcapp</groupname>
+							<sources>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/UI/src/main/resources/log4j.xml
+									</location>
+									<destination>UI_log4j.xml</destination>
+								</source>
+							</sources>
+						</mapping>
+                    </mappings>
+                    <preinstallScriptlet>
+                        <script>
+# Create required users. Make sure mysql starts first
+/usr/sbin/useradd xbrcuser &gt; /dev/null 2>&amp;1
+/usr/sbin/usermod -a -G xbrcuser tcapp &gt; /dev/null 2>&amp;1
+/usr/sbin/usermod -a -G tcapp xbrcuser >&gt; /dev/null 2>&amp;1
+						</script>
+                    </preinstallScriptlet>
+                    <postinstallScriptlet>
+						<script>
+/sbin/chkconfig --add xbrc
+/sbin/chkconfig --levels 2345 mysqld on
+# create required directories. Fix filemodes, if necessary
+mkdir -p /usr/share/xbrc/www/packages
+mkdir -p /usr/share/xbrc/www/media
+mkdir -p /usr/share/xbrc/www/archive/parkentry
+mkdir -p /usr/share/xbrc/scripts
+chmod -R 755 /usr/share/xbrc
+chmod -R 775 /usr/share/xbrc/www/media
+chmod -R 755 /usr/share/xbrc/scripts
+chmod 775 /usr/share/xbrc/www/archive/parkentry
+chgrp -R xbrcuser /usr/share/xbrc
+mkdir -p /var/log/xbrc
+chown xbrcuser:xbrcuser /var/log/xbrc
+chmod 770 /var/log/xbrc
+mkdir -p /var/run/xbrc
+chgrp xbrcuser /var/run/xbrc
+chmod 770 /var/run/xbrc
+
+# stop tomcat; delete old classes then restart so that new WAR is expanded
+/etc/init.d/bootssptcserver1 stop
+rm -rf /opt/apps/tcserverApp/tcServer-2.6.5/ssp-tcserver1/webapps/UI
+rm -rf /opt/apps/tcserverApp/tcServer-2.6.5/ssp-tcserver1/webapps/UI-*
+rm -rf /opt/apps/tcserverApp/tcServer-2.6.5/ssp-tcserver1/work/Catalina/localhost/UI*
+sed -i "s/bio\.http\.port=\([0-9]*\)/bio\.http\.port=8090/g" /opt/apps/tcserverApp/tcServer-2.6.5/ssp-tcserver1/conf/catalina.properties
+sed -i "s/bio\.https\.port=\([0-9]*\)/bio\.https\.port=8444/g" /opt/apps/tcserverApp/tcServer-2.6.5/ssp-tcserver1/conf/catalina.properties
+if [ ! -f /etc/nge/config/log4j.xml ]; then 
+	mv /etc/nge/config/UI_log4j.xml /etc/nge/config/log4j.xml
+	chgrp -R tcapp /etc/nge/config/log4j.xml
+fi
+rm -f /etc/nge/config/UI_log4j.xml
+/etc/init.d/bootssptcserver1 start
+
+# make sure the right helper is available
+if [ ! -f /usr/share/xbrc/jsvc-RHEL-64 ]; then
+	gunzip /usr/share/xbrc/jsvc-RHEL-64.gz
+	chmod 755 /usr/share/xbrc/jsvc-RHEL-64
+fi;
+
+# start mysql if necessary and then run the dbscripts
+/etc/init.d/mysqld start &gt; /dev/null 2&gt;&amp;1
+echo `date` >> /var/log/xbrc/createdb.log
+/usr/share/xbrc/xbrcconfig --createdb &gt;&gt; /var/log/xbrc/createdb.log 2&gt;&amp;1
+`/etc/init.d/xbrc status | grep -q running`
+
+# restart the xBRC
+if [ $? -eq 0 ]; then /etc/init.d/xbrc stop; fi;
+/etc/init.d/xbrc start
+						</script>
+                    </postinstallScriptlet>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="config">
+
+<!--- Properties -->	
+	
+	<property environment="env"/>
+	<property name="debuglevel" value="source,lines,vars"/>
+	<property name="target" value="1.6"/>
+	<property name="source" value="1.6"/>
+	
+<!--- Targets -->
+	
+	<!-- Establish a clean version number -->
+	<target name="realversion" if="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="${BUILD_VERSION}" />
+	</target>
+
+	<target name="dummyversion" unless="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="0.0.0.0" />
+		<tstamp>
+			<format property="BUILD_DATE" pattern="yyyy-MM-dd HH:mm:ss" />
+        </tstamp>
+	</target>
+
+	<!-- Main development and production targets -->
+	<target depends="realversion,dummyversion,prodsubstitutions" name="buildprod"/>
+    	<target depends="realversion,dummyversion,devsubstitutions" name="build"/>
+	
+	<target name="clean">
+		<delete dir="build"/>
+	</target>	
+
+	<!-- Performs macro substitutions on config files as per development/test environment -->
+	<target name="devsubstitutions">	
+		<copy file="environment.properties" todir="build" overwrite="true"/>		
+		<replace file="build/environment.properties" replacefilterfile="build.dev.properties" />
+		<replace file="build/environment.properties" token="BUILD_VERSION" value="${BUILD_VERSION}" />
+		<copy file="jasypt.properties" todir="build" overwrite="true"/>		
+		<replace file="build/jasypt.properties" replacefilterfile="build.dev.properties" />
+		<replace file="build/jasypt.properties" token="BUILD_VERSION" value="${BUILD_VERSION}" />
+		<copy file="keystore.jks" todir="build" overwrite="true"/>		
+		<copy file="truststore.jks" todir="build" overwrite="true"/>		
+	</target>
+	
+	<!-- Performs macro substitutions on config files as per production environment -->
+	<target name="prodsubstitutions">
+		<copy file="environment.properties" todir="build" overwrite="true"/>		
+		<replace file="build/environment.properties" replacefilterfile="build.prod.properties" />
+		<replace file="build/environment.properties" token="BUILD_VERSION" value="${BUILD_VERSION}" />
+		<copy file="jasypt.properties" todir="build" overwrite="true"/>		
+		<replace file="build/jasypt.properties" replacefilterfile="build.prod.properties" />
+		<replace file="build/jasypt.properties" token="BUILD_VERSION" value="${BUILD_VERSION}" />
+		<copy file="keystore.jks" todir="build" overwrite="true"/>		
+		<copy file="truststore.jks" todir="build" overwrite="true"/>		
+	</target>
+	
+</project>

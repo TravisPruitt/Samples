@@ -1,0 +1,7 @@
+target
+lib
+bin
+*.jar
+*.log
+*.war
+AttractionModel.jar

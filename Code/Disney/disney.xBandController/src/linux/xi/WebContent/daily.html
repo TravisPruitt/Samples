@@ -1,0 +1,1506 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="apple-touch-icon" href="xi_logo.png"/>
+  <title>FastPass+</title>
+  <script>setTimeout(function()  {
+//    location.reload();
+  }, 300000)</script>
+  <style>
+    @media only screen and (orientation:portrait), only screen and (orientation:landscape) {
+      body {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+        touch-callout: none;
+        tap-highlight-color: transparent;
+      }
+    }
+    body {
+      margin: 0;
+      font: normal 14px/18px 'Helvetica', Arial, sans-serif;
+    }
+
+    div.content {
+      width: 700px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+
+    }
+
+  </style>
+  <script>
+    Array.forEach = Array.forEach || function() {
+      Array.prototype.forEach.call(arguments[0], arguments[1]);
+    };
+    window.touch = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click';
+    /**
+     * Date.parse with progressive enhancement for ISO 8601 <https://github.com/csnover/js-iso8601>
+     *  2011 Colin Snover <http://zetafleet.com>
+     * Released under MIT license.
+     */
+    (function (Date, undefined) {
+      var origParse = Date.parse, numericKeys = [ 1, 4, 5, 6, 7, 10, 11 ];
+      Date.parse = function (date) {
+        var timestamp, struct, minutesOffset = 0;
+
+        // ES5 15.9.4.2 states that the string should attempt to be parsed as a Date Time String Format string
+        // before falling back to any implementation-specific date parsing, so that's what we do, even if native
+        // implementations could be faster
+        if ((struct = /^(\d{4}|[+\-]\d{6})(?:-(\d{2})(?:-(\d{2}))?)?(?:T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{3}))?)?(?:(Z)|([+\-])(\d{2})(?::(\d{2}))?)?)?$/.exec(date))) {
+          // avoid NaN timestamps caused by undefined values being passed to Date.UTC
+          for (var i = 0, k; (k = numericKeys[i]); ++i) {
+            struct[k] = +struct[k] || 0;
+          }
+
+          // allow undefined days and months
+          struct[2] = (+struct[2] || 1) - 1;
+          struct[3] = +struct[3] || 1;
+
+          if (struct[8] !== 'Z' && struct[9] !== undefined) {
+            minutesOffset = struct[10] * 60 + struct[11];
+
+            if (struct[9] === '+') {
+              minutesOffset = 0 - minutesOffset;
+            }
+          }
+
+          timestamp = Date.UTC(struct[1], struct[2], struct[3], struct[4], struct[5] + minutesOffset, struct[6], struct[7]);
+        }
+        else {
+          timestamp = origParse ? origParse(date) : NaN;
+        }
+
+        return timestamp;
+      };
+    }(Date));
+  </script>
+</head>
+<body>
+<nav>
+  <style>
+      /* Black Button */
+
+    .button.black {
+      display: inline-block;
+      /*-webkit-border-radius: 12px;*/
+      -webkit-box-shadow: 2px 2px 3px #999;
+      border: solid 3px rgb(110,110,110);
+      background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(140,140,140,0.7)), color-stop(0.5, rgba(50,50,50,0.75)), color-stop(0.5, rgba(1,1,1,0.9)), to(rgba(50,50,50,0.9)));
+      color: #fff;
+      text-shadow: #000 0 1px 0;
+      font: bold 16px/20px Vag, Helvetica, Sans-serif;
+      padding: 9px 11px;
+    }
+    .button.black:hover, .button.black.hover {
+      background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(135,148,203,0.85)), color-stop(0.5, rgba(34,56,159,0.75)), color-stop(0.5, rgba(0,27,145,0.75)), to(rgba(2,59,152,0.65)));
+      color: #fff;
+      text-shadow: #000 0 1px 0;
+      -webkit-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
+    }
+    .button.white {
+      display: inline-block;
+      -webkit-border-radius: 12px;
+      -webkit-box-shadow: 2px 2px 3px #999;
+      border: solid 3px rgb(110,110,110);
+      background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(234,234,234,0.90)), color-stop(0.5, rgba(195,195,195,0.70)), color-stop(0.5, rgba(166,166,166,0.70)), to(rgba(167,167,167,0.80)));
+      color: #000;
+      text-shadow: #fff 0 1px 0;
+      font: bold 16px/20px Vag, Helvetica, Sans-serif;
+      padding: 20px 0;
+    }
+    th.button.white {
+      border-radius: 0;
+      -webkit-box-shadow: none;
+      border: none;
+      font: inherit;
+      display: table-cell;
+      /*border-right: 1px solid rgb(110, 110, 110);*/
+      /*padding: 10px 11px;*/
+    }
+    .button.white:not(.no_hover):hover, .button.white.hover {
+      background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(135,148,203,0.85)), color-stop(0.5, rgba(34,56,159,0.75)), color-stop(0.5, rgba(0,27,145,0.75)), to(rgba(2,59,152,0.65)));
+      color: #fff;
+      text-shadow: #000 0 1px 0;
+      -webkit-box-shadow: inset rgba(207,207,255,0.75) 0 1px 1px;
+    }
+
+    nav {
+      /*background-color: white;*/
+      background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #4D4D4D), color-stop(1, #000203));
+      margin-left: -20px;
+      margin-top: -10px;
+      margin-bottom: -50px;
+      margin-right: -100px;
+      box-shadow: 0 4px 8px #555;
+      /*display: none;*/
+    }
+    nav a.button.black {
+      display: inline-block;
+      width: 222px;
+      padding: 27px 60px !important;
+      border: solid 2px rgb(110,110,110);
+      border-right: 1px solid black;
+      font-size: 2em;
+      box-shadow: none;
+    }
+    @media only screen and (orientation:portrait), only screen and (orientation:landscape) and (max-device-width:1024) {
+      nav a.button.black {
+        width: 218px;
+      }
+    }
+    nav a.button.black.selected {
+      /*background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(60,60,60,0.7)), color-stop(0.5, rgba(20,20,20,0.75)), color-stop(0.5, rgba(1,1,1,0.9)), to(rgba(7,7,7,0.85)));*/
+      /*background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #4D4D4D), color-stop(1, #000203));*/
+      background: none;
+      border: none;
+      cursor: default;
+      -webkit-box-shadow: none;
+    }
+    a {
+      text-decoration: none;
+    }
+  </style>
+  <div id="topnav">
+    <a id="exec_nav" ondblclick="location.reload();" class="selected button black">FastPass+ Test</a>
+  </div>
+</nav>
+<div id="container">
+  <div id="content">
+    <style>
+      @font-face {
+        font-family: vag;
+        /*src: url('vag.ttf') format('truetype');*/
+        src: url('vag.otf');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+    </style>
+    <style>
+    @media only screen and (orientation:portrait), only screen and (orientation:landscape) {
+      body * {
+        text-shadow: none !important;
+      }
+    }
+
+    body {
+      margin: 20px;
+      background: #c5c5c5 url('matte_bg.png');
+    }
+
+    div.wrap {
+      position: relative;
+      left: 0;
+      top: 0;
+      font-family: vag;
+      overflow: hidden;
+    }
+      div.wrap {
+        top: 60px;
+      }
+
+    div.bk {
+      background-color: rgb(40, 40, 40);
+    }
+
+    div.vag div.col {
+      /*margin-left: 30px;*/
+      margin-left: 15px;
+      margin-right: 30px;
+      float: left;
+    }
+
+    div.vag div.col:first-of-type {
+      margin-left: 40px;
+    }
+
+    div.vag div.col:last-of-type {
+      margin-left: 15px;
+      margin-right: 0;
+    }
+
+    div.sunken {
+      color: transparent;
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 240px;
+      height: 240px;
+      border-radius: 15px;
+      box-shadow: inset 0 0 8px black;
+      background: -webkit-linear-gradient(top left, #1D1D1D 0%, #111111 100%);
+    }
+
+    div.sunken div.total_participants {
+      font-weight: bold;
+      text-align: center;
+      padding-top: 1.25em;
+      margin: auto;
+      height: 1em;
+      font-size: 4.5em;
+      color: rgb(0, 153, 0);
+      text-shadow: 1px 1px 4px black;
+    }
+
+    div.sunken div.total_participants label {
+      display: block;
+      padding-top: 1.65em;
+      font-size: 0.225em;
+      color: rgb(185, 185, 185);
+    }
+
+    div.bk  hr,
+    div.guest div.in_queue > hr {
+      margin: 25px 40px;
+      border: none;
+      border-bottom: 1px solid #333;
+      color: white;
+      height: 2px;
+      background: black;
+      background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 70, from(#000), to(#212121));
+    }
+    div.exec > hr {
+      background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#000), to(#212121));
+    }
+
+    .insetText {
+      text-shadow: 0 0 3px #555;
+    }
+    div.donut {
+      height: 246px;
+      width: 246px;
+    }
+    div.donut div.bg {
+      height: 244px;
+      width: 244px;
+    }
+    div.donut div.bg canvas {
+      height: 244px;
+      width: 244px;
+    }
+    div.donut div.inner_shadow {
+      height: 244px;
+      width: 244px;
+    }
+    div.donut div.border {
+      height: 243px;
+      width: 243px;
+    }
+    div.donut div.hole {
+      margin: 45px;
+      height: 156px;
+      width: 156px;
+    }
+    div.donut {
+      /*-webkit-transform: scale(0.25);*/
+      position: relative;
+      top: 0;
+      left: 0;
+      color: transparent;
+    }
+
+    div.donut div.border {
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 2px solid rgb(40, 40, 40);
+      box-shadow: inset 0 1px 1px #fff, 0 4px 4px #000;
+    }
+
+    div.donut div.bg {
+      position: absolute;
+      top: 0;
+      margin: 1px;
+      border-radius: 50%;
+    }
+    div.donut div.inner_shadow {
+      position: absolute;
+      top: 0;
+      margin: 1px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 10px rgb(40, 40, 40);
+    }
+    div.donut div.hole {
+      position: absolute;
+      top: 0;
+      border-radius: 50%;
+      background-color: rgb(40, 40, 40);
+      box-shadow: inset 0 8px 8px #000, inset 0 -1px 2px #fff;
+    }
+
+    div.donut div.hole div.values {
+      text-align: center;
+      padding-top: 1.25em;
+      margin: auto;
+      height: 1em;
+      font-size: 3.25em;
+      color: rgb(0, 153, 0);
+    }
+
+    div.donut div.hole div.values div {
+      font-weight: bold;
+      margin-bottom: 0.2em;
+      text-shadow: 1px 1px 4px black;
+    }
+
+    div.donut div.hole div.values label {
+      display: block;
+      padding-top: 1.5em;
+      font-size: 0.35em;
+      color: rgb(185, 185, 185);
+    }
+
+    div.icon div.donut {
+      top: -62px;
+      -webkit-transform: scale(0.5);
+      left: 22px;
+      font-size: 0.3em;
+      margin: 1.2em 2.4em -41px;
+      height: 41px;
+      width: 41px;
+    }
+    div.icon div.donut div.bg {
+      margin-top: 3px;
+      height: 81px;
+      width: 81px;
+    }
+    div.icon div.donut div.bg canvas {
+      margin-top: -1px;
+      border-radius: 50%;
+      height: 81px;
+      width: 81px;
+    }
+    div.icon div.donut div.inner_shadow {
+      box-shadow: inset 0 0 3px rgb(40, 40, 40);
+      height: 81px;
+      width: 81px;
+    }
+    div.icon div.donut div.border {
+      border: 1px solid #555;
+      box-shadow: inset 0 1px 1px #fff, 0 1px 1px #555;
+      height: 80px;
+      width: 80px;
+    }
+    div.icon div.donut div.hole {
+      margin: 18px 20px 20px 19px;
+      height: 46px;
+      width: 46px;
+      box-shadow: inset 0 2px 2px #000, inset 0 -1px 2px #fff;
+   }
+    div.icon.on div.donut div.hole {
+      margin: 19px 20px 20px 19px;
+   }
+    div.icon div.donut div.hole div.values {
+      padding-top: 0.95em;
+    }
+    div.icon div.donut {
+      font-size: 0.0003em;
+    }
+    div.icon div.donut {
+      color: transparent !important;
+    }
+    div.icon div.donut div.hole {
+      background: transparent;
+    }
+    div.donut div.projected {
+      height: 266px;
+      width: 266px;
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      z-index: 5;
+      border: 1px solid transparent;
+    }
+    div.donut div.projected div.line div.connection,
+    div.donut div.projected div.line div.start,
+    div.donut div.projected div.line div.end {
+      height: 2px;
+      width: 8px;
+    }
+    div.donut div.projected div.line {
+      /*border: 1px solid green;*/
+      height: 100%;
+      width: 12px;
+      margin-left: 125px;
+    }
+    div.donut div.projected div.line div.connection {
+      margin-left: 4px;
+      height: 42px;
+      width: 3px;
+      background-color: #090;
+    }
+    div.donut div.projected div.line div.start,
+    div.donut div.projected div.line div.end {
+      border: 2px solid #090;
+      /*border-radius: 50%;*/
+      /*background-color: #090;*/
+    }
+    div.donut div.projected div.line div.start {
+      border-radius: 50%;
+      height: 8px;
+    }
+    div.donut div.projected div.line div.start:before {
+      content: attr(percent) '%';
+      color: #c5c5c5;
+      position: absolute;
+      top: -25px;
+    }
+
+    </style>
+    <style>
+      div.entitlements h2,
+      div.visits h2,
+      div.guest h2,
+      div.offersets h2 {
+        text-align: center;
+        font-size: 3em;
+        padding-top: 75px;
+        margin-top: -0.2em;
+        margin-bottom: 1.46em;
+        color: white;
+        text-shadow: 1px 1px 4px black;
+      }
+      div.progress {
+        width: 0;
+        position: relative;
+        bottom: 0;
+        height: 0;
+        border-radius: 8px;
+        box-shadow: inset 0 2px 8px #aaa;
+      }
+      div.progress div.full {
+        position: absolute;
+        bottom: 0;
+        height: 0;
+        width: 0;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#93ca93), to(#009900), color-stop(0.4,#65ba65));
+        border-radius: 8px;
+      }
+      div.progress label {
+        white-space: nowrap;
+        color: rgb(0, 153, 0);
+        position: absolute;
+        left: 100%;
+        margin-left: 0.4em;
+        font-size: 1.8em;
+        margin-top: 0.3em;
+      }
+      div.donut > div.values {
+        position: absolute;
+        top: 100%;
+      }
+      div.donut div.values,
+      div.entitlements div.values,
+      div.guest div.values {
+        font-weight: bold;
+        text-align: center;
+        text-shadow: 1px 1px 4px black;
+      }
+      div.guest div.values {
+        font-size: 1.2em;
+      }
+
+      div.donut div.values,
+      div.entitlements div.values,
+      div.guest div.values,
+      div.offersets div.values {
+        color: rgb(185, 185, 185);
+        margin-top: 0.8em;
+      }
+      div.donut div.values span,
+      div.entitlements div.values span,
+      div.option div.values span {
+        font-size: 1.03em;
+
+      }
+      div.entitlements > div.values {
+        margin-left: -12px;
+        margin-right: -12px;
+      }
+
+
+      div.exec {
+        float: left;
+        height: 650px;
+        width: 906px;
+      }
+      div.in_queue {
+        -webkit-transition: opacity 0.5s ease-in-out;
+      }
+      div.wrap.hide_guests div.in_queue,
+      div[show="hide_guests"] div.in_queue {
+        opacity: 0;
+      }
+      div.wrap.dozen #dozen,
+      div[show="dozen"] #dozen {
+        -webkit-transform: translate3d(0, 0, 0);
+        z-index: 22;
+        opacity: 1;
+      }
+      .pad_scroll {
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+      }
+      *[bind] {
+        position: relative;
+        top: 0;
+        right: 0;
+        /*background-image: -webkit-radial-gradient(50% 50%, circle , #aaa 15%,transparent 40%);*/
+        /*border-radius: 25px;*/
+      }
+      *[bind]:hover {
+        /*background-image: -webkit-radial-gradient(50% 50%, circle , #fff 15%,transparent 40%);*/
+        /*border-radius: 25px;*/
+      }
+      *[bind]:after {
+        display: none;
+        content: '\25c9';
+        color: transparent;
+        /*background-color: blue;*/
+        border-radius: 30px 30px 30px 7px;
+        text-align: center;
+        background: rgba(55, 55, 55, 0.2);
+        background-image: -webkit-radial-gradient(40% 20%, circle , #fff 10%, transparent 30%);
+        border: 1px solid rgb(55,55,55);
+        -webkit-transform: rotate(-20deg) perspective(600px);
+        line-height: 1em;
+        font-size: 0.4em;
+        position: absolute;
+        top: -10px;
+        right: -20px;
+        width: 2em;
+        height: 2em;
+        margin-bottom: -1em;
+        margin-right: -1em;
+
+      }
+      *[bind]:hover:after {
+        background-image: -webkit-radial-gradient(50% 50%, circle , #fff 60%,#000 80%);
+      }
+
+
+      div.col div.chart {
+        width: 500px;
+        height: 400px;
+      }
+      div.chart.vertical div.columns div.progress {
+        width: 10px;
+        /*height: 100%;*/
+        height: 0;
+        /*margin-bottom: 30px;*/
+        position: absolute;
+      }
+      div.chart.vertical div.progress div.full {
+        background: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#93ca93), to(#009900), color-stop(0.4,#65ba65));
+        width: 10px !important;
+        /*height: 30%;*/
+      }
+      div.chart.vertical div.columns {
+        position: relative;
+        bottom: 0;
+        height: 90%;
+      }
+
+      div.chart.vertical div.columns div.progress label {
+        margin: 5px 5px 5px -0.6em;
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        font-size: 1.1em;
+        -webkit-transition: color 0.4s easin-out;
+      }
+      div.chart.vertical div.columns div.progress label.tick {
+        position: absolute;
+        bottom: -1.8em;
+        left: 50%;
+        margin-left: -0.25em;
+        font-size: 1em;
+      }
+      .visits div.chart.vertical div.columns div.progress label.tick {
+        margin-left: -1.5em;
+      }
+      div.visits div.chart.vertical div.columns div.progress label.tick {
+        bottom: -2.2em;
+      }
+      div.chart.vertical div.columns > div.column:first-of-type {
+      }
+      div.chart.vertical div.columns > div.column {
+        cursor: pointer;
+        position: relative;
+        height: 70%;
+        bottom: -55px;
+        float: left;
+        padding-left: 20px;
+        width: 50px;
+        /*margin-bottom: 20px;*/
+        /*margin-left: 50px;*/
+        -webkit-transition: width 0.6s ease-in-out;
+        /*-webkit-transition-property: left opacity;*/
+      }
+      div.detail.compact div.chart.vertical div.columns > div.column:not(.selected) {
+        overflow: hidden;
+      }
+
+
+      div.chart.vertical div.columns div.column.selected label,
+      div.chart.vertical div.columns div.column:hover label {
+        color: white;
+      }
+      div.chart.vertical div.columns hr.tick {
+        position: absolute;
+        width: 100%;
+        margin-bottom: -21px !important;
+        /*background-color: gold;*/
+        /*visibility: visible !important;*/
+      }
+
+      div.micro,
+      div.micro div.chart.vertical {
+        height: 95px !important;
+      }
+      div.micro div.chart.vertical div.columns > div.column label {
+        visibility: hidden;
+      }
+      div.micro div.chart.vertical div.columns > div.column {
+        cursor: pointer;
+        position: relative;
+        height: 70%;
+        bottom: -55px;
+        float: left;
+        padding-left: 0;
+        /*width: 8px;*/
+        width: 10px;
+        /*margin-bottom: 20px;*/
+        /*margin-left: 50px;*/
+        -webkit-transition: width 0.6s ease-in-out;
+        /*-webkit-transition-property: left opacity;*/
+      }
+      div.col div.chart.vertical div.columns > div.column div.progress {
+        width: 30px !important;
+      }
+      div.col div.chart.vertical div.columns > div.column div.progress div.full {
+        width: 30px !important;
+      }
+      .micro div.chart.vertical div.columns > div.column div.full,
+      .micro div.chart.vertical div.columns > div.column div.progress {
+        width: 5px !important;
+      }
+      div.micro div.chart.vertical div.columns > div.column:nth-child(7n) {
+        /*margin-left: 3px;*/
+        margin-right: 30px;
+      }
+      div.micro div.chart.vertical div.columns > div.column:nth-child(7n) label.tick {
+        visibility: visible;
+        /*position: relative;*/
+        left: -10px;
+        bottom: -2.2em;
+      }
+        div.micro div.chart.vertical div.columns > div.column:nth-child(7n) label.tick:before {
+          content: '.';
+          color: #c5c5c5;
+          position: absolute;
+          top: -1.1em;
+          left: 14px;
+        }
+#mock3 {
+  position: absolute;
+  left: 420px;
+  bottom: -39px;
+  width: 440px;
+  /*-webkit-transform: translate3d(0, 168px, 0);*/
+  /*-webkit-transition: all  0.4s ease-in-out;*/
+}
+#mock3:hover {
+  /*-webkit-transform: translate3d(0, 65px, 0);*/
+}
+#mock3 div.columns {
+  /*bottom: 80px;*/
+  height: 30px;
+  padding-bottom: 80px;
+  background-color: rgb(40, 40, 40);
+}
+.hide {
+  visibility: hidden;
+}
+    #week label a {
+      margin-left: -0.5em;
+    }
+    #week label b {
+      font-size: 0.65em;
+      margin-left: -1.25em;
+      font-weight: inherit;
+    }
+      #week label b {
+        display: none;
+      }
+      #week.b label b {
+        display: inline;
+      }
+      #week.b label a {
+        display: none;
+      }
+      /*#week:hover label a {
+        display: none;
+      }
+      #week label b {
+        display: none;
+      }
+      #week:hover label b {
+      display: inline;
+    }*/
+    div.micro div.chart.vertical div.column div.progress:before {
+      content: attr(max);
+      position: relative;
+      top: -20px;
+      color: #c5c5c5;
+      font-size: 0.85em;
+    }
+
+    </style>
+    <div class="vag wrap" tab=""  show="guests" style="height: 650px; width: 1014px;">
+      <div class="exec bk">
+        <div class="visits col sunken" style="width: 500px;height:350px;position: static;margin-top: 120px;">
+          <h2 style="margin-top: -130px; margin-bottom: 40px;">Visits</h2>
+          <div class="chart vertical" id="week"><div class="columns">
+            <!--<div class="column" for="0800"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">0800</label></div></div>-->
+            <div class="column" for="1"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span><a>0%</a><b>&nbsp;</b></label><label class="tick">Sep 18</label></div></div>
+            <div class="column" for="2"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span><a>0%</a><b>&nbsp;</b></label><label class="tick">Sep 19</label></div></div>
+            <div class="column" for="3"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span><a>0%</a><b>&nbsp;</b></label><label class="tick">Sep 20</label></div></div>
+            <div class="column" for="4"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span><a>0%</a><b>&nbsp;</b></label><label class="tick">Sep 21</label></div></div>
+            <div class="column" for="5"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span><a>0%</a><b>&nbsp;</b></label><label class="tick">Sep 22</label></div></div>
+            <div class="column" for="6"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span><a>0%</a><b>&nbsp;</b></label><label class="tick">Sep 23</label></div></div>
+            <div class="column" for="7"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span><a>0%</a><b>&nbsp;</b></label><label class="tick">Sep 24</label></div></div>
+          </div></div>
+          <script>
+            (function () {
+              document.querySelector('#week').addEventListener(touch, function() {
+                this.classList.toggle('b');
+              }, false);
+            })();
+            window.visits = { load: function (data) {
+              var total = 0;
+                var progresses = document.body.querySelectorAll('#week div.progress');
+                var max = 0;
+                ['2012-09-18',
+                  '2012-09-19',
+                  '2012-09-20',
+                  '2012-09-21',
+                  '2012-09-22',
+                  '2012-09-23',
+                  '2012-09-24'].map(function(date) { //todo: change the dates
+                  var r = data[date];
+                  if (r && r.possibleGuests > max) {
+                    max = r.possibleGuests;
+                  }
+//                  if (r && r.entitlementUsedGuests > max) {
+//                    max = r.entitlementUsedGuests;
+//                  }
+                  return r;
+                }).forEach(function(item, i) {
+                  var progress = progresses[i];
+                  item = item || { entitlementUsedGuests: 0, possibleGuests: 0 };
+                  var part = item.entitlementUsedGuests;
+                  var whole = item.possibleGuests;
+//                  var part = item.possibleGuests;
+//                  var whole = item.entitlementUsedGuests;
+                  total += whole;
+                  var percent = Math.round((whole && 100 * part/whole) || 0);
+                  progress.querySelector('a').firstChild.nodeValue =
+                  progress.firstChild.style.height = percent + '%';
+                  progress.querySelector('b').firstChild.nodeValue = [part, whole].join('/');
+                  progress.setAttribute('whole', whole);
+                  progress.style.height = ((whole && 100 * whole/max) || 0) + '%';
+                });
+              setTimeout(function() {
+                document.querySelector('span[bind="count"]').firstChild.nodeValue = total;
+              }, 20);
+              }
+            };
+
+            window.donut = function (element, options) {
+              options = options || {};
+              for (var key in donut.defaults) {
+                options[key] = options[key] === undefined ? donut.defaults[key] : options[key];
+              }
+              var canvas = element || document.getElementById("canvas1");
+              canvas.height = canvas.offsetHeight;
+              canvas.width = canvas.offsetWidth;
+              var ctx = canvas.getContext("2d");
+              var circleLineWidth = 90;
+
+
+              /* normally we round everything for canvas perf
+               but that screws up our circle render... so
+               */
+              var mapDataToCircle = function (data) {
+                return (data / 100 * Math.PI * 2);
+              };
+
+              return { draw: function (percent, deg) {
+                var canvas = element;
+                canvas.height += 1;
+                canvas.height -= 1;
+                var startAngle = deg || 270;
+                // map start angle to radians
+                var arcStart = Math.PI * startAngle / 180;
+                var arcEnd = arcStart + mapDataToCircle(percent);
+                ctx.save();
+                ctx.strokeStyle = options.color;
+                ctx.lineWidth = circleLineWidth / 2;
+                ctx.beginPath();
+                var center = { x: canvas.width / 2, y: canvas.height / 2 };
+                ctx.arc(center.x, center.y, options.radius, arcStart, arcEnd, false);
+                ctx.stroke();
+                ctx.restore();
+              } };
+            };
+          </script>
+        </div>
+        <div class="entitlements col">
+          <h2>Recruited</h2>
+          <div class="donut">
+            <div class="bg"><canvas></canvas></div>
+            <div class="border">border</div>
+            <div class="inner_shadow">shadow</div>
+            <div class="hole">
+              <div class="values"><div bind="percent">&nbsp;<span>%</span><label>Recruited</label></div></div>
+            </div>
+          </div>
+          <div class="values"><span bind="count">&nbsp;</span> recruited / <span bind="target">&nbsp;</span> target<hr /><div style="margin-top:-10px;"><span bind="eligible">&nbsp;</span> eligible Guests</div></div>
+        </div>
+        <hr style="position:absolute; bottom: 125px;width: 75%;" />
+        <h3 style="position:absolute; bottom: 100px;left: 40px;color:white">Daily Recruitment</h3>
+        <h3 style="position:absolute; bottom: 100px;left: 460px;color:white; z-index: 3;">Pre-arrival tallies</h3>
+        <div class="micro" style="position: absolute; bottom: 60px; left: 0; margin-left: 41px;">
+          <div class="chart vertical" id="mock2"><div class="columns">
+            <!--<div class="column" for="0800"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">0800</label></div></div>-->
+            <div class="column" for="1"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">4</label></div></div>
+            <div class="column" for="2"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">5</label></div></div>
+            <div class="column" for="3"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">6</label></div></div>
+            <div class="column" for="4"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">7</label></div></div>
+            <div class="column" for="5"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">8</label></div></div>
+            <div class="column" for="6"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">9</label></div></div>
+            <div class="column" for="7"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">Sep 10</label></div></div>
+            <div class="column" for="1"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">11</label></div></div>
+            <div class="column" for="2"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">12</label></div></div>
+            <div class="column" for="3"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">13</label></div></div>
+            <div class="column" for="4"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">14</label></div></div>
+            <div class="column" for="5"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">15</label></div></div>
+            <div class="column" for="6"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">16</label></div></div>
+            <div class="column" for="7"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">Sep 17</label></div></div>
+            <div class="column" for="1"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">18</label></div></div>
+            <div class="column" for="2"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">19</label></div></div>
+            <div class="column" for="3"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">20</label></div></div>
+            <div class="column" for="4"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">21</label></div></div>
+            <div class="column" for="5"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">22</label></div></div>
+            <div class="column" for="6"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">23</label></div></div>
+            <div class="column" for="7"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">Sep 24</label></div></div>
+          </div></div>
+
+          <div class="chart vertical" id="mock3"><div class="columns">
+            <!--<div class="column" for="0800"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">0800</label></div></div>-->
+            <div class="column" for="1"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">1</label></div></div>
+            <div class="column" for="2"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">2</label></div></div>
+            <div class="column" for="3"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">3</label></div></div>
+            <div class="column" for="4"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">4</label></div></div>
+            <div class="column" for="5"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">5</label></div></div>
+            <div class="column" for="6"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">6</label></div></div>
+            <div class="column" for="7"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">-14 days</label></div></div>
+            <div class="column" for="1"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">1</label></div></div>
+            <div class="column" for="2"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">2</label></div></div>
+            <div class="column" for="3"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">3</label></div></div>
+            <div class="column" for="4"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">4</label></div></div>
+            <div class="column" for="5"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">5</label></div></div>
+            <div class="column" for="6"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">6</label></div></div>
+            <div class="column" for="7"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">-7 days</label></div></div>
+            <div class="column" for="1"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">1</label></div></div>
+            <div class="column" for="2"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">2</label></div></div>
+            <div class="column" for="3"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">3</label></div></div>
+            <div class="column" for="4"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">4</label></div></div>
+            <div class="column" for="5"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">5</label></div></div>
+            <div class="column" for="6"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">6</label></div></div>
+            <div class="column" for="7"><div class="progress "><div class="full">&nbsp;</div><label><span num="15" bind="inner_percent">&nbsp;</span>%</label><label class="tick">0 days</label></div></div>
+            <hr style="visibility: hidden;clear: both;" />
+          </div></div>
+        </div>
+        <script>
+          var prearrival = { load: function (data) {
+            var progresses = document.body.querySelectorAll('#mock3 div.progress');
+            var max = 0;
+            /*['2012-07-15',
+             '2012-07-16',
+             '2012-07-17',
+             '2012-07-18',
+             '2012-07-19',
+             '2012-07-20',
+             '2012-07-21',
+             '2012-07-22',
+             '2012-07-23',
+             '2012-07-24',
+             '2012-07-25',
+             '2012-07-26',
+             '0',
+             '1',
+             '2',
+             '3',
+             '4',
+             '5',
+             '6',
+             '7',
+             '-1']*/
+            var array = [];
+            (function () {
+              var value;
+              for (var k in data) {
+                value = array[k * 1] = data[k];
+                if (value > max) {
+                  max = value;
+                }
+              }
+              data = array;
+            })();
+            data.forEach(function (item, i) {
+                  var length = progresses.length;
+                  var progress = progresses[length - i];
+                  var part = item;
+                  var whole = item;
+                  var percent = (whole ? (whole && 100 * part / whole) : 0) || 0;
+                  progress.firstChild.style.height = percent + '%';
+                  progress.style.height = (whole ? ((whole && 100 * whole / max) || 0) : 0) + '%';
+                  if (max && item === max) {
+                    progress.setAttribute('max', whole);
+                  }
+                });
+          }
+          };
+
+        </script>
+        <script>
+          (function () {
+            donut.defaults = { color: 'rgb(0, 153, 0)', radius: 100 };
+            var nut = donut(document.querySelector('div.exec div.donut canvas'));
+            window.d = {
+              draw: function (value, deg, text) {
+//                return;
+                nut.draw(value, deg);
+                Array.forEach(document.querySelectorAll('div.exec *[bind="redeemed percent"]'), function(element) {
+                  element.firstChild.nodeValue = text === undefined ? value : text;
+                });
+              }
+            };
+//            d.draw(78);
+          })();
+        (function() {
+          var count;
+          var timer;
+          window.spin = function() {
+            count = 0;
+            clearInterval(timer);
+            timer = setInterval(function() {
+              var percent = count % 360;
+              count += 2;
+              d.draw(1, percent - 90, Math.round(percent/360 * 100));
+            }, 50);
+
+          };
+          window.spin.stop = function() {
+            clearInterval(timer);
+          };
+          window.fetchData = function(path, spin) {
+//            var base = 'http://10.110.1.104:8090/xi/dashboard/';
+//            var base = 'http://10.1.50.179:8080/xi/dashboard/';
+//            var base = 'http://10.93.1.197:8080/xi/dashboard/';
+//            var base = 'http://10.1.200.84:8080/xi/dashboard/';
+//            var base = 'http://10.1.200.104:8080/xi/dashboard/';
+//            var base = 'http://10.93.1.216:8080/xi/dashboard/';
+            var base = '/xi/dashboard/';
+            var s = document.createElement('script');
+            s.src = base + path + '?buster=' + (new Date() * 1);
+//                s.src = '/dashboard/execsummary.js?foo' + (new Date() * 1);
+            s.setAttribute('time', new Date() * 1);
+            document.body.appendChild(s);
+            setTimeout(function() {
+              var remove = s.parentNode && s.parentNode.removeChild(s);
+            }, 90000);
+            var progress = spin !== false && window.spin();
+          };
+          window.daily = {
+            fetch: function(spin) {
+              fetchData('recruitment', spin);
+            },
+            load: function (data) {
+              var progresses = document.body.querySelectorAll('#mock2 div.progress');
+              var max = 0;
+              /*['2012-07-15',
+                '2012-07-16',
+                '2012-07-17',
+                '2012-07-18',
+                '2012-07-19',
+                '2012-07-20',
+                '2012-07-21',
+                '2012-07-22',
+                '2012-07-23',
+                '2012-07-24',
+                '2012-07-25',
+                '2012-07-26',
+                '2012-07-27',
+                '2012-07-28',
+                '2012-07-29',
+                '2012-07-30',
+                '2012-07-31',
+                '2012-08-01',
+                '2012-08-02',
+                '2012-08-03',
+                '2012-08-04'].map(function(date) { //todo: change dates*/
+              [ '2012-09-04',
+                '2012-09-05',
+                '2012-09-06',
+                '2012-09-07',
+                '2012-09-08',
+                '2012-09-09',
+                '2012-09-10',
+                '2012-09-11',
+                '2012-09-12',
+                '2012-09-13',
+                '2012-09-14',
+                '2012-09-15',
+                '2012-09-16',
+                '2012-09-17',
+                '2012-09-18',
+                '2012-09-19',
+                '2012-09-20',
+                '2012-09-21',
+                '2012-09-22',
+                '2012-09-23',
+                '2012-09-24'].map(function(date) { //todo: change dates
+                var r = data[date] || 0;
+                if (r > max) {
+                  max = r;
+                }
+                return r;
+              }).forEach(function(item, i) {
+                    var progress = progresses[i];
+                    var part = item;
+                    var whole = item;
+                    var percent = (whole && 100 * part/whole) || 0;
+                    var p = progress && progress.firstChild && (progress.firstChild.style.height = percent + '%');
+                    var s = progress && (progress.style.height = ((whole && 100 * whole/max) || 0) + '%');
+                    if (max && item === max) {
+                      progress.setAttribute('max', whole);
+                    }
+                  });
+            }
+          };
+          window.sample_daily = {
+            "status": "success",
+            "msgTimeStamp": 1334897409838,
+            "data": {
+              yesterday: {
+                "report": {
+                  "reportId": 1,
+                  "guestCount": 345,
+                  "guestCountTarget": 520,
+                  "recruitedCount": 660,
+                  "selectedEntitlements": 467,
+                  "reportDate": "2012/04/19",
+                  "createdAt": "Apr 19, 2012 9:38:35 PM"
+                }
+              },
+              today: {
+                "report": {
+                  "reportId": 1,
+                  "guestCount": 345,
+                  "guestCountTarget": 520,
+                  "recruitedCount": 660,
+                  "selectedEntitlements": 467,
+                  "reportDate": "2012/04/19",
+                  "createdAt": "Apr 19, 2012 9:38:35 PM"
+                }
+              },
+              todate: {
+                "report": {
+                  "reportId": 1,
+                  "guestCount": 345,
+                  "guestCountTarget": 520,
+                  "recruitedCount": 660,
+                  "selectedEntitlements": 467,
+                  "reportDate": "2012/04/19",
+                  "createdAt": "Apr 19, 2012 9:38:35 PM"
+                }
+              }
+            }
+          };
+          window.sample_daily = {
+            "status":"success",
+            "msgTimeStamp":1335215079816,
+            "data": {
+              "todate":{
+                "reportId":3,
+                "guestCount":402,
+                "guestCountTarget":710,
+                "recruitedCount":489,
+                "selectedEntitlements":1201,
+                "reportDate":"2012-04-14 11:23:23",
+                "createdAt":"Apr 23, 2012 2:04:39 PM",
+                "reportStatus":"data"},
+              "today":{
+                "reportId":1,
+                "guestCount":230,
+                "guestCountTarget":500,
+                "recruitedCount":300,
+                "selectedEntitlements":720,
+                "reportDate":"2012-04-12 01:02:23",
+                "createdAt":"Apr 23, 2012 2:04:39 PM",
+                "reportStatus":"data"
+              },
+              "date":"today",
+              "yesterday": {
+                "reportId":2,
+                "guestCount":332,
+                "guestCountTarget":823,
+                "recruitedCount":517,
+                "selectedEntitlements":1020,
+                "reportDate":"2012-04-13 8:12:23",
+                "createdAt":"Apr 23, 2012 2:04:39 PM",
+                "reportStatus":"data"
+              }
+            }
+          };
+          (function (){
+            window.rmfc = function(date) {
+              var calendar = {};
+              calendar.date = {
+                equals: function(a, b) {
+                  return calendar.date.toString(a) === calendar.date.toString(b);
+                },
+                readTime: function(time) {
+                  return ((/\d\d?\:\d\d\:\d\d\s[AP]M$/.exec(time) || [])[0] || '').replace(/\:\d\d\s/, ' ');
+                },
+                toString: function(date) {
+                  return [date.getFullYear(), date.getMonth() + 1, date.getDate()].join('-');
+                }
+              };
+              var inputs  = [];
+              Array.forEach(document.body.querySelectorAll('div.today *[bind]'), function(element) {
+                var b = element.getAttribute('bind');
+                var input = document.createElement('input');
+                inputs.push(input);
+                if (b === 'percent') {
+                  b = 'password';
+                  input.setAttribute('placeholder', b);
+                  input.addEventListener('dblclick', function(e) {
+                    var data = {};
+                    ///report/{guestCount}/{guestCountTarget}/{recruitedCount}/{selectedEntitlements}/{reportDate}
+                    var d = date || calendar.date.toString(new Date());
+                    var path = [inputs[0].value, inputs[3].value, inputs[2].value, inputs[1].value, d].join('/');
+                    fetchData('daily/report/' + path);
+                  });
+                  var s = input.style;
+                  s.position = 'relative';
+                  s.top = '300px';
+                } else {
+                  input.setAttribute('name', b);
+                  input.style.width = '40px';
+                }
+                element.replaceChild(input, element.firstChild)
+              });
+            };
+            /*document.body.querySelector('div.entitlements.today h2').addEventListener('click', function(e) {
+              rmfc();
+            }, false);*/
+
+
+          })();
+            window.remoteData = function (body, targets, options) {
+              //todo: verify that request is still revelant. check tab and such
+              window.spin.stop();
+              var data = body && body.data;
+              if (data && 'createdReportId' in data) {
+                location.reload();
+                return;
+              }
+              targets = targets || document.body.querySelectorAll('div.exec div.entitlements');
+              if (body.status === 'success') {
+                var bind = function(data, i) {
+                  var target = targets[i];
+                  var recruitment = data;
+                  recruitment.target = recruitment.target || recruitment.count;
+                  recruitment['percent'] = (Math.round(100 * recruitment.count / recruitment.target)) || 0;
+                  (function () {
+                    var p = data.projected;
+                    var start = Date.parse('2012-09-04T00:00:00Z');
+//                    var current = new Date('8-14-2012');
+                    var zuluDelta = new Date('2012-09-04T00:00:00Z') - new Date('9/04/2012');
+//                    console.log(zuluDelta);
+                    var current = new Date();// + zuluDelta;
+                    var end = Date.parse('2012-09-24T00:00:00Z');//todo: change the dates
+                    var total = end - start;
+                    var past = (current - start);
+                    console.log('hello ' + (start) + ' ' + new Date(Date.parse('2012-09-04T00:00:00Z')));
+                    var future = (end - current);
+                    var rate = recruitment.count/past;
+                    var predicted = future * rate;
+                    console.log([start, total].join('\n'));
+                    console.log([predicted, recruitment.count + predicted, (recruitment.count + predicted)/recruitment.target].join('\n'));
+                    var projectedPercent = ((recruitment.count + predicted)/recruitment.target) || 0;
+//                    var projectedPercent = ((recruitment.count/past * total)/recruitment.target) || 0;
+                    donut.setProjected(document.querySelector('div.entitlements div.donut'), projectedPercent);
+                  })();
+
+                  var canvas = target.querySelector('canvas');
+                  if (canvas) {
+                    donut(canvas, options).draw(data['percent']);
+                  }
+                  Array.forEach(target.querySelectorAll('*[bind]'), function (element) {
+                    var value = data[element.getAttribute('bind')];
+                    if (value !== undefined) {
+                      element.firstChild.nodeValue = value;
+                    }
+                  });
+                };
+                [data.recruited].forEach(bind);
+                visits.load(data.visits);
+                daily.load(data.daily);
+                prearrival.load(data.prearrival);
+              }
+              setTimeout(function() {
+                daily.fetch(false);
+              }, 5000);
+//              exec.force(data['guest in queue']);
+            };
+          })();
+         (function() {
+           //helper for donut.make
+           var add = function (type, classes, text, target) {
+             var r = document.createElement(type);
+             var list = classes.pop ? classes : /\s/.test(classes) ? classes.split(' ') : [classes];
+             list.forEach(function (item) {
+               r.classList.add(item);
+             });
+             var tn = text && r.appendChild(document.createTextNode(text));
+             var append = target && target.appendChild(r);
+             return r;
+           };
+           add.span = 'span';
+           add.canvas = 'canvas';
+           add.div = 'div';
+           add.label = 'label';
+           add.nbsp = '\u00a0';
+           donut.make = function (target, data, options) {
+             var div = document.createElement('div');
+             div.classList.add('donut');
+             var bg = add(add.div, 'bg', null, div);
+             add(add.canvas, [], null, bg);
+             add(add.div, 'border', add.nbsp, div);
+             add(add.div, 'inner_shadow', add.nbsp, div);
+             var hole = add(add.div, 'hole', null, div);
+             var values = add(add.div, 'values', null, hole);
+             var redeemedPercent = add(add.div, [], add.nbsp, values);
+             redeemedPercent.setAttribute('bind', 'redeemed percent');
+             add(add.span, [], '%', redeemedPercent);
+             add(add.label, [], 'Redeemed', redeemedPercent);
+             (function () {
+               var values = add(add.div, 'values', null, div);
+//                values.style.marginRight = '-13px';
+               var redeemed = add(add.span, [], add.nbsp, values);
+               redeemed.setAttribute('bind', 'redeemed');
+               values.appendChild(document.createTextNode(' redeemed / '));
+               var selected = add(add.span, [], add.nbsp, values);
+               selected.setAttribute('bind', 'selected');
+               values.appendChild(document.createTextNode(' selected '));
+             })();
+             target.appendChild(div);
+             if (data) {
+               data['redeemed percent'] = data['redeemed percent'] || (data.selected && Math.round(100 * data.redeemed / data.selected)) || 0;
+             }
+             var bind = data && remoteData({ status: 'success', data: data }, div, options);
+             return div;
+           };
+           (function (){
+             var rotate = function(element, percent) {
+               var deg = Math.round((percent || 0) * 360) + 'deg';
+               element.style['-webkit-transform'] = 'rotate(' + deg + ')';
+               var start = element.querySelector('div.start');
+               var s = start && start.setAttribute('percent', Math.round(percent * 100));
+               s = start && (start.style['-webkit-transform'] = 'rotate(-' + deg + ')');
+             };
+             donut.addProjected = function(donut, percent) {
+               if (!donut.querySelector('div.projected')) {
+                 var div = function(classNames, space) {
+                   var r = document.createElement('div');
+                   var c = classNames && (r.className = classNames);
+                   var s = space && r.appendChild(document.createTextNode('\u00a0')); //nbsp;
+                   return r;
+                 };
+                 var add= function(element, parent) {
+                   parent.appendChild(element);
+                   return element;
+                 };
+                 var wrap = div('projected');
+                 var line = add(div('line'), wrap);
+                 add(div('start', true), line);
+                 add(div('connection', true), line);
+                 add(div('end', true), line);
+                 add(wrap, donut);
+                 rotate(line, percent);
+               }
+             };
+             donut.setProjected = function(donut, percent) {
+               rotate(donut.querySelector('div.projected div.line'), percent);
+             };
+             setTimeout(function() {
+               donut.addProjected(document.querySelector('div.entitlements div.donut'), 0.85);
+             }, 10);
+           })();
+         })();
+
+        </script>
+      </div>
+      <style>
+        #reload {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 60px;
+          height: 60px;
+          background: white;
+          opacity: 0.01;
+        }
+      </style>
+      <div id="reload">&nbsp;</div>
+      <script>
+        document.getElementById('reload').addEventListener(touch, function() {
+          location.reload();
+        });
+      </script>
+
+      <script>
+        (function() {
+          window.table = function(headers, props, data) {
+            var r = document.createElement('table');
+            var thead = document.createElement('thead');
+            var header = document.createElement('tr');
+            thead.appendChild(header);
+            var tbody = document.createElement('tbody');
+            var tr = document.createElement('tr');
+            headers.forEach(function(prop) {
+              var th = document.createElement('th');
+              th.classList.add('button');
+              th.classList.add('white');
+              th.appendChild(document.createTextNode(prop));
+              //todo: add clicks
+              header.appendChild(th);
+              var td = document.createElement('td');
+              td.appendChild(document.createTextNode('\u00a0'));//nbsp;
+              tr.appendChild(td);
+            });
+            data.forEach(function(row) {
+              var clone = tr.cloneNode(true);
+              //todo: add clicks
+              if (props.length === clone.cells.length) {
+                props.forEach(function(prop, index) {
+                  clone.cells[index].firstChild.nodeValue = row[prop];
+                });
+              } else {
+                console.log('lengths are not equal', props.length, clone.cellls.length);
+              }
+              tbody.appendChild(clone);
+            });
+            r.appendChild(thead);
+            r.appendChild(tbody);
+            return r;
+          };
+        })();
+        (function () {
+          //todo: make tables
+        })();
+      </script>
+    </div>
+  </div>
+
+  <footer>
+  </footer>
+</div>
+<script>
+(function (){
+  var local;
+//local = true;
+  if (local) {
+    remoteData(sample_daily);
+  } else {
+    setTimeout(function() {
+      daily.fetch(false);
+    }, 0);
+    (function (){
+      var now = function() {
+//        daily.fetch(false);
+//        setTimeout(now, 5000);
+      };
+      setTimeout(now, 15000);
+      window.stopTime = function() {
+        now = function() {};
+        //nightly.fetch = function() {};
+      };
+    })();
+  }
+})();
+</script>
+<style>
+  #get_chrome_frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 14000;
+    background-color: black !important;
+    color: white !important;
+    width: 100% !important;
+    height: 1500px !important;
+  }
+  #get_chrome_frame a {
+    position: absolute;
+    top: 400px;
+    left: 200px;
+    text-align: center;
+    margin: auto;
+    color: white !important;
+    font-size: 2em;
+    font-family: helvetica, sans-serif;
+  }
+
+</style>
+<!--[if IE]>
+<div id="get_chrome_frame"><a href="ie.html" target="_blank">This page requires a component that you do not have.<br /><br /><br /><span>Please click <span style="text-decoration: underline;">here</span> to continue.</span></a></a></div>
+<![endif]-->
+<style>
+  #get_chrome_frame {
+    -webkit-transform: translate3d(-15000px, -15000px, 0);
+  }
+</style>
+<script>
+  setTimeout(function() {
+//      var base = 'http://sparklepony.local:8080';
+    var base = '';
+    var s = document.createElement('script');
+    var file = (/1\/[\w\.]+$|[\w\.]+$|1\/$/.exec(location.pathname) || [])[0];
+    if (!/\.html/.test(file)) {
+      file += 'index.html';
+
+    }
+    s.src = base + '/xi/dashboard/page/guidcheck/' + encodeURIComponent(file) + '/' + (window.guid || 'no-guid') + '?buster=' + (new Date() *1);
+    document.head.appendChild(s);
+  }, 1000);
+</script>
+</body>
+</html>
+
+<script>(function(){window.guid = 'fa4794bd-d9a0-11e1-90f4-b8f6b118fdfb';})();</script>

@@ -1,0 +1,290 @@
+[
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "green",
+            "name": "MK1-Left-Front"
+        },
+        "guest": {
+            "flashAtTurnstile": true,
+            "firstName": "Bob",
+            "lastName": "Bobinski",
+            "celebrations": [
+                {
+                    "name": "Birthday",
+                    "date": "2011-01-23"
+                },
+                {
+                    "name": "Wedding Aniversary",
+                    "date": "2011-01-23"
+                }
+            ]
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "green",
+            "name": "MK1-Left-Back"
+        },
+        "guest": {
+            "flashAtTurnstile": false,
+            "firstName": "Tessa",
+            "lastName": "Bobinski",
+            "celebrations": [
+                {
+                    "name": "Wedding Aniversary",
+                    "date": "2011-01-23"
+                }
+            ]
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "green",
+            "name": "MK1-Right-Front"
+        },
+        "guest": {
+            "flashAtTurnstile": false,
+            "firstName": "Andrew",
+            "lastName": "Bobinski"
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "errorDescription": "Invalid Entitlement",
+            "state": "open",
+            "lights": "blue",
+            "name": "MK1-Right-Back"
+        },
+        "guest": {
+            "flashAtTurnstile": false,
+            "firstName": "Harry",
+            "lastName": "Bobinski"
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "green",
+            "name": "MK2-Left-Front"
+        },
+        "guest": {
+            "flashAtTurnstile": false,
+            "firstName": "Robyn",
+            "lastName": "Bobinski",
+            "celebrations": [
+                {
+                    "name": "Birthday",
+                    "date": "2011-01-23"
+                }
+            ]
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "blue",
+            "name": "MK2-Left-Back",
+            "errorDescription": "Biodevice Error"
+        },
+        "guest": {
+            "flashAtTurnstile": false,
+            "firstName": "Simon",
+            "lastName": "Bobinski"
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "blue",
+            "name": "MK2-Right-Front",
+            "errorDescription": "Identification Fails"
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "blue",
+            "name": "MK2-Right-Back",
+            "errorDescription": "Identification Fails"
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "locationStateChange",
+        "location": {
+            "name": "MK3-Left",
+            "response": "success",
+            "byWhom": {
+                "portalId": "cast128",
+                "omniId": "1234567891"
+            },
+            "readers": [
+                {
+                    "state": "open",
+                    "lights": "off",
+                    "name": "MK3-Left-Front"
+                },
+                {
+                    "state": "open",
+                    "lights": "off",
+                    "name": "MK3-Left-Back"
+                }
+            ]
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "locationStateChange",
+        "location": {
+            "name": "MK3-Right",
+            "response": "success",
+            "byWhom": {
+                "portalId": "coord123",
+                "omniId": "1234567891"
+            },
+            "readers": [
+                {
+                    "state": "closed",
+                    "lights": "off",
+                    "name": "MK3-Right-Front"
+                },
+                {
+                    "state": "closed",
+                    "lights": "off",
+                    "name": "MK3-Right-Back"
+                }
+            ]
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "green",
+            "name": "MK4-Right-Front"
+        },
+        "guest": {
+            "flashAtTurnstile": true,
+            "firstName": "John",
+            "lastName": "Bobinski"
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "green",
+            "name": "MK4-Right-Back"
+        },
+        "guest": {
+            "flashAtTurnstile": false,
+            "firstName": "Anna",
+            "lastName": "Bobinski"
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "green",
+            "name": "MK5-Left-Front"
+        },
+        "guest": {
+            "flashAtTurnstile": false,
+            "firstName": "Tanya",
+            "lastName": "Bobinski"
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "green",
+            "name": "MK5-Left-Back"
+        },
+        "guest": {
+            "flashAtTurnstile": false,
+            "firstName": "Margaret",
+            "lastName": "Bobinski"
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "green",
+            "name": "MK6-Left-Front"
+        },
+        "guest": {
+            "flashAtTurnstile": false,
+            "firstName": "Mark",
+            "lastName": "Bobinski"
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "green",
+            "name": "MK6-Left-Back"
+        },
+        "guest": {
+            "flashAtTurnstile": true,
+            "firstName": "James",
+            "lastName": "Bobinski"
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "green",
+            "name": "MK7-Left-Front"
+        },
+        "guest": {
+            "flashAtTurnstile": false,
+            "firstName": "Ian",
+            "lastName": "Bobinski"
+        }
+    },
+    {
+        "version": "1.0",
+        "type": "readerEvent",
+        "reader": {
+            "state": "open",
+            "lights": "green",
+            "name": "MK7-Left-Back"
+        },
+        "guest": {
+            "flashAtTurnstile": false,
+            "firstName": "Todd",
+            "lastName": "Bobinski"
+        }
+    }
+]

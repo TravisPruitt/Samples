@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[guest-temp] (
+    [guestId]      VARCHAR (50) NULL,
+    [IDMSID]       VARCHAR (50) NULL,
+    [IDMSTypeId]   VARCHAR (50) NULL,
+    [lastName]     VARCHAR (50) NULL,
+    [firstName]    VARCHAR (50) NULL,
+    [middleName]   VARCHAR (50) NULL,
+    [title]        VARCHAR (50) NULL,
+    [suffix]       VARCHAR (50) NULL,
+    [DOB]          VARCHAR (50) NULL,
+    [VisitCount]   VARCHAR (50) NULL,
+    [AvatarName]   VARCHAR (50) NULL,
+    [active]       VARCHAR (50) NULL,
+    [emailAddress] VARCHAR (50) NULL,
+    [parentEmail]  VARCHAR (50) NULL,
+    [countryCode]  VARCHAR (50) NULL,
+    [languageCode] VARCHAR (50) NULL,
+    [gender]       VARCHAR (50) NULL,
+    [userName]     VARCHAR (50) NULL,
+    [createdBy]    VARCHAR (50) NULL,
+    [createdDate]  VARCHAR (50) NULL,
+    [updatedBy]    VARCHAR (50) NULL,
+    [updatedDate]  VARCHAR (50) NULL
+);
+

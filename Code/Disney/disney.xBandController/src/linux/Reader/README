@@ -1,0 +1,41 @@
+Reader acts as a software simulation of an xTP or xBR. Events may be submitted using a REST API or legacy events using a named pipe.
+
+xBR value names:
+----------------
+pno -- Packet number from 0 to 255
+ss -- Signal Strength
+chan -- Channel
+freq -- Frequency
+
+
+
+Submit xBR event using GET:
+---------------------------
+curl "http://localhost:8011/lrid?lrid=5fcf40d00cc513d&pno=6&ss=-40&chan=0&freq=2424"
+
+Submit xBR event using POST:
+----------------------------
+curl -H "Accept: application/json" -H "Content-type: application/json" -X POST --data-binary @entry-1.better.json http://localhost:8011/events
+
+data.json consists of:
+{ "events" :
+ [
+{ "lrid":"37046d047d4e3cee", "pno":"000", "ss":"-57", "chan":"0", "freq":"2476", "dt":"3" },
+{ "lrid":"25eab26d42223997", "pno":"001", "ss":"-58", "chan":"1", "freq":"2401", "dt":"4" },
+{ "lrid":"37046d047d4e3cee", "pno":"001", "ss":"-55", "chan":"0", "freq":"2450", "dt":"5" },
+{ "lrid":"25eab26d42223997", "pno":"002", "ss":"-54", "chan":"1", "freq":"2424", "dt":"6" }
+ ]
+}
+
+xTP value names:
+----------------
+rfid
+uid
+sid
+pid
+iin
+
+Submit xTP event using GET:
+---------------------------
+curl "http://localhost:8011/rfid?rfid=5fcf40d00cc513d&uid=deadbeef&sid=d00dd00d&pid=1234abcd&iin=23423"
+

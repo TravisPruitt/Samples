@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>JCS - JCS and JCACHE (JSR-107)</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="Pete Kazmier"></meta><meta name="email" content="pete@kazmier.com"></meta><meta name="author" content="Aaron Smuts"></meta><meta name="email" content="ASmuts@therealm.com"></meta></head><body class="composite"><div id="banner"><a href="http://jakarta.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="./images/jakarta.png"></img></a><a href="http://jakarta.apache.org/jcs/" id="projectLogo"><span>JCS</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 30 May 2007
+                  | Doc for 1.3</div><div class="xright">
+        
+        <a href="jcs.pdf"><img title="PDF Documentation" style="border: 1px" src="images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuGeneral_Information"><h5>General Information</h5><ul><li class="none"><a href="index.html">Overview</a></li><li class="none"><strong><a href="JCSandJCACHE.html">JCS and JCACHE</a></strong></li><li class="none"><a href="DownloadPage.html">Downloads</a></li><li class="none"><a href="faq.html">FAQ</a></li></ul></div><div id="menuGetting_Started"><h5>Getting Started</h5><ul><li class="none"><a href="getting_started/intro.html">Overview</a></li><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="Plugins.html">Plugin Overview</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></div><div id="menuJCS_User_s_Guide"><h5>JCS User's Guide</h5><ul><li class="collapsed"><a href="LocalCacheConfig.html">Core</a></li><li class="collapsed"><a href="Plugins.html">Auxiliary</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About JCS</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="JCS_and_JCACHE__JSR-107_"></a><h2>JCS and JCACHE (JSR-107)</h2><p>
+        The JCS is an attempt to build a system close to JCACHE , <a href="http://jcp.org/jsr/detail/107.jsp" class="externalLink" title="External Link">JSR-107</a>, a
+        description of the caching system used in Oracle9i.  JCS grew
+        out of my work over the past two years to build an enterprise
+        level caching system.  Though it is replete with good ideas,
+        there are some aspects of the JCACHE architecture that could
+        lead to inefficiency (ex, the lateral distribution and net
+        searches) and a few programming preferences that I found
+        cumbersome (ex, the use of exceptions to report the common
+        place).  Subsequently there are a few differences between the
+        two systems.  In some cases I have moved my original system
+        closer to the JCACHE model where it presented a better idea.
+        Briefly:
+      </p><div class="subsection"><a name="Element_vs__Region_Attributes"></a><h3>Element vs. Region Attributes</h3><p>
+          My original cache was regionally defined.  Each entry required
+          a very minimal wrapper.  The osc4j specification is an element
+          driven model where each element is fully configurable.  This
+          could lead to a slight performance penalty, but it is a richer
+          model, where elements can inherit or have their own
+          attributes.  So, I converted the entire system into element
+          centered framework.
+        </p></div><div class="subsection"><a name="Lateral_Broadcast_vs__Remote_Consistency"></a><h3>Lateral Broadcast vs. Remote Consistency</h3><p>
+          The oracle model is a laterally distributed framework with no
+          centralized control.  The JCS model has the option for lateral
+          broadcast (which will need to be made more efficient) and a
+          remote store that coordinates consistency. In the JCS Local
+          caches send data to the remote store which then notifies other
+          local caches of changes to "regions" (caches) that are
+          registered.  In JCACHE's lateral model an update is never
+          broadcast from the remote, rather updates come via the lateral
+          caches.  If you broadcast changes to all servers then every
+          server must be ready for every user.  The usage patterns of a
+          user on one box can affect the whole.  Also, the lateral model
+          can make it difficult to synchronize combinations of updates
+          and invalidations.
+        </p><p>
+          With a remote store the local caches are primed to take on
+          similar patterns by talking to the remote store, but aren't
+          flooded with the elements from another machine.  This
+          significantly cuts down on traffic.  This way each local cache
+          is a relatively separate realm with remotely configurable
+          regions that stay in synch without overriding the user habits
+          of any machine.  It also allows for an efficient mechanism of
+          retrieval, where searching for an element involves, at
+          maximum, only as many steps as there are remote servers in the
+          cluster.  In the lateral model a failed net search could take
+          an extremely long time to complete, making it necessary for
+          the programmer to decide how long of a wait is acceptable.
+        </p><p>
+          Though this is by and large a poor model, the JCS will include
+          the ability to perform full lateral searches.  A more
+          important feature is remote failover and remote server
+          clustering.  With clustering any concerns about the remote
+          server being a single point of failure vanish and the remote
+          server model is significantly more robust.
+        </p></div><div class="subsection"><a name="Put_vs__Replace"></a><h3>Put vs. Replace</h3><p>
+          The difference between put and replace is not present in the
+          JCS by default.  The overhead associated with this distinction
+          is tremendous.  However, there will be an alternate "safe-put"
+          method to deal with special caches.
+        </p></div><div class="subsection"><a name="Nulls_vs__Errors"></a><h3>Nulls vs. Errors</h3><p>
+          I started to support <code>ObjectNotFoundExceptions</code> for
+          failed gets but the overhead and cumbersome coding needed to
+          surround a simple get method is ridiculous.  Instead the JCS
+          returns null.
+        </p></div><div class="subsection"><a name="Cache_Loaders"></a><h3>Cache Loaders</h3><p>
+          I'm not supporting cache loaders at this time.  They seem
+          unnecessary, but may be useful in a smart portal.
+        </p></div><div class="subsection"><a name="Groups_vs__Hierarchy"></a><h3>Groups vs. Hierarchy</h3><p>
+          The JCS provides feature rich grouping mechanism, where groups
+          of elements can be invalidated and whose attributes can be
+          listed.  The grouping feature is much like the session API.
+          In addition, the JCS provides a mechanism for hierarchical
+          removal without the overhead of keeping track of all the
+          elements of a group across machines.  Element keys with
+          "<code>:</code>" separators (a value that will be fully
+          configurable) can be arranged in a hierarchy.  A remove
+          command ending in a "<code>:</code>" will issue a removal of
+          all child elements.  I can associate search and menu drop down
+          lists for a particular company in a multi-company system by
+          starting each key in disparate caches with the company id
+          followed by "<code>:</code>" and then the normal key.
+          Invalidating this data when a change is made to data affecting
+          something falling under that company can be removed by simply
+          calling <code>cacheAccess.remove(comp_id + ":")</code>.
+        </p></div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2002-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

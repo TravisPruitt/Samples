@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[celebration]
+    ADD CONSTRAINT [FK_celebration_IDMS_Type] FOREIGN KEY ([IDMSTypeId]) REFERENCES [dbo].[IDMS_Type] ([IDMSTypeId]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+

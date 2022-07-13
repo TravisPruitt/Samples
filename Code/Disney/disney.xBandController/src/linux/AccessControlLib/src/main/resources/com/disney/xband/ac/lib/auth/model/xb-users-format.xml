@@ -1,0 +1,10 @@
+<XbUsers>
+  <DefaultRole>string</DefaultRole>
+  <!--Zero or more repetitions:-->
+  <XbUser>
+    <Name>string</Name>
+    <Password>string</Password>
+    <!--Zero or more repetitions:-->
+    <Role>string</Role>
+  </XbUser>
+</XbUsers>

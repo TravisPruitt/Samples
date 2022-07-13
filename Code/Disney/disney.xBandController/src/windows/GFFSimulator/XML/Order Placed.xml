@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-16"?>
+<businessEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <event_type>CHANGE</event_type>
+  <subtype />
+  <location>GFF.XI.KITCHENMANAGEMENT</location>
+  <timestamp>2012-06-18T16:48:41.795</timestamp>
+  <reference_id>80007936-121-51-201248181648</reference_id>
+  <payLoad>
+    <![CDATA[<?xml version="1.0" encoding="utf-16"?><orderevent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>11781b06-0f9b-4aa5-af80-e136703c0484</Id>
+  <CreatedOnUtc>2012-06-18T12:21:13.291144Z</CreatedOnUtc>
+  <CreatedBy>WIN-IIS001</CreatedBy>
+  <Header>ProcessedAtEventChannel~2012-06-18 12:21:13.2911|</Header>
+  <eventtypeid>5</eventtypeid>
+  <event>Order Placed</event>
+  <facilityonesourceid>80007936</facilityonesourceid>
+  <source>POS</source>
+  <sourcetype>MobilePos</sourcetype>
+  <timestamp>2012-06-18T16:48:41.795</timestamp>
+  <timestampgmt>2012-06-18T11:18:41.795Z</timestampgmt>
+  <ordernumber>121-51</ordernumber>
+  <kitcheninfo>
+    <itemid>0</itemid>
+    <itemnumber>0</itemnumber>
+    <cooktime>0</cooktime>
+    <coursenumber>1</coursenumber>
+    <coursename />
+    <viewid>700</viewid>
+    <viewtype>Expediter</viewtype>
+    <modifier1id>0</modifier1id>
+    <modifier2id>0</modifier2id>
+    <modifier3id>0</modifier3id>
+    <itemtag>0</itemtag>
+    <parentitemnumber>0</parentitemnumber>
+    <state />
+    <orderstarttime>2012-06-18T16:39:15.804</orderstarttime>
+    <orderstarttimegmt>2012-06-18T11:09:15.804Z</orderstarttimegmt>
+  </kitcheninfo>
+  <orderamount>202</orderamount>
+  <partysize>4</partysize>
+  <guests>
+    <guest>
+      <xbandid>7001</xbandid>
+      <gxplinkid>700001</gxplinkid>
+    </guest>
+    <guest>
+      <xbandid>7002</xbandid>
+      <gxplinkid>700002</gxplinkid>
+    </guest>
+    <guest>
+      <xbandid>7003</xbandid>
+      <gxplinkid>700003</gxplinkid>
+    </guest>
+    <guest>
+      <xbandid>7004</xbandid>
+      <gxplinkid>700004</gxplinkid>
+    </guest>
+  </guests>
+</orderevent>]]>
+  </payLoad>
+</businessEvent>

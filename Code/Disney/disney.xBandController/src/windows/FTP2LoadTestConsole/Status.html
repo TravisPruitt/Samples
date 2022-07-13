@@ -1,0 +1,130 @@
+<!doctype HTML />
+<h1>Test Console</h1>
+<style>
+  table, tbody, tr, th, td { border: none; }
+  th[align='right'] { white-space: nowrap; font-weight: normal; padding-left: 2em; }
+  th + td { font-weight: bold; white-space:nowrap}
+  div.detail {
+    padding: 20px 20px 35px;
+    display: none;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 0 16px 16px 16px;
+    width: 35%;
+  }
+  div.detail.shown {
+    display: block;
+  }
+  h2.tab {
+    cursor: pointer;
+    position: absolute;
+    top: 29px;
+    margin-bottom: 0;
+    padding: 4px 18px;
+  }
+  h2.selected {
+    border-radius: 10px 10px 0 0;
+    background-color: rgb(180, 180, 180);
+    color: white;
+  }
+  div.chart {
+    position:absolute;
+    top: 45px;
+    right: 20px;
+    width: 60%;
+  }
+  div.chart img {
+    width: 100%;
+  }
+  div.chart:hover {
+    width: 90%;
+  }
+  #reload {
+    cursor: pointer;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+  }
+  #reload span {
+    font-size: 2em;
+  }
+</style>
+<br/>
+<h2 for="Current" class="tab selected">Current Metrics</h2><div class="detail shown">
+  <table>
+    <colgroup>
+      <col width="20%" />
+      <col width="20%" />
+      <col width="20%" />
+      <col width="40%" />
+    </colgroup>
+    <tbody>
+      <tr><th align="right">Start sample: </th><td>[[0]]</td><th align="right">Users: </th><td>[[1]]</td></tr>
+      <tr><th align="right">Avg total time (sec): </th><td>[[5]]</td><th align="right">Max Users: </th><td>[[2]]</td></tr>
+      <tr><th align="right">Max total time (sec): </th><td>[[6]]</td><th align="right">Completed: </th><td>[[3]]</td></tr>
+      <tr><th align="right">Min total time (sec): </th><td>[[7]]</td><th align="right">Errors: </th><td>[[4]]</td></tr>
+    </tbody>
+  </table>
+  <br/>
+
+  <h2>Details:</h2>
+  [[8]]
+</div>
+<h2 for="Cumulative" class='tab' style="left: 200px;">Cumulative Metrics</h2><div class='detail'>
+  <table>
+    <colgroup>
+      <col width="20%" />
+      <col width="20%" />
+      <col width="20%" />
+      <col width="40%" />
+    </colgroup>
+    <tbody>
+    <tr><th align="right">Start sample: </th><td>[[9]]</td></tr>
+    <tr><th align="right">Avg total time (sec): </th><td>[[13]]</td><th align="right">Max Users: </th><td>[[10]]</td></tr>
+    <tr><th align="right">Max total time (sec): </th><td>[[14]]</td><th align="right">Completed: </th><td>[[11]]</td></tr>
+    <tr><th align="right">Min total time (sec): </th><td>[[15]]</td><th align="right">Errors: </th><td>[[12]]</td></tr>
+    </tbody>
+  </table>
+  <br/>
+
+  <h2>Details:</h2>
+[[16]]
+</div>
+<a id="reload" onclick="location.reload()">Auto refresh in <span>&nbsp;</span> seconds</a>
+<div class="chart">[[17]]</div>
+<script>
+    (function () {
+        var last;
+        var click = function () {
+            var last = document.getElementsByClassName('selected')[0];
+            if (last && last !== this) {
+                last.className = 'tab';
+                last.nextSibling.className = 'detail';
+            }
+            this.className = 'selected tab';
+            this.nextSibling.className = 'detail shown';
+            last = this;
+            location.hash = this.getAttribute('for');
+        };
+        var h2s = document.getElementsByClassName('tab');
+        var item;
+        for (var i = 0; item = h2s[i]; i++) {
+            item.addEventListener('click', click, false);
+            if (location.hash === '#' + item.getAttribute('for')) {
+                click.apply(item);
+            }
+        }
+    })();
+    (function () {
+        var reload = document.getElementById('reload');
+        var span = reload.getElementsByTagName('span')[0];
+        var count = 15;
+        var down = function () {
+            span.firstChild.nodeValue = count--;
+            setTimeout(down, 1000);
+        };
+        setTimeout(function () {
+            location.reload();
+        }, count * 1000);
+        down();
+    })();
+</script>

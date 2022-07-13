@@ -1,0 +1,100 @@
+/*
+* CSS file for web pages associated with band c.
+*/
+
+html { overflow-y: scroll; }
+
+h2.pageTitle { color: #fdfdfd; }
+
+.ui-accordion-content table td.label {
+	width: 12%;
+	position: relative;
+	text-decoration: none;
+	font-style: normal;
+}
+
+.accordion {
+	width: 74%;
+}
+.ui-accordion-header a {
+	font-size: 110%; font-weight: bold;
+}
+.accordion .lightHeader {
+	background: #dfdfdf;
+	padding: 1em;
+	border: none;
+}
+.accordion .lightHeader a {
+	color: #14335d;
+}
+
+.accordion .ui-accordion-header {
+	position: relative;
+	padding: 0.4em; margin: 10px 0px 0px 0px;
+}
+.accordion .ui-accordion-header span {
+	float: left; clear: left; 
+}
+.accordion .locationSignalStrength {
+	width: 50%;
+	float: right;
+}
+.accordion .readerSignalStrength {
+	width:100%;
+	float: right;
+}
+.accordion .readerSignalStrength .progressbar {
+	height: 15px;
+	margin-left: 4em;
+	position: relative;
+}
+.accordion .locationSignalStrength .locationProgressbar {
+	height: 13px;
+	margin-left: 4em;
+	position: relative;
+}
+.accordion .locationSignalStrength .locationProgressbar .ui-progressbar-value {
+	/*background: #ffc698;
+	border: solid 1px #ffc698;*/
+}
+
+.accordion .locationSignalStrength .valueText {
+	font-weight: bold; font-size: 110%; color: #14335d;
+}
+.accordion .locationSignalStrength .ui-accordion-content-active .valueText {
+	font-weight: bold; font-size: 110%; color: 
+	float: left;
+}
+.accordion .readerSignalStrength .valueText {
+	font-weight: bold; font-size: 110%;
+	float: left;
+}
+
+.accordion .ui-accordion-content {
+	background: #dfdfdf;
+}
+
+.pbThreshold {
+	height: 16px;
+	border: none;
+	border-right: solid 2px red;
+	position: absolute; top: -1px; left: -3px;
+	filter: alpha(opacity=50);
+	-moz-opacity:0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}
+
+table.light { margin: 0 0 1em 0; padding: 0; }
+td.label { white-space: nowrap; }
+td.gain { width: 35%; }
+td.threshold {}
+
+/* singulation div */
+#singulation {
+	width: 24%;
+	position: relative; float: right;
+	padding: 0; margin: 0;
+	font-size: 110%; color: #c7c7c7;
+}
+/* end of singulation div */

@@ -1,0 +1,14 @@
+target
+lib
+bin
+*.jar
+*.war
+*.log*
+lib
+eventdump.txt
+log4j.xml
+xbrcconfiglog4j.xml
+properties.xml
+src/com/disney/xband/xbrc/Controller/experimental
+target
+resources/ac-model.xml

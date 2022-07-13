@@ -1,0 +1,2 @@
+#Make the VCOM device accessable to everyone
+KERNEL=="vcom[0-9]*", MODE="0666"

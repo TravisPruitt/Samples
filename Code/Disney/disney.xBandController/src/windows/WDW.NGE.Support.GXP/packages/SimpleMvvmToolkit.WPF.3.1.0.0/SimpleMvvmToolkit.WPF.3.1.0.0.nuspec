@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>SimpleMvvmToolkit.WPF</id>
+    <version>3.1.0.0</version>
+    <title>SimpleMvvmToolkit.WPF</title>
+    <authors>Tony Sneed</authors>
+    <owners>Tony Sneed</owners>
+    <licenseUrl>http://simplemvvmtoolkit.codeplex.com/license</licenseUrl>
+    <projectUrl>http://simplemvvmtoolkit.codeplex.com/</projectUrl>
+    <iconUrl>http://tonysneed.com/images/mvvm/simple-icon-sm.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Helper classes, Visual Studio 2010 templates, code snippets and samples for building WPF MVVM applications.</description>
+    <releaseNotes />
+    <copyright />
+    <language>en-US</language>
+    <tags>mvvm wpf</tags>
+  </metadata>
+</package>

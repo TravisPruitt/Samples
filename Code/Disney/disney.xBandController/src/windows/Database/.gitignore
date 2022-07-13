@@ -1,0 +1,8 @@
+sql/
+obj/
+*.user
+*.suo
+*.dbmdl
+*.schemaview
+Import Schema Logs/
+Import Script Logs/

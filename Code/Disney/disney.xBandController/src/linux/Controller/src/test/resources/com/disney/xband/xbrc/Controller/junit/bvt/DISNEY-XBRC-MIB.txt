@@ -1,0 +1,801 @@
+DISNEY-XBRC-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	ExtUTCTime,
+	enterprises,
+	MODULE-IDENTITY,
+	OBJECT-TYPE,
+	NOTIFICATION-TYPE,
+	Counter64,
+	Integer32,
+	IpAddress
+		FROM SNMPv2-SMI
+	DisplayString,
+	MacAddress,
+	DateAndTime,
+	TEXTUAL-CONVENTION
+		FROM SNMPv2-TC
+	OBJECT-GROUP,
+	NOTIFICATION-GROUP
+		FROM SNMPv2-CONF;
+
+disneyXbrcRegMIB MODULE-IDENTITY
+	LAST-UPDATED "201109292007Z"	-- Sep 29, 2011 8:07:00 PM
+	ORGANIZATION "Disney"
+	CONTACT-INFO
+		"Pam DeFrancesco"
+	DESCRIPTION
+		""
+	REVISION "201109292007Z"	-- Sep 29, 2011 8:07:00 PM
+	DESCRIPTION
+		"Initial version."
+	-- 1.3.6.1.4.1.7755.500.1
+	::= { enterprises 7755 500 1 }
+
+
+nge OBJECT IDENTIFIER 
+	-- 1.3.6.1.4.1.7755.500
+	::= { enterprises 7755 500 }
+
+disneyXbrcInfo OBJECT IDENTIFIER 
+	-- 1.3.6.1.4.1.7755.500.1.1.1
+	::= { disneyXbrcObjects 1 }
+
+disneyXbrcTrapXfpTemp OBJECT-TYPE
+	SYNTAX  OCTET STRING (SIZE (4))
+	UNITS
+		"Degrees Celsius"
+	MAX-ACCESS accessible-for-notify
+	STATUS  current
+	DESCRIPTION
+		"Xfp reader current internal temperature reading. Sent in notifications."
+	-- 1.3.6.1.4.1.7755.500.1.2.0.6
+	::= { disneyXbrcNotifications 0 6 }
+
+
+disneyXbrcTrapXfpAmb OBJECT-TYPE
+	SYNTAX  OCTET STRING (SIZE (4))
+	UNITS
+		"lux"
+	MAX-ACCESS accessible-for-notify
+	STATUS  current
+	DESCRIPTION
+		"Xfp reader most recent ambient light reading as reported by the reader's xBio component. Sent in notifications."
+	-- 1.3.6.1.4.1.7755.500.1.2.0.8
+	::= { disneyXbrcNotifications 0 8 }
+
+
+disneyXbrcTrapReaderIP OBJECT-TYPE
+	SYNTAX  IpAddress
+	MAX-ACCESS accessible-for-notify
+	STATUS  current
+	DESCRIPTION
+		"Reader IP address. Sent in notifications."
+	-- 1.3.6.1.4.1.7755.500.1.2.0.4
+	::= { disneyXbrcNotifications 0 4 }
+
+
+disneyXbrcTrapReaderName OBJECT-TYPE
+	SYNTAX  DisplayString (SIZE (0..255))
+	MAX-ACCESS accessible-for-notify
+	STATUS  current
+	DESCRIPTION
+		"Reader name. Sent in notifications."
+	-- 1.3.6.1.4.1.7755.500.1.2.0.3
+	::= { disneyXbrcNotifications 0 3 }
+
+
+disneyXbrcTrapReaderType OBJECT-TYPE
+	SYNTAX  DisneyXbrcReaderTypeCode
+	MAX-ACCESS accessible-for-notify
+	STATUS  current
+	DESCRIPTION
+		"Reader type. Sent with notifications."
+	-- 1.3.6.1.4.1.7755.500.1.2.0.5
+	::= { disneyXbrcNotifications 0 5 }
+
+
+disneyXbrcTrapXfpMaxTemp OBJECT-TYPE
+	SYNTAX  OCTET STRING (SIZE (4))
+	UNITS
+		"Degrees Celsius"
+	MAX-ACCESS accessible-for-notify
+	STATUS  current
+	DESCRIPTION
+		"Xfp reader maximum internal temperature reading recorded since the reader was last restarted. Sent in notifications."
+	-- 1.3.6.1.4.1.7755.500.1.2.0.7
+	::= { disneyXbrcNotifications 0 7 }
+
+
+disneyXbrcReaderTable OBJECT-TYPE
+	SYNTAX  SEQUENCE OF DisneyXbrcReaderEntry
+	MAX-ACCESS not-accessible
+	STATUS  current
+	DESCRIPTION
+		"A table that lists all the readers present on this XBRC."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.1
+	::= { disneyXbrcReaders 1 }
+
+
+disneyXbrcXBioTable OBJECT-TYPE
+	SYNTAX  SEQUENCE OF DisneyXbrcXBioEntry
+	MAX-ACCESS not-accessible
+	STATUS  current
+	DESCRIPTION ""
+	-- 1.3.6.1.4.1.7755.500.1.1.2.3
+	::= { disneyXbrcReaders 3 }
+
+
+disneyXbrcTrapSeverityLevel OBJECT-TYPE
+	SYNTAX  INTEGER {
+			normal(1),
+			warning(2),
+			minor(3),
+			major(4) }
+	MAX-ACCESS accessible-for-notify
+	STATUS  current
+	DESCRIPTION
+		"Trap severity code to help managers to handle traps according to their seriousness."
+	-- 1.3.6.1.4.1.7755.500.1.2.0.9
+	::= { disneyXbrcNotifications 0 9 }
+
+
+disneyXbrcReaderEntry OBJECT-TYPE
+	SYNTAX  DisneyXbrcReaderEntry
+	MAX-ACCESS not-accessible
+	STATUS  current
+	DESCRIPTION ""
+	INDEX {
+		disneyXbrcReaderEntryIpAdd }
+	-- 1.3.6.1.4.1.7755.500.1.1.2.1.1
+	::= { disneyXbrcReaderTable 1 }
+
+
+DisneyXbrcReaderEntry ::= SEQUENCE {
+
+	disneyXbrcReaderEntryIpAdd IpAddress,
+	disneyXbrcReaderEntryPort  Integer32,
+	disneyXbrcReaderEntryName  DisplayString,
+	disneyXbrcReaderEntryMac   MacAddress,
+	disneyXbrcReaderEntryLVer  OCTET STRING,
+	disneyXbrcReaderEntryVer   OCTET STRING,
+	disneyXbrcReaderEntryType  DisneyXbrcReaderTypeCode }
+
+
+disneyXbrcReaderEntryIpAdd OBJECT-TYPE
+	SYNTAX  IpAddress
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Reader IP address"
+	-- 1.3.6.1.4.1.7755.500.1.1.2.1.1.1
+	::= { disneyXbrcReaderEntry 1 }
+
+
+disneyXbrcReaderEntryPort OBJECT-TYPE
+	SYNTAX  Integer32 (0..2147483647)
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Reader port number."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.1.1.2
+	::= { disneyXbrcReaderEntry 2 }
+
+
+disneyXbrcReaderEntryName OBJECT-TYPE
+	SYNTAX  DisplayString (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Reader name"
+	-- 1.3.6.1.4.1.7755.500.1.1.2.1.1.3
+	::= { disneyXbrcReaderEntry 3 }
+
+
+disneyXbrcReaderEntryMac OBJECT-TYPE
+	SYNTAX  MacAddress
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Reader's MAC (Media Access Control) address or Ethernet Hardware Address (EHA)) is formatted according to IEEE MAC-48, using ':' as a separator character, in transmission order."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.1.1.4
+	::= { disneyXbrcReaderEntry 4 }
+
+
+disneyXbrcXBioEntry OBJECT-TYPE
+	SYNTAX  DisneyXbrcXBioEntry
+	MAX-ACCESS not-accessible
+	STATUS  current
+	DESCRIPTION ""
+	INDEX {
+		disneyXbrcXBioEntryReaderIp }
+	-- 1.3.6.1.4.1.7755.500.1.1.2.3.1
+	::= { disneyXbrcXBioTable 1 }
+
+
+DisneyXbrcXBioEntry ::= SEQUENCE {
+
+	disneyXbrcXBioEntryReaderIp IpAddress,
+	disneyXbrcXBioEntryFWVer    DisplayString,
+	disneyXbrcXBioEntryHWVer    DisplayString,
+	disneyXbrcXBioEntrySerial   Integer32 }
+
+
+DisneyXbrcReaderTypeCode ::= TEXTUAL-CONVENTION
+	STATUS  current
+	DESCRIPTION
+		"Possible types of readers."
+	SYNTAX INTEGER {
+			unknown(1),
+			xbr(2),     	-- Long range reader
+			xfp(3),     	-- Tap reader, also known as xFP (focal point reader), or RFID reader
+			xfpxbio(4) 	-- Tap reader with a finger print reader (xBio) attachment
+			}
+
+
+-- Scalars and Tables
+--
+
+disneyXbrcObjects OBJECT IDENTIFIER 
+	-- 1.3.6.1.4.1.7755.500.1.1
+	::= { disneyXbrcRegMIB 1 }
+
+disneyXbrcName OBJECT-TYPE
+	SYNTAX  OCTET STRING (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Name of the venue/attraction represented by this xBRC"
+	-- 1.3.6.1.4.1.7755.500.1.1.1.1
+	::= { disneyXbrcInfo 1 }
+
+
+disneyXbrcTime OBJECT-TYPE
+	SYNTAX  DisplayString (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Current system time."
+	-- 1.3.6.1.4.1.7755.500.1.1.1.2
+	::= { disneyXbrcInfo 2 }
+
+
+disneyXbrcVersion OBJECT-TYPE
+	SYNTAX  DisplayString (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Xbrc software version."
+	-- 1.3.6.1.4.1.7755.500.1.1.1.3
+	::= { disneyXbrcInfo 3 }
+
+
+disneyXbrcReaderLocCount OBJECT-TYPE
+	SYNTAX  Integer32 (0..2147483647)
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Number of reader locations."
+	-- 1.3.6.1.4.1.7755.500.1.1.1.4
+	::= { disneyXbrcInfo 4 }
+
+
+disneyXbrcMessageCount OBJECT-TYPE
+	SYNTAX  Counter64
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Number of reader messages in the queue waiting to be processed."
+	-- 1.3.6.1.4.1.7755.500.1.1.1.5
+	::= { disneyXbrcInfo 5 }
+
+
+disneyXbrcLastMessageSeq OBJECT-TYPE
+	SYNTAX  Counter64
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Sequence number of the last reader message processed."
+	-- 1.3.6.1.4.1.7755.500.1.1.1.6
+	::= { disneyXbrcInfo 6 }
+
+
+disneyXbrcLastMessageToJMS OBJECT-TYPE
+	SYNTAX  Counter64
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Sequence number of the last message sent via JMS."
+	-- 1.3.6.1.4.1.7755.500.1.1.1.7
+	::= { disneyXbrcInfo 7 }
+
+
+disneyXbrcLastMessageToUpdateStream OBJECT-TYPE
+	SYNTAX  Counter64
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Last JMS message sent out to the update stream for processing."
+	-- 1.3.6.1.4.1.7755.500.1.1.1.8
+	::= { disneyXbrcInfo 8 }
+
+
+disneyXbrcStatus OBJECT-TYPE
+	SYNTAX  DisplayString (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Overall status of this Xbrc. Possible values are Green, Yellow, or Red."
+	-- 1.3.6.1.4.1.7755.500.1.1.1.9
+	::= { disneyXbrcInfo 9 }
+
+
+disneyXbrcStatusMessage OBJECT-TYPE
+	SYNTAX  DisplayString (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Explanation for Xbrc status."
+	-- 1.3.6.1.4.1.7755.500.1.1.1.10
+	::= { disneyXbrcInfo 10 }
+
+
+disneyXbrcModel OBJECT-TYPE
+	SYNTAX  DisplayString (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Type of the facility. Currently there are four models defined: Attraction, Park Entry,  Space, and Observer."
+	-- 1.3.6.1.4.1.7755.500.1.1.1.11
+	::= { disneyXbrcInfo 11 }
+
+
+disneyXbrcJMSBroker OBJECT-TYPE
+	SYNTAX  DisplayString (SIZE (0..30))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"JMS broker configure to process JMS messages for this Xbrc."
+	-- 1.3.6.1.4.1.7755.500.1.1.1.12
+	::= { disneyXbrcInfo 12 }
+
+
+disneyXbrcUpdateStreamURL OBJECT-TYPE
+	SYNTAX  DisplayString (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"URL that listens to JMS message sent over http rather than JMS."
+	-- 1.3.6.1.4.1.7755.500.1.1.1.13
+	::= { disneyXbrcInfo 13 }
+
+
+disneyXbrcReaders OBJECT IDENTIFIER 
+	-- 1.3.6.1.4.1.7755.500.1.1.2
+	::= { disneyXbrcObjects 2 }
+
+disneyXbrcReaderEntryLVer OBJECT-TYPE
+	SYNTAX  OCTET STRING (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Version of the Linux operating system this reader is running."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.1.1.5
+	::= { disneyXbrcReaderEntry 5 }
+
+
+disneyXbrcReaderEntryVer OBJECT-TYPE
+	SYNTAX  OCTET STRING (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Reader's version."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.1.1.6
+	::= { disneyXbrcReaderEntry 6 }
+
+
+disneyXbrcReaderEntryType OBJECT-TYPE
+	SYNTAX  DisneyXbrcReaderTypeCode
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Reader's type. Possible values are: xbr, xfp, or xfpxbio."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.1.1.7
+	::= { disneyXbrcReaderEntry 7 }
+
+
+disneyXbrcRfidTable OBJECT-TYPE
+	SYNTAX  SEQUENCE OF DisneyXbrcRfidEntry
+	MAX-ACCESS not-accessible
+	STATUS  current
+	DESCRIPTION ""
+	-- 1.3.6.1.4.1.7755.500.1.1.2.2
+	::= { disneyXbrcReaders 2 }
+
+
+disneyXbrcRfidEntry OBJECT-TYPE
+	SYNTAX  DisneyXbrcRfidEntry
+	MAX-ACCESS not-accessible
+	STATUS  current
+	DESCRIPTION
+		"xFP reader's Magic Band RFID reader software and hardware version information. RFID stands for Radio-Frequency IDentification."
+	INDEX {
+		disneyXbrcRfidEntryIp }
+	-- 1.3.6.1.4.1.7755.500.1.1.2.2.1
+	::= { disneyXbrcRfidTable 1 }
+
+
+DisneyXbrcRfidEntry ::= SEQUENCE {
+
+	disneyXbrcRfidEntryIp    IpAddress,
+	disneyXbrcRfidEntryFWVer DisplayString,
+	disneyXbrcRfidEntryDesc  DisplayString }
+
+
+disneyXbrcRfidEntryIp OBJECT-TYPE
+	SYNTAX  IpAddress
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Reader's IP address."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.2.1.1
+	::= { disneyXbrcRfidEntry 1 }
+
+
+disneyXbrcRfidEntryFWVer OBJECT-TYPE
+	SYNTAX  DisplayString (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"RFID reader firmware version."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.2.1.2
+	::= { disneyXbrcRfidEntry 2 }
+
+
+disneyXbrcRfidEntryDesc OBJECT-TYPE
+	SYNTAX  DisplayString (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"RFID reader firmware description."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.2.1.3
+	::= { disneyXbrcRfidEntry 3 }
+
+
+disneyXbrcXBioEntryReaderIp OBJECT-TYPE
+	SYNTAX  IpAddress
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Ip address of the reader this fingerprint reader is attached to."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.3.1.1
+	::= { disneyXbrcXBioEntry 1 }
+
+
+disneyXbrcXBioEntryFWVer OBJECT-TYPE
+	SYNTAX  DisplayString (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Fingerprint reader's firmware version."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.3.1.2
+	::= { disneyXbrcXBioEntry 2 }
+
+
+disneyXbrcXBioEntryHWVer OBJECT-TYPE
+	SYNTAX  DisplayString (SIZE (0..255))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Fingerprint reader's hardware version."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.3.1.3
+	::= { disneyXbrcXBioEntry 3 }
+
+
+disneyXbrcXBioEntrySerial OBJECT-TYPE
+	SYNTAX  Integer32 (0..2147483647)
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Fingerprint reader's serial number."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.3.1.4
+	::= { disneyXbrcXBioEntry 4 }
+
+
+disneyXbrcTempTable OBJECT-TYPE
+	SYNTAX  SEQUENCE OF DisneyXbrcTempEntry
+	MAX-ACCESS not-accessible
+	STATUS  current
+	DESCRIPTION ""
+	-- 1.3.6.1.4.1.7755.500.1.1.2.4
+	::= { disneyXbrcReaders 4 }
+
+
+disneyXbrcTempEntry OBJECT-TYPE
+	SYNTAX  DisneyXbrcTempEntry
+	MAX-ACCESS not-accessible
+	STATUS  current
+	DESCRIPTION
+		"Readers' latest internal temperature reading. Temperature is only relevant to tap readers: xFP and xFP+xBio"
+	INDEX {
+		disneyXbrcTempEntryReaderIp }
+	-- 1.3.6.1.4.1.7755.500.1.1.2.4.1
+	::= { disneyXbrcTempTable 1 }
+
+
+DisneyXbrcTempEntry ::= SEQUENCE {
+
+	disneyXbrcTempEntryReaderIp IpAddress,
+	disneyXbrcTempEntryTemp     OCTET STRING,
+	disneyXbrcTempEntryMaxTemp  OCTET STRING }
+
+
+disneyXbrcTempEntryReaderIp OBJECT-TYPE
+	SYNTAX  IpAddress
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Reader's IP address. Serves as an index to this table."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.4.1.1
+	::= { disneyXbrcTempEntry 1 }
+
+
+disneyXbrcTempEntryTemp OBJECT-TYPE
+	SYNTAX  OCTET STRING (SIZE (4))
+	UNITS
+		"Degrees Celsius"
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Reader's internal temperature as of last reading."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.4.1.2
+	::= { disneyXbrcTempEntry 2 }
+
+
+disneyXbrcTempEntryMaxTemp OBJECT-TYPE
+	SYNTAX  OCTET STRING (SIZE (4))
+	UNITS
+		"Degrees Celsius"
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Maximum internal temperature reading since this reader has been restarted."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.4.1.3
+	::= { disneyXbrcTempEntry 3 }
+
+
+disneyXbrcAmbTable OBJECT-TYPE
+	SYNTAX  SEQUENCE OF DisneyXbrcAmbEntry
+	MAX-ACCESS not-accessible
+	STATUS  current
+	DESCRIPTION ""
+	-- 1.3.6.1.4.1.7755.500.1.1.2.5
+	::= { disneyXbrcReaders 5 }
+
+
+disneyXbrcAmbEntry OBJECT-TYPE
+	SYNTAX  DisneyXbrcAmbEntry
+	MAX-ACCESS not-accessible
+	STATUS  current
+	DESCRIPTION ""
+	INDEX {
+		disneyXbrcAmbEntryReaderIp }
+	-- 1.3.6.1.4.1.7755.500.1.1.2.5.1
+	::= { disneyXbrcAmbTable 1 }
+
+
+DisneyXbrcAmbEntry ::= SEQUENCE {
+
+	disneyXbrcAmbEntryReaderIp IpAddress,
+	disneyXbrcAmbEntryAmb      OCTET STRING }
+
+
+disneyXbrcAmbEntryReaderIp OBJECT-TYPE
+	SYNTAX  IpAddress
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Reader's IP address. Serves as an index for this table."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.5.1.1
+	::= { disneyXbrcAmbEntry 1 }
+
+
+disneyXbrcAmbEntryAmb OBJECT-TYPE
+	SYNTAX  OCTET STRING (SIZE (4))
+	UNITS
+		"lux"
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Reader's last ambient light reading. Relevant to tap readers only: xFP and xFP+xBio"
+	-- 1.3.6.1.4.1.7755.500.1.1.2.5.1.2
+	::= { disneyXbrcAmbEntry 2 }
+
+
+disneyXbrcXbrTable OBJECT-TYPE
+	SYNTAX  SEQUENCE OF DisneyXbrcXbrEntry
+	MAX-ACCESS not-accessible
+	STATUS  current
+	DESCRIPTION ""
+	-- 1.3.6.1.4.1.7755.500.1.1.2.6
+	::= { disneyXbrcReaders 6 }
+
+
+disneyXbrcXbrEntry OBJECT-TYPE
+	SYNTAX  DisneyXbrcXbrEntry
+	MAX-ACCESS not-accessible
+	STATUS  current
+	DESCRIPTION
+		"Each xBR has nine radios, eight receiver radios and one ??? radio."
+	INDEX {
+		disneyXbrcReaderEntryIpAdd,
+		disneyXbrcXbrEntryRadio }
+	-- 1.3.6.1.4.1.7755.500.1.1.2.6.1
+	::= { disneyXbrcXbrTable 1 }
+
+
+DisneyXbrcXbrEntry ::= SEQUENCE {
+
+	disneyXbrcXbrEntryIp          IpAddress,
+	disneyXbrcXbrEntryRadio       INTEGER,
+	disneyXbrcXbrEntryCalibration INTEGER,
+	disneyXbrcXbrEntryVer         OCTET STRING }
+
+
+disneyXbrcXbrEntryIp OBJECT-TYPE
+	SYNTAX  IpAddress
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"xBR reader IP address."
+	-- 1.3.6.1.4.1.7755.500.1.1.2.6.1.1
+	::= { disneyXbrcXbrEntry 1 }
+
+
+disneyXbrcXbrEntryRadio OBJECT-TYPE
+	SYNTAX  INTEGER (0..8)
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION ""
+	-- 1.3.6.1.4.1.7755.500.1.1.2.6.1.2
+	::= { disneyXbrcXbrEntry 2 }
+
+
+disneyXbrcXbrEntryCalibration OBJECT-TYPE
+	SYNTAX  INTEGER (-127..128)
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"Calibration values for each of the xBR reader 8 receiver radios, <radio>=<calibration value> where radio = 0-7 and calibration value is -127 to +128.
+		If a calibration value is 0, the radio is uncalibrated. The normal range of calibrated values is -110 to -90.'"
+	-- 1.3.6.1.4.1.7755.500.1.1.2.6.1.3
+	::= { disneyXbrcXbrEntry 3 }
+
+
+disneyXbrcXbrEntryVer OBJECT-TYPE
+	SYNTAX  OCTET STRING (SIZE (3..4))
+	MAX-ACCESS read-only
+	STATUS  current
+	DESCRIPTION
+		"List of software versions for each of the 9 radios, for each, space separated, <radio>=<version> where radio is 0-7, version is 3 digits, optionally followed by 1"
+	-- 1.3.6.1.4.1.7755.500.1.1.2.6.1.4
+	::= { disneyXbrcXbrEntry 4 }
+
+
+
+disneyXbrcReaderHello NOTIFICATION-TYPE
+	OBJECTS {
+		disneyXbrcTrapReaderIP,
+		disneyXbrcTrapReaderName,
+		disneyXbrcTrapReaderType,
+		disneyXbrcTrapSeverityLevel}
+	STATUS  current
+	DESCRIPTION
+		"The hello message from the reader."
+	-- 1.3.6.1.4.1.7755.500.1.2.0.1
+	::= { disneyXbrcNotifications 0 1 }
+
+
+disneyXbrcReaderTempNotification NOTIFICATION-TYPE
+	OBJECTS {
+		disneyXbrcTrapReaderIP,
+		disneyXbrcTrapReaderName,
+		disneyXbrcTrapReaderType,
+		disneyXbrcTrapXfpTemp,
+		disneyXbrcTrapSeverityLevel}
+	STATUS  current
+	DESCRIPTION
+		"This trap is sent whenever reader's temperature exceeds certain temperature."
+	-- 1.3.6.1.4.1.7755.500.1.2.0.2
+	::= { disneyXbrcNotifications 0 2 }
+
+disneyXbrcBasicGroup OBJECT-GROUP
+	OBJECTS {
+		disneyXbrcName,
+		disneyXbrcTime,
+		disneyXbrcVersion,
+		disneyXbrcReaderLocCount,
+		disneyXbrcMessageCount,
+		disneyXbrcLastMessageSeq,
+		disneyXbrcLastMessageToJMS,
+		disneyXbrcLastMessageToUpdateStream,
+		disneyXbrcStatus,
+		disneyXbrcStatusMessage,
+		disneyXbrcModel,
+		disneyXbrcJMSBroker,
+		disneyXbrcUpdateStreamURL,
+		disneyXbrcReaderEntryIpAdd,
+		disneyXbrcReaderEntryPort,
+		disneyXbrcReaderEntryName,
+		disneyXbrcReaderEntryMac,
+		disneyXbrcReaderEntryLVer,
+		disneyXbrcReaderEntryVer,
+		disneyXbrcReaderEntryType,
+		disneyXbrcRfidEntryIp,
+		disneyXbrcRfidEntryFWVer,
+		disneyXbrcRfidEntryDesc,
+		disneyXbrcXBioEntryReaderIp,
+		disneyXbrcXBioEntryFWVer,
+		disneyXbrcXBioEntryHWVer,
+		disneyXbrcXBioEntrySerial,
+		disneyXbrcTempEntryReaderIp,
+		disneyXbrcTempEntryTemp,
+		disneyXbrcTempEntryMaxTemp,
+		disneyXbrcAmbEntryReaderIp,
+		disneyXbrcAmbEntryAmb,
+		disneyXbrcXbrEntryIp,
+		disneyXbrcXbrEntryRadio,
+		disneyXbrcXbrEntryCalibration,
+		disneyXbrcXbrEntryVer,
+		disneyXbrcTrapReaderName,
+		disneyXbrcTrapReaderIP,
+		disneyXbrcTrapReaderType,
+		disneyXbrcTrapXfpTemp,
+		disneyXbrcTrapXfpMaxTemp,
+		disneyXbrcTrapXfpAmb,
+		disneyXbrcTrapSeverityLevel }
+	STATUS  current
+	DESCRIPTION
+		"Basic objects."
+	-- 1.3.6.1.4.1.7755.500.1.3.1.1
+	::= { disneyXbrcGroups 1 }
+
+disneyXbrcBasicNotifications NOTIFICATION-GROUP
+	NOTIFICATIONS {
+		disneyXbrcReaderHello,
+		disneyXbrcReaderTempNotification }
+	STATUS  current
+	DESCRIPTION
+		"Basic notifications."
+	-- 1.3.6.1.4.1.7755.500.1.3.1.2
+	::= { disneyXbrcGroups 2 }
+
+-- Conformance
+--
+
+disneyXbrcConf OBJECT IDENTIFIER 
+	-- 1.3.6.1.4.1.7755.500.1.3
+	::= { disneyXbrcRegMIB 3 }
+
+-- Groups
+--
+
+disneyXbrcGroups OBJECT IDENTIFIER 
+	-- 1.3.6.1.4.1.7755.500.1.3.1
+	::= { disneyXbrcConf 1 }
+
+-- Compliance
+--
+
+disneyXbrcCompls OBJECT IDENTIFIER 
+	-- 1.3.6.1.4.1.7755.500.1.3.2
+	::= { disneyXbrcConf 2 }
+
+-- Notification Types
+--
+
+disneyXbrcNotifications OBJECT IDENTIFIER 
+	-- 1.3.6.1.4.1.7755.500.1.2
+	::= { disneyXbrcRegMIB 2 }
+
+END

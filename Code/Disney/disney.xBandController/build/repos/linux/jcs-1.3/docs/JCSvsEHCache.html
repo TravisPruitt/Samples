@@ -1,0 +1,430 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>JCS - JCS vs EHCache Performance</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="Aaron Smuts"></meta><meta name="email" content="asmuts@apache.org"></meta></head><body class="composite"><div id="banner"><a href="http://jakarta.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="./images/jakarta.png"></img></a><a href="http://jakarta.apache.org/jcs/" id="projectLogo"><span>JCS</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 30 May 2007
+                  | Doc for 1.3</div><div class="xright">
+        
+        <a href="jcs.pdf"><img title="PDF Documentation" style="border: 1px" src="images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuGeneral_Information"><h5>General Information</h5><ul><li class="none"><a href="index.html">Overview</a></li><li class="none"><a href="JCSandJCACHE.html">JCS and JCACHE</a></li><li class="none"><a href="DownloadPage.html">Downloads</a></li><li class="none"><a href="faq.html">FAQ</a></li></ul></div><div id="menuGetting_Started"><h5>Getting Started</h5><ul><li class="none"><a href="getting_started/intro.html">Overview</a></li><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="Plugins.html">Plugin Overview</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></div><div id="menuJCS_User_s_Guide"><h5>JCS User's Guide</h5><ul><li class="collapsed"><a href="LocalCacheConfig.html">Core</a></li><li class="collapsed"><a href="Plugins.html">Auxiliary</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About JCS</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="JCS_vs_EHCache_Memory_Performance"></a><h2>JCS vs EHCache Memory Performance</h2><div class="subsection"><a name="Initial_Test_Results"></a><h3>Initial Test Results</h3><p>
+					I just built both EHCache (1.2-beta4) and JCS
+					(1.2.7.0) from head, configured both similarly and
+					ran 20 rounds of 50,000 puts and gets, that is
+					1,000,000 puts and gets in total. Using the default
+					LRU Memory Cache, the same algorithm that EHCache
+					uses by default,
+					<b>
+						JCS proved to be nearly twice as fast as EHCache
+					</b>
+					in multiple trials for both puts and gets. I have
+					the log levels for both set at info. I would like to
+					further verify my results, since they completely
+					contradict the information on the EHCache site.
+				</p><p>
+					From what I can tell so far, JCS is significantly
+					faster than EHCache when you are retrieving items
+					that exist in the cache and when you are putting
+					items into a cache that has not reached its size
+					limit.
+				</p><p>
+					Additional testing shows that when the size limit it
+					reached, JCS and EHCache perform similarly for puts
+					and gets. Although JCS gets are significantly faster
+					when the items are present, they are almost exactly
+					the same when the items are not in the cache. My
+					initial tests revealed a less than 1% difference,
+					but subsequent runs showed JCS as 20% faster. More
+					tests are needed before the results are conclusive.
+				</p><p>
+					Since, neither cache will be a relevant bottleneck
+					in any application where a cache would be useful,
+					the differences in performance may be beside the
+					point. Nevertheless, it is important to note that
+					the EHCache web site provides, what appears to be,
+					false test data.
+				</p><p>
+					The peculiar result is that a few years back EHCache
+					took the JCS source code, removed most of its
+					features, and ended up with something that performs
+					worse.
+				</p></div><div class="subsection"><a name="Test_Data"></a><h3>Test Data</h3><p>Here is the data from the first test:</p><p>
+					JCS put time for 50000 = 651; millis per = 0.01302
+					JCS get time for 50000 = 160; millis per = 0.0032
+					EHCache put time for 50000 = 481; millis per =
+					0.00962 EHCache get time for 50000 = 110; millis per
+					= 0.0022
+				</p><p>
+					JCS put time for 50000 = 240; millis per = 0.0048
+					JCS get time for 50000 = 90; millis per = 0.0018
+					EHCache put time for 50000 = 491; millis per =
+					0.00982 EHCache get time for 50000 = 120; millis per
+					= 0.0024
+				</p><p>
+					JCS put time for 50000 = 241; millis per = 0.00482
+					JCS get time for 50000 = 80; millis per = 0.0016
+					EHCache put time for 50000 = 551; millis per =
+					0.01102 EHCache get time for 50000 = 110; millis per
+					= 0.0022
+				</p><p>
+					JCS put time for 50000 = 240; millis per = 0.0048
+					JCS get time for 50000 = 90; millis per = 0.0018
+					EHCache put time for 50000 = 481; millis per =
+					0.00962 EHCache get time for 50000 = 130; millis per
+					= 0.0026
+				</p><p>
+					JCS put time for 50000 = 230; millis per = 0.0046
+					JCS get time for 50000 = 181; millis per = 0.00362
+					EHCache put time for 50000 = 520; millis per =
+					0.0104 EHCache get time for 50000 = 101; millis per
+					= 0.00202
+				</p><p>
+					JCS put time for 50000 = 220; millis per = 0.0044
+					JCS get time for 50000 = 90; millis per = 0.0018
+					EHCache put time for 50000 = 641; millis per =
+					0.01282 EHCache get time for 50000 = 110; millis per
+					= 0.0022
+				</p><p>
+					JCS put time for 50000 = 250; millis per = 0.0050
+					JCS get time for 50000 = 121; millis per = 0.00242
+					EHCache put time for 50000 = 590; millis per =
+					0.0118 EHCache get time for 50000 = 101; millis per
+					= 0.00202
+				</p><p>
+					JCS put time for 50000 = 260; millis per = 0.0052
+					JCS get time for 50000 = 100; millis per = 0.0020
+					EHCache put time for 50000 = 581; millis per =
+					0.01162 EHCache get time for 50000 = 100; millis per
+					= 0.0020
+				</p><p>
+					JCS put time for 50000 = 290; millis per = 0.0058
+					JCS get time for 50000 = 121; millis per = 0.00242
+					EHCache put time for 50000 = 570; millis per =
+					0.0114 EHCache get time for 50000 = 121; millis per
+					= 0.00242
+				</p><p>
+					JCS put time for 50000 = 210; millis per = 0.0042
+					JCS get time for 50000 = 120; millis per = 0.0024
+					EHCache put time for 50000 = 561; millis per =
+					0.01122 EHCache get time for 50000 = 130; millis per
+					= 0.0026
+				</p><p>
+					JCS put time for 50000 = 250; millis per = 0.0050
+					JCS get time for 50000 = 151; millis per = 0.00302
+					EHCache put time for 50000 = 560; millis per =
+					0.0112 EHCache get time for 50000 = 111; millis per
+					= 0.00222
+				</p><p>
+					JCS put time for 50000 = 250; millis per = 0.0050
+					JCS get time for 50000 = 100; millis per = 0.0020
+					EHCache put time for 50000 = 711; millis per =
+					0.01422 EHCache get time for 50000 = 100; millis per
+					= 0.0020
+				</p><p>
+					JCS put time for 50000 = 251; millis per = 0.00502
+					JCS get time for 50000 = 90; millis per = 0.0018
+					EHCache put time for 50000 = 511; millis per =
+					0.01022 EHCache get time for 50000 = 90; millis per
+					= 0.0018
+				</p><p>
+					JCS put time for 50000 = 220; millis per = 0.0044
+					JCS get time for 50000 = 100; millis per = 0.0020
+					EHCache put time for 50000 = 491; millis per =
+					0.00982 EHCache get time for 50000 = 90; millis per
+					= 0.0018
+				</p><p>
+					JCS put time for 50000 = 230; millis per = 0.0046
+					JCS get time for 50000 = 80; millis per = 0.0016
+					EHCache put time for 50000 = 201; millis per =
+					0.00402 EHCache get time for 50000 = 390; millis per
+					= 0.0078
+				</p><p>
+					JCS put time for 50000 = 201; millis per = 0.00402
+					JCS get time for 50000 = 120; millis per = 0.0024
+					EHCache put time for 50000 = 180; millis per =
+					0.0036 EHCache get time for 50000 = 411; millis per
+					= 0.00822
+				</p><p>
+					JCS put time for 50000 = 210; millis per = 0.0042
+					JCS get time for 50000 = 100; millis per = 0.0020
+					EHCache put time for 50000 = 210; millis per =
+					0.0042 EHCache get time for 50000 = 381; millis per
+					= 0.00762
+				</p><p>
+					JCS put time for 50000 = 240; millis per = 0.0048
+					JCS get time for 50000 = 90; millis per = 0.0018
+					EHCache put time for 50000 = 211; millis per =
+					0.00422 EHCache get time for 50000 = 410; millis per
+					= 0.0082
+				</p><p>
+					JCS put time for 50000 = 221; millis per = 0.00442
+					JCS get time for 50000 = 80; millis per = 0.0016
+					EHCache put time for 50000 = 210; millis per =
+					0.0042 EHCache get time for 50000 = 411; millis per
+					= 0.00822
+				</p><p>
+					JCS put time for 50000 = 220; millis per = 0.0044
+					JCS get time for 50000 = 80; millis per = 0.0016
+					EHCache put time for 50000 = 190; millis per =
+					0.0038 EHCache get time for 50000 = 411; millis per
+					= 0.00822
+				</p><p>Finished 20 loops of 50000 gets and puts</p><p>
+					Put average for JCS = 256 Put average for EHCache =
+					447 JCS puts took 0.57270694 times the EHCache , the
+					goal is less than 1.0x
+				</p><p>
+					Get average for JCS = 107 Get average for EHCache =
+					196 JCS gets took 0.54591835 times the EHCache , the
+					goal is less than 1.0x
+				</p></div><div class="subsection"><a name="A_Test_Class"></a><h3>A Test Class</h3><p>Here is the test class:</p>
+    <div class="source"><pre>
+					
+package org.apache.jcs;
+
+import junit.framework.TestCase;
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Element;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.jcs.engine.CompositeCacheAttributes;
+import org.apache.jcs.engine.behavior.ICompositeCacheAttributes;
+import org.apache.jcs.utils.struct.LRUMap;
+
+/**
+ * Compare JCS vs ehcache performance.
+ *
+ * @author Aaron Smuts
+ *
+ */
+public class JCSvsEHCachePerformanceTest
+    extends TestCase
+{
+
+    float ratioPut = 0;
+
+    float ratioGet = 0;
+
+    // the jcs to competitor
+    float target = 1.0f;
+
+    int loops = 20;
+
+    int tries = 50000;
+
+    /**
+     * Compare performance between JCS and EHCache. Fail if JCS is not as fast.
+     * Print the ratio.
+     *
+     * @throws Exception
+     *
+     */
+    public void testJCSvsEHCache()
+        throws Exception
+    {
+
+        Log log = LogFactory.getLog( LRUMap.class );
+        if ( log.isDebugEnabled() )
+        {
+            System.out.println( "The log level must be at info or above for the a performance test." );
+            return;
+        }
+
+        doWork();
+
+        assertTrue( this.ratioPut &lt; target );
+        assertTrue( this.ratioGet &lt; target );
+
+    }
+
+    /**
+     * This runs a series of gets and puts for both JCS and EHCache. The test
+     * will fail if JCS is not faster.
+     *
+     * @throws Exception
+     *
+     */
+    public void doWork()
+        throws Exception
+    {
+
+        int maxSize = 1000000;
+
+        // create the two caches.
+        CacheManager ehMgr = CacheManager.getInstance();
+        // Create an ehcache with a max size of maxSize, no swap, with items
+        // that can expire, with maximum idle time to live of 500 seconds, and
+        // maximum idel time of 500 seconds.
+        Cache eh = new Cache( "testJCSvsEHCache", maxSize, false, false, 500, 500 );
+        ehMgr.addCache( eh );
+
+        // Create a similarly configured JCS that uses the LRU memory cache.
+        // maxSize elements that are not eternal. No disk cache is configured.
+        ICompositeCacheAttributes cattr = new CompositeCacheAttributes();
+        cattr.setMaxObjects( maxSize );
+        JCS jcs = JCS.getInstance( "testJCSvsEHCache", cattr );
+
+        // run settings
+        long start = 0;
+        long end = 0;
+        long time = 0;
+        float tPer = 0;
+
+        long putTotalJCS = 0;
+        long getTotalJCS = 0;
+        long putTotalEHCache = 0;
+        long getTotalEHCache = 0;
+
+        String jcsDisplayName = "JCS";
+        String ehCacheDisplayName = "";
+
+        try
+        {
+            for ( int j = 0; j &lt; loops; j++ )
+            {
+
+                jcsDisplayName = "JCS      ";
+                start = System.currentTimeMillis();
+                for ( int i = 0; i &lt; tries; i++ )
+                {
+                    jcs.put( "key:" + i, "data" + i );
+                }
+                end = System.currentTimeMillis();
+                time = end - start;
+                putTotalJCS += time;
+                tPer = Float.intBitsToFloat( (int) time ) / Float.intBitsToFloat( tries );
+                System.out
+                    .println( jcsDisplayName + " put time for " + tries + " = " + time + "; millis per = " + tPer );
+
+                start = System.currentTimeMillis();
+                for ( int i = 0; i &lt; tries; i++ )
+                {
+                    jcs.get( "key:" + i );
+                }
+                end = System.currentTimeMillis();
+                time = end - start;
+                getTotalJCS += time;
+                tPer = Float.intBitsToFloat( (int) time ) / Float.intBitsToFloat( tries );
+                System.out
+                    .println( jcsDisplayName + " get time for " + tries + " = " + time + "; millis per = " + tPer );
+
+                // /////////////////////////////////////////////////////////////
+                ehCacheDisplayName = "EHCache  ";
+
+                start = System.currentTimeMillis();
+                for ( int i = 0; i &lt; tries; i++ )
+                {
+                    Element ehElm = new Element( "key:" + i, "data" + i );
+
+                    eh.put( ehElm );
+                }
+                end = System.currentTimeMillis();
+                time = end - start;
+                putTotalEHCache += time;
+                tPer = Float.intBitsToFloat( (int) time ) / Float.intBitsToFloat( tries );
+                System.out.println( ehCacheDisplayName + " put time for " + tries + " = " + time + "; millis per = "
+                    + tPer );
+
+                start = System.currentTimeMillis();
+                for ( int i = 0; i &lt; tries; i++ )
+                {
+                    eh.get( "key:" + i );
+                }
+                end = System.currentTimeMillis();
+                time = end - start;
+                getTotalEHCache += time;
+                tPer = Float.intBitsToFloat( (int) time ) / Float.intBitsToFloat( tries );
+                System.out.println( ehCacheDisplayName + " get time for " + tries + " = " + time + "; millis per = "
+                    + tPer );
+
+                System.out.println( "\n" );
+            }
+
+        }
+        catch ( Exception e )
+        {
+            e.printStackTrace( System.out );
+            System.out.println( e );
+        }
+
+        long putAvJCS = putTotalJCS / loops;
+        long getAvJCS = getTotalJCS / loops;
+        long putAvHashtable = putTotalEHCache / loops;
+        long getAvHashtable = getTotalEHCache / loops;
+
+        System.out.println( "Finished " + loops + " loops of " + tries + " gets and puts" );
+
+        System.out.println( "\n" );
+        System.out.println( "Put average for " + jcsDisplayName + "  = " + putAvJCS );
+        System.out.println( "Put average for " + ehCacheDisplayName + " = " + putAvHashtable );
+        ratioPut = Float.intBitsToFloat( (int) putAvJCS ) / Float.intBitsToFloat( (int) putAvHashtable );
+        System.out.println( jcsDisplayName + " puts took " + ratioPut + " times the " + ehCacheDisplayName
+            + ", the goal is &lt;" + target + "x" );
+
+        System.out.println( "\n" );
+        System.out.println( "Get average for  " + jcsDisplayName + "  = " + getAvJCS );
+        System.out.println( "Get average for " + ehCacheDisplayName + " = " + getAvHashtable );
+        ratioGet = Float.intBitsToFloat( (int) getAvJCS ) / Float.intBitsToFloat( (int) getAvHashtable );
+        System.out.println( jcsDisplayName + " gets took " + ratioGet + " times the " + ehCacheDisplayName
+            + ", the goal is &lt;" + target + "x" );
+
+    }
+
+}
+
+        
+				</pre></div>
+  </div></div><div class="section"><a name="JCS_vs_EHCache_Disk_Cache"></a><h2>JCS vs EHCache Disk Cache</h2><p>
+				It is very difficult to compare the ehcache disk store
+				and the JCS Indexed Disk Cache.
+			</p><p>The JCS version is much more sophisticated.</p><p>
+				JCS puts items into a queue called purgatory. While they
+				are in this queue, they are still accessible. This queue
+				gets worked when items are in it. The number of threads
+				used in the system as a whole for disk caches is
+				configurable using the thread pool configuration options
+				in JCS. I could have 1000 regions and only use 3 threads
+				to work the disk queues. From what I can tell EH will
+				use 1 thread per region. This is worse than the JCS
+				default, which uses a queue that kills its threads when
+				they are not used. . . . and much worse than using JCS
+				with a thread pool.
+			</p><p>
+				The size of JCS purgatory is configurable, so you can
+				avoid catastrophe if something goes wrong with the queue
+				worker. EH doesn't have any such safety.
+			</p><p>
+				JCS limits the number of keys that can be kept for the
+				disk cache. EH cannot do this.
+			</p><p>
+				The ehcache disk version is very simple. It puts an
+				unlimited number of items in a temporary store. You can
+				easily fill this up and run out of memory. You can put
+				items into JCS purgatory faster than they can be gc'd
+				but it is much more difficult. The EH store is then
+				flushed to disk every 200ms. While EH is flushing the
+				entire disk cache blocks!
+			</p><p>
+				JCS disk cache is based on a continuous spooling model,
+				not a stop the world model like EH. In most cases the EH
+				model will work out, but not if you put a lot of big
+				items on disk at once. If you want an even distribution
+				of disk cache response times, then you should use JCS.
+			</p><p>
+				The EH disk store also seems to just keep growing. After
+				several tests, the size of the data file was 10 times
+				that of JCS and EH was taking 10 times as long.
+			</p><p>
+				You can saturate the EH version much more quickly, since
+				it will hold as many items as you can put in in 200 ms.
+			</p><p>
+				I tried with 100k and JCS could handle it, but EH died
+				with an out of memory exception.
+			</p><p>
+				EH cache developed its disk store in response to a bug
+				in the JCS version. This bug was fixed a few years ago .
+				. . The nice thing about JCS is that it is completely
+				pluggable. It would take about 30 minutes to plug a
+				different disk cache implementation into JCS if you so
+				pleased . . . .
+			</p></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2002-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

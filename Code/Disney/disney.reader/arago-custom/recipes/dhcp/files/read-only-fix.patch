@@ -1,0 +1,30 @@
+--- dhcp-3.0.2p1/client/scripts/linux	2012-02-21 12:50:37.703860441 -0800
++++ dhcp-3.0.2p1/client/scripts/linux	2012-02-21 16:53:18.459007031 -0800
+@@ -24,21 +24,21 @@
+ 
+ make_resolv_conf() {
+   if [ x"$new_domain_name_servers" != x ]; then
+-    cat /dev/null > /etc/resolv.conf.dhclient
+-    chmod 644 /etc/resolv.conf.dhclient
++    cat /dev/null > /var/lib/dhcp/resolv.conf.dhclient
++    chmod 644 /var/lib/dhcp/resolv.conf.dhclient
+     if [ x"$new_domain_search" != x ]; then
+-      echo search $new_domain_search >> /etc/resolv.conf.dhclient
++      echo search $new_domain_search >> /var/lib/dhcp/resolv.conf.dhclient
+     elif [ x"$new_domain_name" != x ]; then
+       # Note that the DHCP 'Domain Name Option' is really just a domain
+       # name, and that this practice of using the domain name option as
+       # a search path is both nonstandard and deprecated.
+-      echo search $new_domain_name >> /etc/resolv.conf.dhclient
++      echo search $new_domain_name >> /var/lib/dhcp/resolv.conf.dhclient
+     fi
+     for nameserver in $new_domain_name_servers; do
+-      echo nameserver $nameserver >>/etc/resolv.conf.dhclient
++      echo nameserver $nameserver >>/var/lib/dhcp/resolv.conf.dhclient
+     done
+ 
+-    mv /etc/resolv.conf.dhclient /etc/resolv.conf
++    mv -f /var/lib/dhcp/resolv.conf.dhclient /var/lib/dhcp/resolv.conf
+   fi
+ }
+ 

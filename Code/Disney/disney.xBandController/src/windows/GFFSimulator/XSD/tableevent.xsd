@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="tableevent">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Identifier of Event Type-->
+        <xs:element name="eventtypeid" type="xs:integer" />
+        <!-- Name of the Event -->
+        <xs:element name="event" type="xs:string" />
+        <!-- One Source Id of Restaurant (Facility) -->
+        <xs:element name="facilityonesourceid" type="xs:string" />
+        <!-- Reader Id of the reader attached with the table-->
+        <xs:element name="locationid" type="xs:string" />
+        <!-- XBand Id (Secure Id) of the guest-->
+        <xs:element name="xbandid" type="xs:string" minOccurs="0" />
+        <!-- Source (Application) that captured the event -->
+        <xs:element name="source" type="xs:string" />
+        <!-- Name of the device (machine name) where source application is running -->
+        <xs:element name="terminal" type="xs:string" minOccurs="0" />
+        <!-- Time when event is captured-->
+        <xs:element name="timestamp" type="xs:string" />
+        <!-- Time in GMT when event is captured-->
+        <xs:element name="timestampgmt" type="xs:string" />
+        <!-- Id of Table-->
+        <xs:element name="tableid" type="xs:integer" />
+        <!-- Name of Table-->
+        <xs:element name="tablename" type="xs:string" />
+        <!-- Details of changed data - contains old and new value -->
+        <xs:element name="changeddetails" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="changeddetail" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="fieldname" type="xs:string" />
+                  <xs:attribute name="oldvalue" type="xs:string" />
+                  <xs:attribute name="newvalue" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <!-- User who updated the details -->
+        <xs:element name="user" type="xs:string" minOccurs="0" />
+        <!-- List of Order numbers associated with this table -->
+        <xs:element name="ordernumbers" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ordernumber" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

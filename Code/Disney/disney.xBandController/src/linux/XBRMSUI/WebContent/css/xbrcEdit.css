@@ -1,0 +1,62 @@
+/*
+* CSS file for web pages associated with band c.
+*/
+html { overflow-y: scroll; }
+
+#xbrcEditContainer {
+	position: relative;
+}
+
+.formContainer {
+	width: 567px; min-height: 500px;
+	margin: 0; padding: 10px;
+	border: solid 1px #cccccc;
+	float: left;
+}
+
+.ui-tabs .ui-tabs-panel {
+	padding: 0; margin: 0;
+}
+
+.sectionName {
+	color: #14335D;
+	background-color: #E0E0E0;
+}
+
+.sectionAccordion h3 {
+	padding-left: 2.1em;
+	margin-bottom: 2px;
+	line-height: 25px;
+}
+
+.sectionAccordion .ui-accordion-content-active { background: transparent; }
+.sectionAccordion .ui-accordion-content { padding: 0; margin: 0; background-color: transparent; border: none; }
+
+.accordion { width: 340px; margin-left: 593px; }
+.accordion .ui-accordion-content-active { background: transparent; }
+.accordion .ui-accordion-content { padding: 0; margin: 0; background-color: transparent; border: none; }
+
+.accordion table { border: solid 1px white; }
+.accordion table tbody tr td { 
+	padding: 0; margin: 0; width: 32px; max-width: 32px;
+}
+
+ul.twoColumnList { list-style: none; padding: 0; margin: 0; }
+ul.twoColumnList li { width: 260px; padding: 3px 10px 3px 10px; float: left; }
+
+select { padding: 0; margin: 0; }
+
+input.xbrcSelect { float: right; clear: right; }
+
+div.label { position: relative; padding: 0; margin: 0;}
+div.label img { padding: 0; margin: 0; vertical-align:text-bottom; height: 14px; }
+
+.ui-tabs .ui-tabs-nav .ui-state-default { 
+	background: url("../script/jquery-ui-1.8.16.custom.darkblue/css/custom-theme/images/ui-bg_flat_0_14335d_40x100.png") repeat-x scroll 50% 50% #14335D; 
+	border: 1px solid #1a4279;
+}
+.ui-tabs .ui-tabs-nav .ui-state-default a { color: #d7d7d7; }
+.ui-tabs .ui-tabs-nav .ui-tabs-selected { 
+	background: url("../script/jquery-ui-1.8.16.custom.darkblue/css/custom-theme/images/ui-bg_glass_90_cccccc_1x400.png") repeat-x scroll 50% 50% #CCCCCC; 
+}
+.ui-tabs .ui-tabs-nav .ui-tabs-selected a{ color: #262626; }

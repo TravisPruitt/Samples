@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3FBEDA02-7A81-4E8F-BD99-8CFCC79D52A2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Disney.xBand.Messages</RootNamespace>
+    <AssemblyName>Disney.xBand.Messages</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Exchange.WebServices">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft\Exchange\Web Services\1.1\Microsoft.Exchange.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Org.Mentalis.Security">
+      <HintPath>..\..\..\build\repos\windows\Progress\thirdparty\mentalis\seclib-1.0\bin\Org.Mentalis.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Sonic.Client, Version=8.0.0.110, Culture=neutral, PublicKeyToken=a4f944c998bae761">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\build\repos\windows\Progress\Sonic.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Sonic.Client.Jms.Impl, Version=8.0.0.110, Culture=neutral, PublicKeyToken=a4f944c998bae761">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\build\repos\windows\Progress\Sonic.Client.Jms.Impl.dll</HintPath>
+    </Reference>
+    <Reference Include="Sonic.Jms, Version=8.0.0.110, Culture=neutral, PublicKeyToken=a4f944c998bae761">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\build\repos\windows\Progress\Sonic.Jms.dll</HintPath>
+    </Reference>
+    <Reference Include="Sonic.Jms.Cf.Impl, Version=8.0.0.110, Culture=neutral, PublicKeyToken=a4f944c998bae761">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\build\repos\windows\Progress\Sonic.Jms.Cf.Impl.dll</HintPath>
+    </Reference>
+    <Reference Include="Sonic.Security, Version=8.0.0.110, Culture=neutral, PublicKeyToken=a4f944c998bae761">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\build\repos\windows\Progress\Sonic.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Common\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="JMS\AbandonMessage.cs" />
+    <Compile Include="JMS\AbandonMessageItem.cs" />
+    <Compile Include="JMS\ExitMessage.cs" />
+    <Compile Include="JMS\ExitMessageItem.cs" />
+    <Compile Include="JMS\LoadMessage.cs" />
+    <Compile Include="JMS\LoadMessageItem.cs" />
+    <Compile Include="JMS\MetricsMessage.cs" />
+    <Compile Include="JMS\MetricsMessageItem.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="JMS\Serializer.cs" />
+    <Compile Include="JMS\SimpleMessage.cs" />
+    <Compile Include="JMS\SimpleMessageItem.cs" />
+    <Compile Include="JMS\Listener.cs" />
+    <Compile Include="JMS\MessageBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Disney.xBand.Data\Disney.xBand.Data.csproj">
+      <Project>{076FAE01-23A6-47C1-BBA4-D30CE53208B1}</Project>
+      <Name>EM.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

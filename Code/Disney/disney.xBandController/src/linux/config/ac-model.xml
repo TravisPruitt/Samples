@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AcModel>
+    <SchemaVersion>1.0.0</SchemaVersion>
+    <LastUpdated>2012-07-24T14:44:45.533-07:00</LastUpdated>
+
+    <Application>
+        <AppId>XBRMSUI</AppId>
+
+        <!-- Unprotected Resources -->
+        <UnprotectedUrlPattern>/css/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/fragments/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/images/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/script/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*ExceptionAction.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/rest/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/struts/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.css</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.js</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/login.*</UnprotectedUrlPattern>
+
+        <!-- Protected Resources -->
+        <Asset>
+            <AssetId>Test Page</AssetId>
+            <UrlPattern>/test\.jsp.*</UrlPattern>
+            <AllowRole>_ALL_</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>All Content</AssetId>
+            <UrlPattern>/.*</UrlPattern>
+            <AllowRole>x-admin</AllowRole>
+            <AllowRole>xbrms-admin</AllowRole>
+            <AllowRole>x-operator</AllowRole>
+            <AllowRole>xbrms-operator</AllowRole>
+            <AllowRole>xbrms-maintenance</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Deny maintenance role</AssetId>
+            <AllowRole>x-admin</AllowRole>
+            <AllowRole>xbrms-admin</AllowRole>
+            <AllowRole>x-operator</AllowRole>
+            <AllowRole>xbrms-operator</AllowRole>
+            <DenyRole>xbrms-maintenance</DenyRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Editable Content</AssetId>
+			<AllowRole>x-admin</AllowRole>
+            <AllowRole>xbrms-admin</AllowRole>
+			<AllowRole>xi-admin</AllowRole>
+			<AllowRole>x-coordinator</AllowRole>
+			<AllowRole>xbrc-admin</AllowRole>
+			<AllowRole>xbrms-maintenance</AllowRole>
+            <DenyRole>x-operator</DenyRole>
+            <DenyRole>xbrms-operator</DenyRole>
+			<DenyRole>x-greeter</DenyRole>
+        </Asset>
+
+    </Application>
+
+    <Application>
+        <AppId>UI</AppId>
+
+        <!-- Unprotected Resources -->
+        <UnprotectedUrlPattern>/css/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/fragments/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/images/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/script/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*ExceptionAction.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/struts/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.css</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.js</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/login.*</UnprotectedUrlPattern>
+
+        <!-- Protected Resources -->
+        <Asset>
+            <AssetId>Test Page</AssetId>
+            <UrlPattern>/test\.jsp.*</UrlPattern>
+            <AllowRole>_ALL_</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>All Content</AssetId>
+            <UrlPattern>/.*</UrlPattern>
+            <AllowRole>x-admin</AllowRole>
+            <AllowRole>xbrc-admin</AllowRole>
+            <AllowRole>x-operator</AllowRole>
+            <AllowRole>xbrc-operator</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Editable Content</AssetId>
+            <DenyRole>x-operator</DenyRole>
+            <DenyRole>xbrc-operator</DenyRole>
+            <!-- Struts Actions and Views -->
+            <UrlPattern>/attractionedit.*</UrlPattern>
+            <UrlPattern>/attractioneditajax.*</UrlPattern>
+            <UrlPattern>/griditemedit.*</UrlPattern>
+            <UrlPattern>/griditemsave.*</UrlPattern>
+            <UrlPattern>/gainupdate.*</UrlPattern>
+            <UrlPattern>/thresholdupdate.*</UrlPattern>
+            <UrlPattern>/removereader.*</UrlPattern>
+            <UrlPattern>/deletereader.*</UrlPattern>
+            <UrlPattern>/replacereader.*</UrlPattern>
+            <UrlPattern>/addreader.*</UrlPattern>
+            <UrlPattern>/transmitreadersave.*</UrlPattern>
+            <UrlPattern>/savetransmitcommand.*</UrlPattern>
+            <UrlPattern>/deletetransmitcommand.*</UrlPattern>
+            <UrlPattern>/locationsave.*</UrlPattern>
+            <UrlPattern>/deletelocation.*</UrlPattern>
+            <UrlPattern>/readersave.*</UrlPattern>
+            <UrlPattern>/newlocation.*</UrlPattern>
+            <UrlPattern>/newlocationsave.*</UrlPattern>
+            <UrlPattern>/newreader.*</UrlPattern>
+            <UrlPattern>/newreadersave.*</UrlPattern>
+            <!-- Addional Struts Views not covered by the above patterns -->
+            <UrlPattern>/.*Edit.*\.jsp</UrlPattern>
+            <UrlPattern>/.*Save.*\.jsp</UrlPattern>
+        </Asset>
+
+    </Application>
+
+    <Application>
+        <AppId>xi</AppId>
+
+        <!-- Unprotected Resources -->
+        <UnprotectedUrlPattern>/1/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/logos/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.png</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.css</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.otf</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.html</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/index.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/struts/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*ExceptionAction.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/login.*</UnprotectedUrlPattern>
+
+        <!-- Protected Resources -->
+        <Asset>
+            <AssetId>Test Page</AssetId>
+            <UrlPattern>/test\.jsp.*</UrlPattern>
+            <AllowRole>_ALL_</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>All Content</AssetId>
+            <UrlPattern>/.*</UrlPattern>
+            <AllowRole>x-admin</AllowRole>
+            <AllowRole>xi-admin</AllowRole>
+            <AllowRole>x-operator</AllowRole>
+            <AllowRole>xi-operator</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Application Configuration Content</AssetId>
+            <DenyRole>x-operator</DenyRole>
+            <DenyRole>xi-operator</DenyRole>
+            <!-- Struts Actions and Views -->
+            <UrlPattern>/config.*</UrlPattern>
+        </Asset>
+
+    </Application>
+
+    <Application>
+        <AppId>IDMS</AppId>
+
+        <UnprotectedUrlPattern>/login.*</UnprotectedUrlPattern>
+
+        <Asset>
+            <AssetId>Test Page</AssetId>
+            <UrlPattern>/test.jsp</UrlPattern>
+            <AllowRole>_ALL_</AllowRole>
+        </Asset>
+
+    </Application>
+
+    <Application>
+        <AppId>XBRMS</AppId>
+
+        <!-- Unprotected Resources -->
+        <UnprotectedUrlPattern>/css/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/fragments/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/images/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/script/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*ExceptionAction.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/rest/facilities.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/rest/status</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/rest/hello</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/struts/.*</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.css</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/.*\.js</UnprotectedUrlPattern>
+        <UnprotectedUrlPattern>/login.*</UnprotectedUrlPattern>
+
+        <!-- Protected Resources -->
+        <Asset>
+            <AssetId>Test Page</AssetId>
+            <UrlPattern>/test\.jsp.*</UrlPattern>
+            <AllowRole>_ALL_</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>All Content</AssetId>
+            <UrlPattern>/.*</UrlPattern>
+            <AllowRole>x-admin</AllowRole>
+            <AllowRole>xbrms-admin</AllowRole>
+            <AllowRole>x-operator</AllowRole>
+            <AllowRole>xbrms-operator</AllowRole>
+            <AllowRole>xconnect-service</AllowRole>
+            <AllowRole>xbrms-maintenance</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Read-write endpoints (REST)</AssetId>
+            <IsLocalAuth>true</IsLocalAuth>
+            <UrlPattern method="POST">/rest/.*</UrlPattern>
+            <UrlPattern method="DELETE">/rest/.*</UrlPattern>
+            <DenyRole>xbrms-operator</DenyRole>
+            <DenyRole>x-operator</DenyRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Read-write endpoints (REST)</AssetId>
+            <IsLocalAuth>true</IsLocalAuth>
+            <UrlPattern method="PUT">/rest/xbrc/schedule/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/xbrc/config/update/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/xbrc/config/deploy/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/xbrc/config/delete/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/xbrc/config/add/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/xbrc/config/parse/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/xbrcs/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/config/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/status/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/readers/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/reader/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/performance/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/locations/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/health/.*</UrlPattern>
+            <UrlPattern method="PUT">/rest/guest/.*</UrlPattern>
+            <DenyRole>xbrms-operator</DenyRole>
+            <DenyRole>x-operator</DenyRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Read-only endpoints (REST)</AssetId>
+            <IsLocalAuth>true</IsLocalAuth>
+            <UrlPattern method="GET">/rest/.*</UrlPattern>
+            <AllowRole>x-admin</AllowRole>
+            <AllowRole>x-operator</AllowRole>
+            <AllowRole>xbrms-admin</AllowRole>
+            <AllowRole>xbrms-maintenance</AllowRole>
+            <AllowRole>xbrms-operator</AllowRole>
+            <AllowRole>xconnect-service</AllowRole>
+            <AllowRole>xbrms-maintenance</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Deny maintenance role (REST)</AssetId>
+            <IsLocalAuth>true</IsLocalAuth>
+            <UrlPattern>/rest/xbrc/config/.*</UrlPattern>
+            <UrlPattern>/rest/xbrc/configs.*</UrlPattern>
+            <UrlPattern>/rest/config/.*</UrlPattern>
+            <UrlPattern>/rest/xbrms/.*</UrlPattern>
+            <DenyRole>xbrms-maintenance</DenyRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Read-write endpoints (REST UI)</AssetId>
+            <UrlPattern method="PUT">/irest/.*</UrlPattern>
+            <UrlPattern method="POST">/irest/.*</UrlPattern>
+            <UrlPattern method="DELETE">/irest/.*</UrlPattern>
+            <DenyRole>xconnect-service</DenyRole>
+            <DenyRole>xbrms-operator</DenyRole>
+            <DenyRole>x-operator</DenyRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Read-only endpoints (REST UI)</AssetId>
+            <UrlPattern method="GET">/irest/.*</UrlPattern>
+            <AllowRole>x-admin</AllowRole>
+            <AllowRole>x-operator</AllowRole>
+            <AllowRole>xbrms-admin</AllowRole>
+            <AllowRole>xbrms-maintenance</AllowRole>
+            <AllowRole>xbrms-operator</AllowRole>
+            <AllowRole>xbrms-maintenance</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Deny maintenance role (REST UI)</AssetId>
+            <UrlPattern>/irest/xbrc/config/.*</UrlPattern>
+            <UrlPattern>/irest/xbrc/configs.*</UrlPattern>
+            <UrlPattern>/irest/config/.*</UrlPattern>
+            <UrlPattern>/irest/xbrms/.*</UrlPattern>
+            <DenyRole>xbrms-maintenance</DenyRole>
+        </Asset>
+
+    </Application>
+
+    <Application>
+        <AppId>XBRC</AppId>
+
+        <!-- Unprotected Resources -->
+        <UnprotectedUrlPattern>/unprotected/.*</UnprotectedUrlPattern>
+
+        <!-- Protected Resources -->
+        <Asset>
+            <AssetId>All Content</AssetId>
+            <IsLocalAuth>true</IsLocalAuth>
+            <UrlPattern>/.*</UrlPattern>
+            <AllowRole>x-admin</AllowRole>
+            <AllowRole>xbrc-admin</AllowRole>
+            <AllowRole>x-operator</AllowRole>
+            <AllowRole>xbrc-operator</AllowRole>
+            <AllowRole>xbrms-maintenance</AllowRole>
+            <AllowRole>xconnect-service</AllowRole>
+        </Asset>
+
+        <Asset>
+            <AssetId>Read-write endpoints (REST)</AssetId>
+            <IsLocalAuth>true</IsLocalAuth>
+            <UrlPattern method="POST">/.*</UrlPattern>
+            <UrlPattern method="PUT">/.*</UrlPattern>
+            <UrlPattern method="DELETE">/.*</UrlPattern>
+            <DenyRole>x-operator</DenyRole>
+            <DenyRole>xbrc-operator</DenyRole>
+            <AllowRole>xconnect-service</AllowRole>
+        </Asset>
+
+    </Application>
+</AcModel>

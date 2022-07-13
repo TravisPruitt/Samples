@@ -1,0 +1,8 @@
+target
+lib
+bin
+*.jar
+*.log
+*.war
+lib
+dependency-reduced-pom.xml

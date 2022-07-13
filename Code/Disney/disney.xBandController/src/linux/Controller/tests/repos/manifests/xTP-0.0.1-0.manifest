@@ -1,0 +1,30 @@
+{ 
+	"repos":
+	[
+		{
+			"name":"overo",
+			"path":"repositories/base-0.0.1-0/overo",
+			"weight":"51"
+		},
+		{
+			"name":"armv7a",
+			"path":"repositories/base-0.0.1-0/armv7a",
+			"weight":"46"
+		},
+		{
+			"name":"all",
+			"path":"repositories/base-0.0.1-0/all",
+			"weight":"1"
+		},
+		{
+			"name":"xBR",
+			"path":"repositories/xBR-0.0.8-0/armv7a",
+			"weight":"90"
+		}	
+  ],
+	"hwids": [
+    "xTP",
+    "xTP2"
+  ]
+}
+

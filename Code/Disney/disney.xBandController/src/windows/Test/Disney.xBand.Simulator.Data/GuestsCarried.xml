@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Park name="Magic Kingdom">
+  <Facility name="Big Thunder Mountain" LILocShortName="BTM">
+    <GuestCapacities>
+      <GuestCapacity HourEnding="1000" xPassGuestsCarried="0" StandByGuestsCarried="1746" />
+      <GuestCapacity HourEnding="1100" xPassGuestsCarried="943" StandByGuestsCarried="994" />
+      <GuestCapacity HourEnding="1200" xPassGuestsCarried="1084" StandByGuestsCarried="933" />
+      <GuestCapacity HourEnding="1300" xPassGuestsCarried="1276" StandByGuestsCarried="716" />
+      <GuestCapacity HourEnding="1400" xPassGuestsCarried="1316" StandByGuestsCarried="701" />
+      <GuestCapacity HourEnding="1500" xPassGuestsCarried="943" StandByGuestsCarried="1114" />
+      <GuestCapacity HourEnding="1600" xPassGuestsCarried="871" StandByGuestsCarried="1140" />
+      <GuestCapacity HourEnding="1700" xPassGuestsCarried="1156" StandByGuestsCarried="810" />
+      <GuestCapacity HourEnding="1800" xPassGuestsCarried="1197" StandByGuestsCarried="761" />
+      <GuestCapacity HourEnding="1900" xPassGuestsCarried="1059" StandByGuestsCarried="877" />
+      <GuestCapacity HourEnding="2000" xPassGuestsCarried="1169" StandByGuestsCarried="743" />
+      <GuestCapacity HourEnding="2100" xPassGuestsCarried="932" StandByGuestsCarried="1015" />
+      <GuestCapacity HourEnding="2200" xPassGuestsCarried="667" StandByGuestsCarried="1188" />
+      <GuestCapacity HourEnding="2300" xPassGuestsCarried="198" StandByGuestsCarried="1535" />
+      <GuestCapacity HourEnding="2400" xPassGuestsCarried="199" StandByGuestsCarried="1007" />
+    </GuestCapacities>
+  </Facility>
+</Park>

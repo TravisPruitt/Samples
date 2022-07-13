@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+      
+<tiles-definitions>
+  
+  <definition name="home" template="/frame.jsp">
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="body" value="/home.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+    <put-attribute name="active-menu" value="home" />
+  </definition> 
+  
+  <definition name="showQueue" template="/frame.jsp">
+    <put-attribute name="pagehead" value="/showQueueHead.jsp" />
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="body" value="/showQueue.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+    <put-attribute name="active-menu" value="monitoring" />
+  </definition>  
+  
+  <definition name="attractionView" template="/frame.jsp">
+  	<put-attribute name="pagehead" value="/attractionViewHead.jsp" />
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="body" value="/attractionView.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+    <put-attribute name="active-menu" value="monitoring" />
+  </definition>
+  
+   <definition name="locationView" template="/frame.jsp">
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="pagehead" value="/locationViewHead.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="body" value="/locationView.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+    <put-attribute name="active-menu" value="monitoring" />
+  </definition>
+  
+  <definition name="attractionEdit" template="/frame.jsp">
+  	<put-attribute name="pagehead" value="/attractionEditHead.jsp" />
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="body" value="/attractionEdit.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+    <put-attribute name="active-menu" value="configuration" />
+  </definition>
+  
+  <definition name="xBandView" template="/frame.jsp">
+  	<put-attribute name="pagehead" value="/xBandViewHead.jsp" />
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="body" value="/xBandView.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+    <put-attribute name="active-menu" value="monitoring" />
+  </definition>
+  
+  <definition name="locationListEdit" template="/frame.jsp">
+  	<put-attribute name="pagehead" value="/locationListEditHead.jsp" />
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="body" value="/locationListEdit.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+    <put-attribute name="active-menu" value="configuration" />
+  </definition>
+  
+  <definition name="createLocation" template="/frame.jsp">
+  	<put-attribute name="pagehead" value="/createLocationHead.jsp" />
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="body" value="/createLocation.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+    <put-attribute name="active-menu" value="configuration" />
+  </definition>
+  
+  <definition name="createReader" template="/frame.jsp">
+  	<put-attribute name="pagehead" value="/createReaderHead.jsp" />
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="body" value="/createReader.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+    <put-attribute name="active-menu" value="configuration" />
+  </definition>
+  
+    <definition name="exception" template="/frame.jsp">
+      <put-attribute name="header" value="/header.jsp" />
+      <put-attribute name="menu" value="/menu.jsp" />
+      <put-attribute name="body" value="/globalException.jsp" />
+      <put-attribute name="footer" value="/footer.jsp" />
+    </definition>
+    
+    <definition name="configureOmni" template="/frame.jsp">
+  	<put-attribute name="pagehead" value="/omniServerEditHead.jsp" />
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="body" value="/omniServerEdit.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+    <put-attribute name="active-menu" value="configuration" />
+  </definition>
+
+    <definition name="login" template="frame.jsp">
+      <put-attribute name="header" value="/login/header.jsp" />
+      <put-attribute name="menu" value="/login/menu.jsp" />
+      <put-attribute name="body" value="/login/login.jsp" />
+      <put-attribute name="footer" value="/login/footer.jsp" />
+    </definition>
+
+    <definition name="redirect-problem" template="frame.jsp">
+      <put-attribute name="header" value="/login/header.jsp" />
+      <put-attribute name="menu" value="/login/menu.jsp" />
+      <put-attribute name="body" value="/login/redirect-problem.jsp" />
+      <put-attribute name="footer" value="/login/footer.jsp" />
+    </definition>
+
+    <definition name="login-keystone" template="frame.jsp">
+      <put-attribute name="header" value="/login/header.jsp" />
+      <put-attribute name="menu" value="/login/menu.jsp" />
+      <put-attribute name="body" value="/login/login-keystone.jsp" />
+      <put-attribute name="footer" value="/login/footer.jsp" />
+    </definition>
+
+    <definition name="logout" template="frame.jsp">
+      <put-attribute name="header" value="/login/header.jsp" />
+      <put-attribute name="menu" value="/login/menu.jsp" />
+      <put-attribute name="body" value="/login/logout.jsp" />
+      <put-attribute name="footer" value="/login/footer.jsp" />
+    </definition>
+    
+    <definition name="scheduler" template="/frame.jsp">
+      <put-attribute name="pagehead" value="/schedulerHead.jsp" />
+      <put-attribute name="header" value="/header.jsp" />
+      <put-attribute name="menu" value="/menu.jsp" />
+      <put-attribute name="body" value="/scheduler.jsp" />
+      <put-attribute name="footer" value="/footer.jsp" />
+    </definition> 
+    
+     <definition name="scheduleritem" template="/frame.jsp">
+      <put-attribute name="pagehead" value="/schedulerItemHead.jsp" />
+      <put-attribute name="header" value="/header.jsp" />
+      <put-attribute name="menu" value="/menu.jsp" />
+      <put-attribute name="body" value="/schedulerItem.jsp" />
+      <put-attribute name="footer" value="/footer.jsp" />
+    </definition> 
+    
+    <definition name="schedulerlogs" template="/frame.jsp">
+      <put-attribute name="pagehead" value="/schedulerLogsHead.jsp" />
+      <put-attribute name="header" value="/header.jsp" />
+      <put-attribute name="menu" value="/menu.jsp" />
+      <put-attribute name="body" value="/schedulerLogs.jsp" />
+      <put-attribute name="footer" value="/footer.jsp" />
+    </definition> 
+</tiles-definitions>

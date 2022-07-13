@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<venue>
+ <configuration name="current" type="incremental">
+ <description/>
+ <readerlocationinfo>
+   <readerlocation>
+    <section>0</section>
+    <name>UNKNOWN</name>
+    <id>0</id>
+    <type>0</type>
+    <x>0</x>
+    <y>0</y>
+    <readers>
+    </readers>
+   </readerlocation>
+  <readerlocation>
+  <section></section>
+  <name>Park Entry</name>
+  <id>1</id>
+  <type>1</type>
+  <x>1.0</x>
+  <y>1.0</y>
+  <readers>
+   <reader>
+  <name>pe-entry-1</name>
+   <id>1001221</id>
+   <type>Tap + xBio</type>
+   <macaddress>10:00:01:01:11:11</macaddress>
+   <ipaddress>10.110.1.112</ipaddress>
+   <port>8090</port>
+   <gain>1.0</gain>
+   <threshold>0</threshold>
+   <lane>11</lane>
+   <deviceid>1001221</deviceid>
+   <x>1</x>
+   <y>1</y>
+   <version>0.0.0.0</version>
+   <minxbrcversion>0.0.0.0</minxbrcversion>
+   <transmitpayload>http://10.110.1.99:8080/</transmitpayload>
+   </reader>
+   <reader>
+  <name>pe-entry-2</name>
+   <id>1001232</id>
+   <type>Tap + xBio</type>
+   <macaddress>10:00:01:01:12:12</macaddress>
+   <ipaddress>10.110.1.112</ipaddress>
+   <port>8090</port>
+   <gain>1.0</gain>
+   <threshold>0</threshold>
+   <lane>12</lane>
+   <deviceid>1001232</deviceid>
+   <x>1</x>
+   <y>1</y>
+   <version>0.0.0.0</version>
+   <minxbrcversion>0.0.0.0</minxbrcversion>
+   <transmitpayload>http://10.110.1.99:8080/</transmitpayload>
+   </reader>
+   <reader>
+  <name>pe-entry-3</name>
+   <id>1001243</id>
+   <type>Tap + xBio</type>
+   <macaddress>10:00:01:01:13:13</macaddress>
+   <ipaddress>10.110.1.112</ipaddress>
+   <port>8090</port>
+   <gain>1.0</gain>
+   <threshold>0</threshold>
+   <lane>13</lane>
+   <deviceid>1001243</deviceid>
+   <x>1</x>
+   <y>1</y>
+   <version>0.0.0.0</version>
+   <minxbrcversion>0.0.0.0</minxbrcversion>
+   <transmitpayload>http://10.110.1.99:8080/</transmitpayload>
+   </reader>
+   <reader>
+  <name>pe-entry-4</name>
+   <id>1001254</id>
+   <type>Tap + xBio</type>
+   <macaddress>10:00:01:01:14:14</macaddress>
+   <ipaddress>10.110.1.112</ipaddress>
+   <port>8090</port>
+   <gain>1.0</gain>
+   <threshold>0</threshold>
+   <lane>14</lane>
+   <deviceid>1001254</deviceid>
+   <x>1</x>
+   <y>1</y>
+   <version>0.0.0.0</version>
+   <minxbrcversion>0.0.0.0</minxbrcversion>
+   <transmitpayload>http://10.110.1.99:8080/</transmitpayload>
+   </reader>
+  </readers>
+ </readerlocation>
+ </readerlocationinfo>
+ </configuration>
+</venue>

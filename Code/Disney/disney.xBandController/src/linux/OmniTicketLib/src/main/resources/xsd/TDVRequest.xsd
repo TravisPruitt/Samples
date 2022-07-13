@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Andrea Martinotti (OmniTicket Network Administration) -->
+<!--Copyright Notice:  This document (written or otherwise displayed on magnetic media or other medium) contains confidential and proprietary information of OmniTicket Network, Inc. or its affiliates.  It has been furnished only for informational purposes, and no license or permission is hereby granted to use such information in any manner.  In no event may this information be reproduced, distributed and/or publicly displayed in any form or by any means without prior expressed written permission of OmniTicket Network, Inc.  All rights reserved.-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Command">
+		<xs:annotation>
+			<xs:documentation>Message Format Request</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Header">
+					<xs:annotation>
+						<xs:documentation>Recap information on Message type</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ReferenceNumber" default="12345">
+								<xs:annotation>
+									<xs:documentation>Defined by external system.  Echoed back in response message. </xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="30"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TransactionId" default="1">
+								<xs:annotation>
+									<xs:documentation>Defined by external system.  Echoed back in response message. </xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="30"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RetryCounter" type="xs:byte" default="0" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>in case of retry of the same message defines the number of retry</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="RequestType" default="Entitlement">
+								<xs:annotation>
+									<xs:documentation>Command Group</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="Connect"/>
+										<xs:enumeration value="Watchdog"/>
+										<xs:enumeration value="Login"/>
+										<xs:enumeration value="Entitlement"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RequestSubType">
+								<xs:annotation>
+									<xs:documentation>Command subtype</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value=""/>
+										<xs:enumeration value="Update"/>
+										<xs:enumeration value="NoUpdate"/>
+										<xs:enumeration value="NoCompare"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="InterfaceVersionID" default="V1.0">
+								<xs:annotation>
+									<xs:documentation>Software Version running in the individual DAP.  Version must match version set on Overview configuration.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string"/>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DeviceID" default="1">
+					<xs:annotation>
+						<xs:documentation>001-255 </xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="0"/>
+							<xs:maxInclusive value="255"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="WorkRules" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Optional Default ALL</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence maxOccurs="21">
+							<xs:element name="Tags">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="ReservationData"/>
+										<xs:enumeration value="ClientData"/>
+										<xs:enumeration value="BillTo"/>
+										<xs:enumeration value="ReservedSeatsData"/>
+										<xs:enumeration value="Invoices"/>
+										<xs:enumeration value="AssociationInfo"/>
+										<xs:enumeration value="NoteDetails"/>
+										<xs:enumeration value="All"/>
+										<xs:enumeration value="Ent.Validity"/>
+										<xs:enumeration value="Ent.Usages"/>
+										<xs:enumeration value="Ent.BioInfo"/>
+										<xs:enumeration value="Ent.SeasonPassInfo"/>
+										<xs:enumeration value="Ent.ShowData"/>
+										<xs:enumeration value="Ent.TicketNote"/>
+										<xs:enumeration value="Ent.TicketAttribute"/>
+										<xs:enumeration value="Ent.AccessInfo"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:choice>
+					<xs:element name="Connect">
+						<xs:annotation>
+							<xs:documentation>Send a connect request to the TOR</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="DeviceType" type="xs:byte" default="30">
+									<xs:annotation>
+										<xs:documentation>Focal Point or device connected 
+focal point=30 </xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Status" type="xs:byte" default="1">
+									<xs:annotation>
+										<xs:documentation>Open - Closed</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Watchdog">
+						<xs:annotation>
+							<xs:documentation>Sent a watchdog to keep alive the communication</xs:documentation>
+						</xs:annotation>
+						<xs:complexType/>
+					</xs:element>
+					<xs:element name="Login">
+						<xs:annotation>
+							<xs:documentation>Send a Login Request</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="UserInfo">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="User">
+												<xs:complexType>
+													<xs:choice>
+														<xs:element name="AlphaId" default="USER">
+															<xs:annotation>
+																<xs:documentation>AlphaId ad defined in WinSYS</xs:documentation>
+															</xs:annotation>
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:maxLength value="15"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+														<xs:element name="NumericId" type="xs:integer" default="1234">
+															<xs:annotation>
+																<xs:documentation>NumericId as defined in WinSYS module</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+														<xs:element name="UniqueId" default="A123">
+															<xs:annotation>
+																<xs:documentation>This would be the first field as defined in the cashier datamask field. MANDATORY FIELD and SORTED must be enabled in the mask definition.</xs:documentation>
+															</xs:annotation>
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:maxLength value="50"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+													</xs:choice>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="Password" type="xs:string" default="PASSWORD">
+												<xs:annotation>
+													<xs:documentation>Empty when no password</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Logout">
+						<xs:annotation>
+							<xs:documentation>Logout the current user</xs:documentation>
+						</xs:annotation>
+						<xs:complexType/>
+					</xs:element>
+					<xs:element name="Status">
+						<xs:annotation>
+							<xs:documentation>Request the status of the turnstile</xs:documentation>
+						</xs:annotation>
+						<xs:complexType/>
+					</xs:element>
+					<xs:element name="Entitlement">
+						<xs:annotation>
+							<xs:documentation>Request a media reedem </xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Redeem" type="xs:boolean" default="1">
+									<xs:annotation>
+										<xs:documentation>TRUE - FALSE
+When FALSE : Does not redem the ticket , return only ticket details.
+</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="BioValidation" type="xs:boolean" default="1">
+									<xs:annotation>
+										<xs:documentation>TRUE - FALSE
+When TRUE Bio is checked on TOR</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="MediaInfo">
+									<xs:annotation>
+										<xs:documentation>The Ticket Barcode or the Xband </xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="MediaSearchMode">
+												<xs:complexType>
+													<xs:choice>
+														<xs:element name="TDSSN">
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="Site" default="WEC">
+																		<xs:annotation>
+																			<xs:documentation>WEC-WST ..</xs:documentation>
+																		</xs:annotation>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:minLength value="3"/>
+																				<xs:maxLength value="3"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element>
+																	<xs:element name="Station" default="CAS001">
+																		<xs:annotation>
+																			<xs:documentation>CAS001,CAS002</xs:documentation>
+																		</xs:annotation>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:maxLength value="6"/>
+																				<xs:minLength value="6"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element>
+																	<xs:element name="Date" type="xs:string" default="11-09-30">
+																		<xs:annotation>
+																			<xs:documentation>YY-MM-DD</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="TicketId" default="1">
+																		<xs:annotation>
+																			<xs:documentation>1-65000</xs:documentation>
+																		</xs:annotation>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:integer">
+																				<xs:minInclusive value="1"/>
+																				<xs:maxInclusive value="65000"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="TCOD" default="07200101011100001">
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:maxLength value="17"/>
+																	<xs:minLength value="17"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+														<xs:element name="BarCode" default="ABC98773674632777AAB6">
+															<xs:annotation>
+																<xs:documentation>Ticket BarCode</xs:documentation>
+															</xs:annotation>
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:maxLength value="21"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+														<xs:element name="MagCode" default="6312786671298721983778321983729381289321738921">
+															<xs:annotation>
+																<xs:documentation>Ticket MagTrack 1</xs:documentation>
+															</xs:annotation>
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:maxLength value="73"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+														<xs:element name="ExternalTicketCode" default="EXTTICKET67126831">
+															<xs:annotation>
+																<xs:documentation>External ticket code
+ (phase 2)</xs:documentation>
+															</xs:annotation>
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:maxLength value="20"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+														<xs:element name="xBandID" default="1234567890123456">
+															<xs:annotation>
+																<xs:documentation>NGE xBandID</xs:documentation>
+															</xs:annotation>
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:maxLength value="20"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+														<xs:element name="VisualID" type="xs:string" default="62176832321">
+															<xs:annotation>
+																<xs:documentation>Visual xBandId</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+													</xs:choice>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="BioDeviceFilter" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>0 = none
+1 = BPI
+2 = Jupiter
+3 = Venus</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="xs:byte">
+														<xs:minInclusive value="0"/>
+														<xs:maxInclusive value="3"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="BiometricInfo" minOccurs="0">
+												<xs:complexType>
+													<xs:choice>
+														<xs:sequence>
+															<xs:element name="Item" default="1" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation>Matching template item</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:integer">
+																		<xs:minInclusive value="1"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="BioDeviceType" default="3">
+																<xs:annotation>
+																	<xs:documentation>0 = none
+1 = BPI
+2 = Jupiter
+3 = Venus</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:byte">
+																		<xs:minInclusive value="0"/>
+																		<xs:maxInclusive value="3"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="BiometricTemplate" type="xs:string" default="ABC65376516576AAABBB9829827982">
+																<xs:annotation>
+																	<xs:documentation>The current template read on the device.</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="MatchScore" type="xs:integer" default="38544" minOccurs="0"/>
+														</xs:sequence>
+														<xs:element name="RemoveBiometricTemplate" type="xs:boolean" default="0">
+															<xs:annotation>
+																<xs:documentation>Default=FALSE</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+													</xs:choice>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

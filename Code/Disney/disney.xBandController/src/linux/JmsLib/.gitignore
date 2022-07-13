@@ -1,0 +1,8 @@
+target
+bin
+*.jar
+*.log
+*.war
+build
+.classpath
+.target

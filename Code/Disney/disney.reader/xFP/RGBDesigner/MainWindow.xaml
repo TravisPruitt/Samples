@@ -1,0 +1,201 @@
+﻿<Window x:Class="RGBDesigner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        Title="RGB Designer" Width="879" Height="768" ResizeMode="CanMinimize" BorderBrush="Blue" Icon="/RGBDesigner;component/Resources/icon.ico">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources\GlassButton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Left" Background="#FF14335D"  Width="217">
+            <Grid.Resources>
+                <Style TargetType="ListViewItem">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="DarkBlue"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="DarkBlue"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="White" />
+                    </Style.Resources>
+                </Style>
+            </Grid.Resources>
+            <!-- Color Picker -->
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,6,6,6" Foreground="White" ForceCursor="True">Color Selector:</TextBlock>
+            <ListView Height="221" HorizontalAlignment="Left" Margin="6,6,0,0" Name="listViewColors" VerticalAlignment="Top" Width="205" SelectionMode="Single" SelectionChanged="listViewColors_SelectionChanged" BorderBrush="Blue"/>
+            <Button Content="New Color" Height="23" HorizontalAlignment="Left" Margin="6,229,0,0" Name="buttonNewColor" VerticalAlignment="Top" Width="90" Click="buttonNewColor_Click" />
+            <Button Content="Edit Color" Height="23" HorizontalAlignment="Left" Margin="102,254,0,0" Name="buttonEditColor" VerticalAlignment="Top" Width="109" Click="buttonEditColor_Click" />
+            <Button Content="Add Known Colors" Height="23" HorizontalAlignment="Left" Margin="102,229,0,0" Name="buttonAddKnownColors" VerticalAlignment="Top" Width="109" Click="buttonAddKnownColors_Click" />
+            <Button Content="Delete Color" Height="23" HorizontalAlignment="Left" Margin="6,254,0,0" Name="buttonDeleteColor" VerticalAlignment="Top" Width="90" Click="buttonDeleteColor_Click" />
+
+            <!-- Frame selector -->
+            <TextBlock Height="17" HorizontalAlignment="Left" Margin="6,0,0,418" Name="textBlock4" Text="Frames" VerticalAlignment="Bottom" Foreground="White" ForceCursor="False" />
+            <ListView HorizontalAlignment="Center" Margin="6,0,6,34" Name="listViewFrames" Width="205" SelectionMode="Single" SelectionChanged="listViewFrames_SelectionChanged" Height="379" VerticalAlignment="Bottom" />
+            <Button Content="Delete" Margin="147,0,6,7" Name="buttonDeleteFrame" Click="buttonDeleteFrame_Click" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="64" />
+            <Button Content="Up" HorizontalAlignment="Center" Margin="6,0,147,7" Name="buttonMoveFrameUp" VerticalAlignment="Bottom" Width="64" Click="buttonMoveFrameUp_Click" />
+            <Button Content="Down" HorizontalAlignment="Center" Margin="76,0,77,7" Name="buttonMoveFrameDown" VerticalAlignment="Bottom" Width="64" Click="buttonMoveFrameDown_Click" />
+        </Grid>
+
+        <Grid DockPanel.Dock="Bottom" Background="#FF14335D"  Height="126">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="634*" />
+                <ColumnDefinition Width="6*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid.Resources>
+                <VisualBrush x:Key="HostHint" TileMode="None" Stretch="Fill" AlignmentX="Left">
+                    <VisualBrush.Transform>
+                        <TranslateTransform X="0" Y="0" />
+                    </VisualBrush.Transform>
+                    <VisualBrush.Visual>
+                        <TextBlock FontStyle="Italic"
+                                   Foreground="#C0000000"
+                                   Background="White"
+                                   Text="Enter Hostname/IP...  "/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+                <VisualBrush x:Key="PortHint" TileMode="None" Stretch="Fill" AlignmentX="Left">
+                    <VisualBrush.Transform>
+                        <TranslateTransform X="0" Y="0" />
+                    </VisualBrush.Transform>
+                    <VisualBrush.Visual>
+                        <TextBlock FontStyle="Italic"
+                                   Foreground="#C0000000"
+                                   Background="White"
+                                   Text="Port... "/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Grid.Resources>
+            
+            <!-- Frame Creation -->
+            <Button Content="Add Frame" Height="23" HorizontalAlignment="Left" Margin="16,6,0,0" Name="buttonAddFrame" VerticalAlignment="Top" Width="75" Click="buttonAddFrame_Click" />
+            <Button Content="Copy Frame" Height="23" HorizontalAlignment="Left" Margin="16,35,0,0" Name="buttonCopyFrame" VerticalAlignment="Top" Width="75" Click="buttonCopyFrame_Click" />
+
+            <!-- Rotate Buttons -->
+            <Button Content="All &lt;&lt;" Height="23" HorizontalAlignment="Left" Margin="177,35,0,0" Name="buttonRotateLeft" VerticalAlignment="Top" Width="73" Click="buttonRotateLeft_Click" />
+            <Button Content="All &gt;&gt;" Height="23" HorizontalAlignment="Left" Margin="254,35,0,0" Name="buttonRotateRight" VerticalAlignment="Top" Width="75" Click="buttonRotateRight_Click" />
+            <Button Content="All +&lt;&lt;" HorizontalAlignment="Left" Margin="333,0,0,68" Name="buttonCopyRotateLeft" Width="75" Height="23" VerticalAlignment="Bottom" Click="buttonCopyRotateLeft_Click" />
+            <Button Content="All +&gt;&gt;" HorizontalAlignment="Left" Margin="411,0,0,68" Name="buttonCopyRotateRight" Width="73" Height="23" VerticalAlignment="Bottom" Click="buttonCopyRotateRight_Click" />
+
+            <Button Content="Inner &lt;&lt;" Height="23" HorizontalAlignment="Left" Margin="177,64,0,0" Name="buttonRotateInnerLeft" VerticalAlignment="Top" Width="73" Click="buttonRotateInnerLeft_Click" />
+            <Button Content="Inner &gt;&gt;" Height="23" HorizontalAlignment="Left" Margin="254,64,0,0" Name="buttonRotateInnerRight" VerticalAlignment="Top" Width="75" Click="buttonRotateInnerRight_Click" />
+            <Button Content="Inner +&lt;&lt;" HorizontalAlignment="Left" Margin="333,0,0,39" Name="buttonCopyRotateInnerLeft" Width="75" Height="23" VerticalAlignment="Bottom" Click="buttonCopyRotateInnerLeft_Click" />
+            <Button Content="Inner +&gt;&gt;" Margin="411,0,0,39" Name="buttonCopyRotateInnerRight" Click="buttonCopyRotateInnerRight_Click" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="73" />
+            
+            <Button Content="Outer &lt;&lt;" Height="23" HorizontalAlignment="Left" Margin="177,93,0,0" Name="buttonRotateOuterLeft" VerticalAlignment="Top" Width="73" Click="buttonRotateOuterLeft_Click" />
+            <Button Content="Outer &gt;&gt;" Margin="254,0,0,10" Name="buttonRotateOuterRight" Click="buttonRotateOuterRight_Click" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75" />
+            <Button Content="Outer +&lt;&lt;" Margin="333,0,0,10" Name="buttonCopyRotateOuterLeft" Click="buttonCopyRotateOuterLeft_Click" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75" />
+            <Button Content="Outer +&gt;&gt;" Margin="411,0,0,10" Name="buttonCopyRotateOuterRight" Click="buttonCopyRotateOuterRight_Click" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="73" />
+            
+            <!-- Color setter buttons -->
+            <Button Content="Set All" Height="23" HorizontalAlignment="Left" Margin="177,6,0,0" Name="btnSetAll" VerticalAlignment="Top" Width="73" Click="btnSetAll_Click" />
+            <Button Content="Set Inner" Height="23" Margin="254,7,0,0" Name="btnSetInner" VerticalAlignment="Top" Click="btnSetInner_Click" HorizontalAlignment="Left" Width="75" />
+            <Button Content="Set Outer" Height="23" HorizontalAlignment="Left" Margin="333,7,0,0" Name="btnSetOuter" VerticalAlignment="Top" Width="75" Click="btnSetOuter_Click" />
+            <Button Content="Randomize" Height="23" Margin="411,7,0,0" Name="button47" VerticalAlignment="Top" Click="btnRandomize_Click" HorizontalAlignment="Left" Width="73" />
+            
+            <!-- Connect elements -->
+            <TextBox Height="23" Margin="491,7,43,0" Name="textBoxReaderIp"  VerticalAlignment="Top" ToolTip="xTP IP Address">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background" Value="{StaticResource HostHint}" />
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox Height="23" Margin="0,7,0,0" Name="textBoxReaderPort"  VerticalAlignment="Top" ToolTip="xTP Port" HorizontalAlignment="Right" Width="39" Text="8080">
+                <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background" Value="{StaticResource PortHint}" />
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+
+            <!-- Other functions -->
+            <Button Content="Save" Height="23" Margin="559,97,0,0" Name="buttonSave" VerticalAlignment="Top" Click="buttonSave_Click" />
+            <Button Content="Send" Height="23" Margin="559,35,0,0" Name="buttonSend" VerticalAlignment="Top" Click="buttonSend_Click" />
+            <Button Content="Repeat" Height="23" HorizontalAlignment="Left" Margin="97,6,0,0" Name="btnRepeat" VerticalAlignment="Top" Width="75" Click="btnRepeat_Click" />
+
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="16,69,0,0" Name="textBlock3" Text="Time" VerticalAlignment="Top" Foreground="White" />
+            <WindowsFormsHost Margin="16,93,0,10" HorizontalAlignment="Left" Width="75">
+                <wf:NumericUpDown x:Name="numDisplayTime"  TextChanged="numDisplayTime_Click"  DecimalPlaces="3" Increment="0.01" />
+            </WindowsFormsHost>
+        </Grid>
+
+        <Grid Name="ledPanel" DockPanel.Dock="Right" Height="600">
+            <Image  Name="image1" Stretch="UniformToFill"  VerticalAlignment="Center" HorizontalAlignment="Center"  Source="/RGBDesigner;component/Images/Camilla.png" />
+
+            <!-- Outer Ring -->
+            <Button Style="{StaticResource GlassButton}" Content="0" Height="20" HorizontalAlignment="Center"  Margin="348,0,272,540" Name="led0" VerticalAlignment="Bottom" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="1" Height="20" HorizontalAlignment="Center" Margin="406,56,214,0" Name="led1" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="2" Height="20" HorizontalAlignment="Center" Margin="461,83,159,0" Name="led2" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="3" Height="20" HorizontalAlignment="Left" Margin="506,114,0,0" Name="led3" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="4" Height="20" HorizontalAlignment="Left" Margin="540,157,0,0" Name="led4" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="5" Height="20" HorizontalAlignment="Left" Margin="577,246,0,0" Name="led5" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="6" Height="20" HorizontalAlignment="Left" Margin="577,315,0,0" Name="led6" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="7" Height="20" HorizontalAlignment="Left" Margin="566,366,0,0" Name="led7" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="8" Height="20" HorizontalAlignment="Left" Margin="540,419,0,0" Name="led8" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="9" Height="20" HorizontalAlignment="Left" Margin="494,470,0,0" Name="led9" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="10" Height="20" HorizontalAlignment="Left" Margin="448,515,0,0" Name="led10" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="11" Height="20" HorizontalAlignment="Left" Margin="356,552,0,0" Name="led11" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="12" Height="20" HorizontalAlignment="Left" Margin="274,552,0,0" Name="led12" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="13" Height="20" HorizontalAlignment="Left" Margin="205,527,0,0" Name="led13" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="14" Height="20" HorizontalAlignment="Left" Margin="162,502,0,0" Name="led14" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="15" Height="20" HorizontalAlignment="Left" Margin="115,467,0,0" Name="led15" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="16" Height="20" HorizontalAlignment="Left" Margin="63,399,0,0" Name="led16" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="17" Height="20" HorizontalAlignment="Left" Margin="49,341,0,0" Name="led17" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="18" Height="20" HorizontalAlignment="Left" Margin="49,249,0,0" Name="led18" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="19" Height="20" HorizontalAlignment="Left" Margin="63,186,0,0" Name="led19" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="20" Height="20" HorizontalAlignment="Left" Margin="97,136,0,0" Name="led20" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="21" Height="20" HorizontalAlignment="Left" Margin="162,81,0,0" Name="led21" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="22" Height="20" HorizontalAlignment="Left" Margin="216,61,0,0" Name="led22" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="23" Height="20" HorizontalAlignment="Left" Margin="278,40,0,540" Name="led23" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+
+            <!-- Antenna -->
+            <Button Style="{StaticResource GlassButton}" Content="26" Height="20" HorizontalAlignment="Center" Margin="371,163,249,0" Name="led26" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="31" Height="20" HorizontalAlignment="Center" Margin="474,289,146,0" Name="led31" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="41" Height="20" HorizontalAlignment="Center" Margin="148,289,472,0" Name="led41" VerticalAlignment="Top" Width="20" Click="buttonLED_Click"  />
+            <Button Style="{StaticResource GlassButton}" Content="46" Height="20" HorizontalAlignment="Center" Margin="250,164,370,0" Name="led46" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+
+            <!-- Inner Ring (Face) -->
+            <Button Name="led24" Style="{StaticResource GlassButton}" Content="24" Height="20" Width="20" Margin="311,220,309,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="buttonLED_Click" />
+            <Button Name="led25" Style="{StaticResource GlassButton}" Content="25" Height="20" Width="20" Margin="346,224,274,0"  HorizontalAlignment="Center" VerticalAlignment="Top" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="27" Height="20" HorizontalAlignment="Center" Margin="394,155,226,0" Name="led27" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="28" Height="20" HorizontalAlignment="Center" Margin="446,160,174,0" Name="led28" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="29" Height="20" HorizontalAlignment="Center" Margin="495,213,125,0" Name="led29" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="30" Height="20" HorizontalAlignment="Center" Margin="491,269,129,0" Name="led30" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="32" Height="20" HorizontalAlignment="Center" Margin="424,301,196,0" Name="led32" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="33" Height="20" HorizontalAlignment="Center" Margin="428,358,192,0" Name="led33" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="34" Height="20" HorizontalAlignment="Center" Margin="411,403,209,0" Name="led34" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="35" Height="20" HorizontalAlignment="Center" Margin="371,440,249,0" Name="led35" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="36" Height="20" HorizontalAlignment="Center" Margin="311,457,309,0" Name="led36" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="37" Height="20" HorizontalAlignment="Center" Margin="257,444,363,0" Name="led37" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="38" Height="20" HorizontalAlignment="Center" Margin="217,0,403,176" Name="led38" VerticalAlignment="Bottom" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="39" Height="20" HorizontalAlignment="Center" Margin="194,357,426,0" Name="led39" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="40" Height="20" HorizontalAlignment="Center" Margin="197,300,423,0" Name="led40" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="42" Height="20" HorizontalAlignment="Center" Margin="131,269,489,0" Name="led42" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="43" Height="20" HorizontalAlignment="Center" Margin="127,214,493,0" Name="led43" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="44" Height="20" HorizontalAlignment="Center" Margin="182,156,438,0" Name="led44" VerticalAlignment="Top" Width="20" Click="buttonLED_Click" />
+            <Button Style="{StaticResource GlassButton}" Content="45" HorizontalAlignment="Left" Margin="226,153,0,427" Name="led45" Width="20" Click="buttonLED_Click" />
+            <Button Name="led47" Style="{StaticResource GlassButton}" Content="47" Height="20" Width="20" Margin="274,226,346,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="buttonLED_Click" />
+        </Grid>
+    </DockPanel>
+
+</Window>

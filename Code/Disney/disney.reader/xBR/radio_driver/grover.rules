@@ -1,0 +1,2 @@
+# First grover_radio is symlinked to /dev/grover_radio
+KERNEL=="grover_radio0",  SYMLINK+="grover_radio"

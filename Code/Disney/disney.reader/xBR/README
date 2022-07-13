@@ -1,0 +1,51 @@
+Directory contents and description:
+
+
+------------------------------------
+./reader
+------------------------------------
+The xBR application, running on T.I. OMAP processor on Linux
+
+R/W from 8 T.I. receivers, 1 T.I. xmitter, over SPI.
+Converts ping-packets received from xBands via the receivers to events.
+The events are presented to the xBRC using HTTP protocol requests and services. 
+
+Compile using bitbake command: bitbake -b arago/recipes/synapse-reader/grover.bb
+
+
+------------------------------------
+./cli-over-spi
+------------------------------------
+Test tool to help diagnose SPI issues and to test receivers manually.
+Compiled to run on the OMAP processor under linux.
+
+
+------------------------------------
+./spi-test
+------------------------------------
+Test tool exercises the SPI interface. 
+Compiled to run on the OMAP processor under linux.
+
+
+------------------------------------
+./test_server
+------------------------------------
+Compiles to run on a linux PC, used as a fake xBRC. Obsolete. May be 
+resurrected at a future time.
+
+
+------------------------------------
+spi-test-script
+------------------------------------
+starting point for a bash script to run a series of tests using the 
+./spi-test.
+
+
+------------------------------------
+sw_update.sh
+------------------------------------
+script to run on the xBRC server, which updates the software on a number 
+of xBRs, running on an isolated network.
+
+
+

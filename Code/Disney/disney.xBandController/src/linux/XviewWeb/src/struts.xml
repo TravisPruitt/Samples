@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.multipart.maxSize" value="10291456" />
+	<constant name="struts.custom.i18n.resources" value="struts-messages" />
+	<constant name="struts.freemarker.templatesCache" value="true" />
+
+	<package name="default" extends="struts-default">
+	
+		<result-types>
+  			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		
+		<interceptors>
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="defaultStack" />
+		
+		<action name="" >
+			<result type="redirectAction">
+  				<param name="actionName">home</param>
+            	<param name="namespace">/</param>
+            </result>  			
+		</action>
+		
+		<action name="home" class="com.disney.xband.xview.xviewweb.action.BaseAction" >
+  			<result name="success" type="tiles">home</result>
+		</action>
+		
+		<action name="registration" class="com.disney.xband.xview.xviewweb.action.BaseAction" >
+  			<result name="success" type="tiles">registration</result>
+		</action>
+		
+		<action name="dash" class="com.disney.xband.xview.xviewweb.action.BaseAction" >
+  			<result name="success" type="tiles">dash</result>
+		</action>
+		
+		<action name="xbandedit" class="com.disney.xband.xview.xviewweb.action.BaseAction" >
+  			<result name="success" type="tiles">xbandedit</result>
+		</action>
+		
+		<action name="guests" class="com.disney.xband.xview.xviewweb.action.BaseAction" >
+  			<result name="success" type="tiles">guests</result>
+		</action>
+		
+		
+	</package>
+
+</struts>

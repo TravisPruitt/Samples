@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="tapevent">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Identifier of Event Type-->
+        <xs:element name="eventtypeid" type="xs:integer" />
+        <!-- Name of the Event -->
+        <xs:element name="event" type="xs:string" />
+        <!-- One Source Id of Restaurant (Facility) -->
+        <xs:element name="facilityonesourceid" type="xs:string" />
+        <!-- XBand Id (Secure Id) of the guest-->
+        <xs:element name="xbandid" type="xs:string" />
+        <!-- Source (Application) that captured the event -->
+        <xs:element name="source" type="xs:string" />
+        <!-- Time when event is captured-->
+        <xs:element name="timestamp" type="xs:string" />
+        <!-- Time in GMT when event is captured-->
+        <xs:element name="timestampgmt" type="xs:string" />
+        <!-- Order Number associated with the guest and event -->
+        <xs:element name="ordernumber" type="xs:string" minOccurs="0" />
+        <!-- Gxp Link Id of the guest-->
+        <xs:element name="gxplinkid" type="xs:string" minOccurs="0" />
+        <!-- Name of the device (machine name) where source application is running -->
+        <xs:element name="terminal" type="xs:string" minOccurs="0" />
+        <!-- Lane from where the guest is coming (FastPass/ Standby) -->
+        <xs:element name="lane" type="xs:string" minOccurs="0" />
+        <!-- XPass Id of the guest appointment -->
+        <xs:element name="xpassid" type="xs:string" minOccurs="0" />
+        <!-- Party size of the current order-->
+        <xs:element name="partysize" type="xs:integer" minOccurs="0" />
+        <!-- Source Type where order is created - Fixed/Kiosk/Mobile -->
+        <xs:element name="sourcetype" type="xs:string" minOccurs="0" />
+        <!-- Define if guest is Bluelaned  -->
+        <xs:element name="isbluelaned" type="xs:boolean"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

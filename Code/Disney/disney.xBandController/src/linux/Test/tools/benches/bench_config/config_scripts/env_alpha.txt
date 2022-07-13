@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<venue>
+ <configuration name="current" type="incremental">
+  <description/>
+  <properties>
+   <property class="ControllerInfo" name="discoverynetprefix">10.</property>
+   <property class="ControllerInfo" name="ownipprefix">10.</property>
+   <property class="ControllerInfo" name="snmp_enabled">false</property>
+   <property class="AttractionModelConfig" name="abandonmenttimeout">3600</property>
+   <property class="AttractionModelConfig" name="errorlightduration">1000</property>
+   <property class="AttractionModelConfig" name="greenlightduration">1000</property>
+   <property class="ESBInfo" name="jmspassword">Administrator</property>
+   <property class="ESBInfo" name="jmsuser">Administrator</property>
+   <property class="ControllerInfo" name="securetapid">true</property>
+   <property class="ControllerInfo" name="eventdumpfile">/var/log/xbrc/eventdump.txt</property>
+   <property class="AttractionModelConfig" name="gxpurl">http://10.92.65.21:8081/dap/services/redemption</property>
+   <property class="ControllerInfo" name="xviewurl">http://10.110.1.110:8090/IDMS</property>
+   <property class="ESBInfo" name="jmsbroker">10.92.63.66:2506</property>
+   <property class="ESBInfo" name="jmstopic">com.synapse.xbrc</property>
+   <property class="UIConfig" name="xviewurl">http://10.110.1.110:8090/IDMS</property>
+  </properties>
+ </configuration>
+</venue>

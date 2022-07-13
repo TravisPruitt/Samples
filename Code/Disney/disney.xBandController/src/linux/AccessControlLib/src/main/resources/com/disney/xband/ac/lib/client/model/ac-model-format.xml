@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AcModel>
+  <SchemaVersion>string</SchemaVersion>
+  <LastUpdated>2008-09-28T18:49:45</LastUpdated>
+  <!--Zero or more repetitions:-->
+  <Application>
+    <AppId>string</AppId>
+    <!--Zero or more repetitions:-->
+    <UnprotectedUrlPattern>string</UnprotectedUrlPattern>
+    <!--Zero or more repetitions:-->
+    <Asset>
+      <AssetId>string</AssetId>
+      <!--Zero or more repetitions:-->
+      <IsLocalAuth>boolean</IsLocalAuth>
+      <!--Zero or more repetitions:-->
+      <UrlPattern>string</UrlPattern>
+      <!--Zero or more repetitions:-->
+      <AllowRole>string</AllowRole>
+      <!--Zero or more repetitions:-->
+      <DenyRole>string</DenyRole>
+    </Asset>
+  </Application>
+</AcModel>

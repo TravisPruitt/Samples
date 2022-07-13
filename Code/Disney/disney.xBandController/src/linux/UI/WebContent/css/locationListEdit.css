@@ -1,0 +1,196 @@
+/*
+* CSS file for web pages associated with band c.
+*/
+
+.left { float: left; clear: left; }
+.right { float: right; clear: right; }
+.lightGreyBorder { border: solid 1px #cccccc; }
+.lightBlueBackground { background: #f0f0f0; }
+.centerContent { text-align: center; }
+.topPadding { padding-top: 1em; }
+.rightPadding { padding-right: 1em; }
+.bottomPadding { padding-bottom: 1em; }
+.leftPadding { padding-left: 1em; }
+.topMargin { margin-top: 1em; }
+.rightMargin { margin-right: 1em; }
+.bottomMargin { margin-bottom: 1em; }
+.leftMargin { margin-left: 1em; }
+.margin { margin: 1em; }
+
+.leftJustified .timeout {width: 123px; }
+
+#locationSubSequencesContainer {
+
+}
+
+#locationSubSequencesContainer dt {
+    padding-bottom: 10px;
+}
+
+#locationSubSequencesContainer .remove {
+    cursor: pointer;
+    display: inline;
+}
+
+#locationSubSequencesContainer .remove img {
+    vertical-align: middle;
+}
+
+#locationSubSequencesContainer .add {
+    margin-top: 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#locationSubSequencesContainer .add img {
+    line-height: 0px;
+}
+
+#locationSubSequencesContainer .add div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#addLabel {
+    height: 20px;
+}
+
+#locationSubSequencesContainer .subSequenceSelect {
+    width: 300px;
+}
+
+#locationSubSequencesContainer .ratio {
+    width: 103px;
+}
+
+.subSequenceItemContainer {
+
+}
+
+#selectCustomSequenceList {
+    width:397px;
+}
+
+#locationListEditContainer { position: relative; }
+
+#leftPanel { width: 70%; }
+
+#editContainer { position: relative; min-height: 300px; }
+
+#accordionContainer { width: 28%; }
+
+#locationAccordion { padding: 3px; }
+
+#locationAccordion .ui-accordion-content-active {
+	background: transparent;
+}
+
+#locationAccordion .ui-accordion-content {
+	padding: 0; margin: 0;
+	background-color: transparent;
+	border: none;
+}
+
+#locationAccordion table tbody tr td {
+	text-align: center;
+}
+
+dl.firstColumn {
+	float: left; clear: left;
+	width: 48%;
+	margin: 0 2% 0 0;
+}
+dl.secondColumn {
+	float: right; clear: right;
+	width: 50%;
+}
+
+dl.firstColumnOfThree {
+	float: left; clear: left;
+	width: 31%;
+	margin: 0 2% 0 0;
+}
+
+dl.secondColumnOfThree {
+	float: left;
+	width: 31%;
+	margin: 0 2% 0 0;
+}
+
+dl.thirdColumnOfThree {
+	float: left; clear: right;
+	width: 31%;
+}
+
+select { padding: 0; margin: 0; }
+
+#newLocationButton { width: 46% }
+#newLocationButton input { color: #205195; }
+#newReaderButton { width: 45%; }
+#newReaderButton input { color: #205195; }
+#notifyXbrcButton input { color: #205195; }
+
+#deleteLocationButton {
+	position: absolute; bottom: 7px; right: 1em;
+}
+
+#saveLocationButton {
+	position: absolute; bottom: 7px; left: 1em;
+}
+
+ul#locations { 
+	position: relative; 
+	list-style: none; padding: 0; margin: 10px 0 0 0;
+}
+ul#locations li { width: 49%; float: left; }
+
+div#recipientContainer input[type=checkbox] {vertical-align: middle; width: auto;}
+div#recipientContainer label:AFTER {content: "";}
+
+ul.sortable { 
+	list-style: none;
+	padding: 0; margin: 0;
+	width: 48%;
+}
+ul.sortable li {
+	height: 16px;
+	line-height: 16px;
+	margin: 0 0 3px 0;
+}
+
+.ui-tabs .ui-tabs-nav .ui-state-default { 
+	background: url("../script/jquery-ui-1.8.16.custom.darkblue/css/custom-theme/images/ui-bg_flat_0_14335d_40x100.png") repeat-x scroll 50% 50% #14335D; 
+	border: 1px solid #1a4279;
+}
+.ui-tabs .ui-tabs-nav .ui-state-default a { color: #d7d7d7; }
+.ui-tabs .ui-tabs-nav .ui-tabs-selected { 
+	background: url("../script/jquery-ui-1.8.16.custom.darkblue/css/custom-theme/images/ui-bg_glass_90_cccccc_1x400.png") repeat-x scroll 50% 50% #CCCCCC; 
+}
+.ui-tabs .ui-tabs-nav .ui-tabs-selected a{ color: #262626; }
+
+.ui-tabs .ui-tabs-panel {
+	padding: 0; margin: 0 2px 2px 3px;
+}
+
+.innerTab {
+	margin: 0; padding: 10px;
+	border-top: none;
+}
+
+#locationtabs {
+	margin-bottom: 30px;
+}
+
+#vaLocationConfigEnabledDiv {
+	margin-bottom: 10px;
+}
+
+
+.infoImage {	
+	cursor: pointer;
+}
+
+.fieldInfoImage {
+	position: absolute; top: 0px; right: 0px;
+	cursor: pointer;
+}

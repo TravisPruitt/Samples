@@ -1,0 +1,6 @@
+target
+lib
+bin
+*.jar
+*.log
+*.war

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration debug="false">
+	
+	<!-- logs messages from all the third party jars that don't specify their own logging -->
+	<appender name="root" class="org.apache.log4j.RollingFileAppender">
+		<param name="maxFileSize" value="1024KB" />
+		<param name="maxBackupIndex" value="5" />
+		<param name="File" value="config.log.path/xbrcUI_root.log" />
+		<param name="threshold" value="all" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd/MM/yyyy HH:mm:ss,SSS} %5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- logs xbrc specific messages -->
+	<appender name="xbrc" class="org.apache.log4j.RollingFileAppender">
+		<param name="maxFileSize" value="1024KB" />
+		<param name="maxBackupIndex" value="5" />
+		<param name="File" value="config.log.path/xbrcUI.log" />
+		<param name="threshold" value="all" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd/MM/yyyy HH:mm:ss,SSS} %5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- 
+	 	This appender logs messages form the struts2 profiler. 
+	 	To enable profiling for all of the application at once add 
+	 	-Dxwork.profile.activate=true system property to Tomcat's VM arguments.
+	 	To enable profiling for a particular action, invoke that action with
+	 	profiling=true argument like this:
+	 	http://host:port/namespace/someAction.action?profiling=true
+	-->
+	<appender name="profiler" class="org.apache.log4j.RollingFileAppender">
+		<param name="maxFileSize" value="1024KB" />
+		<param name="maxBackupIndex" value="5" />
+		<param name="File" value="config.log.path/profiler.log" />
+		<param name="threshold" value="all" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd/MM/yyyy HH:mm:ss,SSS} %5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- use 'console' only for development, exclude it for production in config/log4j.xml -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="target" value="System.out"/>
+		<param name="threshold" value="trace" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} %5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- stop OnglExceptions in struts 2.1.6 when running on java 6 -->
+	<logger name="com.opensymphony.*">
+		<level value="fatal"/>
+		<appender-ref ref="root"/>
+	</logger>
+	
+	<!-- logger for xband -->
+	<logger name="com.disney.xband" additivity="false">
+	    <level value="trace"/>
+		<appender-ref ref="xbrc" />
+		<appender-ref ref="console" />
+	</logger>
+	
+	<!-- logger for profiler -->
+	<logger name="com.opensymphony.xwork2.util.profiling.UtilTimerStack" additivity="false">
+	    <level value="all"/>
+		<appender-ref ref="profiler" />
+	</logger>
+	
+	<!-- logs messages from all the third party jars that don't specify their own logging -->
+	<root>
+	    <level value="error"/>
+		<appender-ref ref="root" />
+		<appender-ref ref="console" />
+	</root>
+</log4j:configuration>

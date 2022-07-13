@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "Remounting root filesystem as read-write"
+mount / -oremount,rw

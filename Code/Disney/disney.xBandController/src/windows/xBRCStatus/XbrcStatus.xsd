@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="venue">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="JMSBroker" type="xs:string" minOccurs="1" msdata:Ordinal="1" />
+        <xs:element name="lastMessageSeq" type="xs:int" minOccurs="1" msdata:Ordinal="2" />
+        <xs:element name="lastMessageToJMS" type="xs:int" minOccurs="1" msdata:Ordinal="3" />
+        <xs:element name="lastMessageToUpdateStream" type="xs:int" minOccurs="1" msdata:Ordinal="4" />
+        <xs:element name="messageCount" type="xs:int" minOccurs="1" msdata:Ordinal="5" />
+        <xs:element name="model" type="xs:string" minOccurs="1" msdata:Ordinal="6" />
+        <xs:element name="perfMetricsPeriod" type="xs:int" minOccurs="1" msdata:Ordinal="7" />
+        <xs:element name="readerLocationsCount" type="xs:int" minOccurs="1" msdata:Ordinal="8" />
+        <xs:element name="readerTestMode" type="xs:string" minOccurs="1" msdata:Ordinal="9" />
+        <xs:element name="startPerfTime" type="xs:string" minOccurs="1" msdata:Ordinal="10" />
+        <xs:element name="status" type="xs:string" minOccurs="1" msdata:Ordinal="11" />
+        <xs:element name="statusMessage" type="xs:string" minOccurs="1" msdata:Ordinal="12" />
+        <xs:element name="updateStreamURL" type="xs:string" minOccurs="1" msdata:Ordinal="13" />
+        <xs:element name="version" type="xs:string" minOccurs="1" msdata:Ordinal="14" />
+        <xs:element name="perfEvents" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:double" minOccurs="1" />
+              <xs:element name="mean" type="xs:double" minOccurs="1" />
+              <xs:element name="min" type="xs:double" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfEventAgeMsec" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:double" minOccurs="1" />
+              <xs:element name="mean" type="xs:double" minOccurs="1" />
+              <xs:element name="min" type="xs:double" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfIDMSQueryMsec" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:double" minOccurs="1" />
+              <xs:element name="mean" type="xs:double" minOccurs="1" />
+              <xs:element name="min" type="xs:double" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfEKGWriteMsec" minOccurs="1" >
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:double" minOccurs="1" />
+              <xs:element name="mean" type="xs:double" minOccurs="1" />
+              <xs:element name="min" type="xs:double" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfSingulationMsec" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:double" minOccurs="1" />
+              <xs:element name="mean" type="xs:double" minOccurs="1" />
+              <xs:element name="min" type="xs:double" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfPreModelingMsec" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:double" minOccurs="1" />
+              <xs:element name="mean" type="xs:double" minOccurs="1" />
+              <xs:element name="min" type="xs:double" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfModelingMsec" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:double" minOccurs="1" />
+              <xs:element name="mean" type="xs:double" minOccurs="1" />
+              <xs:element name="min" type="xs:double" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfPostModelingMsec" minOccurs="1" >
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:double" minOccurs="1" />
+              <xs:element name="mean" type="xs:double" minOccurs="1" />
+              <xs:element name="min" type="xs:double" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfExternalMsec" minOccurs="1" >
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:double" minOccurs="1" />
+              <xs:element name="mean" type="xs:double" minOccurs="1" />
+              <xs:element name="min" type="xs:double" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfWriteToReaderMsec" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:double" minOccurs="1" />
+              <xs:element name="mean" type="xs:double" minOccurs="1" />
+              <xs:element name="min" type="xs:double" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfSaveGSTMsec" minOccurs="1" >
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:double" minOccurs="1" />
+              <xs:element name="mean" type="xs:double" minOccurs="1" />
+              <xs:element name="min" type="xs:double" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perfUpstreamMsec" minOccurs="1" >
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="max" type="xs:double" minOccurs="1" />
+              <xs:element name="mean" type="xs:double" minOccurs="1" />
+              <xs:element name="min" type="xs:double" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="time" type="xs:string" />
+      <xs:attribute name="name" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

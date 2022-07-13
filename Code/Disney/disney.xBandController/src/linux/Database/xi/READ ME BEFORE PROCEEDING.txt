@@ -1,0 +1,14 @@
+To create an empty XI database for testing JMS listener use following script:
+
+create_dbdash_1.7_for_load_and_env_without_XI.sql.
+
+
+
+To create an empty XI database for testing xAQ screens use following scripts in exact order:
+
+create_dbdash_1.7.0.0001.sql
+update_dbdash_1.7.0.0002.sql
+update_dbdash_1.7.0.0003.sql
+update_dbdash_1.7.0.0004.sql
+update_dbdash_1.7.0.0005.sql
+

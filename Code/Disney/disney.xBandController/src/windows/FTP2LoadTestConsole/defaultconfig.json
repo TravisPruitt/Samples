@@ -1,0 +1,7 @@
+{
+	"ConfigurationName":"FPT2 Load Test Console",
+	"CaptureFile":"chart.png",
+	"SessionLogFile":"session-{0}.txt",
+	"SamplingInterval":60,
+	"SplitNames":["login","validGuest","facebookAssociation","selectDay","setScheduledDate","selectParty","selectPartyMembers","selectExperiences","setAttractions","selectMagicPasses","selectOfferset","appointmentConfirmation","cancelPasses","cancelPasses2","cancelPasses3","cancelPassesConfirmation","cancelMagicPasses","sessionTime"],
+}

@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EventsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="EventsModelStoreContainer">
+          <EntitySet Name="AbandonEvent" EntityType="EventsModel.Store.AbandonEvent" store:Type="Tables" Schema="rdr" />
+          <EntitySet Name="Event" EntityType="EventsModel.Store.Event" store:Type="Tables" Schema="rdr" />
+          <EntitySet Name="EventType" EntityType="EventsModel.Store.EventType" store:Type="Tables" Schema="rdr" />
+          <EntitySet Name="ExitEvent" EntityType="EventsModel.Store.ExitEvent" store:Type="Tables" Schema="rdr" />
+          <EntitySet Name="Facility" EntityType="EventsModel.Store.Facility" store:Type="Tables" Schema="rdr" />
+          <EntitySet Name="FacilityType" EntityType="EventsModel.Store.FacilityType" store:Type="Tables" Schema="rdr" />
+          <EntitySet Name="LoadEvent" EntityType="EventsModel.Store.LoadEvent" store:Type="Tables" Schema="rdr" />
+          <EntitySet Name="Metric" EntityType="EventsModel.Store.Metric" store:Type="Tables" Schema="rdr" />
+          <EntitySet Name="MetricType" EntityType="EventsModel.Store.MetricType" store:Type="Tables" Schema="rdr" />
+          <AssociationSet Name="FK_AbandonEvent_Event" Association="EventsModel.Store.FK_AbandonEvent_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="AbandonEvent" EntitySet="AbandonEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_EventType" Association="EventsModel.Store.FK_Event_EventType">
+            <End Role="EventType" EntitySet="EventType" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_Facility" Association="EventsModel.Store.FK_Event_Facility">
+            <End Role="Facility" EntitySet="Facility" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExitEvent_Event" Association="EventsModel.Store.FK_ExitEvent_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="ExitEvent" EntitySet="ExitEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facility_FacilityType" Association="EventsModel.Store.FK_Facility_FacilityType">
+            <End Role="FacilityType" EntitySet="FacilityType" />
+            <End Role="Facility" EntitySet="Facility" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoadEvent_Event" Association="EventsModel.Store.FK_LoadEvent_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="LoadEvent" EntitySet="LoadEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Metric_Facility" Association="EventsModel.Store.FK_Metric_Facility">
+            <End Role="Facility" EntitySet="Facility" />
+            <End Role="Metric" EntitySet="Metric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Metric_MetricType" Association="EventsModel.Store.FK_Metric_MetricType">
+            <End Role="MetricType" EntitySet="MetricType" />
+            <End Role="Metric" EntitySet="Metric" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AbandonEvent">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="bigint" Nullable="false" />
+          <Property Name="LastTransmit" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GuestID" Type="nvarchar" Nullable="false" MaxLength="16" />
+          <Property Name="RideNumber" Type="int" Nullable="false" />
+          <Property Name="xPass" Type="bit" Nullable="false" />
+          <Property Name="FacilityID" Type="int" Nullable="false" />
+          <Property Name="EventTypeID" Type="int" Nullable="false" />
+          <Property Name="ReaderLocation" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="EventTypeID" />
+          </Key>
+          <Property Name="EventTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EventTypeName" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ExitEvent">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="bigint" Nullable="false" />
+          <Property Name="WaitTime" Type="int" Nullable="false" />
+          <Property Name="MergeTime" Type="int" Nullable="false" />
+          <Property Name="TotalTime" Type="int" Nullable="false" />
+          <Property Name="CarID" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Facility">
+          <Key>
+            <PropertyRef Name="FacilityID" />
+          </Key>
+          <Property Name="FacilityID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="FacilityTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FacilityType">
+          <Key>
+            <PropertyRef Name="FacilityTypeID" />
+          </Key>
+          <Property Name="FacilityTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityTypeName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LoadEvent">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="bigint" Nullable="false" />
+          <Property Name="WaitTime" Type="int" Nullable="false" />
+          <Property Name="MergeTime" Type="int" Nullable="false" />
+          <Property Name="CarID" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Metric">
+          <Key>
+            <PropertyRef Name="MetricID" />
+          </Key>
+          <Property Name="MetricID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityID" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="MetricTypeID" Type="int" Nullable="false" />
+          <Property Name="Guests" Type="int" Nullable="false" />
+          <Property Name="Abandonments" Type="int" Nullable="false" />
+          <Property Name="WaitTime" Type="int" Nullable="false" />
+          <Property Name="MergeTime" Type="int" Nullable="false" />
+          <Property Name="TotalTime" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MetricType">
+          <Key>
+            <PropertyRef Name="MetricTypeID" />
+          </Key>
+          <Property Name="MetricTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MetricTypeName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AbandonEvent_Event">
+          <End Role="Event" Type="EventsModel.Store.Event" Multiplicity="1" />
+          <End Role="AbandonEvent" Type="EventsModel.Store.AbandonEvent" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="AbandonEvent">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_EventType">
+          <End Role="EventType" Type="EventsModel.Store.EventType" Multiplicity="1" />
+          <End Role="Event" Type="EventsModel.Store.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="EventTypeID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="EventTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_Facility">
+          <End Role="Facility" Type="EventsModel.Store.Facility" Multiplicity="1" />
+          <End Role="Event" Type="EventsModel.Store.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="FacilityID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="FacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExitEvent_Event">
+          <End Role="Event" Type="EventsModel.Store.Event" Multiplicity="1" />
+          <End Role="ExitEvent" Type="EventsModel.Store.ExitEvent" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="ExitEvent">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facility_FacilityType">
+          <End Role="FacilityType" Type="EventsModel.Store.FacilityType" Multiplicity="1" />
+          <End Role="Facility" Type="EventsModel.Store.Facility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FacilityType">
+              <PropertyRef Name="FacilityTypeID" />
+            </Principal>
+            <Dependent Role="Facility">
+              <PropertyRef Name="FacilityTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoadEvent_Event">
+          <End Role="Event" Type="EventsModel.Store.Event" Multiplicity="1" />
+          <End Role="LoadEvent" Type="EventsModel.Store.LoadEvent" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="LoadEvent">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Metric_Facility">
+          <End Role="Facility" Type="EventsModel.Store.Facility" Multiplicity="1" />
+          <End Role="Metric" Type="EventsModel.Store.Metric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="FacilityID" />
+            </Principal>
+            <Dependent Role="Metric">
+              <PropertyRef Name="FacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Metric_MetricType">
+          <End Role="MetricType" Type="EventsModel.Store.MetricType" Multiplicity="1" />
+          <End Role="Metric" Type="EventsModel.Store.Metric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetricType">
+              <PropertyRef Name="MetricTypeID" />
+            </Principal>
+            <Dependent Role="Metric">
+              <PropertyRef Name="MetricTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_AbandonEvent_Create" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="rdr">
+          <Parameter Name="GuestID" Type="nvarchar" Mode="In" />
+          <Parameter Name="xPass" Type="bit" Mode="In" />
+          <Parameter Name="FacilityName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FacilityTypeName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EventTypeName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReaderLocation" Type="nvarchar" Mode="In" />
+          <Parameter Name="Timestamp" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastTransmit" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_Event_Create" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="rdr">
+          <Parameter Name="GuestID" Type="nvarchar" Mode="In" />
+          <Parameter Name="xPass" Type="bit" Mode="In" />
+          <Parameter Name="FacilityName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FacilityTypeName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EventTypeName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReaderLocation" Type="nvarchar" Mode="In" />
+          <Parameter Name="Timestamp" Type="nvarchar" Mode="In" />
+          <Parameter Name="EventId" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="usp_ExitEvent_Create" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="rdr">
+          <Parameter Name="GuestID" Type="nvarchar" Mode="In" />
+          <Parameter Name="xPass" Type="bit" Mode="In" />
+          <Parameter Name="FacilityName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FacilityTypeName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EventTypeName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReaderLocation" Type="nvarchar" Mode="In" />
+          <Parameter Name="Timestamp" Type="nvarchar" Mode="In" />
+          <Parameter Name="WaitTime" Type="int" Mode="In" />
+          <Parameter Name="MergeTime" Type="int" Mode="In" />
+          <Parameter Name="TotalTime" Type="int" Mode="In" />
+          <Parameter Name="CarID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_LoadEvent_Create" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="rdr">
+          <Parameter Name="GuestID" Type="nvarchar" Mode="In" />
+          <Parameter Name="xPass" Type="bit" Mode="In" />
+          <Parameter Name="FacilityName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FacilityTypeName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EventTypeName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReaderLocation" Type="nvarchar" Mode="In" />
+          <Parameter Name="Timestamp" Type="nvarchar" Mode="In" />
+          <Parameter Name="WaitTime" Type="int" Mode="In" />
+          <Parameter Name="MergeTime" Type="int" Mode="In" />
+          <Parameter Name="CarID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_Metric_Create" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="rdr">
+          <Parameter Name="FacilityName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FacilityTypeName" Type="nvarchar" Mode="In" />
+          <Parameter Name="StartTime" Type="nvarchar" Mode="In" />
+          <Parameter Name="EndTime" Type="nvarchar" Mode="In" />
+          <Parameter Name="MetricTypeName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Guests" Type="int" Mode="In" />
+          <Parameter Name="Abandonments" Type="int" Mode="In" />
+          <Parameter Name="WaitTime" Type="int" Mode="In" />
+          <Parameter Name="MergeTime" Type="int" Mode="In" />
+          <Parameter Name="TotalTime" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EventsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="EventsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AbandonEvents" EntityType="EventsModel.AbandonEvent" />
+          <EntitySet Name="Events" EntityType="EventsModel.Event" />
+          <EntitySet Name="EventTypes" EntityType="EventsModel.EventType" />
+          <EntitySet Name="ExitEvents" EntityType="EventsModel.ExitEvent" />
+          <EntitySet Name="LoadEvents" EntityType="EventsModel.LoadEvent" />
+          <EntitySet Name="Metrics" EntityType="EventsModel.Metric" />
+          <EntitySet Name="MetricTypes" EntityType="EventsModel.MetricType" />
+          <AssociationSet Name="FK_AbandonEvent_Event" Association="EventsModel.FK_AbandonEvent_Event">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="AbandonEvent" EntitySet="AbandonEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_EventType" Association="EventsModel.FK_Event_EventType">
+            <End Role="EventType" EntitySet="EventTypes" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExitEvent_Event" Association="EventsModel.FK_ExitEvent_Event">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="ExitEvent" EntitySet="ExitEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoadEvent_Event" Association="EventsModel.FK_LoadEvent_Event">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="LoadEvent" EntitySet="LoadEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Metric_MetricType" Association="EventsModel.FK_Metric_MetricType">
+            <End Role="MetricType" EntitySet="MetricTypes" />
+            <End Role="Metric" EntitySet="Metrics" />
+          </AssociationSet>
+          <FunctionImport Name="CreateLoadEvent">
+            <Parameter Name="GuestID" Mode="In" Type="String" />
+            <Parameter Name="xPass" Mode="In" Type="Boolean" />
+            <Parameter Name="FacilityName" Mode="In" Type="String" />
+            <Parameter Name="FacilityTypeName" Mode="In" Type="String" />
+            <Parameter Name="EventTypeName" Mode="In" Type="String" />
+            <Parameter Name="ReaderLocation" Mode="In" Type="String" />
+            <Parameter Name="Timestamp" Mode="In" Type="String" />
+            <Parameter Name="WaitTime" Mode="In" Type="Int32" />
+            <Parameter Name="MergeTime" Mode="In" Type="Int32" />
+            <Parameter Name="CarID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateExitEvent">
+            <Parameter Name="GuestID" Mode="In" Type="String" />
+            <Parameter Name="xPass" Mode="In" Type="Boolean" />
+            <Parameter Name="FacilityName" Mode="In" Type="String" />
+            <Parameter Name="FacilityTypeName" Mode="In" Type="String" />
+            <Parameter Name="EventTypeName" Mode="In" Type="String" />
+            <Parameter Name="ReaderLocation" Mode="In" Type="String" />
+            <Parameter Name="Timestamp" Mode="In" Type="String" />
+            <Parameter Name="WaitTime" Mode="In" Type="Int32" />
+            <Parameter Name="MergeTime" Mode="In" Type="Int32" />
+            <Parameter Name="TotalTime" Mode="In" Type="Int32" />
+            <Parameter Name="CarID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateAbandonEvent">
+            <Parameter Name="GuestID" Mode="In" Type="String" />
+            <Parameter Name="xPass" Mode="In" Type="Boolean" />
+            <Parameter Name="FacilityName" Mode="In" Type="String" />
+            <Parameter Name="FacilityTypeName" Mode="In" Type="String" />
+            <Parameter Name="EventTypeName" Mode="In" Type="String" />
+            <Parameter Name="ReaderLocation" Mode="In" Type="String" />
+            <Parameter Name="Timestamp" Mode="In" Type="String" />
+            <Parameter Name="LastTransmit" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateMetric">
+            <Parameter Name="FacilityName" Mode="In" Type="String" />
+            <Parameter Name="FacilityTypeName" Mode="In" Type="String" />
+            <Parameter Name="StartTime" Mode="In" Type="String" />
+            <Parameter Name="EndTime" Mode="In" Type="String" />
+            <Parameter Name="MetricTypeName" Mode="In" Type="String" />
+            <Parameter Name="Guests" Mode="In" Type="Int32" />
+            <Parameter Name="Abandonments" Mode="In" Type="Int32" />
+            <Parameter Name="WaitTime" Mode="In" Type="Int32" />
+            <Parameter Name="MergeTime" Mode="In" Type="Int32" />
+            <Parameter Name="TotalTime" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CreateEvent">
+            <Parameter Name="GuestID" Mode="In" Type="String" />
+            <Parameter Name="xPass" Mode="In" Type="Boolean" />
+            <Parameter Name="FacilityName" Mode="In" Type="String" />
+            <Parameter Name="FacilityTypeName" Mode="In" Type="String" />
+            <Parameter Name="EventTypeName" Mode="In" Type="String" />
+            <Parameter Name="ReaderLocation" Mode="In" Type="String" />
+            <Parameter Name="Timestamp" Mode="In" Type="String" />
+            <Parameter Name="EventId" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CreateMediaFile">
+            <Parameter Name="FilePath" Mode="In" Type="String" />
+            <Parameter Name="Timestamp" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetRecievedMediaFiles" />
+          <FunctionImport Name="MediaFileSent">
+          <Parameter Name="MediaFileID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetMediaEvents" EntitySet="Events" ReturnType="Collection(EventsModel.Event)">
+          <Parameter Name="Timestamp" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="Facilities" EntityType="EventsModel.Facility" />
+          <EntitySet Name="FacilityTypes" EntityType="EventsModel.FacilityType" />
+          <AssociationSet Name="FK_Event_Facility" Association="EventsModel.FK_Event_Facility">
+            <End Role="Facility" EntitySet="Facilities" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facility_FacilityType" Association="EventsModel.FK_Facility_FacilityType">
+            <End Role="FacilityType" EntitySet="FacilityTypes" />
+            <End Role="Facility" EntitySet="Facilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Metric_Facility" Association="EventsModel.FK_Metric_Facility">
+            <End Role="Facility" EntitySet="Facilities" />
+            <End Role="Metric" EntitySet="Metrics" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AbandonEvent">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="LastTransmit" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="EventsModel.FK_AbandonEvent_Event" FromRole="AbandonEvent" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="AbandonEvent" Relationship="EventsModel.FK_AbandonEvent_Event" FromRole="Event" ToRole="AbandonEvent" />
+          <NavigationProperty Name="EventType" Relationship="EventsModel.FK_Event_EventType" FromRole="Event" ToRole="EventType" />
+          <NavigationProperty Name="ExitEvent" Relationship="EventsModel.FK_ExitEvent_Event" FromRole="Event" ToRole="ExitEvent" />
+          <NavigationProperty Name="LoadEvent" Relationship="EventsModel.FK_LoadEvent_Event" FromRole="Event" ToRole="LoadEvent" />
+          <Property Type="Boolean" Name="xPass" Nullable="false" />
+          <Property Type="String" Name="ReaderLocation" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GuestID" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RideNumber" Nullable="false" />
+          <Property Type="Int32" Name="FacilityID" Nullable="false" />
+          <NavigationProperty Name="Facility" Relationship="EventsModel.FK_Event_Facility" FromRole="Event" ToRole="Facility" />
+        </EntityType>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="EventTypeID" />
+          </Key>
+          <Property Name="EventTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventTypeName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Events" Relationship="EventsModel.FK_Event_EventType" FromRole="EventType" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="ExitEvent">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="WaitTime" Type="Int32" Nullable="false" />
+          <Property Name="MergeTime" Type="Int32" Nullable="false" />
+          <Property Name="TotalTime" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="EventsModel.FK_ExitEvent_Event" FromRole="ExitEvent" ToRole="Event" />
+          <Property Type="String" Name="CarID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LoadEvent">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="WaitTime" Type="Int32" Nullable="false" />
+          <Property Name="MergeTime" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="EventsModel.FK_LoadEvent_Event" FromRole="LoadEvent" ToRole="Event" />
+          <Property Type="String" Name="CarID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Metric">
+          <Key>
+            <PropertyRef Name="MetricID" />
+          </Key>
+          <Property Name="MetricID" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" />
+          <Property Name="MetricTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Guests" Type="Int32" Nullable="false" />
+          <Property Name="Abandonments" Type="Int32" Nullable="false" />
+          <Property Name="WaitTime" Type="Int32" Nullable="false" />
+          <Property Name="MergeTime" Type="Int32" Nullable="false" />
+          <Property Name="TotalTime" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MetricType" Relationship="EventsModel.FK_Metric_MetricType" FromRole="Metric" ToRole="MetricType" />
+          <Property Type="Int32" Name="FacilityID" Nullable="false" />
+          <NavigationProperty Name="Facility" Relationship="EventsModel.FK_Metric_Facility" FromRole="Metric" ToRole="Facility" />
+        </EntityType>
+        <EntityType Name="MetricType">
+          <Key>
+            <PropertyRef Name="MetricTypeID" />
+          </Key>
+          <Property Name="MetricTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MetricTypeName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Metrics" Relationship="EventsModel.FK_Metric_MetricType" FromRole="MetricType" ToRole="Metric" />
+        </EntityType>
+        <Association Name="FK_AbandonEvent_Event">
+          <End Role="Event" Type="EventsModel.Event" Multiplicity="1" />
+          <End Role="AbandonEvent" Type="EventsModel.AbandonEvent" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="AbandonEvent">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_EventType">
+          <End Role="EventType" Type="EventsModel.EventType" Multiplicity="1" />
+          <End Role="Event" Type="EventsModel.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="EventTypeID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="EventTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExitEvent_Event">
+          <End Role="Event" Type="EventsModel.Event" Multiplicity="1" />
+          <End Role="ExitEvent" Type="EventsModel.ExitEvent" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="ExitEvent">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoadEvent_Event">
+          <End Role="Event" Type="EventsModel.Event" Multiplicity="1" />
+          <End Role="LoadEvent" Type="EventsModel.LoadEvent" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="LoadEvent">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Metric_MetricType">
+          <End Type="EventsModel.MetricType" Role="MetricType" Multiplicity="1" />
+          <End Type="EventsModel.Metric" Role="Metric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetricType">
+              <PropertyRef Name="MetricTypeID" />
+            </Principal>
+            <Dependent Role="Metric">
+              <PropertyRef Name="MetricTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Facility">
+          <Key>
+            <PropertyRef Name="FacilityID" />
+          </Key>
+          <Property Type="Int32" Name="FacilityID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FacilityName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="FacilityTypeID" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="EventsModel.FK_Event_Facility" FromRole="Facility" ToRole="Event" />
+          <NavigationProperty Name="FacilityType" Relationship="EventsModel.FK_Facility_FacilityType" FromRole="Facility" ToRole="FacilityType" />
+          <NavigationProperty Name="Metrics" Relationship="EventsModel.FK_Metric_Facility" FromRole="Facility" ToRole="Metric" />
+        </EntityType>
+        <EntityType Name="FacilityType">
+          <Key>
+            <PropertyRef Name="FacilityTypeID" />
+          </Key>
+          <Property Type="Int32" Name="FacilityTypeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FacilityTypeName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Facilities" Relationship="EventsModel.FK_Facility_FacilityType" FromRole="FacilityType" ToRole="Facility" />
+        </EntityType>
+        <Association Name="FK_Event_Facility">
+          <End Type="EventsModel.Facility" Role="Facility" Multiplicity="1" />
+          <End Type="EventsModel.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="FacilityID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="FacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facility_FacilityType">
+          <End Type="EventsModel.FacilityType" Role="FacilityType" Multiplicity="1" />
+          <End Type="EventsModel.Facility" Role="Facility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FacilityType">
+              <PropertyRef Name="FacilityTypeID" />
+            </Principal>
+            <Dependent Role="Facility">
+              <PropertyRef Name="FacilityTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Metric_Facility">
+          <End Type="EventsModel.Facility" Role="Facility" Multiplicity="1" />
+          <End Type="EventsModel.Metric" Role="Metric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="FacilityID" />
+            </Principal>
+            <Dependent Role="Metric">
+              <PropertyRef Name="FacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EventsModelStoreContainer" CdmEntityContainer="EventsEntities">
+          <EntitySetMapping Name="AbandonEvents"><EntityTypeMapping TypeName="EventsModel.AbandonEvent"><MappingFragment StoreEntitySet="AbandonEvent">
+            <ScalarProperty Name="EventId" ColumnName="EventId" />
+            <ScalarProperty Name="LastTransmit" ColumnName="LastTransmit" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Events"><EntityTypeMapping TypeName="EventsModel.Event"><MappingFragment StoreEntitySet="Event">
+            <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="RideNumber" ColumnName="RideNumber" />
+                <ScalarProperty Name="GuestID" ColumnName="GuestID" />
+                <ScalarProperty Name="ReaderLocation" ColumnName="ReaderLocation" />
+                <ScalarProperty Name="xPass" ColumnName="xPass" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+            <ScalarProperty Name="EventTypeID" ColumnName="EventTypeID" />
+            <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EventTypes"><EntityTypeMapping TypeName="EventsModel.EventType"><MappingFragment StoreEntitySet="EventType">
+            <ScalarProperty Name="EventTypeID" ColumnName="EventTypeID" />
+            <ScalarProperty Name="EventTypeName" ColumnName="EventTypeName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ExitEvents"><EntityTypeMapping TypeName="EventsModel.ExitEvent"><MappingFragment StoreEntitySet="ExitEvent">
+            <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+            <ScalarProperty Name="WaitTime" ColumnName="WaitTime" />
+            <ScalarProperty Name="MergeTime" ColumnName="MergeTime" />
+            <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LoadEvents"><EntityTypeMapping TypeName="EventsModel.LoadEvent"><MappingFragment StoreEntitySet="LoadEvent">
+            <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+            <ScalarProperty Name="WaitTime" ColumnName="WaitTime" />
+            <ScalarProperty Name="MergeTime" ColumnName="MergeTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Metrics"><EntityTypeMapping TypeName="EventsModel.Metric"><MappingFragment StoreEntitySet="Metric">
+            <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="MetricID" ColumnName="MetricID" />
+            <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+            <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+            <ScalarProperty Name="MetricTypeID" ColumnName="MetricTypeID" />
+            <ScalarProperty Name="Guests" ColumnName="Guests" />
+            <ScalarProperty Name="Abandonments" ColumnName="Abandonments" />
+            <ScalarProperty Name="WaitTime" ColumnName="WaitTime" />
+            <ScalarProperty Name="MergeTime" ColumnName="MergeTime" />
+            <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MetricTypes"><EntityTypeMapping TypeName="EventsModel.MetricType"><MappingFragment StoreEntitySet="MetricType">
+            <ScalarProperty Name="MetricTypeID" ColumnName="MetricTypeID" />
+            <ScalarProperty Name="MetricTypeName" ColumnName="MetricTypeName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CreateLoadEvent" FunctionName="EventsModel.Store.usp_LoadEvent_Create" />
+          <FunctionImportMapping FunctionImportName="CreateExitEvent" FunctionName="EventsModel.Store.usp_ExitEvent_Create" />
+          <FunctionImportMapping FunctionImportName="CreateAbandonEvent" FunctionName="EventsModel.Store.usp_AbandonEvent_Create" />
+          <FunctionImportMapping FunctionImportName="CreateMetric" FunctionName="EventsModel.Store.usp_Metric_Create" />
+          <FunctionImportMapping FunctionImportName="CreateEvent" FunctionName="EventsModel.Store.usp_Event_Create" />
+          <EntitySetMapping Name="Facilities">
+            <EntityTypeMapping TypeName="EventsModel.Facility">
+              <MappingFragment StoreEntitySet="Facility">
+                <ScalarProperty Name="FacilityTypeID" ColumnName="FacilityTypeID" />
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacilityTypes">
+            <EntityTypeMapping TypeName="EventsModel.FacilityType">
+              <MappingFragment StoreEntitySet="FacilityType">
+                <ScalarProperty Name="FacilityTypeName" ColumnName="FacilityTypeName" />
+                <ScalarProperty Name="FacilityTypeID" ColumnName="FacilityTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="EventsModel">
+        <EntityTypeShape EntityType="EventsModel.AbandonEvent" Width="1.5" PointX="5.25" PointY="3.25" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventsModel.Event" Width="1.5" PointX="3" PointY="5.25" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventsModel.EventType" Width="1.5" PointX="3.25" PointY="1.5" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventsModel.ExitEvent" Width="1.5" PointX="5.25" PointY="5.625" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventsModel.LoadEvent" Width="1.5" PointX="5.25" PointY="8.375" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventsModel.Metric" Width="1.5" PointX="3" PointY="12.75" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventsModel.MetricType" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583317" IsExpanded="true" />
+        <AssociationConnector Association="EventsModel.FK_AbandonEvent_Event" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.072714679737091" PointY="5.25" />
+          <ConnectorPoint PointX="4.072714679737091" PointY="4.047841796875" />
+          <ConnectorPoint PointX="5.25" PointY="4.047841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="EventsModel.FK_Event_EventType" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.5988573398685455" PointY="3.0956835937499996" />
+          <ConnectorPoint PointX="3.5988573398685455" PointY="5.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="EventsModel.FK_ExitEvent_Event" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.7112939453125" />
+          <ConnectorPoint PointX="5.25" PointY="6.7112939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="EventsModel.FK_LoadEvent_Event" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="8.5718489583333337" />
+          <ConnectorPoint PointX="5.25" PointY="8.5718489583333337" />
+        </AssociationConnector>
+        <AssociationConnector Association="EventsModel.FK_Metric_MetricType" >
+          <ConnectorPoint PointX="2.25" PointY="2.34568359375" />
+          <ConnectorPoint PointX="2.625" PointY="2.72068359375" />
+          <ConnectorPoint PointX="2.625" PointY="14.893552905758694" />
+          <ConnectorPoint PointX="3" PointY="14.893552905758694" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="EventsModel.Facility" Width="1.5" PointX="0.75" PointY="6" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="EventsModel.FacilityType" Width="1.5" PointX="0.75" PointY="3.25" Height="1.5956835937500031" />
+        <AssociationConnector Association="EventsModel.FK_Event_Facility" >
+          <ConnectorPoint PointX="2.25" PointY="7.0862939453125" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="7.0862939453124989" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="7.0862939453125" />
+          <ConnectorPoint PointX="3" PointY="7.0862939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="EventsModel.FK_Facility_FacilityType" >
+          <ConnectorPoint PointX="1.5" PointY="4.8456835937500031" />
+          <ConnectorPoint PointX="1.5" PointY="6" />
+        </AssociationConnector>
+        <AssociationConnector Association="EventsModel.FK_Metric_Facility" >
+          <ConnectorPoint PointX="1.5" PointY="8.172587890625" />
+          <ConnectorPoint PointX="1.5" PointY="13.790523952879347" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="13.790523952879347" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="13.790523952879347" />
+          <ConnectorPoint PointX="3" PointY="13.790523952879347" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

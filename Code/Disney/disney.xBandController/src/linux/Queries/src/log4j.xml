@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration>
+  <!-- APPENDERS LIST -->
+  <!-- show log entries on console -->
+  <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{ABSOLUTE} %5p %c{1}:%L - %m%n"/>
+    </layout>
+  </appender> 
+
+  <!-- log all logs to a separate log file every day -->
+  <appender name="orgDevelopersLogFileAppender" class="org.apache.log4j.RollingFileAppender">
+    <param name="maxFileSize" value="1024KB" />
+	<param name="maxBackupIndex" value="5" />
+    <param name="file" value="IDMSH2.log" />
+    <param name="append" value="true" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{dd/MM/yyyy HH:mm:ss,SSS} %5p %c{1}:%L - %m%n"/>
+    </layout>
+  </appender>
+
+  <!-- LOGGER LIST -->
+  <!-- log all classes in org.developers package -->
+   <logger name="com.disney">
+    <!-- level info logs -->
+    <level value="ERROR" />
+    <appender-ref ref="orgDevelopersLogFileAppender"/>
+  </logger>
+     <logger name="com.disney">
+    <!-- level info logs -->
+    <level value="INFO" />
+    <appender-ref ref="consoleAppender"/>
+  </logger>
+  <logger name="org.developers">
+    <!-- level info logs -->
+    <level value="error" />
+    <appender-ref ref="orgDevelopersLogFileAppender"/>
+  </logger>
+  <logger name="com.developers">
+    <!-- level debug logs -->
+    <level value="error" />
+    <appender-ref ref="consoleAppender"/>
+  </logger>
+  <logger name="com.mchange.v2"> 
+    <level value="ERROR"/> 
+    <appender-ref ref="consoleAppender"/>
+</logger>
+
+
+  <root>
+    <priority value="debug"></priority>
+    <!-- log all log entries on console -->
+    <appender-ref ref="consoleAppender"/>
+    <!-- push all error logs to mailAppender -->
+    <!-- appender-ref ref="orgDevelopersLogFileAppender"/ -->
+  </root>
+</log4j:configuration>

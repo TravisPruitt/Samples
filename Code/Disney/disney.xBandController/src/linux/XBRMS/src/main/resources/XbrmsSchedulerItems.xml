@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SchedulerMetadataList>
+      <SchedulerItemMetadata>
+         <canRunConcurrently>false</canRunConcurrently>
+         <defaultSchedulingExpression>0 0 21 * * ?</defaultSchedulingExpression>
+         <jobClassName>com.disney.xband.xbrms.server.scheduler.PerfMetricsTableCleanupJob</jobClassName>         
+         <name>Performance Metric Database Table Cleanup</name>
+         <onlyOnce>false</onlyOnce>
+         <parameters>          
+         <parameter>
+            <description>Specify how many days of performance metrics information to keep.</description>
+            <name>keep.days</name>
+            <displayName>Keep Days</displayName>
+            <defaultValue>14</defaultValue>
+            <required>true</required>
+            <sequence>1</sequence>
+            <type>NUMBER</type>
+         </parameter>
+         </parameters>
+         <shortDescription>This task deletes all performance metric entries older than the number of days specified in keep.days parameter.</shortDescription>
+         <shortHtmlDescription>This task deletes all performance metric entries older than the number of days specified in keep.days parameter.</shortHtmlDescription>
+         <longHtmlDescription>This task deletes all performance metric entries older than the number of days specified in keep.days parameter. The data is deleted from the xBRMS database PerformanceMetric table. This is a system task that may be modified by users but not deleted.</longHtmlDescription>
+         <systemOnly>true</systemOnly>
+         <key>7417a12a-5c31-475b-86af-5d133a488510</key>
+      </SchedulerItemMetadata>
+      <SchedulerItemMetadata>
+         <canRunConcurrently>false</canRunConcurrently>
+         <defaultSchedulingExpression>0 0/30 * * * ?</defaultSchedulingExpression>
+         <jobClassName>com.disney.xband.xbrms.server.scheduler.DataCorruptionDetectionJob</jobClassName>         
+         <name>Data Corruption Detection.</name>
+         <onlyOnce>false</onlyOnce>
+         <parameters/>
+         <shortDescription>This tasks checks for data corruption and, if found, logs it and reports the issue to xBRMS status.</shortDescription>
+         <shortHtmlDescription>This tasks checks for data corruption and, if found, logs it and reports the issue to xBRMS status.</shortHtmlDescription>
+         <longHtmlDescription>This tasks checks for data corruption and, if found, logs it and reports the issue to xBRMS status.</longHtmlDescription>
+         <systemOnly>true</systemOnly>
+         <key>eb84fcb1-fa0e-4d78-a81f-bfa6f995a791</key>
+      </SchedulerItemMetadata>
+</SchedulerMetadataList>
+

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reader", "reader\reader.vcxproj", "{0BC4D2B7-62B1-4D55-8846-93DB6D2B2CBE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xts", "xts\xts.vcxproj", "{7EB0B905-B2EF-43EB-9264-7AE6CCEC9312}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BC4D2B7-62B1-4D55-8846-93DB6D2B2CBE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0BC4D2B7-62B1-4D55-8846-93DB6D2B2CBE}.Release|Win32.ActiveCfg = Release|Win32
+		{0BC4D2B7-62B1-4D55-8846-93DB6D2B2CBE}.Release|Win32.Build.0 = Release|Win32
+		{7EB0B905-B2EF-43EB-9264-7AE6CCEC9312}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7EB0B905-B2EF-43EB-9264-7AE6CCEC9312}.Debug|Win32.Build.0 = Debug|Win32
+		{7EB0B905-B2EF-43EB-9264-7AE6CCEC9312}.Release|Win32.ActiveCfg = Release|Win32
+		{7EB0B905-B2EF-43EB-9264-7AE6CCEC9312}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>JCS - Cache Region Configuration</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="Aaron Smuts"></meta><meta name="email" content="ASmuts@apache.org"></meta></head><body class="composite"><div id="banner"><a href="http://jakarta.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="./images/jakarta.png"></img></a><a href="http://jakarta.apache.org/jcs/" id="projectLogo"><span>JCS</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 30 May 2007
+                  | Doc for 1.3</div><div class="xright">
+        
+        <a href="jcs.pdf"><img title="PDF Documentation" style="border: 1px" src="images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuGeneral_Information"><h5>General Information</h5><ul><li class="none"><a href="index.html">Overview</a></li><li class="none"><a href="JCSandJCACHE.html">JCS and JCACHE</a></li><li class="none"><a href="DownloadPage.html">Downloads</a></li><li class="none"><a href="faq.html">FAQ</a></li></ul></div><div id="menuGetting_Started"><h5>Getting Started</h5><ul><li class="none"><a href="getting_started/intro.html">Overview</a></li><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="Plugins.html">Plugin Overview</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></div><div id="menuJCS_User_s_Guide"><h5>JCS User's Guide</h5><ul><li class="expanded"><a href="LocalCacheConfig.html">Core</a><ul><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="ElementAttributes.html">Element Config</a></li><li class="none"><a href="ElementEventHandling.html">Element Event Handling</a></li><li class="none"><strong><a href="RegionProperties.html">Region Properties</a></strong></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></li><li class="collapsed"><a href="Plugins.html">Auxiliary</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About JCS</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Cache_Region_Configuration"></a><h2>Cache Region Configuration</h2><p>
+				The following properties apply to any cache region. They
+				can be specified as default values and specified on a
+				region by region basis. There are three types of
+				settings: auxiliary, cache, and element. The cache
+				settings define the memory management for the region.
+				The element settings define default element behavior
+				within the region.
+			</p><div class="subsection"><a name="Region__Auxiliary__Properties"></a><h3>Region (Auxiliary) Properties</h3><table class="bodyTable"><tr class="a"><th>Property</th><th>Description</th><th>Required</th><th>Default Value</th></tr><tr class="b"><td></td><td>
+							You can specify the list of auxiliaries that
+							regions can use. This has no attribute name.
+							The list can be empty, otherwise it should
+							be comma delimited.
+						</td><td>Y</td><td>n/a</td></tr></table></div><div class="subsection"><a name="Region__Cache__Properties"></a><h3>Region (Cache) Properties</h3><table class="bodyTable"><tr class="a"><th>Property</th><th>Description</th><th>Required</th><th>Default Value</th></tr><tr class="b"><td>MaxObjects</td><td>
+							The maximum number of items allowed in
+							memory. Eviction of elements in excess of
+							this number is determined by the memory
+							cache. By default JCS uses the LRU memory
+							cache.
+						</td><td>Y</td><td>n/a</td></tr><tr class="a"><td>MemoryCacheName</td><td>
+							This property allows you to specify what
+							memory manager you would like to use. You
+							can create your own memory manager by
+							implementing the
+							org.apache.jcs.engine.memory.MemoryCache
+							interface. Alternatively, you can extend the
+							org.apache.jcs.engine.memory.AbstractMemoryCache
+							class. Several different memory caches are
+							available: two LRU implementations, an LFU,
+							and an adaptive replacement algorithm.
+						</td><td>N</td><td>
+							org.apache.jcs.engine.memory.lru.LRUMemoryCache
+						</td></tr><tr class="b"><td>UseMemoryShrinker</td><td>
+							By default, the memory shrinker is shared by
+							all regions that use the LRU memory cache.
+							The memory shrinker iterates through the
+							items in memory, looking for items that have
+							expired or that have exceeded their max
+							memory idle time.
+						</td><td>N</td><td>false</td></tr><tr class="a"><td>MaxMemoryIdleTimeSeconds</td><td>
+							This is only used if you are using the
+							memory shrinker. If this value is set above
+							-1, then if an item has not been accessed in
+							this number of seconds, it will be spooled
+							to disk if the disk is available. You can
+							register an event handler on this event.
+						</td><td>N</td><td>-1</td></tr><tr class="b"><td>ShrinkerIntervalSeconds</td><td>
+							This specifies how often the shrinker should
+							run, if it has been activated. If you set
+							UseMemoryShrinker to false, then this
+							setting has no effect.
+						</td><td>N</td><td>60</td></tr><tr class="a"><td>DiskUsagePattern</td><td>
+							SWAP is the default. Under the swap pattern,
+							data is only put to disk when the max memory
+							size is reached. Since items puled from disk
+							are put into memory, if the memory cache is
+							full and you get an item off disk, the lest
+							recently used item will be spooled to disk.
+							If you have a low memory hit ration, you end
+							up thrashing.
+
+							The UPDATE usage pattern allows items to go
+							to disk on an update. It disables the swap.
+							This allows you to persist all items to
+							disk. If you are using the JDBC disk cache
+							for instance, you can put all the items on
+							disk while using the memory cache for
+							performance, and not worry about lossing
+							data from a system crash or improper
+							shutdown. Also, since all items are on disk,
+							there is no need to swap to disk. This
+							prevents the possibility of thrashing.
+						</td><td>N</td><td>SWAP</td></tr></table></div><div class="subsection"><a name="Region__Element__Properties"></a><h3>Region (Element) Properties</h3><table class="bodyTable"><tr class="b"><th>Property</th><th>Description</th><th>Required</th><th>Default Value</th></tr><tr class="a"><td>IsEternal</td><td>
+							If an element is specified as eternal, then
+							it will never be subject to removal for
+							exceeding its max life.
+						</td><td>N</td><td>true</td></tr><tr class="b"><td>MaxLifeSeconds</td><td>
+							If you specify that elements within a region
+							are not eternal, then you can set the max
+							life seconds. If this is exceeded the
+							elmenets will be removed passively when a
+							client tries to retrieve them. If you are
+							using a memory shrinker, then the items can
+							be removed actively.
+						</td><td>N</td><td>-1</td></tr><tr class="a"><td>IsSpool</td><td>
+							By default, can elements in this region be
+							sent to a disk cache if one is available.
+						</td><td>N</td><td>true</td></tr><tr class="b"><td>IsRemote</td><td>
+							By default, can elements in this region be
+							sent to a lateral cache if one is available.
+						</td><td>N</td><td>true</td></tr><tr class="a"><td>IsLateral</td><td>
+							By default, can elements in this region be
+							sent to a remote cache if one is available.
+						</td><td>N</td><td>true</td></tr></table></div><div class="subsection"><a name="Example_Configuration"></a><h3>Example Configuration</h3>
+    <div class="source"><pre>
+					
+jcs.default=
+jcs.default.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.default.cacheattributes.MaxObjects=200001
+jcs.default.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.default.cacheattributes.UseMemoryShrinker=true
+jcs.default.cacheattributes.MaxMemoryIdleTimeSeconds=3600
+jcs.default.cacheattributes.ShrinkerIntervalSeconds=60
+jcs.default.elementattributes=org.apache.jcs.engine.ElementAttributes
+jcs.default.elementattributes.IsEternal=false
+jcs.default.elementattributes.MaxLifeSeconds=700
+jcs.default.elementattributes.IsSpool=true
+jcs.default.elementattributes.IsRemote=true
+jcs.default.elementattributes.IsLateral=true
+
+# optional region "testCache1" specific configuration settings
+jcs.region.testCache1=
+jcs.region.testCache1.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.testCache1.cacheattributes.MaxObjects=123456
+jcs.region.testCache1.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.testCache1.cacheattributes.UseMemoryShrinker=true
+jcs.region.testCache1.cacheattributes.ShrinkerIntervalSeconds=30
+jcs.region.testCache1.cacheattributes.MaxMemoryIdleTimeSeconds=300
+jcs.region.testCache1.cacheattributes.MaxSpoolPerRun=100
+jcs.region.testCache1.elementattributes=org.apache.jcs.engine.ElementAttributes
+jcs.region.testCache1.elementattributes.IsEternal=false
+jcs.region.testCache1.elementattributes.MaxLifeSeconds=60000
+jcs.region.testCache1.elementattributes.IsSpool=true
+jcs.region.testCache1.elementattributes.IsLateral=true
+jcs.region.testCache1.elementattributes.IsRemote=true
+        
+				</pre></div>
+  </div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2002-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>JCS - Lateral TCP Auxiliary Cache Configuration</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="Aaron Smuts"></meta><meta name="email" content="ASmuts@apache.org"></meta></head><body class="composite"><div id="banner"><a href="http://jakarta.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="./images/jakarta.png"></img></a><a href="http://jakarta.apache.org/jcs/" id="projectLogo"><span>JCS</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 30 May 2007
+                  | Doc for 1.3</div><div class="xright">
+        
+        <a href="jcs.pdf"><img title="PDF Documentation" style="border: 1px" src="images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuGeneral_Information"><h5>General Information</h5><ul><li class="none"><a href="index.html">Overview</a></li><li class="none"><a href="JCSandJCACHE.html">JCS and JCACHE</a></li><li class="none"><a href="DownloadPage.html">Downloads</a></li><li class="none"><a href="faq.html">FAQ</a></li></ul></div><div id="menuGetting_Started"><h5>Getting Started</h5><ul><li class="none"><a href="getting_started/intro.html">Overview</a></li><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="Plugins.html">Plugin Overview</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></div><div id="menuJCS_User_s_Guide"><h5>JCS User's Guide</h5><ul><li class="collapsed"><a href="LocalCacheConfig.html">Core</a></li><li class="expanded"><a href="Plugins.html">Auxiliary</a><ul><li class="none"><a href="IndexedDiskAuxCache.html">Indexed Disk Cache</a></li><li class="none"><a href="IndexedDiskCacheProperties.html">Indexed Disk Properties</a></li><li class="none"><a href="BlockDiskCache.html">Block Disk Cache</a></li><li class="none"><a href="JDBCDiskCache.html">JDBC Disk Cache</a></li><li class="none"><a href="JDBCDiskCacheProperties.html">JDBC Disk Properties</a></li><li class="none"><a href="MySQLDiskCacheProperties.html">MySQL Disk Properties</a></li><li class="none"><a href="RemoteAuxCache.html">Remote Cache</a></li><li class="none"><a href="RemoteCacheProperties.html">Remote Cache Properties</a></li><li class="none"><a href="LateralTCPAuxCache.html">Lateral TCP Cache</a></li><li class="none"><strong><a href="LateralTCPProperties.html">Lateral TCP Properties</a></strong></li><li class="none"><a href="LateralUDPDiscovery.html">Lateral UDP Discovery</a></li><li class="none"><a href="LateralJavaGroupsAuxCache.html">Lateral JGroups Cache</a></li></ul></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About JCS</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Lateral_TCP_Auxiliary_Cache_Configuration"></a><h2>Lateral TCP Auxiliary Cache Configuration</h2><p>
+        The following properties apply to the TCP Lateral Cache plugin.
+      </p><div class="subsection"><a name="TCP_Configuration_Properties"></a><h3>TCP Configuration Properties</h3><table class="bodyTable"><tr class="a"><th>Property</th><th>Description</th><th>Required</th><th>Default Value</th></tr><tr class="b"><td>TcpServers</td><td>
+              This is the list of servers this cache should try to connect to.
+              With UDP discovery this is not necessary.
+            </td><td>N</td><td>none</td></tr><tr class="a"><td>TcpListenerPort</td><td>
+              This is the port this cache should listen on.
+            </td><td>Y</td><td>n/a</td></tr><tr class="b"><td>AllowGet</td><td>
+              Should this cache be allowed to get from other laterals.  False means
+              that it can only put, i.e. send updates and remove requests to other laterals.
+              Lateral gets are not recommended for performance reasons.  This used to be
+              controlled by the attribute PutOnlyMode.
+            </td><td>N</td><td>true</td></tr><tr class="a"><td>Receive</td><td>
+              Should this cache receive or only send to other laterals.  You may want to
+              set receive to false if you just need to broadcast to other caches.  If you
+              have a feed data parser, that doesn't need to receive updates, but you
+              do want it to send invalidation messages, then you would set receive to false.
+              If receive is false, the discovery service, if enabled, will only listen.
+            </td><td>N</td><td>true</td></tr><tr class="b"><td>IssueRemoveOnPut</td><td>
+              If this is set to true, then the lateral client will send a remove command
+              rather than a put command to any registered listeners.
+            </td><td>N</td><td>false</td></tr><tr class="a"><td>FilterRemoveByHashCode</td><td>
+              If this is true, and IssueRemoveOnPut is true, the client
+              will include the hashCode of the element to remove.  If it is also true
+              on the receiving end, the receiver will check to see if the element exists.
+              If the element exists, and the hashCodes are the same, the item will not be
+              removed.
+            </td><td>N</td><td>false</td></tr><tr class="b"><td>UdpDiscoveryAddr</td><td>
+              The address the UDP discovery process should broadcast messages to.
+            </td><td>N</td><td>228.5.6.7</td></tr><tr class="a"><td>UdpDiscoveryPort</td><td>
+              The port the UDP discovery process should send messages to.
+            </td><td>N</td><td>6789</td></tr><tr class="b"><td>UdpDiscoveryEnabled</td><td>
+              Whether or not the UDP discovery service should be used to
+              locate other lateral caches.
+            </td><td>N</td><td>true</td></tr></table></div><div class="subsection"><a name="Example_Configuration"></a><h3>Example Configuration</h3>
+    <div class="source"><pre>
+jcs.auxiliary.LTCP=org.apache.jcs.auxiliary.lateral.socket.tcp.LateralTCPCacheFactory
+jcs.auxiliary.LTCP.attributes=org.apache.jcs.auxiliary.lateral.socket.tcp.TCPLateralCacheAttributes
+#jcs.auxiliary.LTCP.attributes.TcpServers=
+jcs.auxiliary.LTCP.attributes.TcpListenerPort=1118
+jcs.auxiliary.LTCP.attributes.UdpDiscoveryAddr=228.5.6.8
+jcs.auxiliary.LTCP.attributes.UdpDiscoveryPort=6780
+jcs.auxiliary.LTCP.attributes.UdpDiscoveryEnabled=true
+jcs.auxiliary.LTCP.attributes.Receive=true
+jcs.auxiliary.LTCP.attributes.AllowGet=false
+jcs.auxiliary.LTCP.attributes.IssueRemoveOnPut=false
+jcs.auxiliary.LTCP.attributes.FilterRemoveByHashCode=false
+        </pre></div>
+  </div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2002-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

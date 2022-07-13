@@ -1,0 +1,14 @@
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.0.0001.sql -v databasename=%2 -o update-xbrms-1.7.0.0001.log
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.1.0001.sql -v databasename=%2 -o update-xbrms-1.7.1.0001.log
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.1.0002.sql -v databasename=%2 -o update-xbrms-1.7.1.0002.log
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.1.0003.sql -v databasename=%2 -o update-xbrms-1.7.1.0003.log
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.2.0001.sql -v databasename=%2 -o update-xbrms-1.7.2.0001.log
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.3.0001.sql -v databasename=%2 -o update-xbrms-1.7.3.0001.log
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.3.0002.sql -v databasename=%2 -o update-xbrms-1.7.3.0002.log
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.4.0001.sql -v databasename=%2 -o update-xbrms-1.7.4.0001.log
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.5.0001.sql -v databasename=%2 -o update-xbrms-1.7.5.0001.log
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.6.0001.sql -v databasename=%2 -o update-xbrms-1.7.6.0001.log
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.6.0002.sql -v databasename=%2 -o update-xbrms-1.7.6.0002.log
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.6.0003.sql -v databasename=%2 -o update-xbrms-1.7.6.0003.log
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.7.0001.sql -v databasename=%2 -o update-xbrms-1.7.7.0001.log
+sqlcmd -S %1 -U %3 -P %4 -i update-xbrms-1.7.8.0001.sql -v databasename=%2 -o update-xbrms-1.7.8.0001.log

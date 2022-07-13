@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="XviewWeb">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../../eclipse"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="Apache Tomcat v6.0 [Apache Tomcat v6.0].libraryclasspath">
+        <pathelement location="../../../../../../tomcat6/lib/tomcat-coyote.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/el-api.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/catalina-ant.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/jsp-api.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/tomcat-i18n-es.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/commons-pool.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/catalina.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/tomcat-i18n-fr.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/jasper-jdt.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/commons-dbcp.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/catalina-tribes.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/jasper.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/servlet-api.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/annotations-api.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/jasper-el.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/tomcat-i18n-ja.jar"/>
+        <pathelement location="../../../../../../tomcat6/lib/catalina-ha.jar"/>
+    	<pathelement location="../../../../../../tomcat6/lib/junit.jar"/>
+    </path>
+    <path id="Web App Libraries.libraryclasspath">
+        <pathelement location="WebContent/WEB-INF/lib/commons-fileupload.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/commons-io.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/commons-logging.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/freemarker.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/ognl.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/struts2-core.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/xwork-core.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/ControllerLib.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/c3p0.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/log4j.jar"/>
+    	<pathelement location="WebContent/WEB-INF/lib/junit.jar"/>
+    </path>
+    <path id="EAR Libraries.libraryclasspath"/>
+    <path id="XviewWeb.classpath">
+        <pathelement location="build/classes"/>
+        <path refid="Apache Tomcat v6.0 [Apache Tomcat v6.0].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+    </path>
+	
+	<property name="dir.test.src" location="src"/>
+	<property name="dir.test.classes" location="build/classes"/>
+	<property name="junit.package" value="com/disney/xband/xview/xviewweb/junit"/>
+	<path id="test.classpath">
+		<pathelement location="WebContent/WEB-INF/lib/junit.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/mysql-connector-java-bin.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/log4j.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/c3p0.jar"/>
+		<pathelement location="${dir.test.src}"/>
+		<pathelement location="${dir.test.classes}"/>
+	</path>
+	
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+	<target depends="build-subprojects,build-project,war" name="buildprod"/>
+    <target depends="build-subprojects,build-project,junit-bvt,war" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}" includeantruntime="false">
+            <src path="src"/>
+            <classpath refid="XviewWeb.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+	<target name="war">
+		<war destfile="XviewWeb.war" webxml="WebContent/WEB-INF/web.xml">
+		<fileset dir="WebContent"/>
+		<lib dir="WebContent/WEB-INF/lib"/>
+		<classes dir="build/classes"/>
+		</war>
+	</target>
+	<!-- junit -->
+	<target name="junit-bvt" description="run the bvt junit tests and fail the build when junits fail">
+		<local name="test.type"/>
+		<property name="test.type" value="bvt"/>
+		<echo message="Running ${test.type} tests"/>
+		<junit 	printsummary="withOutAndErr"
+				fork="no"
+				haltonerror="yes"
+				haltonfailure="yes">
+			<classpath refid="test.classpath"/>
+			<formatter type="brief" usefile="false"/>
+			<batchtest>
+				<fileset dir="${dir.test.classes}">
+					<include name="${junit.package}/${test.type}/**/Test*.class"/>
+					<!-- ignore inner classes defined in junit test classes-->
+					<exclude name="${junit.package}/${test.type}/**/Test*$*.class"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+	<target depends="build-project" name="junit-performance" description="run performance tests and fail the build when junits fail">
+		<local name="test.type"/>
+		<property name="test.type" value="performance"/>	
+		<echo message="Running ${test.type} tests"/>
+		<junit 	printsummary="withOutAndErr"
+				fork="no"
+				haltonerror="yes"
+				haltonfailure="yes">
+			<classpath refid="test.classpath"/>
+			<formatter type="brief" usefile="false"/>
+			<batchtest>
+				<fileset dir="${dir.test.classes}">
+					<include name="${junit.package}/${test.type}/**/Test*.class"/>
+					<!-- ignore inner classes defined in junit test classes-->
+					<exclude name="${junit.package}/${test.type}/**/Test*$*.class"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+	<!-- end of junit -->	
+</project>

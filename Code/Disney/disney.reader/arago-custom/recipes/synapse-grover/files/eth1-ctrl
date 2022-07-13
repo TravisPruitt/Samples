@@ -1,0 +1,32 @@
+#!/bin/sh
+
+disable_eth1() {
+    devmem2 0x2B0000A8 w 0x800
+    devmem2 0x2B0000A4 w 0x80000007
+    devmem2 0x2B0000A8 w 0x802
+    devmem2 0x2B0000A4 w 0x80000006
+}
+
+enable_eth1() {    
+    devmem2 0x2B0000A8 w 0x0
+    devmem2 0x2B0000A4 w 0x80000007
+    devmem2 0x2B0000A8 w 0x802
+    devmem2 0x2B0000A4 w 0x80000006
+}
+
+ETH1_REV=$(devmem2 0x2b000050 | cut -d ' ' -f 7 | tr -d "\n")
+if [ "$ETH1_REV" != "0x92210000" ]; then
+    echo "Unable to detect eth1 controller, exiting..."
+    exit
+fi
+
+if [ $1 == "enable" ]; then
+    enable_eth1
+elif [ $1 == "disable" ]; then
+    disable_eth1
+else
+    echo "Enable/Disable the ethernet controller associated with the eth1"
+    echo "interface to save power."
+    echo
+    echo "Usage: eth1-ctrl [enable|disable]"
+fi

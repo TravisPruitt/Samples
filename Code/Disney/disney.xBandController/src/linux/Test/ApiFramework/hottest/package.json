@@ -1,0 +1,15 @@
+{
+  "name": "hottest",
+  "version": "0.0.1",
+  "description": "api testing framework",
+  "author": {
+    "name": "Scott Salley",
+    "email": "scottsa@synapse.com"
+  },
+  "dependencies": {
+    "request": "2.9.153",
+    "jsdom": "0.2.13"
+  },
+  "engine": "node >= 0.4.1",
+  "main": "./hottest.js"
+}

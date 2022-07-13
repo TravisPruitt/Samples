@@ -1,0 +1,80 @@
+<XbUsers>
+  <DefaultRole>x-guest</DefaultRole>
+  <!--Zero or more repetitions:-->
+  <XbUser>
+    <Name>maintenance</Name>
+    <Password>maintenance</Password>
+    <!--Zero or more repetitions:-->
+    <Role>xbrms-maintenance</Role>
+  </XbUser>
+  <XbUser>
+    <Name>demouser</Name>
+    <Password>demouser</Password>
+    <!--Zero or more repetitions:-->
+    <Role>x-operator</Role>
+    <Role>x-greeter</Role>
+  </XbUser>
+  <XbUser>
+    <Name>admin</Name>
+    <Password>admin</Password>
+    <!--Zero or more repetitions:-->
+    <Role>xbrc-admin</Role>
+    <Role>xbrms-admin</Role>
+    <Role>xi-admin</Role>
+    <Role>x-admin</Role>
+    <Role>x-coordinator</Role>
+  </XbUser>
+  <XbUser>
+    <Name>guest</Name>
+    <Password>guest</Password>
+  </XbUser>
+  <XbUser>
+    <Name>cast123</Name>
+    <Password>cast123</Password>
+    <!--Zero or more repetitions:-->
+    <Role>x-greeter</Role>
+  </XbUser>
+  <XbUser>
+    <Name>cast124</Name>
+    <Password>cast124</Password>
+    <!--Zero or more repetitions:-->
+    <Role>x-greeter</Role>
+  </XbUser>
+  <XbUser>
+    <Name>cast125</Name>
+    <Password>cast125</Password>
+    <!--Zero or more repetitions:-->
+    <Role>x-greeter</Role>
+  </XbUser>
+  <XbUser>
+    <Name>cast126</Name>
+    <Password>cast126</Password>
+    <!--Zero or more repetitions:-->
+    <Role>x-greeter</Role>
+  </XbUser>
+  <XbUser>
+    <Name>cast127</Name>
+    <Password>cast127</Password>
+    <!--Zero or more repetitions:-->
+    <Role>x-greeter</Role>
+  </XbUser>
+  <XbUser>
+    <Name>cast128</Name>
+    <Password>cast128</Password>
+    <!--Zero or more repetitions:-->
+    <Role>x-greeter</Role>
+  </XbUser>
+  <XbUser>
+    <Name>coord123</Name>
+    <Password>coord123</Password>
+    <!--Zero or more repetitions:-->
+    <Role>x-coordinator</Role>
+  </XbUser>
+  <XbUser>
+    <Name>coord124</Name>
+    <Password>coord124</Password>
+    <!--Zero or more repetitions:-->
+    <Role>x-coordinator</Role>
+  </XbUser>
+
+</XbUsers>

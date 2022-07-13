@@ -1,0 +1,74 @@
+
+#readersContainer {
+	padding: 10px;	
+	position: relative;
+}
+
+#readersContainer .xfpeReaderContainer {
+	float: left;
+	position: relative;
+	border: 1px solid #CCCCCC;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+#readersContainer .xfpeReaderContainer .xfpeReader {
+	background: url(../images/xfpe/Xfpe.png) no-repeat;
+	width: 450px;
+	height: 226px;
+	position: relative;
+}
+
+#readersContainer .xfpeReaderContainer .title {
+	font-size: 18px;	
+}
+
+#readersContainer .xfpeReaderContainer .tapButton {
+	float: right;
+	margin: 5px;
+	width: 60px;
+}
+
+#readersContainer .xfpeReaderContainer .logoutButton {
+	display: none;
+}
+
+#readersContainer .xfpeReaderContainer .omniStatus {
+	position: absolute;
+	top: 15px;
+	left: 313px;
+	width: 117px;
+	border: 1px solid #CCCCCC;
+	padding: 5px;
+}
+
+#readersContainer .xfpeReaderContainer .xfpeReader .xfpeLight {
+	position: absolute;
+	top: 46px;	
+	left: 33px;
+	display: none;
+}
+
+#readersContainer .xfpeReaderContainer .xfpeReader .fpLight {
+	position: absolute;
+	top: 113px;	
+	left: 216px;
+	display: none;
+}
+
+#readersContainer .xfpeReaderContainer .toolbox {
+	height: 60px;
+	padding: 2px;
+}
+
+#readersContainer .xfpeReaderContainer .title {
+	margin: 0px;
+	width: 100%;
+	background-color: #14335d;
+	color: white;
+}
+
+#maxReaders {
+	width: 40px;
+}

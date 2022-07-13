@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="ReaderTest" type="readerTest"/>
+
+  <xs:complexType name="readerTest">
+    <xs:sequence>
+      <xs:element name="acknowledgeAction" type="readerActionContainer" minOccurs="0"/>
+      <xs:element name="failedAction" type="readerActionContainer" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="passedAction" type="readerActionContainer" minOccurs="0"/>
+      <xs:element name="tests" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="test" type="readerUnitTest" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="waitForAckMs" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="readerActionContainer">
+    <xs:sequence>
+      <xs:element name="genericAction" type="genericReaderAction" minOccurs="0"/>
+      <xs:element name="scriptAction" type="scriptReaderAction" minOccurs="0"/>
+      <xs:element name="sequenceAction" type="sequenceReaderAction" minOccurs="0"/>
+      <xs:element name="speechAction" type="speechReaderAction" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="genericReaderAction">
+    <xs:complexContent>
+      <xs:extension base="baseReaderAction">
+        <xs:sequence>
+          <xs:element name="contentType" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="baseReaderAction" abstract="true">
+    <xs:sequence>
+      <xs:element name="method" type="httpMethod" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="path" type="xs:string" minOccurs="0"/>
+      <xs:element name="waitMs" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="scriptReaderAction">
+    <xs:complexContent>
+      <xs:extension base="baseReaderAction">
+        <xs:sequence>
+          <xs:element name="scriptFilePath" type="xs:string" minOccurs="0"/>
+          <xs:element name="scriptResourcePath" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="sequenceReaderAction">
+    <xs:complexContent>
+      <xs:extension base="baseReaderAction">
+        <xs:sequence>
+          <xs:element name="duration" type="xs:long" minOccurs="0"/>
+		  <!-- 
+			NOTE: The sequenceName can be the actual sequence name as known to the reader or one of the three
+			predefined keys:
+
+			${SUCCESS_SEQUENCE} - will be substituted by the xBRC with the actual sequence sequence 
+			${ERROR_SEQUENCE} - will be substituted by the xBRC with the actual error sequence
+			${FAILURE_SEQUENCE} - will be substituted by the xBRC with the actual failure sequence
+		  -->
+          <xs:element name="sequenceName" type="xs:string" minOccurs="0"/>
+          <xs:element name="timeout" type="xs:long" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="speechReaderAction">
+    <xs:complexContent>
+      <xs:extension base="baseReaderAction">
+        <xs:sequence>
+          <xs:element name="gap" type="xs:int" minOccurs="0"/>
+          <xs:element name="range" type="xs:int" minOccurs="0"/>
+          <xs:element name="rate" type="xs:int" minOccurs="0"/>
+			<!--
+			NOTE: The text may contain special substitution tokens as follows:
+
+			${VENUE} - will be substituted by the xBRC with the venue name (attraction name) 
+			${READER} - will be substituted by the xBRC with the reader name being tested
+			${LOCATION} - will be substituted by the xBRC with location name containing the reader being tested
+
+			Example: Testing reader ${READER} at loction ${LOCATION}
+			-->
+          <xs:element name="text" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="readerUnitTest">
+    <xs:sequence>
+      <xs:element name="actions" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="readerActionContainer" type="readerActionContainer" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="httpMethod">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GET"/>
+      <xs:enumeration value="PUT"/>
+      <xs:enumeration value="POST"/>
+      <xs:enumeration value="DELETE"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

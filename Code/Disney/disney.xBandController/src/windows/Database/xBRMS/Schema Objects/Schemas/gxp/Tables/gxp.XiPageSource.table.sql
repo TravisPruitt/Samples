@@ -1,0 +1,9 @@
+﻿CREATE TABLE [gxp].[XiPageSource] (
+    [XiPageId]    INT            IDENTITY (1, 1) NOT NULL,
+    [PageContent] NVARCHAR (MAX) NOT NULL,
+    [XiGUIDId]    INT            NOT NULL,
+    [DateCreated] DATETIME       NOT NULL,
+    [FileName]    NVARCHAR (200) NULL,
+    PRIMARY KEY CLUSTERED ([XiPageId] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF)
+);
+

@@ -1,0 +1,110 @@
+/********** attractionView.jsp css ***************/
+ 
+ #attractionViewContainer {
+ 	padding: 0px;
+ 	margin: 0px;
+ 	width: 950px;
+ 	height: 600px;
+ 	position: relative;
+ }
+ 
+ #attractionViewContainer #attractionPlan {
+ position: absolute;
+ 	padding: 0px;
+ 	margin: 0px;
+ 	top: 50px;
+ 	left: 0px; 	 	
+ 	position: relative;
+ }
+ 
+ #attractionPlan .gridItem {
+ 	position: absolute;
+ 	width: 50px;
+ 	height: 50px;
+ }
+ 
+ #attractionPlan .divlink:hover { 
+ 	border: 1px solid blue;
+ 	-moz-border-radius:10px;
+ 	-webkit-border-radius:10px;
+ 	behavior:url(border-radius.htc);
+ 	cursor: pointer;
+ }
+ 
+ #attractionPlan .divlink .gridItemLabel:hover {
+ 	cursor: pointer;
+ }
+ 
+ #attractionPlan .gridItemLabel {
+ 	display: table;
+ 	position: absolute;
+ 	z-index: 1;
+ 	width: 40px;
+ 	padding: 10px 5px 5px 5px;
+ 	text-align: center;
+ 	color: #000000;
+ }
+ 
+ #attractionViewContainer .legend {
+ 	padding: 5px;
+ 	width: 150px;
+ 	position: absolute;
+ 	top: 6px;
+ 	right: 5px;
+ 	background: #FFFFFF;
+ 	font-size: 15px;
+ 	border: 1px solid #666666;
+ }
+ 
+ #attractionViewContainer .legend .title {
+ 	text-align: center;
+ 	font-size: 16px;
+ 	margin: 0px;
+ }
+ 
+ #attractionViewContainer .legend span {
+ 	line-height: 24px;
+ }
+ 
+ #attractionViewContainer p {
+ 	margin: 8px 0px 4px 0px;
+ }
+ 
+ #attractionViewContainer .legend img {
+ 	line-height: 16px;
+ }
+ 
+ #attractionViewContainer .guestCount {
+ 	position: absolute;
+ 	font-weight: bold;
+ 	color: #000000;
+ 	font-size: 11pt;
+ }
+ 
+ #attractionViewContainer #attractionPlan .guestStats {
+ 	padding: 5px;
+ 	width: 150px;
+ 	position: absolute;
+ 	top: 60px;
+ 	right: 5px;
+ 	margin: 0px; 	
+ 	background: #FFFFFF;
+ 	border: 1px solid #666666;
+ }
+ 
+ dl.counts dt {
+ 	text-align: center;
+ 	width: 100%;
+ 	margin: 0px;
+ 	font-size: 15px;
+ 	margin: 8px 0px 0px 0px;
+ }
+ 
+ dl.counts dd {
+ 	font-size: 15px;
+ 	color: #1b0443;
+ 	text-align: center;
+ 	width: 100%;
+ 	margin: 3px 0 0px 0;
+ 	font-weight: bold;
+ }

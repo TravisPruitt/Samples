@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="Xfpe">
+
+<!-- properties -->
+
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+	<property name="dir.test.src" location="src"/>
+	<property name="dir.test.classes" location="build/classes"/>
+	<property name="junit.package" value="com/disney/xband/xbrc/ui/junit"/>
+
+<!-- class paths -->
+
+    <path id="Apache Tomcat v6.0 [Apache Tomcat v6.0].libraryclasspath">
+    	<fileset dir="/usr/share/tomcat6/lib/">
+    		<include name="*.jar"/>
+    	</fileset>
+    </path>
+
+    <path id="Web App Libraries.libraryclasspath">
+        <pathelement location="WebContent/WEB-INF/lib/commons-fileupload.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/commons-io.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/commons-logging.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/freemarker.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/ognl.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/struts2-core.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/xwork-core.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/ControllerLib.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/CommonLib.jar" />
+        <pathelement location="WebContent/WEB-INF/lib/c3p0.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/log4j.jar"/>
+    	<pathelement location="WebContent/WEB-INF/lib/junit.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/jstl-api.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/jstl-impl.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/struts2-arianna-plugin.jar"/>
+    	<pathelement location="WebContent/WEB-INF/lib/XviewLib.jar" />
+    	<pathelement location="WebContent/WEB-INF/lib/jackson-core-asl.jar" />
+    	<pathelement location="WebContent/WEB-INF/lib/jackson-mapper-asl.jar" />
+    	<pathelement location="WebContent/WEB-INF/lib/OmniTicketLib.jar" />
+    	<pathelement location="WebContent/WEB-INF/lib/httpclient.jar" />
+    	<pathelement location="WebContent/WEB-INF/lib/httpclient-cache.jar" />
+    	<pathelement location="WebContent/WEB-INF/lib/httpcore.jar" />
+    	<pathelement location="WebContent/WEB-INF/lib/httpmime.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/jackson-annotations.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/jackson-core.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/jackson-databind.jar" />
+    </path>
+
+    <path id="EAR Libraries.libraryclasspath"/>
+    <path id="Xfpe.classpath">
+        <pathelement location="build/classes"/>
+        <path refid="Apache Tomcat v6.0 [Apache Tomcat v6.0].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+    </path>
+
+	<path id="test.classpath">
+		<pathelement location="WebContent/WEB-INF/lib/junit.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/mysql-connector-java-bin.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/log4j.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/ControllerLib.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/CommonLib.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/c3p0.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/jackson-annotations.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/jackson-core.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/jackson-databind.jar" />
+		<pathelement location="${dir.test.src}"/>
+		<pathelement location="${dir.test.classes}"/>
+	</path>
+
+<!-- targets -->
+
+	<!-- Establish a clean version number -->
+	<target name="realversion" if="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="${BUILD_VERSION}" />
+	</target>
+
+	<target name="dummyversion" unless="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="0.0.0.0" />
+		<tstamp>
+			<format property="BUILD_DATE" pattern="yyyy-MM-dd HH:mm:ss" />
+        </tstamp>
+	</target>
+
+	<target depends="realversion,dummyversion" name="setvers">
+		<echo message="BUILD_VERSION=${BUILD_VERSION}" />
+	</target>
+	
+	<target name="devsubstitutions">
+		<copy file="config/log4j.xml" todir="src" overwrite="true"/> 
+		<copy file="config/config.properties" todir="src" overwrite="true"/> 
+	</target>
+
+	<target name="prodsubstitutions">
+		<copy file="config/log4j.xml" todir="src" overwrite="true"/> 
+		<replace file="src/log4j.xml" replacefilterfile="config/build.prod.properties" />
+		<copy file="config/config.properties" todir="src" overwrite="true"/> 
+		<replace file="src/config.properties" replacefilterfile="config/build.prod.properties" />
+	</target>
+
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
+
+	<target depends="setvers,prodsubstitutions,war" name="buildprod"/>
+    <target depends="setvers,devsubstitutions,war" name="build"/>
+
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}" includeantruntime="false">
+            <src path="src"/>
+            <classpath refid="Xfpe.classpath"/>
+        </javac>
+    </target>
+
+	<target name="war" depends="junit-bvt">
+		<war destfile="Xfpe.war" webxml="WebContent/WEB-INF/web.xml">
+			<fileset dir="WebContent"/>
+			<lib dir="WebContent/WEB-INF/lib"/>
+			<classes dir="build/classes"/>
+			<manifest>
+				<attribute name="Built-By" value="Synapse" />
+				<attribute name="Built-Date" value="${BUILD_DATE}" />
+                <attribute name="Implementation-Title" value="${BUILD_VERSION}"/>
+				<attribute name="Implementation-Vendor" value="Synapse" />
+            </manifest>
+		</war>
+	</target>
+
+<!-- junit -->
+
+	<target depends="build-project" name="junit-bvt" description="run the bvt junit tests and fail the build when junits fail">
+		<local name="test.type"/>
+		<property name="test.type" value="bvt"/>
+		<echo message="Running ${test.type} tests"/>
+		<junit 	printsummary="withOutAndErr"
+				fork="no"
+				haltonerror="yes"
+				haltonfailure="yes">
+			<classpath refid="test.classpath"/>
+			<formatter type="brief" usefile="false"/>
+			<batchtest>
+				<fileset dir="${dir.test.classes}">
+					<include name="${junit.package}/${test.type}/**/Test*.class"/>
+					<!-- ignore inner classes defined in junit test classes-->
+					<exclude name="${junit.package}/${test.type}/**/Test*$*.class"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target depends="build-project" name="junit-performance" description="run performance tests and fail the build when junits fail">
+		<local name="test.type"/>
+		<property name="test.type" value="performance"/>	
+		<echo message="Running ${test.type} tests"/>
+		<junit 	printsummary="withOutAndErr"
+				fork="no"
+				haltonerror="yes"
+				haltonfailure="yes">
+			<classpath refid="test.classpath"/>
+			<formatter type="brief" usefile="false"/>
+			<batchtest>
+				<fileset dir="${dir.test.classes}">
+					<include name="${junit.package}/${test.type}/**/Test*.class"/>
+					<!-- ignore inner classes defined in junit test classes-->
+					<exclude name="${junit.package}/${test.type}/**/Test*$*.class"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+<!-- end of junit -->	
+
+</project>

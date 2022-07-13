@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<resourceCollection accessControlDisabled="false">
+    <resource method="PUT" path="/updatestream">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/getauditevents">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/currentconfiguration">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="POST" path="/configuration/*">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/ControllerServer/hello">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/configuration/*">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/www/*">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/scheduleoverrideclear">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/selectconfiguration/*">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/vidhello">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/avmsevent">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/calibrate">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="POST" path="/avmsevent">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="DELETE" path="/mediapackage">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="DELETE" path="/deleteauditevents">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/state">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="POST" path="/model/*">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/replacereader">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/avmshello">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/sequencesnocolors">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/perfmetricsmetadata">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/status">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/configuration/*">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/bandevents/*">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/storeconfiguration/*">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/logcomment">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/configurations/*">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/mediapackage">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/ekg">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/ControllerServer/guestpositions">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/updateconfig">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/videvent">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/heartbeat">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/gueststatus">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/guestpositions">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/properties">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="POST" path="/videvent">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/readerlocationinfo">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="DELETE" path="/updatestream">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/UI">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="DELETE" path="/gueststatus">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/model/*">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/ekgposition">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="DELETE" path="/messages">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="DELETE" path="/model/*">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/playsequence">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/sequences">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/model/*">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/refreshpackages">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/ControllerServer/stream">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="DELETE" path="/configuration/*">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/messages">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="GET" path="/properties">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/scheduleoverrideon">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/hello">
+        <audit>true</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="POST" path="/newconfiguration/*">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="PUT" path="/stream">
+        <audit>false</audit>
+        <authenticate>false</authenticate>
+        <ssl>false</ssl>
+    </resource>
+    <resource method="DELETE" path="/cache">
+        <audit>true</audit>
+        <authenticate>true</authenticate>
+        <ssl>false</ssl>
+    </resource>
+</resourceCollection>

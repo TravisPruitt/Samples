@@ -1,0 +1,408 @@
+@CHARSET "UTF-8";
+
+html { background: #14335d url(../images/menu_html_background_100px.jpg) repeat-x; }
+
+body {
+	padding-top: 0px;
+    margin-top: 0px;
+    font-size: 11px;
+    font-family: sans-serif;
+    line-height: 16px;
+    color: #333;
+    background: #e8eef4;    
+    margin-left:auto; 
+    margin-right:auto;
+    width: 100%;
+}
+h4 { font-size: 1.200em; font-weight: normal; }
+h3 { font-size: 1.200em; font-weight: normal; }
+h2 { font-size: 1.400em; font-weight: normal; line-height: 18px; }
+h1 { font-size: 1.600em; font-weight: bold; line-height: 20px; }
+.pageTitle { 
+	font-size: 1.400em; font-weight: bold; 
+	color: #205195;
+	margin: 1em 0 1.5em 0; padding: 0 0 0.5em 0;
+	border: none;
+	border-bottom: groove 1px #205195;
+}
+
+a { cursor:pointer; }
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:none;}
+
+a:link img {border:none;}
+a:visited img {border:none;}
+a:active img {border:none;}
+
+.clear { clear: both; }
+.whiteText { color: #fdfdfd; }
+.blueText { color: #205195; }
+.orangeText { color: orange; }
+.lightText { color: #D7D7D7; }
+.darkBlueText { color: #14335d; }
+.red { color: red; }
+.yellow { color: yellow; }
+.green { color: green; }
+.bold { font-weight: bold; }
+.left { float: left; clear: left; }
+.right { float: right; clear: right; }
+
+.lightGreyBorder { border: solid 1px #cccccc; }
+.lightGreyBorder-top { border-top: solid 1px #cccccc; }
+.lightGreyBorder-right { border-right: solid 1px #cccccc; }
+.lightGreyBorder-bottom { border-bottom: solid 1px #cccccc; }
+.lightGreyBorder-left { border-left: solid 1px #cccccc; }
+
+.orangeBorder { border: solid 1px orange; }
+
+.blueBorder { border: solid 1px #205195; }
+.blueBorder-top { border-top: solid 1px #205195; }
+.blueBorder-right { border-right: solid 1px #205195; }
+.blueBorder-bottom { border-bottom: solid 1px #205195; }
+.blueBorder-left { border-left: solid 1px #205195; }
+
+.lightBackground { background: #fdfdfd; }
+.lightBlueBackground { background: #f0f0f0; }
+.lightGreyBackground { background: #dddddd; }
+.darkBackground { background: #14335D; }
+.centerContent { text-align: center; }
+.centered { text-align: center; }
+.padding { padding: 1em; }
+.topPadding { padding-top: 1em; }
+.rightPadding { padding-right: 1em; }
+.bottomPadding { padding-bottom: 1em; }
+.leftPadding { padding-left: 1em; }
+.margin { margin: 1em; }
+.topMargin { margin-top: 1em; }
+.rightMargin { margin-right: 1em };
+.bottomMargin { margin-bottom: 1em };
+.leftMargin { margin-left: 1em };
+.hidden { display: none; }
+.boldText { font-weight: bold; }
+
+.clickable { cursor: pointer; }
+
+em { font-style: normal; font-weight: bold; }
+
+.container {
+	padding: 0;
+	position: relative;	
+}
+
+label { font-size: 1.100em; font-weight: normal; }
+label:AFTER {content: ":";}
+
+input.readonly { background-color: yellow; }
+
+#idMainContainer {
+	padding: 0;
+	/*min-height: 1000px;*/
+	width: 960px !important;
+	position: absolute; top: 0px;
+	left: 50%; 
+	margin: 0 0 0 -480px;
+}
+
+#idProgress { z-index: 99999; background-color: #14335D; border: 1px solid #CCCCCC; padding: 0px; display: none; padding: 1px; position: absolute; top: 45%; left: 50%; margin:0px; margin: 0 0 0 -50px; }
+
+#idHeader { width: 100%; height: 97px; position: relative; padding: 10px 0 0 0; }
+#idMenu { width: 100%; height: 32px;  }
+#idSubmenu { width: 100%; height: 20px;   text-align: center; margin: 0px 0px 5px 0px; background-color: white; border: 1px solid #CCCCCC;}
+#idBody { margin: 20px 0px 20px 0px; min-height: 300px; position: relative; }
+#clock { float: right; clear: right; position: absolute; top: 10px; right: 0px; }
+
+#idSubmenu a { float: left; padding: 0px 4px 0px 4px; color: #222222;}
+#idSubmenu a:first-child { margin-left: 10px; }
+#idSubmenu img:first-child { margin-left: 10px; }
+#idSubmenu div { float: left; }
+#idSubmenu img { float: left; margin-top: 1px;}
+#idSubmenu img:hover { border: 1px solid grey; }
+
+#clock h3 { color: white; font-family: serif; font-weight: normal; padding: 0; margin: 0; line-height: 34px; }
+
+#xbrmsStatusLinkId a { 
+	color: white; text-decoration: blink; 
+	font-style:italic; float: right; 
+	clear: both; font-size: 100%;
+	position: absolute; top: 115px; right: 0px;
+}
+
+ .round {
+ 	-moz-border-radius:5px;
+ 	-webkit-border-radius:5px;
+ }
+ .round-top-left-right {
+ 	-moz-border-radius: 5px 5px 0 0;
+ 	-webkit-border-radius: 5px 5px 0 0;
+ }
+   
+.lightBackground {
+	background: #fdfdfd;
+}
+.padding {
+	padding: 1em;
+}
+.shadow {
+	/*horisontal offset, vertical offset, blur radius, color */
+  -moz-box-shadow: -3px 3px 3px #0e2341;
+  -webkit-box-shadow: -3px 3px 3px #0e2341;
+  box-shadow: -3px 3px 3px #0e2341;
+}
+.innerGlow {
+   -moz-box-shadow:inset 0 0 3px #acacac;
+   -webkit-box-shadow:inset 0 0 3px #acacac;
+   box-shadow:inset 0 0 3px #acacac;
+   padding: 3px;	/* padding must be at least the size of blur radius */
+}
+
+.darkDivider {
+	height: 2px; width: 100%;
+	margin: 0; padding: 0;
+	background: url(../images/divider.jpg) repeat-x;
+	clear: both;
+}
+
+.clear { clear: both; }
+
+.blueText { color: #205195; }
+
+.lightBorder { border: solid 1px #cccccc; }
+ 
+ /** floated div **/
+div.floated_div { 
+	display: none; clear: both;
+	border: solid 1px #d2d2d2; -moz-border-radius: 5px;
+	background: white; 
+	/*background: url("../images/blue_semi_transp.png") repeat;*/
+	padding: 0px; z-index: 95;
+}
+div.floated_div img.exiting { float: right; clear: right; padding: 0; margin: 0; }
+div.floated_div div.inner { 
+	padding: 1em; margin: 25px 0 0 0; 
+	clear: both; position: relative; 
+	background: white; -moz-border-radius: 5px; border: solid 1px #99B3CC;
+}
+div.floated_div div.inner div.floated_div_handle {
+	position: absolute; right: 0; top: 0;
+	border-left: solid 1px #99B3CC; border-bottom: solid 1px #99B3CC; -moz-border-radius: 4px;
+	width: 20px; height: 20px;
+	background: white;
+	/* background: white url(../images/icons/cursor_hand.png) 2px 2px no-repeat;*/ 
+}
+div.floated_div div.inner div.button { padding-top: 1em; text-align: center; }
+div.floated_div div.inner ul { list-style: none; padding: 0; margin: 0; }
+div.floated_div div.inner ul > li { padding: 0.3em 0 0 0; margin: 0; }
+div.floated_div div.inner ul > li div { height: 20px; vertical-align: middle; }
+div.floated_div div.inner ul > li div img { height: 20px; margin: 0 10px 0 0; padding: 0; float: left; }
+div.floated_div div.menu { width: 99%; margin: 0px; clear: both; position: absolute; left:0px; top: 0px; }
+/** end of floated div **/
+
+/** drag and drop stuff **/
+.dragover { border: 1px solid red; }
+/** end drag and drop **/
+
+ 
+/** form stuff **/
+.horizontalFormFields { position: relative; }
+.horizontalFormFields dl { float: left; }
+.horizontalFormFields dl dt { margin: 0 0 0 5px; font-weight: bold; }
+.horizontalFormFields dl dd { margin: 0 0 0 5px; }
+ 
+/* dark background table */
+table.dark {
+	padding: 0; margin: 0;
+	width: 100%;
+	background: #14335d;
+	padding: 3px;
+	color: #d7d7d7;
+	table-layout: fixed; /* must be here if the work-wrap: break-word; is to work on td in IE */
+}
+table.dark tr td {
+	padding: 1em; margin: 0;
+	border-right: dotted 1px #606060;
+	word-wrap: break-word; /* for this to work in IE, table-layout: fixed; must be defined on table element */
+}
+table.dark td.lastRow { 
+	border-right: none;
+}
+table.dark tr td span {
+	font-weight: bold;
+	color: white;
+}
+table.dark tr:nth-child(odd) { 
+	background: #1a4279; 
+}
+table.dark tr:nth-child(1) { 
+	border-top: solid 1px #1d4a87;
+}
+table.dark tr th { 
+	background-color: #14335d;
+	border-bottom: solid 1px #0e2341;
+}
+/* end of dark background table */
+
+/* light background table */
+table.light {
+	padding: 0;
+	background: #fdfdfd;
+	border: solid 1px #cccccc;
+	width: 100%;
+	table-layout: fixed; /* must be here if the work-wrap: break-word; is to work on td in IE */
+}
+table.light caption { 
+	text-align: left; 
+}
+table.light tbody tr td {
+	padding: 0.5em 0 0.5em 0; margin: 0;
+	border-right: dotted 1px #cccccc;
+	text-align: center;
+	word-wrap: break-word; /* for this to work in IE, table-layout: fixed; must be defined on table element */
+}
+table.light tbody tr.captionRow td {
+	border-top: dotted 1px #cccccc;
+	border-bottom: dotted 1px #cccccc;
+}
+table.light tbody td:last-child { 
+	border-right: none;
+}
+table.light tr td span {
+	font-weight: bold;
+}
+table.light tbody tr:nth-child(odd) { 
+	background: #f0f0f0; 
+}
+table.light tr th { 
+	background-color: #fdfdfd;
+	text-align: center;
+}
+table.light tfoot tr td { 
+	padding-top: 5px;
+}
+/* end of dark background table */
+
+/* light background table with minimal spacing for maximum data */
+table.narrow {
+	padding: 2px;
+}
+table.narrow tbody tr td {
+	padding: 3px; margin: 0;
+}
+/* end of dark background table */
+
+/** error messages **/
+.error {
+	padding: 2em;
+	border: solid 1px red;
+	color: red;
+}
+.message {
+	padding: 2em;
+	border: solid 1px orange;
+	color: orange;
+}
+.fieldError { color: red; display: none; }
+/** end of error messages **/
+
+dl.horisontalLegend { position: relative; margin: 0; padding: 2em 1em 1em 0; }
+dl.horisontalLegend dt { margin: 0; padding: 0; float: left; padding: 0 1em 0 0; }
+dl.horisontalLegend dd { margin: 0; padding: 0; float: left; padding: 0 1em 0 0; }
+
+/* left justified definition list */
+dl.leftJustified {
+	position: relative;
+	margin: 0; padding: 0;
+}
+dl.leftJustified dt {
+	margin: 0; padding: 0;
+	font-weight: bold;
+	width: 100%;
+}
+dl.leftJustified dd {
+	margin: 0 0 1em 0; padding: 0;
+}
+dl.leftJustified dt label {
+	margin: 0; padding: 0 18px 0 0;
+}
+dl.leftJustified dd input {
+	margin: 0; padding: 0;
+	width: 100%;
+}
+/* end of left justified definition list */
+
+dl.firstColumn {
+	float: left; clear: left;
+	width: 48%;
+	margin: 0 2% 0 0;
+}
+dl.secondColumn {
+	float: right; clear: right;
+	width: 50%;
+}
+
+/* jquery dialog title */
+.ui-dialog-title {
+	color: white;
+}
+
+/* toggle button between grid and list view */
+div.view-toggle {
+	position: relative;
+	padding: 0; margin: 0;
+	height: 20px; 
+}
+div.inner-view-toggle {
+	padding: 0; margin: 0;
+	line-height: 20px;
+}
+div#gridView, div#listView {
+	width: 40px;
+	padding: 0 5px; margin: 0;
+	cursor: pointer;
+}
+div#gridView {
+	float: left; clear: left;
+}
+div#listView {
+	float: right; clear: right;
+}
+div.view-toggle div.active {
+	background-color: #d7d7d7;
+	-moz-box-shadow: inset 0 1px 2px #acacac;
+   	-webkit-box-shadow: inset 0 1px 2px #acacac;
+   	box-shadow: inset 0 1px 2px #acacac;
+   	padding: 2px;	/* padding must be at least the size of blur radius */
+}
+
+.unreported-readers-choice {
+        margin-top: 10;
+        margin-bottom: 20px;
+        font-size: 12px;
+}
+
+.radio-section {
+        margin-top: 20px;
+        margin-bottom: 30px;
+}
+
+#idXbrcVip {
+	font-weight: bold;
+}
+
+.closePanelImg {
+	position: absolute; 
+	top: 1px; 
+	right: 1px; 
+	text-align: right;
+}
+
+#errorPanelDiv {
+	position: relative;
+}
+
+#messagePanelDiv {
+	position: relative;
+}
+
+/* end of view toggle button */

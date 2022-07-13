@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+- <venue time="2012-07-11T22:37:33.301" name="Buzz Lightyear" facilityId="80010114">
+  <bootTime>2012-07-11T21:43:22.809</bootTime>
+  <databaseVersion>1.0.0.0</databaseVersion>
+  <JMSBroker>10.110.1.2:2506</JMSBroker>
+  <lastMessageSeq>166231</lastMessageSeq>
+  <lastMessageToJMS>166231</lastMessageToJMS>
+  <lastMessageToUpdateStream>-1</lastMessageToUpdateStream>
+  <messageCount>6</messageCount>
+  <model>com.disney.xband.xbrc.attractionmodel.CEP</model>
+  - <perfEKGWriteMsec version="1.0">
+    <max>0.0</max>
+    <mean>0.0</mean>
+    <min>0.0</min>
+  </perfEKGWriteMsec>
+  - <perfEventAgeMsec version="1.0">
+    <max>198.0</max>
+    <mean>95.8824</mean>
+    <min>4.0</min>
+  </perfEventAgeMsec>
+  - <perfEvents version="1.0">
+    <max>4.0</max>
+    <mean>1.4706</mean>
+    <min>1.0</min>
+  </perfEvents>
+  - <perfExternalMsec version="1.0">
+    <max>0.0</max>
+    <mean>0.0</mean>
+    <min>0.0</min>
+  </perfExternalMsec>
+  - <perfIDMSQueryMsec version="1.0">
+    <max>0.0</max>
+    <mean>0.0</mean>
+    <min>0.0</min>
+  </perfIDMSQueryMsec>
+  - <perfMainLoopUtilization version="1.0">
+    <max>159.5</max>
+    <mean>0.2052</mean>
+    <min>0.0</min>
+  </perfMainLoopUtilization>
+  <perfMetricsPeriod>300</perfMetricsPeriod>
+  - <perfModel1 version="1.0">
+    <max>0.0</max>
+    <mean>0.0</mean>
+    <min>0.0</min>
+  </perfModel1>
+  - <perfModel2 version="1.0">
+    <max>0.0</max>
+    <mean>0.0</mean>
+    <min>0.0</min>
+  </perfModel2>
+  - <perfModel3 version="1.0">
+    <max>0.0</max>
+    <mean>0.0</mean>
+    <min>0.0</min>
+  </perfModel3>
+  - <perfModelingMsec version="1.0">
+    <max>4.0</max>
+    <mean>1.0343</mean>
+    <min>0.0</min>
+  </perfModelingMsec>
+  - <perfPostModelingMsec version="1.0">
+    <max>26.0</max>
+    <mean>0.0318</mean>
+    <min>0.0</min>
+  </perfPostModelingMsec>
+  - <perfPreModelingMsec version="1.0">
+    <max>1.0</max>
+    <mean>0.0068</mean>
+    <min>0.0</min>
+  </perfPreModelingMsec>
+  - <perfSaveGSTMsec version="1.1">
+    <max>1.0</max>
+    <mean>0.0135</mean>
+    <min>0.0</min>
+  </perfSaveGSTMsec>
+  - <perfSingulationMsec version="1.0">
+    <max>0.0</max>
+    <mean>0.0</mean>
+    <min>0.0</min>
+  </perfSingulationMsec>
+  - <perfUpstreamMsec version="1.0">
+    <max>2.0</max>
+    <mean>2.0</mean>
+    <min>2.0</min>
+  </perfUpstreamMsec>
+  - <perfWriteToReaderMsec version="1.0">
+    <max>0.0</max>
+    <mean>0.0</mean>
+    <min>0.0</min>
+  </perfWriteToReaderMsec>
+  <readerLocationsCount>9</readerLocationsCount>
+  <readerTestMode>false</readerTestMode>
+  <startPerfTime>2012-07-11T22:33:33.859</startPerfTime>
+  <status>Red</status>
+  <statusMessage>Reader phil-merge-r not communicating</statusMessage>
+  <totalGuestsSinceStart>0</totalGuestsSinceStart>
+  <totalxPassGuestsSinceStart>0</totalxPassGuestsSinceStart>
+  <updateStreamURL />
+  <version>1.3.0.2110</version>
+</venue>

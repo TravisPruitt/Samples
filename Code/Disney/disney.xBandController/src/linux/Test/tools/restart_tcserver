@@ -1,0 +1,13 @@
+HOST=$1
+
+#clean up tcserver instance if any
+echo "killing tcserver"
+ssh root@$HOST 'kill $(ps aux | grep "tcserver" | grep -v grep | awk "{print \$2}")'
+
+#clean up partial git directory
+echo "chown tcserver"
+ssh root@$HOST 'chown -Rf tcapp.tcapp /opt/apps/tcserverApp/tcServer-6.0/ssp-tcserver1/'
+
+#start as tcapp user
+echo "start tcserver as tcapp"
+ssh root@$HOST '/etc/init.d/bootssptcserver1 start'

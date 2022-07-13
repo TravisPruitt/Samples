@@ -1,0 +1,10 @@
+# Synapse/Disney XBRC repository
+# Yum configuration file. To be placed in /etc/yum.repos.d directory on Centos/Redhat XBRC system.
+
+[xbrc]
+name=XBRC repository
+baseurl=http://xbrcyumserver/xbrc-yum/i386
+failovermethod=priority
+enabled=1
+gpgcheck=0
+

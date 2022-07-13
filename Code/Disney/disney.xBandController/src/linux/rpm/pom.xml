@@ -1,0 +1,174 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>rpms</artifactId>
+	<packaging>pom</packaging>
+	<parent>
+		<groupId>com.disney.xband</groupId>
+		<artifactId>xBandParent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<dependencies>
+        <dependency>
+            <groupId>ant-contrib</groupId>
+            <artifactId>ant-contrib</artifactId>
+            <version>1.0b3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant-jsch</artifactId>
+            <version>1.7.1</version>
+        </dependency>
+    </dependencies>
+ 	<build>
+        <plugins>
+            <plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+				  <execution>
+					<phase>deploy</phase>
+					<id>deploy</id>
+					<configuration>
+						<target>
+							<exec executable="cat" outputproperty="CODE_BUILD_VERSION">
+								<arg value="${xbandhome-1.7}/src/linux/version.txt"/>
+							</exec>
+							<exec 	executable="${xbandhome-1.7}/src/linux/buildnumber"
+									outputproperty="XBAND_BUILD_RELEASE"/>
+							<property name="XBAND_BUILD_RELEASE" value="${XBAND_BUILD_RELEASE}"/>
+							<property name="XBAND_BUILD_VERSION" 
+									  value="${CODE_BUILD_VERSION}-${XBAND_BUILD_RELEASE}"/>
+							<property name="XBAND_BUILD_SHORT_VERSION" value="${CODE_BUILD_VERSION}"/>
+							<echo message="Code version:      ${CODE_BUILD_VERSION}" />
+							<echo message="Full version:      ${XBAND_BUILD_VERSION}" />
+							<echo message="Short version:     ${XBAND_BUILD_SHORT_VERSION}" />
+							<tstamp>
+								<format property="BUILD_DATE" pattern="yyyy-MM-dd HH:mm:ss" />
+							</tstamp>
+
+							<exec executable="mvn" failonerror="true">
+								<arg value="deploy"/>
+								<arg value="-fpomXbrcBase.xml"/>
+								<arg value="-Dmodel=attraction"/>
+								<arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+								<arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+								<arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+
+							</exec>
+							<exec executable="mvn" failonerror="true">
+								<arg value="deploy"/>
+								<arg value="-fpomXbrcBase.xml"/>
+								<arg value="-Dmodel=parkentry"/>
+								<arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+								<arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+								<arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+							</exec>
+							<exec executable="mvn" failonerror="true">
+								<arg value="deploy"/>
+								<arg value="-fpomXbrcBase.xml"/>
+								<arg value="-Dmodel=space"/>
+								<arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+								<arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+								<arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+							</exec>
+							<exec executable="mvn" failonerror="true">
+								<arg value="deploy"/>
+								<arg value="-fpomXbrcTomcatBase.xml"/>
+								<arg value="-Dmodel=attraction"/>
+								<arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+								<arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+								<arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+
+							</exec>
+							<exec executable="mvn" failonerror="true">
+								<arg value="deploy"/>
+								<arg value="-fpomXbrcTomcatBase.xml"/>
+								<arg value="-Dmodel=parkentry"/>
+								<arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+								<arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+								<arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+							</exec>
+							<exec executable="mvn" failonerror="true">
+								<arg value="deploy"/>
+								<arg value="-fpomXbrcTomcatBase.xml"/>
+								<arg value="-Dmodel=space"/>
+								<arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+								<arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+								<arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+							</exec>
+							<exec executable="mvn" failonerror="true">
+								<arg value="deploy"/>
+								<arg value="-fpomIdmsBase.xml"/>
+								<arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+								<arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+								<arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+							</exec>
+							<exec executable="mvn" failonerror="true">
+								<arg value="deploy"/>
+								<arg value="-fpomXbrmsBase.xml"/>
+								<arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+								<arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+								<arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+							</exec>
+							<exec executable="mvn" failonerror="true">
+								<arg value="deploy"/>
+								<arg value="-fpomXbrmsUiBase.xml"/>
+								<arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+								<arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+								<arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+							</exec>
+							<exec executable="mvn" failonerror="true">
+								<arg value="deploy"/>
+								<arg value="-fpomXiBase.xml"/>
+								<arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+								<arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+								<arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+							</exec>
+							<exec executable="mvn" failonerror="true">
+								<arg value="deploy"/>
+								<arg value="-fpomXfpeSimulatorBase.xml"/>
+								<arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+								<arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+								<arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+							</exec>
+							<exec executable="mvn" failonerror="true">
+								<arg value="deploy"/>
+								<arg value="-fpomJmsListenerBase.xml"/>
+								<arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+								<arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+								<arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+							</exec>
+							<exec executable="mvn" failonerror="true">
+								<arg value="deploy"/>
+								<arg value="-fpomXbrcSimulatorBase.xml"/>
+								<arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+								<arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+								<arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+							</exec>
+                                                        <exec executable="mvn" failonerror="true">
+                                                                <arg value="deploy"/>
+                                                                <arg value="-fpomXbmsSimulatorBase.xml"/>
+                                                                <arg value="-DXBAND_BUILD_VERSION=${XBAND_BUILD_VERSION}" />
+                                                                <arg value="-DXBAND_BUILD_SHORT_VERSION=${XBAND_BUILD_SHORT_VERSION}" />
+                                                                <arg value="-DXBAND_BUILD_RELEASE=${XBAND_BUILD_RELEASE}" />
+                                                        </exec>
+						</target>
+					</configuration>
+					<goals>
+						<goal>run</goal>
+					</goals>
+				  </execution>
+				</executions>
+			</plugin>
+        </plugins>
+    </build>
+        <properties>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        </properties>
+</project>

@@ -1,0 +1,440 @@
+@CHARSET "UTF-8";
+
+html { background: #14335d url(../images/menu_html_background_100px.jpg) repeat-x; }
+
+body {
+	padding-top: 0px;
+    margin-top: 0px;
+    font-size: 11px;
+    font-family: sans-serif;
+    line-height: 16px;
+    color: #333;
+    background: #e8eef4;    
+    margin-left:auto; 
+    margin-right:auto;
+    width: 100%;
+}
+
+h4 { font-size: 1.200em; font-weight: normal; }
+h3 { font-size: 1.200em; font-weight: normal; }
+h2 { font-size: 1.400em; font-weight: normal; line-height: 18px; }
+h1 { font-size: 1.600em; font-weight: bold; line-height: 20px; }
+.pageTitle { 
+	font-size: 1.400em; font-weight: bold; 
+	color: #205195;
+	margin: 1em 0 1.5em 0; padding: 0 0 0.5em 0;
+	border: none;
+	border-bottom: groove 1px #205195;
+}
+
+.container {
+	padding: 0;
+	position: relative;	
+}
+
+label { font-size: 1.100em; font-weight: normal; }
+label:AFTER {content: ":";}
+em { font-style: normal; font-weight: bold; }
+
+.checkboxLabel:AFTER{content:""}
+
+.group {
+}
+
+fieldset {
+	border: solid 1px #205195;
+	padding: 1em;
+	-moz-border-radius:5px;
+ 	-webkit-border-radius:5px;
+ 	margin: 1em 0 0 0;
+}
+fieldset legend {
+	font-size: 1.2em;
+	color: #205195;
+}
+
+#idMainContainer {
+	padding: 0;
+	/*min-height: 1000px;*/
+	width: 960px !important;
+	position: absolute; top: 0px;
+	left: 50%; 
+	margin: 0 0 0 -480px;
+}
+
+.dojoDiv {
+	padding: 0px;
+	margin: 0px;
+}
+
+#idProgress { z-index: 99999; background-color: #14335D; border: 1px solid #CCCCCC; padding: 0px; display: none; padding: 1px; position: absolute; top: 45%; left: 50%; margin:0px; margin: 0 0 0 -50px; }
+
+#idHeader { width: 100%; height: 97px; position: relative; padding: 10px 0 0 0; }
+#idMenu { width: 100%; height: 32px; position: relative;}
+#idSubmenu { width: 100%; height: 20px;   text-align: center; margin: 0px 0px 5px 0px; background-color: white; border: 1px solid #CCCCCC;}
+#idBody { width: 100%; margin: 20px 0px 20px 0px; min-height: 300px; }
+#idFooter { width: 100%; height: 40px; text-align: center; }
+#clock { float: right; clear: right; position: absolute; top: 9px; right: 0px; }
+
+#idXbrmsLink a { color: white; text-decoration:underline; }
+
+#idSubmenu a { float: left; padding: 0px 4px 0px 4px; color: #222222;}
+#idSubmenu a:first-child { margin-left: 10px; }
+#idSubmenu img:first-child { margin-left: 10px; }
+#idSubmenu div { float: left; }
+#idSubmenu img { float: left; margin-top: 1px;}
+#idSubmenu img:hover { border: 1px solid grey; }
+
+#clock h3 { color: white; font-size: 12px; font-weight: normal; padding: 0; margin: 0;}
+
+.round {
+ 	-moz-border-radius:5px;
+ 	-webkit-border-radius:5px;
+}
+.shadow {
+	/*horisontal offset, vertical offset, blur radius, color */
+  -moz-box-shadow: -3px 3px 3px #0e2341;
+  -webkit-box-shadow: -3px 3px 3px #0e2341;
+  box-shadow: -3px 3px 3px #0e2341;
+}
+.innerGlow {
+   -moz-box-shadow:inset 0 0 3px #acacac;
+   -webkit-box-shadow:inset 0 0 3px #acacac;
+   box-shadow:inset 0 0 3px #acacac;
+   padding: 3px;	/* padding must be at least the size of blur radius */
+}
+.darkDivider {
+	height: 2px; width: 100%;
+	margin: 0; padding: 0;
+	background: url(../images/divider.jpg) repeat-x;
+	clear: both;
+}
+.clear { clear: both; }
+.greyText { color: #262626; }
+.blueText { color: #205195; }
+.orangeText { color: orange; }
+.lightText { color: #D7D7D7; }
+.left { float: left; clear: left; }
+.right { float: right; clear: right; }
+.lightGreyBorder { border: solid 1px #cccccc; }
+.orangeBorder { border: solid 1px orange; }
+.blueBorder { border: solid 1px #205195; }
+.lightBackground { background: #fdfdfd; }
+.lightBlueBackground { background: #f0f0f0; }
+.centerContent { text-align: center; }
+.centered { text-align: center; }
+.padding { padding: 1em; }
+.topPadding { padding-top: 1em; }
+.rightPadding { padding-right: 1em; }
+.bottomPadding { padding-bottom: 1em; }
+.leftPadding { padding-left: 1em; }
+.paddingSmall { padding: 0.5em; }
+.margin { margin: 1em; }
+.topMargin { margin-top: 1em; }
+.rightMargin { margin-right: 1em; }
+.bottomMargin { margin-bottom: 1em; }
+.leftMargin { margin-left: 1em; }
+.hidden { display: none; }
+.break-word { word-wrap: break-word; }
+ 
+ /** floated div **/
+div.floated_div { 
+	display: none; clear: both;
+	border: solid 1px #d2d2d2; -moz-border-radius: 5px;
+	background: white; 
+	/*background: url("../images/blue_semi_transp.png") repeat;*/
+	padding: 0px; z-index: 95;
+}
+div.floated_div img.exiting { float: right; clear: right; padding: 0; margin: 0; }
+div.floated_div div.inner { 
+	padding: 1em; margin: 25px 0 0 0; 
+	clear: both; position: relative; 
+	background: white; -moz-border-radius: 5px; border: solid 1px #99B3CC;
+}
+div.floated_div div.inner div.floated_div_handle {
+	position: absolute; right: 0; top: 0;
+	border-left: solid 1px #99B3CC; border-bottom: solid 1px #99B3CC; -moz-border-radius: 4px;
+	width: 20px; height: 20px;
+	background: white;
+	/* background: white url(../images/icons/cursor_hand.png) 2px 2px no-repeat;*/ 
+}
+div.floated_div div.inner div.button { padding-top: 1em; text-align: center; }
+div.floated_div div.inner ul { list-style: none; padding: 0; margin: 0; }
+div.floated_div div.inner ul > li { padding: 0.3em 0 0 0; margin: 0; }
+div.floated_div div.inner ul > li div { height: 20px; vertical-align: middle; }
+div.floated_div div.inner ul > li div img { height: 20px; margin: 0 10px 0 0; padding: 0; float: left; }
+div.floated_div div.menu { width: 99%; margin: 0px; clear: both; position: absolute; left:0px; top: 0px; }
+/** end of floated div **/
+
+.contextmenu ul { list-style: none; padding: 0; margin: 0; }
+.contextmenu ul > li { padding: 0.3em 0 0 0; margin: 0; }
+.contextmenu ul > li div { height: 20px; vertical-align: middle; }
+.contextmenu ul > li div img { margin: 0 10px 0 0; padding: 0; float: left; }
+
+/** drag and drop stuff **/
+.dragover { border: 1px solid red; }
+/** end drag and drop **/
+
+/** tables **/
+.hor-zebra {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	margin: 0px;
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid #CCCCCC;
+}
+.hor-zebra th {
+	font-size: 110%;
+	font-weight: normal;
+	padding: 5px 5px;
+	color: #FFFFFF;
+	background-color: #388893;
+}
+.hor-zebra td {
+	padding: 5px;
+	color: #446;
+}
+.hor-zebra tbody tr:nth-child(odd) {
+	background: #e6f3f5;
+}
+
+.hor-zebra tfoot tr {
+	font-size: 110%;
+	border-top: 1px solid #CCCCCC;
+}
+
+.hor-zebra .zoomin {
+	float: right;
+}
+
+/** end tables **/
+ 
+ /********** showQueue.jsp ***************/
+ 
+ #queueAjaxContainer {
+ 	position: relative;
+ }
+ 
+ #queueAjaxContainer #guestGraph {
+ 	position: absolute;
+ 	top: 0px;
+ 	left: 0px;
+ 	width: 960px;
+ 	height: 300px;
+ 	overflow: hidden;
+ }
+ 
+ .legend {
+ 	border: 1px solid #CCCCCC;
+ }
+ .legend img {
+ 	float: left;
+ }
+ .legend h2 {
+ 	margin-top: 6px;
+ 	margin-bottom: 10px;
+ }
+ 
+ #queueAjaxContainer #attractionPlan {
+ position: absolute;
+ 	top: 0px;
+ 	left: 0px;
+ 	width: 960px;
+ 	height: 300px; 	
+ }
+ 
+ .guest {
+ 	position: absolute;
+ }
+ 
+ .reader {
+ 	position: absolute;
+ }
+ 
+ #idRide {
+ 	position: absolute;
+ 	top: 15px;
+ 	left: 380px;
+ }
+ 
+ #queueAjaxContainer .legend {
+ 	position: absolute;
+ 	padding: 0px 0px 0px 10px;
+ 	width: 120px;
+ 	top: 8px;
+ 	left: 820px;
+ }
+ 
+ #queueAjaxContainer h1 {
+ 	position: absolute;
+ 	top: 0px;
+ 	left: 10px;
+ }
+ 
+ /************ end showQueue.jsp *************/
+ 
+/* dark background table */
+table.dark {
+	padding: 0; margin: 0;
+	width: 100%;
+	background: #14335d;
+	padding: 3px;
+	color: #d7d7d7;
+}
+table.dark tr td {
+	padding: 5px; margin: 0;
+	border-right: dotted 1px #606060;	
+}
+table.dark td.lastRow { 
+	border-right: none;
+}
+table.dark tr td span {
+	font-weight: bold;
+	color: white;
+}
+table.dark tr:nth-child(odd) { 
+	background: #1a4279; 
+}
+table.dark tr:nth-child(1) { 
+	border-top: solid 1px #1d4a87;
+}
+table.dark tr th { 
+	background-color: #14335d;
+	border-bottom: solid 1px #0e2341;
+	text-align: center;
+}
+/* end of dark background table */
+
+/* light background table */
+table.light {
+	padding: 0;
+	width: 100%;
+	background: #fdfdfd;
+	border: solid 1px #cccccc;
+}
+table.light tbody tr td {
+	padding: 10px; margin: 0;
+	border-right: dotted 1px #cccccc;
+}
+table.light tbody td:last-child { 
+	border-right: none;
+}
+table.light tr td span {
+	font-weight: bold;
+}
+table.light tbody tr:nth-child(odd) { 
+	background: #f0f0f0; 
+}
+table.light tr th { 
+	background-color: #fdfdfd;
+	text-align: center;
+}
+table.light tfoot tr td { 
+	padding-top: 5px;
+}
+/* end of dark background table */
+
+/* light background table with minimal spacing for maximum data */
+table.narrow {
+	padding: 2px;
+}
+table.narrow tbody tr td {
+	padding: 3px; margin: 0;
+}
+/* end of dark background table */
+
+/* left justified definition list */
+dl.leftJustified {
+	position: relative;
+	margin: 0; padding: 0;
+}
+dl.leftJustified dt {
+	margin: 0; padding: 0;
+	font-weight: bold;
+	width: 100%;
+}
+dl.leftJustified dd {
+	margin: 0 0 1em 0; padding: 0;
+}
+dl.leftJustified dt label {
+	margin: 0; padding: 0;
+	width: 100%;
+}
+dl.leftJustified dd input {
+	margin: 0; padding: 0;
+	width: 100%;
+}
+dl.leftJustified dd input[type="checkbox"] {
+	margin: 0; padding: 0;
+	width: auto;
+}
+/* end of left justified definition list */
+
+dl.firstColumn {
+	float: left; clear: left;
+	width: 48%;
+	margin: 0 1% 0 0;
+}
+dl.secondColumn {
+	float: right; clear: right;
+	margin: 0;
+	width: 50%;
+}
+dl.firstColumnOfThree {
+	float: left; clear: left;
+	width: 31%;
+	margin: 0 2% 0 0;
+}
+dl.secondColumnOfThree {
+	float: left;
+	width: 31%;
+	margin: 0 2% 0 0;
+}
+dl.thirdColumnOfThree {
+	float: left; clear: right;
+	width: 31%;
+}
+
+dl dt {
+	margin: 0; padding: 0;
+	font-weight: bold;
+}
+dl dd {
+	margin: 0 0 1em 0; padding: 0;
+}
+dl dt label {
+	margin: 0; padding: 0;
+}
+dl dd input {
+	margin: 0; padding: 0;
+	width: 100%;
+}
+dl dd textarea {
+	margin: 0; padding: 0;
+	width: 100%;
+	resize: none;
+}
+
+.error {
+	padding: 2em;
+	border: solid 1px red;
+	color: red;
+}
+
+/** error messages **/
+.errorMessage { color: orange; } /*generated by Struts, can not style with global classes*/
+.fieldError { color: orange; display: none; } /*generated by Struts, can not style with global classes*/
+.fieldMessage { color: #205195; display: none; } /*generated by Struts, can not style with global classes*/
+/** end of error messages **/
+
+/** jquery ui specific **/
+.ui-dialog-title {color: #fdfdfd;}
+/** end of jquery ui specific **/
+
+.cursorPointer { cursor: pointer; }
+
+fieldset legend { font-weight: bold; }
+
+#helpLink { position: absolute; right: 15px; top: 170px; cursor: pointer; }
+.helpLink { cursor: pointer; }
+

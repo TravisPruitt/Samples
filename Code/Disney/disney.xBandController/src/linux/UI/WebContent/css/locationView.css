@@ -1,0 +1,28 @@
+#idBody {
+	position: relative;	
+}
+
+h2.pageTitle { color: #fdfdfd; }
+
+#locationViewContainer .readerDiv {	
+	width: 450px;
+	margin: 10px 0px 10px 10px;	
+	background: #fdfdfd;	
+}
+
+#locationViewContainer .readerDiv .innerGlow {
+	padding: 5px;
+}
+
+#locationViewContainer .readerDiv h3 {
+	margin-left: 10px;
+}
+
+#locationViewContainer .readerDiv table td, #locationViewContainer .readerDiv table th {
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+#locationViewContainer .readers {
+	float: left;
+}

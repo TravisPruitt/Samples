@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<venue name="iwona" time="2013-05-01T22:22:16.298">
+  <configuration name="current" type="full">
+    <description/>
+    <properties>
+      <property class="AttractionModelConfig" name="abandonmenttimeout">3600</property>
+      <property class="AttractionModelConfig" name="bluelightduration">0</property>
+      <property class="AttractionModelConfig" name="bluelightevent">entry_exception</property>
+      <property class="AttractionModelConfig" name="castmemberdetectdelay_msec">0</property>
+      <property class="AttractionModelConfig" name="chirprate_msec">1000</property>
+      <property class="AttractionModelConfig" name="deletedProperty"/>
+    </properties>
+    <readerlocationinfo>
+      <readerlocation>
+        <section/>
+        <name>Load2</name>
+        <id>8</id>
+        <type>4</type>
+        <x>76.0</x>
+        <y>76.0</y>
+        <successsequence/>
+        <successtimeout>0</successtimeout>
+        <failuresequence/>
+        <failuretimeout>0</failuretimeout>
+        <errorsequence/>
+        <errortimeout>0</errortimeout>
+        <idlesequence/>
+        <tapsequence/>
+        <taptimeout>0</taptimeout>
+        <transmitCommands><transmitCommand><locationId>8</locationId><command>FAST_PING</command><enableThreshold>true</enableThreshold><interval>1000</interval><mode>REPLY</mode><threshold>-127</threshold><timeout>30000</timeout></transmitCommand><transmitCommand><locationId>8</locationId><command>FAST_PING</command><enableThreshold>false</enableThreshold><interval>1000</interval><mode>REPLY</mode><recipients><recipientLocationId>1</recipientLocationId><recipientLocationId>3</recipientLocationId></recipients><threshold>-90</threshold><timeout>30000</timeout></transmitCommand><transmitCommand><locationId>8</locationId><command>FAST_PING</command><enableThreshold>true</enableThreshold><interval>1000</interval><mode>REPLY</mode><recipients><recipientLocationId>7</recipientLocationId><recipientLocationId>8</recipientLocationId></recipients><threshold>-127</threshold><timeout>30000</timeout></transmitCommand></transmitCommands>
+        <readers>
+			<reader><name>vault-xTPra</name><id>1</id><type>xTPra</type><macaddress>02:0D:20:01:01:3B</macaddress><ipaddress>10.110.1.28</ipaddress><port>8080</port><gain>1.1</gain><threshold>-90</threshold><lane>0</lane><deviceid>0</deviceid><x>0</x><y>0</y><timelasthello>1367876819819</timelasthello><version>2.5.7-3097</version><minxbrcversion>0.0.0.0</minxbrcversion><istransmitter>false</istransmitter><enabled>true</enabled><disabledReason/><transmitPayload/><bioDeviceType>3</bioDeviceType></reader><reader><name>R2D2</name><id>3</id><type>Long Range</type><macaddress>00:91:FA:00:00:95</macaddress><ipaddress>10.1.201.230</ipaddress><port>8080</port><gain>1.1</gain><threshold>-90</threshold><lane>0</lane><deviceid>0</deviceid><x>0</x><y>0</y><timelasthello>1367876806241</timelasthello><version>2.4.0-3135</version><minxbrcversion>1.0.0.0</minxbrcversion><istransmitter>false</istransmitter><enabled>true</enabled><disabledReason/><transmitPayload/><bioDeviceType>3</bioDeviceType><antennas type="array"><value>true</value><value>true</value><value>true</value><value>true</value><value>true</value><value>true</value><value>true</value><value>true</value></antennas></reader>
+       	</readers>
+      </readerlocation>
+      <readerlocation>
+        <section/>
+        <name>DeletedLocation</name>
+        <id>7</id>
+        <type>4</type>
+        <x>76.0</x>
+        <y>76.0</y>
+        <successsequence/>
+        <successtimeout>0</successtimeout>
+        <failuresequence/>
+        <failuretimeout>0</failuretimeout>
+        <errorsequence/>
+        <errortimeout>0</errortimeout>
+        <idlesequence/>
+        <tapsequence/>
+        <taptimeout>0</taptimeout>
+        <readers/>
+      </readerlocation>
+    </readerlocationinfo>
+    <griditems>
+      <griditem id="1" type="Gate" xgrid="1" ygrid="5">
+        <state>HASENTERED</state>
+        <label>Entry</label>
+        <description>Entry for non-XPass guests</description>
+        <image/>
+        <sequence>0</sequence>
+        <gueststoshow>2</gueststoshow>
+        <locationid>0</locationid>
+      </griditem>
+      <griditem id="2" type="HPath" xgrid="2" ygrid="5">
+        <state>HASENTERED</state>
+        <label/>
+        <description>Guests have entered the attraction</description>
+        <image/>
+        <sequence>1</sequence>
+        <gueststoshow>2</gueststoshow>
+        <locationid>0</locationid>
+      </griditem>
+    </griditems>
+    <images/>
+    <model>
+      <attractionModelConfig>
+		<vaLocationConfig><carsPerTrain>0</carsPerTrain><laserBreaksAfterVehicle>0</laserBreaksAfterVehicle><laserBreaksBeforeVehicle>0</laserBreaksBeforeVehicle><locationId>1</locationId><maxAnalyzeGuestEvents>10000</maxAnalyzeGuestEvents><maxAnalyzeGuestEventsPerVehicle>2</maxAnalyzeGuestEventsPerVehicle><minReadsToAssociate>2</minReadsToAssociate><onrideTimeoutSec>2</onrideTimeoutSec><requireVehicleLaserEvent>true</requireVehicleLaserEvent><trainTimeoutSec>20</trainTimeoutSec><useVehicleEventTime>false</useVehicleEventTime><vaAlgorithm>closestpeakfallback</vaAlgorithm><vehicleHoldTimeMs>1000</vehicleHoldTimeMs><vehicleTimeOffsetMs>0</vehicleTimeOffsetMs></vaLocationConfig><vaLocationConfig><carsPerTrain>0</carsPerTrain><laserBreaksAfterVehicle>0</laserBreaksAfterVehicle><laserBreaksBeforeVehicle>0</laserBreaksBeforeVehicle><locationId>7</locationId><maxAnalyzeGuestEvents>10000</maxAnalyzeGuestEvents><maxAnalyzeGuestEventsPerVehicle>2</maxAnalyzeGuestEventsPerVehicle><minReadsToAssociate>2</minReadsToAssociate><onrideTimeoutSec>2</onrideTimeoutSec><requireVehicleLaserEvent>true</requireVehicleLaserEvent><trainTimeoutSec>20</trainTimeoutSec><useVehicleEventTime>false</useVehicleEventTime><vaAlgorithm>closestpeakfallback</vaAlgorithm><vehicleHoldTimeMs>1000</vehicleHoldTimeMs><vehicleTimeOffsetMs>0</vehicleTimeOffsetMs></vaLocationConfig>
+	  </attractionModelConfig>
+    </model>
+  </configuration>
+</venue>

@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# Ensures root is mounted read-only after first boot
+# configuration when running on NAND
+#
+
+# Exit if rootfs is not on NAND
+TESTFS=`grep 'root=ubi0:rootfs' /proc/cmdline`
+if [ -z "$TESTFS" ]; then
+    exit
+fi
+
+/etc/init.d/rootfs-ro

@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[xiFacilities] (
+    [fId]        INT          IDENTITY (1, 1) NOT NULL,
+    [facilityId] VARCHAR (15) NOT NULL,
+    [longname]   VARCHAR (60) NOT NULL,
+    [shortname]  VARCHAR (15) NOT NULL,
+    PRIMARY KEY CLUSTERED ([fId] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF)
+);
+

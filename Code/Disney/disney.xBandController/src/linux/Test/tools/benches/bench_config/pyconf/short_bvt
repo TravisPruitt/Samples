@@ -1,0 +1,8 @@
+http://10.110.1.108:8080/newconfiguration, env_bvt.txt
+http://10.110.1.112:8080/newconfiguration, env_bvt.txt
+http://10.110.1.86:8080/newconfiguration, env_bvt.txt
+http://10.110.1.99:8080/newconfiguration, env_bvt.txt
+http://10.110.1.113:8080/newconfiguration, env_bvt.txt
+http://10.110.1.120:8080/newconfiguration, env_bvt.txt
+http://10.110.1.108:8080/newconfiguration, env_bvt_stub.txt
+http://10.110.1.112:8080/newconfiguration, env_bvt_stub.txt

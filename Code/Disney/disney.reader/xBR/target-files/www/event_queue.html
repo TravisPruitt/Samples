@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>xBR Event Queue Metrics</title>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+// Globals
+
+var data = [[]];
+
+var xStart;
+var yStart;
+var xEnd;
+var yEnd;
+var xSize;
+var ySize;
+
+var horLines = 10;
+var yScale = 10;
+var started = true;
+
+// functions
+
+function drawData(ctx) {
+  var yStep = ySize / yScale;
+  for (var i = 0; i < data.length; i++) {
+    // Only display max events
+    if (data[i].length > $("#max_samples").attr("value")) {
+      data[i].splice(0, data[i].length - $("#max_samples").attr("value"));
+    }
+
+    var d = data[i];
+    var xStep = xSize / (d.length - 1);
+    ctx.beginPath();
+    ctx.strokeStyle = "rgb(255,0,0)";
+    ctx.moveTo(xStart, (yStart + ySize) - (d[0] * yStep))
+    for (var j = 1; j < d.length; j++) {
+      ctx.lineTo(xStart + xStep * j, (yStart + ySize) - (d[j] * yStep));
+    }
+    ctx.stroke();
+  }
+}
+
+function recalculateCoordinates(ctx) {
+  ctx.width = (typeof window.innerWidth != 'undefined' ? window.innerWidth : document.body.offsetWidth);
+  ctx.height = 480;
+  xStart = parseInt(ctx.width * 0.05);
+  yStart = parseInt(ctx.height * 0.08);
+  xEnd = parseInt(ctx.width * 0.95);
+  yEnd = parseInt(ctx.height * 0.95);
+  xSize = xEnd - xStart;
+  ySize = yEnd - yStart;
+}
+
+function drawGrid(ctx) {
+  recalculateCoordinates(ctx);
+
+  // reset
+  ctx.clearRect(0, 0, ctx.width, ctx.height);
+  ctx.strokeStyle = "rgb(0, 0, 0)";
+
+  // recalculate yScale
+  yScale = horLines;
+  for (var i = 0; i < data.length; i++) {
+    var yScaleTmp = Math.max.apply(null, data[i]);
+    yScale = yScaleTmp > yScale ? yScaleTmp : yScale;
+  }
+  yScale = yScale + (horLines - (yScale % horLines));
+
+  ctx.beginPath();
+
+  ctx.moveTo(xStart, yStart);
+  ctx.lineTo(xStart, yEnd);
+  ctx.moveTo(xEnd, yStart);
+  ctx.lineTo(xEnd, yEnd);
+
+  // draw horizontal grid lines
+  var xStep = (xEnd - xStart)/10;
+  var yStep = (yEnd - yStart)/10;
+  for (var i = 0; i <= horLines; i++) {
+    ctx.moveTo(xStart, yStart+yStep*i);
+    ctx.lineTo(xEnd, yStart+yStep*i);
+    ctx.fillText(yScale-i*(yScale/horLines), xSize*.03, yStart+yStep*i+5);
+  }
+
+  ctx.closePath();
+  ctx.stroke();
+
+  ctx.save()
+
+  var label = "xBR Event Queue Metrics";
+  ctx.font = "bold 24px sans-serif";
+  ctx.fillText(label, xStart+xSize/2-ctx.measureText(label).width/2, 24);
+
+  // Draw axis label
+  label = "# of Events";
+  ctx.font = "12px sans-serif";
+  ctx.translate(10, yStart+ySize/2+ctx.measureText(label).width/2);
+  ctx.rotate(-Math.PI/2);
+  ctx.fillText(label, 0, 0);
+  ctx.restore();
+}
+
+function update() {
+  if (started) {
+    $.getJSON("/reader/info", function(req) {
+      table = $("#reader_info");
+      table.empty();
+      data[0].push(req['events'][$("#parameter").val()]);
+      row = '<tr>';
+      row += '<td>' + req['events']['capable'] + '</td>';
+      row += '<td>' + req['events']['queued (get)'] + '</td>';
+      row += '<td>' + req['events']['queued (push)'] + '</td>';
+      row += '<td>' + req['events']['stored'] + '</td>';
+      row += '</tr>';
+      table.append(row);
+
+    }).error(function() {
+      $("#error_text").html("Unable to communicate with xBR");
+      started = false;
+    }).complete(function() {
+      var cvs = $('#graph').get(0);
+      cvs.width = (typeof window.innerWidth != 'undefined' ? window.innerWidth : document.body.offsetWidth);
+      cvs.height = 480;
+      var ctx = cvs.getContext('2d');
+      drawGrid(ctx);
+      drawData(ctx);
+      setTimeout(update, $("#sample_rate").val());
+    });
+  }
+}
+
+function startCollection() {
+  if (!started) {
+    $("#error_text").html("");
+    data = [[]];
+    started = true;
+    update();
+  }
+}
+
+function stopCollection() {
+  if (started) {
+    started = false;
+  }
+}
+
+function changedParam() {
+  data = [[]];
+}
+
+function init()
+{
+  update();
+}
+</script>
+<style>
+body { font-family: sans-serif; }
+#graph { margin-left: auto; margin-right: auto; }
+#legend { font-size: .8em; text-align: center; width: 85%; margin-left: auto; margin-right: auto; }
+#error_text { text-align: center; font: 18px sans-serif; color: red; }
+#controls { font-size: .8em; width: 85%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body onLoad="init()">
+  <canvas id="graph" width="640" height="480">HTML5 Canvas not supported</canvas>
+  <table id="legend">
+    <thead>
+      <tr><th>capable</th><th>Queued (get)</th><th>Queued (push)</th><th>Stored</th></tr>
+    </thead>
+    <tbody id="reader_info"></tbody>
+  </table>
+  <div id="error_text"></div><br/>
+  <fieldset id="controls">
+    <label for="max_samples"># of Samples:</label>
+    <input id="max_samples" type="range" maxlength="5" value="100" min="10" max="10000" />
+    <label for="parameter">Parameter:</label>
+    <select id="parameter" onchange="changedParam()">
+      <option value="queued (get)">Queued (Get)</option>
+      <option selected value="queued (push)">Queued (Push)</option>
+      <option value="stored">Stored</option>
+    </select>
+    <label for="sample_rate">Sample Rate:</label>
+    <select id="sample_rate">
+      <option value="500">1/2 second</option>
+      <option selected value="1000">1 second</option>
+      <option value="2000">2 seconds</option>
+      <option value="5000">5 seconds</option>
+      <option value="10000">10 seconds</option>
+    </select>
+    <input id="start_button" type="button" value="Start" onclick="startCollection()" />
+    <input id="stop_button" type="button" value="Stop" onclick="stopCollection()" />
+  </fieldset>
+</body>
+</html>

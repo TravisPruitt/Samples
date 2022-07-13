@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[DAYS_OF_YEAR] (
+    [dt] DATETIME NULL
+);
+

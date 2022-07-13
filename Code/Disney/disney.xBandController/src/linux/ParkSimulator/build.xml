@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="ParkSimulator">
+
+<!--- Properties -->	
+	
+	<property environment="env"/>
+	<property name="debuglevel" value="source,lines,vars"/>
+	<property name="target" value="1.6"/>
+	<property name="source" value="1.6"/>
+	<property name="dir.test.src" location="src"/>
+	<property name="dir.test.classes" location="bin"/>
+	
+	
+<!--- Classpaths -->
+	
+    <path id="ParkSimulator.classpath">
+    	<pathelement location="lib/sonic_ASPI.jar"/>
+    	<pathelement location="lib/sonic_Client.jar"/>
+    	<pathelement location="lib/sonic_Crypto.jar"/>
+    	<pathelement location="lib/sonic_XA.jar"/>
+    	<pathelement location="lib/CommonLib.jar"/>
+    </path>
+	
+<!--- Targets -->
+	
+	<!-- Establish a clean version number -->
+	<target name="realversion" if="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="${BUILD_VERSION}" />
+	</target>
+
+	<target name="dummyversion" unless="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="0.0.0.0" />
+		<tstamp>
+			<format property="BUILD_DATE" pattern="yyyy-MM-dd HH:mm:ss" />
+        </tstamp>
+	</target>
+
+	<target depends="realversion,dummyversion" name="setvers">
+		<echo message="BUILD_VERSION=${BUILD_VERSION}" />
+	</target>
+	
+
+	<!-- Main development and production targets -->
+	<target depends="setvers,build-project,jar,tar" name="build"/>
+    <target depends="build" name="buildprod"/>
+    	
+	<!-- Creates the output directory and copies non-java sources files into it -->
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+	
+	<!-- Removes the output directory -->
+    <target name="clean">
+        <delete dir="bin"/>
+    	<delete file="ParkSimulator.jar"/>
+    	<delete file="ParkSimulator.tar"/>
+    </target>
+
+	<!-- Builds the ParkSimulator code -->
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="bin"
+				source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="ParkSimulator.classpath"/>
+        </javac>
+    </target>
+	
+	<!-- Creates a jar for the ParkSimulator classes -->
+	<target depends="build-project" name="jar">
+		<jar destfile="ParkSimulator.jar">
+			<manifest>
+				<attribute name="Built-By" value="Synapse" />
+				<attribute name="Built-Date" value="${BUILD_DATE}" />
+                <attribute name="Implementation-Title" value="${BUILD_VERSION}"/>
+				<attribute name="Implementation-Vendor" value="Synapse" />
+
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="com.disney.xbrc.parksimulator.ParkSimulator"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./"/>
+            </manifest>
+            <fileset dir="bin"/>
+			<zipfileset src="jar-in-jar-loader.zip"/>
+            <zipfileset src="lib/sonic_ASPI.jar"/>
+            <zipfileset src="lib/sonic_Crypto.jar"/>
+            <zipfileset src="lib/sonic_XA.jar"/>
+            <zipfileset src="lib/sonic_Client.jar"/>
+            <zipfileset src="lib/CommonLib.jar"/>
+		</jar>
+	</target>
+
+	<target depends="build-project" name="tar">
+		<tar destfile="ParkSimulator.tar">
+			<tarfileset dir=".">
+				<include name="ParkSimulator.jar" />
+				<include name="parkdata.dat" />
+				<include name="README" />
+			</tarfileset>
+			<tarfileset dir="." filemode="755">
+				<include name="ParkSimulator" />
+				<include name="runall" />
+			</tarfileset>
+		</tar>
+	</target>
+	
+</project>

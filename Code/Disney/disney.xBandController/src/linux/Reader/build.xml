@@ -1,0 +1,72 @@
+<project name="Reader" default="build" >
+	<!-- The following substitution sets the queues directory on each dev machine relative to 
+	     the directory of this ant build.xml file -->
+	<property name="queues.dir" location="../../../../queues" />
+	<property name="queues.dir.prod" location="/usr/share/xbrc/simulator/queues" />
+	<target name="devsubstitutions">
+		<copy file="config/NGEConfig.xml" todir="." overwrite="true"/> 
+		<replace file="./NGEConfig.xml">
+		  <replacefilter 
+		    token="config.queues.path" 
+		    value="${queues.dir}"/>
+		</replace>
+		<copy file="config/SpaceModelConfig.xml" todir="." overwrite="true"/> 
+		<replace file="./SpaceModelConfig.xml">
+		  <replacefilter 
+		    token="config.queues.path" 
+		    value="${queues.dir}"/>
+		</replace>
+		<copy file="config/startreaders.sh" todir="." overwrite="true"/> 
+		<chmod perm="+x" file="./startreaders.sh" />
+	</target>
+	<target name="prodsubstitutions">
+		<copy file="config/NGEConfig.xml" todir="." overwrite="true"/> 
+		<replace file="./NGEConfig.xml">
+		  <replacefilter 
+		    token="config.queues.path" 
+		    value="${queues.dir.prod}"/>
+		</replace>
+		<copy file="config/SpaceModelConfig.xml" todir="." overwrite="true"/> 
+		<replace file="./SpaceModelConfig.xml">
+		  <replacefilter 
+		    token="config.queues.path" 
+		    value="${queues.dir.prod}"/>
+		</replace>
+		<copy file="config/startreaders.sh" todir="." overwrite="true"/> 
+		<replace file="./startreaders.sh">
+		  <replacefilter 
+		    token="Debug/" 
+		    value="./"/>
+		</replace>
+		<chmod perm="+x" file="./startreaders.sh" />
+	</target>
+	<!-- Establish a clean version number -->
+	<target name="realversion" if="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="${BUILD_VERSION}" />
+	</target>
+
+	<target name="dummyversion" unless="BUILD_VERSION">
+		<property name="BUILD_VERSION" value="0.0.0.0" />
+		<tstamp>
+			<format property="BUILD_DATE" pattern="yyyy-MM-dd HH:mm:ss" />
+		</tstamp>
+	</target>
+
+	<target name="make" description="Invoke make to build the Reader code" depends="realversion,dummyversion">
+		<echo file="src/version.h" message="#define READERVERSION &quot;9.0.0.0 ${BUILD_VERSION}&quot;" />
+		<exec executable="make" failonerror="true">
+			<arg value="-C"/>
+			<arg value="Debug"/>
+			<arg value="all"/>
+		</exec>
+	</target>
+	<target depends="devsubstitutions,make" name="build" description="dev build" />
+	<target depends="prodsubstitutions,make" name="buildprod" description="production build" /> 
+	<target name="clean" description="Invoke make to clean the Reader code">
+		<exec executable="make" failonerror="true">
+			<arg value="-C"/>
+			<arg value="Debug"/>
+			<arg value="clean"/>
+		</exec>
+	</target>
+</project>

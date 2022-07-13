@@ -1,0 +1,69 @@
+
+Version formats
+--------------------------------
+
+	Application Version Formatting
+	................................
+
+	Package name:
+		<Recipe Name>_<Release>.<Build>[-<Git hash><Dirty>]-<Recipe Version>.ipk
+
+	iPackage Filename Format
+	................................
+	iPkg filename:
+		<Name>-<Release>.<Build>[ - <Git hash><Dirty>]
+
+<Name> = xBR, xTP, etc.
+<Release> = x.y.z where x y and z are numbers.
+<Build> = number, upwards from 0. 
+<Git hash> = git revision information, hexadecimal, 5 to 32 digits.
+<Dirty> = blank or "-dirty".
+<Date> = yyyyMMM.dd-hh:mm:ss 
+    yyyy=4 digit year, 
+    MMM = 3 letter abbreviation for month, 
+    dd = 2 digit day-of-month, 
+    hh, mm, ss = 2 digit each hour, minute, and seconds, respectively.
+<Recipe Name> = synapse-<app name>[<opt>] where app name corresponds to the <Name> field:
+    xBR = "grover", 
+    xTP = "dap-reader"
+<opt> (optional) = one of "-dev", "-dbg".
+<Recipe Version> = rx.y_<repoLoc> 
+    r= literal. 
+    x.y major/minor numbers. 
+    repoLoc = one of: "armv7a", "all", "overo". Other names are possible as well.
+
+
+Scenarios to test for correct operation
+-------------------------------
+- "make grover-image", check image-package name.
+
+		xBR-0.0.10-1-gdef7216 	OK
+		xBR-0.0.10				OK
+
+
+ - "make grover-image", 
+   "make grover",
+	check grover package.
+
+-	"source ./setenv", 
+	"bitbake -b arago-custom/recipes/synapse-grover/synapse-grover.bb -c devshell",
+	"make"
+
+	"grover" name has no version at all.
+
+GIT scenarios
+-----------------------------------
+- tag is in the xbr-release directory
+- another product tag is "after" the one for this product.
+- version for a tagged location
+- version for a non-tagged location
+- version for dirty history
+
+Version reporting:
+-----------------------------------
+Application
+- reported from the command line
+- /reader/info.json version field
+- reported in /Hello message 
+
+

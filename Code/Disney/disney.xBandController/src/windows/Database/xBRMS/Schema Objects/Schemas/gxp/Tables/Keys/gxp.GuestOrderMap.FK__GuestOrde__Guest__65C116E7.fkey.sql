@@ -1,0 +1,3 @@
+﻿ALTER TABLE [gxp].[GuestOrderMap]
+    ADD CONSTRAINT [FK__GuestOrde__Guest__65C116E7] FOREIGN KEY ([GuestId]) REFERENCES [rdr].[Guest] ([GuestID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+

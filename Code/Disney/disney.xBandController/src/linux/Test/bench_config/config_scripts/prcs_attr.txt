@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<venue>
+ <configuration name="current" type="incremental">
+  <description/>
+  <properties>
+   <property class="ReaderConfig"  name="maximumthreshold">0</property>
+   <property class="ControllerInfo" name="venue">15907813</property>
+   <property class="ControllerInfo" name="name">Town Center - Princess</property>
+   <property class="UIConfig"  name="attractionviewimagefilename">IMG1232184362481191921.png</property>
+  </properties>
+ </configuration>
+</venue>

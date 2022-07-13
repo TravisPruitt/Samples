@@ -1,0 +1,64 @@
+html {
+	background: white;
+}
+
+/* light background table */
+table.light {
+	padding: 0;
+	width: 100%;
+	background: #fdfdfd;
+	border: solid 1px #cccccc;
+}
+table.light tbody tr td {
+	padding: 1em; margin: 0;
+	border-right: dotted 1px #cccccc;
+}
+table.light tbody td:last-child { 
+	border-right: none;
+}
+table.light tr td span {
+	font-weight: bold;
+}
+table.light tbody tr:nth-child(odd) { 
+	background: #f0f0f0; 
+}
+table.light tr th { 
+	background-color: #fdfdfd;
+	text-align: left;
+}
+table.light tfoot tr td { 
+	padding-top: 5px;
+}
+/* end of dark background table */
+
+/* light background table with minimal spacing for maximum data */
+table.narrow {
+	padding: 2px;
+}
+table.narrow tbody tr td {
+	padding: 3px; margin: 0;
+}
+/* end of dark background table */
+
+body {
+	padding: 10px;
+}
+
+td.success {
+	background-color: #C7F060;
+}
+
+td.fail {
+	background-color: #FA3802;
+	color: white;
+}
+
+span.fail {
+	color: #FA3802;
+	font-weight: bold;
+}
+
+span.success {
+	color: #689618;
+	font-weight: bold;
+}

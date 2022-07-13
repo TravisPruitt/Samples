@@ -1,0 +1,3 @@
+﻿ALTER TABLE [rdr].[Event]
+    ADD CONSTRAINT [FK_Event_BandType] FOREIGN KEY ([BandTypeID]) REFERENCES [rdr].[BandType] ([BandTypeID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+

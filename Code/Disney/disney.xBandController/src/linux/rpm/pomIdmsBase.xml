@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>idms</artifactId>
+	<packaging>rpm</packaging>
+	<parent>
+		<groupId>com.disney.xband</groupId>
+		<artifactId>xBandParent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<description>
+		Disney/Synapse IDMS code to cache frequently accessed data and insulate the xBRC from xBMS, SF/OV, etc.
+	</description>
+	<organization>
+		<name>Walt Disney Corporation></name>
+		<url>www.disney.com</url>
+	</organization>
+	<dependencies>
+		<dependency>
+			<groupId>com.disney.xband</groupId>
+			<artifactId>IDMS</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+ 	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rpm-maven-plugin</artifactId>
+                <version>2.1-alpha-2</version>
+				<extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>rpm</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <copyright>2012, Walt DisneyCorporation</copyright>
+                    <distribution>Proprietary</distribution>
+                    <group>Applications/System</group>
+			<warDirectory>/opt/apps/tcserverApp/tcServer-2.6.5/ssp-tcserver1/webapps/IDMS</warDirectory>
+					<version>${XBAND_BUILD_SHORT_VERSION}</version>
+					<release>${XBAND_BUILD_RELEASE}</release>
+					<needarch>i386</needarch>
+					<provides>
+						<provide>idms</provide>
+					</provides>
+					<requires>
+						<require>java-1.6.0-openjdk &gt;= 1.6.0.0</require>						
+						<require>tcserver-nge-ssp1 &gt;= 2.6.5</require>
+					</requires>
+                    <mappings>
+                        <mapping>
+                            <directory>/opt/apps/tcserverApp/tcServer-2.6.5/ssp-tcserver1/webapps</directory>
+                            <directoryIncluded>false</directoryIncluded>
+                            <filemode>755</filemode>
+                            <username>root</username>
+                            <groupname>tcapp</groupname>
+							<sources>
+								<source>
+									<location>
+										${settings.localRepository}/com/disney/xband/IDMS/1.0-SNAPSHOT/IDMS-1.0-SNAPSHOT.war
+									</location>
+									<destination>IDMS.war</destination>
+								</source>
+							</sources>
+                        </mapping>
+                        <mapping>
+                            <directory>/opt/apps/tcserverApp/tcServer-2.6.5/ssp-tcserver1/webapps/ROOT</directory>
+                            <filemode>755</filemode>
+                            <username>root</username>
+                            <groupname>tcapp</groupname>
+							<sources>
+								<source>
+									<location>
+										${xbandhome-1.7}/src/linux/IDMS/crossdomain.xml
+									</location>
+								</source>
+							</sources>
+                        </mapping>
+                    </mappings>
+                    <postinstallScriptlet>
+						<script>
+# stop tomcat; delete old classes then restart so that new WAR is expanded
+/etc/init.d/bootssptcserver1 stop
+if [ -d /opt/apps/tcserverApp/tcServer-2.6.5/ssp-tcserver1/webapps/IDMS ]; then rm -rf /opt/apps/tcserverApp/tcServer-2.6.5/ssp-tcserver1/webapps/IDMS; fi;
+/etc/init.d/bootssptcserver1 start
+						</script>
+                    </postinstallScriptlet>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

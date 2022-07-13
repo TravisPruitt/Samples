@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# Runs the dap-reader with a special configuration for testing
+# RFID reads. This script will first stop the dap-reader daemon
+# (if running) before executing, and will will NOT restart it
+# afterwards.
+#
+
+
+/etc/init.d/dap-reader stop
+
+cp -f /mayhem/conf/rfid_test.conf /var/mayhem
+
+echo "Starting test. Press ctrl-C to terminate..."
+sleep 2
+dap-reader -c /var/mayhem/rfid_test.conf

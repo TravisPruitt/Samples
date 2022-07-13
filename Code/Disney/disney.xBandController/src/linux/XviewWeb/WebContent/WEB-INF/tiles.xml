@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+      
+<tiles-definitions>
+  
+  <definition name="home" template="/frame.jsp">
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="body" value="/home.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+  </definition> 
+  
+  <definition name="registration" template="/registration.jsp">
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+  </definition>  
+  
+    <definition name="dash" template="/dash.jsp">
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+  </definition> 
+  
+  <definition name="xbandedit" template="/xbandedit.jsp">
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+  </definition> 
+  
+  <definition name="guests" template="/guests.jsp">
+    <put-attribute name="header" value="/header.jsp" />
+    <put-attribute name="menu" value="/menu.jsp" />
+    <put-attribute name="footer" value="/footer.jsp" />
+  </definition> 
+  
+  
+</tiles-definitions>

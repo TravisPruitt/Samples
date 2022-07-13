@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<configuration>
+    <controller url="http://localhost:8080" />
+    <readers start="0" end="13661600">
+        <reader name="exit-1" webport="8012" mac="00:00:00:00:00:02" type="lrr" fileformat="json" file="test/vehicle/1userMutipleLocTransmit/LRR_EXIT_1user.txt"/>
+        <reader name="invehicle-1" webport="8015" mac="00:00:00:00:00:05" type="lrr" hwtype="xBR4" fileformat="json" file="test/vehicle/1userMutipleLocTransmit/LRR_INVEHICLE_1user.txt"/>
+        <reader name="car-1" webport="8016" mac="00:00:00:00:00:06" type="car" fileformat="json" file="test/vehicle/1userMutipleLocTransmit/LRR_WDI_Car_Events_1user.txt"/>
+		<reader name="car-laser" webport="8017" mac="00:00:00:00:00:07" type="xtpra" fileformat="json" file="test/vehicle/1userMutipleLocTransmit/XTPRA_Laser_Events_1user.txt"/>
+		<reader name="invehicle-2" webport="8018" mac="00:00:00:00:00:08" type="lrr" fileformat="json" file="test/vehicle/1userMutipleLocTransmit/LRR_INVEHICLE2_1user.txt"/>
+        <reader name="car-2" webport="8019" mac="00:00:00:00:00:09" type="car" fileformat="json" file="test/vehicle/1userMutipleLocTransmit/LRR_WDI_Car2_Events_1user.txt"/>
+		<reader name="car2-laser" webport="8020" mac="00:00:00:00:00:0A" type="xtpra" fileformat="json" file="test/vehicle/1userMutipleLocTransmit/XTPRA2_Laser_Events_1user.txt"/>
+		<reader name="lrr-1" webport="8021" mac="00:00:00:00:00:0B" type="lrr" fileformat="json" file="test/vehicle/1userMutipleLocTransmit/LRR1.txt"/>    
+		<reader name="lrr-2" webport="8022" mac="00:00:00:00:00:0C" type="lrr" fileformat="json" file="test/vehicle/1userMutipleLocTransmit/LRR2.txt"/>
+		<reader name="lrr-3" webport="8023" mac="00:00:00:00:00:0D" type="lrr" fileformat="json" file="test/vehicle/1userMutipleLocTransmit/LRR3.txt"/>
+</readers>
+</configuration>

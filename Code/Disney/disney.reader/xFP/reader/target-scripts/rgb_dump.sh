@@ -1,0 +1,11 @@
+#!/bin/sh
+
+ADDR="0x60 0x68 0x64 0x6C 0x62 0x6A 0x66 0x6E 0x69"
+
+for a in $ADDR; do
+	for i in $(seq 0 30); do
+		val=$(i2cget -y 3 $a $i)
+		echo -n "$val "
+	done
+	echo ""
+done

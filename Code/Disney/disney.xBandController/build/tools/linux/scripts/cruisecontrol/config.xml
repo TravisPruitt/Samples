@@ -1,0 +1,162 @@
+<cruisecontrol>
+    <project name="disney.xBand">
+
+        <listeners>
+            <currentbuildstatuslistener file="logs/${project.name}/status.txt"/>
+        </listeners>
+
+        <bootstrappers>
+	    <execbootstrapper command="git" args="checkout master" workingdir="projects/${project.name}/git" />
+	    <execbootstrapper command="git" args="reset --hard" workingdir="projects/${project.name}/git" />
+	    <execbootstrapper command="git" args="clean -f" workingdir="projects/${project.name}/git" />
+	    <gitbootstrapper localWorkingCopy="projects/${project.name}/git" />
+        </bootstrappers>
+
+        <modificationset quietperiod="30">
+            <!-- touch any file in connectfour project to trigger a build -->
+	    <git LocalWorkingCopy="projects/${project.name}/git">
+	    </git>
+        </modificationset>
+
+        <schedule interval="300">
+            <maven2 mvnhome="/home/builduser/cruisecontrol-bin-2.8.4/apache-maven-3.0.4" pomfile="projects/${project.name}/git/src/linux/pom.xml" goal="clean deploy"/>
+        </schedule>
+
+        <log>
+            <merge dir="projects/${project.name}/target/test-results"/>
+        </log>
+
+        <publishers>
+            <onsuccess>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/idms/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/JMSListener/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrc-attraction/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrc-parkentry/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrc-simulator/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrc-space/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrms/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrmsui/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xfp-simulator/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xi/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbms-simulator/RPMS/i386"/>
+		<execute command="./readerpkgs.sh projects/${project.name}"/>
+		<execute command="/home/builduser/test/initiate_bvt.sh bvt main"/>
+            </onsuccess>
+	    <htmlemail returnaddress="xbrc-build@synapse.com" mailhost="localhost" spamwhilebroken="false">
+		<always address="arkady.glabek@synapse.com"/>
+		<always address="mark.mecham@synapse.com"/>
+		<always address="robs@synapse.com"/>
+		<always address="michaella@synapse.com"/>
+                <always address="jasonol@synapse.com"/>
+                <always address="johnmc@synapse.com"/>
+	    </htmlemail>
+        </publishers>
+
+    </project>
+    <project name="xConnect-1.7.1">
+
+        <listeners>
+            <currentbuildstatuslistener file="logs/${project.name}/status.txt"/>
+        </listeners>
+
+        <bootstrappers>
+            <execbootstrapper command="git" args="checkout ${project.name}" workingdir="projects/${project.name}/git" />
+            <execbootstrapper command="git" args="reset --hard" workingdir="projects/${project.name}/git" />
+            <execbootstrapper command="git" args="clean -f" workingdir="projects/${project.name}/git" />
+            <gitbootstrapper localWorkingCopy="projects/${project.name}/git" />
+        </bootstrappers>
+
+        <modificationset quietperiod="30">
+            <!-- touch any file in connectfour project to trigger a build -->
+            <git LocalWorkingCopy="projects/${project.name}/git">
+            </git>
+        </modificationset>
+
+        <schedule interval="300">
+            <maven2 mvnhome="/home/builduser/cruisecontrol-bin-2.8.4/apache-maven-3.0.4" pomfile="projects/${project.name}/git/src/linux/pom.xml" goal="clean deploy"/>
+        </schedule>
+
+        <log>
+            <merge dir="projects/${project.name}/target/test-results"/>
+        </log>
+
+        <publishers>
+            <onsuccess>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/idms/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/JMSListener/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrc-attraction/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrc-parkentry/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrc-simulator/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrc-space/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrms/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrmsui/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xfp-simulator/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xi/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbms-simulator/RPMS/i386"/>
+		<execute command="./readerpkgs-released.sh projects/${project.name} /builds/xConnect-1.7.1-readers"/>
+                <execute command="/home/builduser/test/initiate_bvt.sh bvt 1.6"/>
+            </onsuccess>
+            <htmlemail returnaddress="xbrc-build@synapse.com" mailhost="localhost" spamwhilebroken="false">
+                <always address="arkady.glabek@synapse.com"/>
+                <always address="mark.mecham@synapse.com"/>
+                <always address="robs@synapse.com"/>
+                <always address="jasonol@synapse.com"/>
+                <always address="johnmc@synapse.com"/>
+            </htmlemail>
+        </publishers>
+    </project>
+
+    <project name="xConnect-1.6">
+
+        <listeners>
+            <currentbuildstatuslistener file="logs/${project.name}/status.txt"/>
+        </listeners>
+
+        <bootstrappers>
+	    <execbootstrapper command="git" args="checkout ${project.name}" workingdir="projects/${project.name}/git" />
+	    <execbootstrapper command="git" args="reset --hard" workingdir="projects/${project.name}/git" />
+	    <execbootstrapper command="git" args="clean -f" workingdir="projects/${project.name}/git" />
+	    <gitbootstrapper localWorkingCopy="projects/${project.name}/git" />
+        </bootstrappers>
+
+        <modificationset quietperiod="30">
+            <!-- touch any file in connectfour project to trigger a build -->
+	    <git LocalWorkingCopy="projects/${project.name}/git">
+	    </git>
+        </modificationset>
+
+        <schedule interval="300">
+            <maven2 mvnhome="/home/builduser/cruisecontrol-bin-2.8.4/apache-maven-3.0.4" pomfile="projects/${project.name}/git/src/linux/pom.xml" goal="clean deploy"/>
+        </schedule>
+
+        <log>
+            <merge dir="projects/${project.name}/target/test-results"/>
+        </log>
+
+        <publishers>
+            <onsuccess>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/idms/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/JMSListener/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrc-attraction/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrc-parkentry/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrc-simulator/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrc-space/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrms/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbrmsui/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xfp-simulator/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xi/RPMS/i386"/>
+                <artifactspublisher dest="artifacts/${project.name}" dir="projects/${project.name}/git/src/linux/rpm/target/rpm/xbms-simulator/RPMS/i386"/>
+		<execute command="./readerpkgs.sh projects/${project.name}"/>
+		<execute command="/home/builduser/test/initiate_bvt.sh bvt 1.6"/>
+            </onsuccess>
+	    <htmlemail returnaddress="xbrc-build@synapse.com" mailhost="localhost" spamwhilebroken="false">
+		<always address="arkady.glabek@synapse.com"/>
+		<always address="mark.mecham@synapse.com"/>
+		<always address="robs@synapse.com"/>
+                <always address="jasonol@synapse.com"/>
+                <always address="johnmc@synapse.com"/>
+	    </htmlemail>
+        </publishers>
+    </project>
+
+</cruisecontrol>

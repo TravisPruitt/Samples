@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>JCS - Element Event Handling</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="Aaron Smuts"></meta><meta name="email" content="ASmuts@apache.org"></meta></head><body class="composite"><div id="banner"><a href="http://jakarta.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="./images/jakarta.png"></img></a><a href="http://jakarta.apache.org/jcs/" id="projectLogo"><span>JCS</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 30 May 2007
+                  | Doc for 1.3</div><div class="xright">
+        
+        <a href="jcs.pdf"><img title="PDF Documentation" style="border: 1px" src="images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuGeneral_Information"><h5>General Information</h5><ul><li class="none"><a href="index.html">Overview</a></li><li class="none"><a href="JCSandJCACHE.html">JCS and JCACHE</a></li><li class="none"><a href="DownloadPage.html">Downloads</a></li><li class="none"><a href="faq.html">FAQ</a></li></ul></div><div id="menuGetting_Started"><h5>Getting Started</h5><ul><li class="none"><a href="getting_started/intro.html">Overview</a></li><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="Plugins.html">Plugin Overview</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></div><div id="menuJCS_User_s_Guide"><h5>JCS User's Guide</h5><ul><li class="expanded"><a href="LocalCacheConfig.html">Core</a><ul><li class="none"><a href="BasicJCSConfiguration.html">Basic JCS Config</a></li><li class="none"><a href="ElementAttributes.html">Element Config</a></li><li class="none"><strong><a href="ElementEventHandling.html">Element Event Handling</a></strong></li><li class="none"><a href="RegionProperties.html">Region Properties</a></li><li class="none"><a href="UsingJCSBasicWeb.html">Basic Web Example</a></li></ul></li><li class="collapsed"><a href="Plugins.html">Auxiliary</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About JCS</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Element_Event_Handling"></a><h2>Element Event Handling</h2><p>
+				JCS allows you to attach event handlers to elements in
+				the local memory cache.
+			</p><p>
+				There are several events that you can listen for. All of
+				the events are local memory related events. Element
+				event handlers are not transmitted to other caches via
+				lateral or remote auxiliaries, nor are they spooled to
+				disk.
+			</p><p>
+				You can register multiple handlers for a single item.
+				Although the handlers are associated with particular
+				items, you can also setup default handlers for any
+				region. Each item put into the region, that will take
+				the default element attributes, will be assigned the
+				event default event handlers.
+			</p><p>
+				The various events that you can handle have all been
+				assigned integer codes. The codes are defined in the
+				org.apache.jcs.engine.control.event.behavior.IElementEventConstants
+				interface. The events are named descriptively and
+				include:
+			</p><table class="bodyTable"><tr class="a"><th>Name</th><th>Description</th></tr><tr class="b"><td>ELEMENT_EVENT_EXCEEDED_MAXLIFE_BACKGROUND</td><td>
+						The element exceeded its max life. This was
+						detected in a background cleanup.
+					</td></tr><tr class="a"><td>ELEMENT_EVENT_EXCEEDED_MAXLIFE_ONREQUEST</td><td>
+						The element exceeded its max life. This was
+						detected on request.
+					</td></tr><tr class="b"><td>ELEMENT_EVENT_EXCEEDED_IDLETIME_BACKGROUND</td><td>
+						The element exceeded its max idle. This was
+						detected in a background cleanup.
+					</td></tr><tr class="a"><td>ELEMENT_EVENT_EXCEEDED_IDLETIME_ONREQUEST</td><td>
+						The element exceeded its max idle time. This was
+						detected on request.
+					</td></tr><tr class="b"><td>ELEMENT_EVENT_SPOOLED_DISK_AVAILABLE</td><td>
+						The element was pushed out of the memory store,
+						there is a disk store available for the region,
+						and the element is marked as spoolable.
+					</td></tr><tr class="a"><td>ELEMENT_EVENT_SPOOLED_DISK_NOT_AVAILABLE</td><td>
+						The element was pushed out of the memory store,
+						and there is not a disk store available for the
+						region.
+					</td></tr><tr class="b"><td>ELEMENT_EVENT_SPOOLED_NOT_ALLOWED</td><td>
+						The element was pushed out of the memory store,
+						there is a disk store available for the region,
+						but the element is marked as not spoolable.
+					</td></tr></table><p>
+				To create an event handler you must implement the
+				org.apache.jcs.engine.control.event.behavior.IElementEventHandler
+				interface. This interface contains only one method:
+			</p>
+    <div class="source"><pre>
+				
+    public void handleElementEvent( IElementEvent event );
+        		
+			</pre></div>
+  <p>
+				The IElementEvent object contains both the event code
+				and the source. The source is the element for which the
+				event occurred. The code is the type of event. If you
+				have an event handler registered, it will be called
+				whenever any event occurs. It is up to the handler to
+				decide what it would like to do for the particular
+				event. Since there are not that many events, this does
+				not create too much activity. Also, the event handling
+				is done asynchronously. Events are added to an event
+				queue and processed by background threads.
+			</p><p>
+				Once you have an IElementEventHandler implementation,
+				you can attach it to an element via the Element
+				Attributes. You can either add it to the element
+				attributes when you put an item into the cache, add it
+				to the attributes of an item that exist in the cache
+				(which just results in a re-put), or add the event
+				handler to the default element attributes for a region.
+				If you add it to the default attributes, then all
+				elements subsequently added to the region that do not
+				define their own element attributes will be assigned the
+				default event handlers.
+			</p>
+    <div class="source"><pre>
+				
+    JCS jcs = JCS.getInstance( "myregion" );
+
+    . . .
+
+    MyEventHandler meh = new MyEventHandler();
+
+    // jcs.getDefaultElementAttributes returns a copy not a reference
+    IElementAttributes attributes = jcs.getDefaultElementAttributes();
+    attributes.addElementEventHandler( meh );
+    jcs.put( "key", "data", attributes );
+        		
+			</pre></div>
+  <p>
+				Here is how to setup an event handler as a default
+				setting for a region:
+			</p>
+    <div class="source"><pre>
+				
+    JCS jcs = JCS.getInstance( "myregion" );
+
+    . . .
+
+    MyEventHandler meh = new MyEventHandler();
+
+    // this should add the event handler to all items as
+    //they are created.
+    // jcs.getDefaultElementAttributes returns a copy not a reference
+    IElementAttributes attributes = jcs.getDefaultElementAttributes();
+    attributes.addElementEventHandler( meh );
+    jcs.setDefaultElementAttributes( attributes );
+        		
+			</pre></div>
+  </div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2002-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

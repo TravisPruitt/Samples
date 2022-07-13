@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xTRCConfiguration>
+  <xbrcUrl>http://nl-flfa-00084.wdw.disney.com:8080/</xbrcUrl>
+  <locationId>1</locationId>
+  <helloInterval>1000</helloInterval>
+  <eventInterval>1000</eventInterval>
+</xTRCConfiguration>

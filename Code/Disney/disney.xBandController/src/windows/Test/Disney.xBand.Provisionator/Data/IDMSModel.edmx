@@ -1,0 +1,1415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IDMSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="IDMSModelStoreContainer">
+          <EntitySet Name="celebration" EntityType="IDMSModel.Store.celebration" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="guest" EntityType="IDMSModel.Store.guest" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="guest_address" EntityType="IDMSModel.Store.guest_address" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="guest_phone" EntityType="IDMSModel.Store.guest_phone" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="guest_xband" EntityType="IDMSModel.Store.guest_xband" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IDMS_Type" EntityType="IDMSModel.Store.IDMS_Type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="party" EntityType="IDMSModel.Store.party" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="party_guest" EntityType="IDMSModel.Store.party_guest" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="source_system_link" EntityType="IDMSModel.Store.source_system_link" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="xband" EntityType="IDMSModel.Store.xband" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="demo" EntityType="IDMSModel.Store.demo" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="demo_guest" EntityType="IDMSModel.Store.demo_guest" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="response_status" EntityType="IDMSModel.Store.response_status" store:Type="Tables" Schema="demo" />
+          <AssociationSet Name="FK_celebration_guest" Association="IDMSModel.Store.FK_celebration_guest">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="celebration" EntitySet="celebration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_celebration_IDMS_Type" Association="IDMSModel.Store.FK_celebration_IDMS_Type">
+            <End Role="IDMS_Type" EntitySet="IDMS_Type" />
+            <End Role="celebration" EntitySet="celebration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_demo_guest_Demo" Association="IDMSModel.Store.FK_demo_guest_Demo">
+            <End Role="demo" EntitySet="demo" />
+            <End Role="demo_guest" EntitySet="demo_guest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_demo_guest_response_status" Association="IDMSModel.Store.FK_demo_guest_response_status">
+            <End Role="response_status" EntitySet="response_status" />
+            <End Role="demo_guest" EntitySet="demo_guest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_IDMS_Type" Association="IDMSModel.Store.FK_guest_IDMS_Type">
+            <End Role="IDMS_Type" EntitySet="IDMS_Type" />
+            <End Role="guest" EntitySet="guest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_info_guest" Association="IDMSModel.Store.FK_guest_info_guest">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="guest_address" EntitySet="guest_address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_info_IDMS_Type" Association="IDMSModel.Store.FK_guest_info_IDMS_Type">
+            <End Role="IDMS_Type" EntitySet="IDMS_Type" />
+            <End Role="guest_address" EntitySet="guest_address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_phone_guest" Association="IDMSModel.Store.FK_guest_phone_guest">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="guest_phone" EntitySet="guest_phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_phone_IDMS_Type" Association="IDMSModel.Store.FK_guest_phone_IDMS_Type">
+            <End Role="IDMS_Type" EntitySet="IDMS_Type" />
+            <End Role="guest_phone" EntitySet="guest_phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_xband_guest" Association="IDMSModel.Store.FK_guest_xband_guest">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="guest_xband" EntitySet="guest_xband" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_xband_xband" Association="IDMSModel.Store.FK_guest_xband_xband">
+            <End Role="xband" EntitySet="xband" />
+            <End Role="guest_xband" EntitySet="guest_xband" />
+          </AssociationSet>
+          <AssociationSet Name="FK_party_guest" Association="IDMSModel.Store.FK_party_guest">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="party" EntitySet="party" />
+          </AssociationSet>
+          <AssociationSet Name="FK_party_guest_guest" Association="IDMSModel.Store.FK_party_guest_guest">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="party_guest" EntitySet="party_guest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_party_guest_IDMS_Type" Association="IDMSModel.Store.FK_party_guest_IDMS_Type">
+            <End Role="IDMS_Type" EntitySet="IDMS_Type" />
+            <End Role="party_guest" EntitySet="party_guest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_party_guest_party" Association="IDMSModel.Store.FK_party_guest_party">
+            <End Role="party" EntitySet="party" />
+            <End Role="party_guest" EntitySet="party_guest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_source_system_id_IDMS_Type" Association="IDMSModel.Store.FK_source_system_id_IDMS_Type">
+            <End Role="IDMS_Type" EntitySet="IDMS_Type" />
+            <End Role="source_system_link" EntitySet="source_system_link" />
+          </AssociationSet>
+          <AssociationSet Name="FK_source_type_guest" Association="IDMSModel.Store.FK_source_type_guest">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="source_system_link" EntitySet="source_system_link" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="celebration">
+          <Key>
+            <PropertyRef Name="celebrationId" />
+          </Key>
+          <Property Name="celebrationId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="bigint" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" />
+          <Property Name="message" Type="nvarchar(max)" />
+          <Property Name="dateStart" Type="date" />
+          <Property Name="dateEnd" Type="date" />
+          <Property Name="active" Type="bit" />
+          <Property Name="IDMSTypeId" Type="int" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="guest">
+          <Key>
+            <PropertyRef Name="guestId" />
+          </Key>
+          <Property Name="guestId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDMSID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IDMSTypeId" Type="int" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="200" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="200" />
+          <Property Name="middleName" Type="nvarchar" MaxLength="200" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="suffix" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="VisitCount" Type="int" />
+          <Property Name="AvatarName" Type="nvarchar" MaxLength="50" />
+          <Property Name="active" Type="bit" />
+          <Property Name="emailAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="parentEmail" Type="nvarchar" MaxLength="200" />
+          <Property Name="countryCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="languageCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="gender" Type="nvarchar" MaxLength="1" />
+          <Property Name="userName" Type="nvarchar" MaxLength="50" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="guest_address">
+          <Key>
+            <PropertyRef Name="guest_addressId" />
+          </Key>
+          <Property Name="guest_addressId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="bigint" Nullable="false" />
+          <Property Name="IDMStypeId" Type="int" />
+          <Property Name="address1" Type="nvarchar" MaxLength="200" />
+          <Property Name="address2" Type="nvarchar" MaxLength="200" />
+          <Property Name="address3" Type="nvarchar" MaxLength="200" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" />
+          <Property Name="state" Type="nvarchar" MaxLength="3" />
+          <Property Name="countryCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="postalCode" Type="nvarchar" MaxLength="12" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="guest_phone">
+          <Key>
+            <PropertyRef Name="guest_phoneId" />
+          </Key>
+          <Property Name="guest_phoneId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="bigint" />
+          <Property Name="IDMSTypeId" Type="int" />
+          <Property Name="extension" Type="nvarchar" MaxLength="50" />
+          <Property Name="phonenumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="guest_xband">
+          <Key>
+            <PropertyRef Name="guest_xband_id" />
+          </Key>
+          <Property Name="guest_xband_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="bigint" Nullable="false" />
+          <Property Name="xbandId" Type="bigint" Nullable="false" />
+          <Property Name="createdBy" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" Nullable="false" />
+          <Property Name="updatedBy" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IDMS_Type">
+          <Key>
+            <PropertyRef Name="IDMSTypeId" />
+          </Key>
+          <Property Name="IDMSTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDMSTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDMSTypeValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDMSkey" Type="nvarchar" MaxLength="50" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="party">
+          <Key>
+            <PropertyRef Name="partyId" />
+          </Key>
+          <Property Name="partyId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="primaryGuestId" Type="bigint" />
+          <Property Name="partyName" Type="nvarchar" MaxLength="200" />
+          <Property Name="count" Type="int" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="party_guest">
+          <Key>
+            <PropertyRef Name="party_guestId" />
+          </Key>
+          <Property Name="party_guestId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="partyId" Type="bigint" />
+          <Property Name="guestId" Type="bigint" />
+          <Property Name="IDMSTypeId" Type="int" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="source_system_link">
+          <Key>
+            <PropertyRef Name="sourceTypeId" />
+          </Key>
+          <Property Name="sourceTypeId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="bigint" Nullable="false" />
+          <Property Name="sourceSystemIdValue" Type="nvarchar" MaxLength="200" />
+          <Property Name="IDMSTypeId" Type="int" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="xband">
+          <Key>
+            <PropertyRef Name="xbandId" />
+          </Key>
+          <Property Name="xbandId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bandId" Type="nvarchar" MaxLength="200" />
+          <Property Name="longRangeId" Type="nvarchar" MaxLength="200" />
+          <Property Name="tapId" Type="nvarchar" MaxLength="200" />
+          <Property Name="secureId" Type="nvarchar" MaxLength="200" />
+          <Property Name="UID" Type="nvarchar" MaxLength="200" />
+          <Property Name="bandFriendlyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="printedName" Type="nvarchar" MaxLength="255" />
+          <Property Name="active" Type="bit" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="demo">
+          <Key>
+            <PropertyRef Name="demoId" />
+          </Key>
+          <Property Name="demoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="demoDescription" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="demoOrder" Type="int" Nullable="false" />
+          <Property Name="scheduledTime" Type="time" Nullable="false" />
+        </EntityType>
+        <EntityType Name="demo_guest">
+          <Key>
+            <PropertyRef Name="guestId" />
+            <PropertyRef Name="demoId" />
+            <PropertyRef Name="xbandId" />
+          </Key>
+          <Property Name="guestId" Type="bigint" Nullable="false" />
+          <Property Name="demoId" Type="int" Nullable="false" />
+          <Property Name="xbandId" Type="bigint" Nullable="false" />
+          <Property Name="response_status_id" Type="int" Nullable="false" />
+          <Property Name="position" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsLeadGuest" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="response_status">
+          <Key>
+            <PropertyRef Name="response_status_id" />
+          </Key>
+          <Property Name="response_status_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="response_status" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_celebration_guest">
+          <End Role="guest" Type="IDMSModel.Store.guest" Multiplicity="0..1" />
+          <End Role="celebration" Type="IDMSModel.Store.celebration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="celebration">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_celebration_IDMS_Type">
+          <End Role="IDMS_Type" Type="IDMSModel.Store.IDMS_Type" Multiplicity="0..1" />
+          <End Role="celebration" Type="IDMSModel.Store.celebration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDMS_Type">
+              <PropertyRef Name="IDMSTypeId" />
+            </Principal>
+            <Dependent Role="celebration">
+              <PropertyRef Name="IDMSTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_demo_guest_Demo">
+          <End Role="demo" Type="IDMSModel.Store.demo" Multiplicity="1" />
+          <End Role="demo_guest" Type="IDMSModel.Store.demo_guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="demo">
+              <PropertyRef Name="demoId" />
+            </Principal>
+            <Dependent Role="demo_guest">
+              <PropertyRef Name="demoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_demo_guest_response_status">
+          <End Role="response_status" Type="IDMSModel.Store.response_status" Multiplicity="1" />
+          <End Role="demo_guest" Type="IDMSModel.Store.demo_guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="response_status">
+              <PropertyRef Name="response_status_id" />
+            </Principal>
+            <Dependent Role="demo_guest">
+              <PropertyRef Name="response_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_IDMS_Type">
+          <End Role="IDMS_Type" Type="IDMSModel.Store.IDMS_Type" Multiplicity="0..1" />
+          <End Role="guest" Type="IDMSModel.Store.guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDMS_Type">
+              <PropertyRef Name="IDMSTypeId" />
+            </Principal>
+            <Dependent Role="guest">
+              <PropertyRef Name="IDMSTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_info_guest">
+          <End Role="guest" Type="IDMSModel.Store.guest" Multiplicity="1" />
+          <End Role="guest_address" Type="IDMSModel.Store.guest_address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_address">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_info_IDMS_Type">
+          <End Role="IDMS_Type" Type="IDMSModel.Store.IDMS_Type" Multiplicity="0..1" />
+          <End Role="guest_address" Type="IDMSModel.Store.guest_address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDMS_Type">
+              <PropertyRef Name="IDMSTypeId" />
+            </Principal>
+            <Dependent Role="guest_address">
+              <PropertyRef Name="IDMStypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_phone_guest">
+          <End Role="guest" Type="IDMSModel.Store.guest" Multiplicity="0..1" />
+          <End Role="guest_phone" Type="IDMSModel.Store.guest_phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_phone">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_phone_IDMS_Type">
+          <End Role="IDMS_Type" Type="IDMSModel.Store.IDMS_Type" Multiplicity="0..1" />
+          <End Role="guest_phone" Type="IDMSModel.Store.guest_phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDMS_Type">
+              <PropertyRef Name="IDMSTypeId" />
+            </Principal>
+            <Dependent Role="guest_phone">
+              <PropertyRef Name="IDMSTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_xband_guest">
+          <End Role="guest" Type="IDMSModel.Store.guest" Multiplicity="1" />
+          <End Role="guest_xband" Type="IDMSModel.Store.guest_xband" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_xband">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_xband_xband">
+          <End Role="xband" Type="IDMSModel.Store.xband" Multiplicity="1" />
+          <End Role="guest_xband" Type="IDMSModel.Store.guest_xband" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="xband">
+              <PropertyRef Name="xbandId" />
+            </Principal>
+            <Dependent Role="guest_xband">
+              <PropertyRef Name="xbandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_party_guest">
+          <End Role="guest" Type="IDMSModel.Store.guest" Multiplicity="0..1" />
+          <End Role="party" Type="IDMSModel.Store.party" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="party">
+              <PropertyRef Name="primaryGuestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_party_guest_guest">
+          <End Role="guest" Type="IDMSModel.Store.guest" Multiplicity="0..1" />
+          <End Role="party_guest" Type="IDMSModel.Store.party_guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="party_guest">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_party_guest_IDMS_Type">
+          <End Role="IDMS_Type" Type="IDMSModel.Store.IDMS_Type" Multiplicity="0..1" />
+          <End Role="party_guest" Type="IDMSModel.Store.party_guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDMS_Type">
+              <PropertyRef Name="IDMSTypeId" />
+            </Principal>
+            <Dependent Role="party_guest">
+              <PropertyRef Name="IDMSTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_party_guest_party">
+          <End Role="party" Type="IDMSModel.Store.party" Multiplicity="0..1" />
+          <End Role="party_guest" Type="IDMSModel.Store.party_guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="party">
+              <PropertyRef Name="partyId" />
+            </Principal>
+            <Dependent Role="party_guest">
+              <PropertyRef Name="partyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_source_system_id_IDMS_Type">
+          <End Role="IDMS_Type" Type="IDMSModel.Store.IDMS_Type" Multiplicity="0..1" />
+          <End Role="source_system_link" Type="IDMSModel.Store.source_system_link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDMS_Type">
+              <PropertyRef Name="IDMSTypeId" />
+            </Principal>
+            <Dependent Role="source_system_link">
+              <PropertyRef Name="IDMSTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_source_type_guest">
+          <End Role="guest" Type="IDMSModel.Store.guest" Multiplicity="1" />
+          <End Role="source_system_link" Type="IDMSModel.Store.source_system_link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="source_system_link">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_GetGuests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="demo">
+          <Parameter Name="DemoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_RemoveGuests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="demo">
+          <Parameter Name="DemoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_SetupDemo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="demo">
+          <Parameter Name="DemoID" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IDMSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="IDMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="celebrations" EntityType="IDMSModel.celebration" />
+          <EntitySet Name="guests" EntityType="IDMSModel.guest" />
+          <EntitySet Name="guest_address" EntityType="IDMSModel.guest_address" />
+          <EntitySet Name="guest_phone" EntityType="IDMSModel.guest_phone" />
+          <EntitySet Name="IDMS_Type" EntityType="IDMSModel.IDMS_Type" />
+          <EntitySet Name="parties" EntityType="IDMSModel.party" />
+          <EntitySet Name="party_guest" EntityType="IDMSModel.party_guest" />
+          <EntitySet Name="source_system_link" EntityType="IDMSModel.source_system_link" />
+          <EntitySet Name="xbands" EntityType="IDMSModel.xband" />
+          <AssociationSet Name="FK_celebration_guest" Association="IDMSModel.FK_celebration_guest">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="celebration" EntitySet="celebrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_celebration_IDMS_Type" Association="IDMSModel.FK_celebration_IDMS_Type">
+            <End Role="IDMS_Type" EntitySet="IDMS_Type" />
+            <End Role="celebration" EntitySet="celebrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_IDMS_Type" Association="IDMSModel.FK_guest_IDMS_Type">
+            <End Role="IDMS_Type" EntitySet="IDMS_Type" />
+            <End Role="guest" EntitySet="guests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_info_guest" Association="IDMSModel.FK_guest_info_guest">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="guest_address" EntitySet="guest_address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_phone_guest" Association="IDMSModel.FK_guest_phone_guest">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="guest_phone" EntitySet="guest_phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_party_guest" Association="IDMSModel.FK_party_guest">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="party" EntitySet="parties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_party_guest_guest" Association="IDMSModel.FK_party_guest_guest">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="party_guest" EntitySet="party_guest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_source_type_guest" Association="IDMSModel.FK_source_type_guest">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="source_system_link" EntitySet="source_system_link" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_info_IDMS_Type" Association="IDMSModel.FK_guest_info_IDMS_Type">
+            <End Role="IDMS_Type" EntitySet="IDMS_Type" />
+            <End Role="guest_address" EntitySet="guest_address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_phone_IDMS_Type" Association="IDMSModel.FK_guest_phone_IDMS_Type">
+            <End Role="IDMS_Type" EntitySet="IDMS_Type" />
+            <End Role="guest_phone" EntitySet="guest_phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_party_guest_IDMS_Type" Association="IDMSModel.FK_party_guest_IDMS_Type">
+            <End Role="IDMS_Type" EntitySet="IDMS_Type" />
+            <End Role="party_guest" EntitySet="party_guest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_source_system_id_IDMS_Type" Association="IDMSModel.FK_source_system_id_IDMS_Type">
+            <End Role="IDMS_Type" EntitySet="IDMS_Type" />
+            <End Role="source_system_link" EntitySet="source_system_link" />
+          </AssociationSet>
+          <AssociationSet Name="FK_party_guest_party" Association="IDMSModel.FK_party_guest_party">
+            <End Role="party" EntitySet="parties" />
+            <End Role="party_guest" EntitySet="party_guest" />
+          </AssociationSet>
+          <EntitySet Name="guest_xband" EntityType="IDMSModel.guest_xband" />
+          <AssociationSet Name="FK_guest_xband_guest" Association="IDMSModel.FK_guest_xband_guest">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="guest_xband" EntitySet="guest_xband" />
+          </AssociationSet>
+          <AssociationSet Name="FK_guest_xband_xband" Association="IDMSModel.FK_guest_xband_xband">
+            <End Role="xband" EntitySet="xbands" />
+            <End Role="guest_xband" EntitySet="guest_xband" />
+          </AssociationSet>
+          <EntitySet Name="demos" EntityType="IDMSModel.demo" />
+          <EntitySet Name="demo_guest" EntityType="IDMSModel.demo_guest" />
+          <EntitySet Name="response_status" EntityType="IDMSModel.response_status" />
+          <AssociationSet Name="FK_demo_guest_guest" Association="IDMSModel.FK_demo_guest_guest">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="demo_guest" EntitySet="demo_guest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_demo_guest_xband" Association="IDMSModel.FK_demo_guest_xband">
+            <End Role="xband" EntitySet="xbands" />
+            <End Role="demo_guest" EntitySet="demo_guest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_demo_guest_Demo" Association="IDMSModel.FK_demo_guest_Demo">
+            <End Role="demo" EntitySet="demos" />
+            <End Role="demo_guest" EntitySet="demo_guest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_demo_guest_response_status" Association="IDMSModel.FK_demo_guest_response_status">
+            <End Role="response_status" EntitySet="response_status" />
+            <End Role="demo_guest" EntitySet="demo_guest" />
+          </AssociationSet>
+          <FunctionImport Name="GetGuests" ReturnType="Collection(IDMSModel.GetGuests_Result)">
+          <Parameter Name="DemoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SetupDemo">
+          <Parameter Name="DemoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveDemo">
+          <Parameter Name="DemoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
+        <EntityType Name="celebration">
+          <Key>
+            <PropertyRef Name="celebrationId" />
+          </Key>
+          <Property Name="celebrationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="Int64" />
+          <Property Name="name" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="message" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="dateStart" Type="DateTime" />
+          <Property Name="dateEnd" Type="DateTime" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="IDMSTypeId" Type="Int32" />
+          <Property Name="createdBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="updatedDate" Type="DateTime" />
+          <NavigationProperty Name="guest" Relationship="IDMSModel.FK_celebration_guest" FromRole="celebration" ToRole="guest" />
+          <NavigationProperty Name="IDMS_Type" Relationship="IDMSModel.FK_celebration_IDMS_Type" FromRole="celebration" ToRole="IDMS_Type" />
+        </EntityType>
+        <EntityType Name="guest">
+          <Key>
+            <PropertyRef Name="guestId" />
+          </Key>
+          <Property Name="guestId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDMSID" Type="Guid" Nullable="false" />
+          <Property Name="IDMSTypeId" Type="Int32" />
+          <Property Name="lastName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="firstName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="DOB" Type="DateTime" />
+          <Property Name="VisitCount" Type="Int32" />
+          <Property Name="AvatarName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="createdBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="updatedDate" Type="DateTime" />
+          <NavigationProperty Name="celebrations" Relationship="IDMSModel.FK_celebration_guest" FromRole="guest" ToRole="celebration" />
+          <NavigationProperty Name="IDMS_Type" Relationship="IDMSModel.FK_guest_IDMS_Type" FromRole="guest" ToRole="IDMS_Type" />
+          <NavigationProperty Name="guest_address" Relationship="IDMSModel.FK_guest_info_guest" FromRole="guest" ToRole="guest_address" />
+          <NavigationProperty Name="guest_phone" Relationship="IDMSModel.FK_guest_phone_guest" FromRole="guest" ToRole="guest_phone" />
+          <NavigationProperty Name="parties" Relationship="IDMSModel.FK_party_guest" FromRole="guest" ToRole="party" />
+          <NavigationProperty Name="party_guest" Relationship="IDMSModel.FK_party_guest_guest" FromRole="guest" ToRole="party_guest" />
+          <NavigationProperty Name="source_system_link" Relationship="IDMSModel.FK_source_type_guest" FromRole="guest" ToRole="source_system_link" />
+          <Property Type="String" Name="middleName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="title" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="suffix" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="emailAddress" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="parentEmail" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="countryCode" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="languageCode" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="gender" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="userName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="guest_xband" Relationship="IDMSModel.FK_guest_xband_guest" FromRole="guest" ToRole="guest_xband" />
+          <NavigationProperty Name="demo_guest" Relationship="IDMSModel.FK_demo_guest_guest" FromRole="guest" ToRole="demo_guest" />
+        </EntityType>
+        <EntityType Name="guest_address">
+          <Key>
+            <PropertyRef Name="guest_addressId" />
+          </Key>
+          <Property Name="guest_addressId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="Int64" Nullable="false" />
+          <Property Name="IDMStypeId" Type="Int32" />
+          <Property Name="address1" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="address2" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="city" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="state" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="countryCode" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="postalCode" Type="String" MaxLength="12" Unicode="true" FixedLength="false" />
+          <Property Name="createdBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="updatedDate" Type="DateTime" />
+          <NavigationProperty Name="guest" Relationship="IDMSModel.FK_guest_info_guest" FromRole="guest_address" ToRole="guest" />
+          <NavigationProperty Name="IDMS_Type" Relationship="IDMSModel.FK_guest_info_IDMS_Type" FromRole="guest_address" ToRole="IDMS_Type" />
+          <Property Type="String" Name="address3" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="guest_phone">
+          <Key>
+            <PropertyRef Name="guest_phoneId" />
+          </Key>
+          <Property Name="guest_phoneId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="Int64" />
+          <Property Name="IDMSTypeId" Type="Int32" />
+          <Property Name="phonenumber" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="createdBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="updatedDate" Type="DateTime" />
+          <NavigationProperty Name="guest" Relationship="IDMSModel.FK_guest_phone_guest" FromRole="guest_phone" ToRole="guest" />
+          <NavigationProperty Name="IDMS_Type" Relationship="IDMSModel.FK_guest_phone_IDMS_Type" FromRole="guest_phone" ToRole="IDMS_Type" />
+          <Property Type="String" Name="extension" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="IDMS_Type">
+          <Key>
+            <PropertyRef Name="IDMSTypeId" />
+          </Key>
+          <Property Name="IDMSTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDMSTypeName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IDMSTypeValue" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IDMSkey" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="createdBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="updatedDate" Type="DateTime" />
+          <NavigationProperty Name="celebrations" Relationship="IDMSModel.FK_celebration_IDMS_Type" FromRole="IDMS_Type" ToRole="celebration" />
+          <NavigationProperty Name="guests" Relationship="IDMSModel.FK_guest_IDMS_Type" FromRole="IDMS_Type" ToRole="guest" />
+          <NavigationProperty Name="guest_address" Relationship="IDMSModel.FK_guest_info_IDMS_Type" FromRole="IDMS_Type" ToRole="guest_address" />
+          <NavigationProperty Name="guest_phone" Relationship="IDMSModel.FK_guest_phone_IDMS_Type" FromRole="IDMS_Type" ToRole="guest_phone" />
+          <NavigationProperty Name="party_guest" Relationship="IDMSModel.FK_party_guest_IDMS_Type" FromRole="IDMS_Type" ToRole="party_guest" />
+          <NavigationProperty Name="source_system_link" Relationship="IDMSModel.FK_source_system_id_IDMS_Type" FromRole="IDMS_Type" ToRole="source_system_link" />
+        </EntityType>
+        <EntityType Name="party">
+          <Key>
+            <PropertyRef Name="partyId" />
+          </Key>
+          <Property Name="partyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="primaryGuestId" Type="Int64" />
+          <Property Name="partyName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="createdBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="updatedDate" Type="DateTime" />
+          <NavigationProperty Name="guest" Relationship="IDMSModel.FK_party_guest" FromRole="party" ToRole="guest" />
+          <NavigationProperty Name="party_guest" Relationship="IDMSModel.FK_party_guest_party" FromRole="party" ToRole="party_guest" />
+          <Property Type="Int32" Name="count" />
+        </EntityType>
+        <EntityType Name="party_guest">
+          <Key>
+            <PropertyRef Name="party_guestId" />
+          </Key>
+          <Property Name="party_guestId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="partyId" Type="Int64" />
+          <Property Name="guestId" Type="Int64" />
+          <Property Name="IDMSTypeId" Type="Int32" />
+          <Property Name="createdBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="updatedDate" Type="DateTime" />
+          <NavigationProperty Name="guest" Relationship="IDMSModel.FK_party_guest_guest" FromRole="party_guest" ToRole="guest" />
+          <NavigationProperty Name="IDMS_Type" Relationship="IDMSModel.FK_party_guest_IDMS_Type" FromRole="party_guest" ToRole="IDMS_Type" />
+          <NavigationProperty Name="party" Relationship="IDMSModel.FK_party_guest_party" FromRole="party_guest" ToRole="party" />
+        </EntityType>
+        <EntityType Name="source_system_link">
+          <Key>
+            <PropertyRef Name="sourceTypeId" />
+          </Key>
+          <Property Name="sourceTypeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="guestId" Type="Int64" Nullable="false" />
+          <Property Name="sourceSystemIdValue" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="IDMSTypeId" Type="Int32" />
+          <Property Name="createdBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="updatedDate" Type="DateTime" />
+          <NavigationProperty Name="guest" Relationship="IDMSModel.FK_source_type_guest" FromRole="source_system_link" ToRole="guest" />
+          <NavigationProperty Name="IDMS_Type" Relationship="IDMSModel.FK_source_system_id_IDMS_Type" FromRole="source_system_link" ToRole="IDMS_Type" />
+        </EntityType>
+        <EntityType Name="xband">
+          <Key>
+            <PropertyRef Name="xbandId" />
+          </Key>
+          <Property Name="xbandId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bandId" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="longRangeId" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="tapId" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="secureId" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="UID" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="bandFriendlyName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="printedName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="createdBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="createdDate" Type="DateTime" />
+          <Property Name="updatedBy" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="updatedDate" Type="DateTime" />
+          <NavigationProperty Name="guest_xband" Relationship="IDMSModel.FK_guest_xband_xband" FromRole="xband" ToRole="guest_xband" />
+          <NavigationProperty Name="demo_guest" Relationship="IDMSModel.FK_demo_guest_xband" FromRole="xband" ToRole="demo_guest" />
+        </EntityType>
+        <Association Name="FK_celebration_guest">
+          <End Role="guest" Type="IDMSModel.guest" Multiplicity="0..1" />
+          <End Role="celebration" Type="IDMSModel.celebration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="celebration">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_celebration_IDMS_Type">
+          <End Role="IDMS_Type" Type="IDMSModel.IDMS_Type" Multiplicity="0..1" />
+          <End Role="celebration" Type="IDMSModel.celebration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDMS_Type">
+              <PropertyRef Name="IDMSTypeId" />
+            </Principal>
+            <Dependent Role="celebration">
+              <PropertyRef Name="IDMSTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_IDMS_Type">
+          <End Role="IDMS_Type" Type="IDMSModel.IDMS_Type" Multiplicity="0..1" />
+          <End Role="guest" Type="IDMSModel.guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDMS_Type">
+              <PropertyRef Name="IDMSTypeId" />
+            </Principal>
+            <Dependent Role="guest">
+              <PropertyRef Name="IDMSTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_info_guest">
+          <End Role="guest" Type="IDMSModel.guest" Multiplicity="1" />
+          <End Role="guest_address" Type="IDMSModel.guest_address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_address">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_phone_guest">
+          <End Role="guest" Type="IDMSModel.guest" Multiplicity="0..1" />
+          <End Role="guest_phone" Type="IDMSModel.guest_phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_phone">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_party_guest">
+          <End Role="guest" Type="IDMSModel.guest" Multiplicity="0..1" />
+          <End Role="party" Type="IDMSModel.party" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="party">
+              <PropertyRef Name="primaryGuestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_party_guest_guest">
+          <End Role="guest" Type="IDMSModel.guest" Multiplicity="0..1" />
+          <End Role="party_guest" Type="IDMSModel.party_guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="party_guest">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_source_type_guest">
+          <End Role="guest" Type="IDMSModel.guest" Multiplicity="1" />
+          <End Role="source_system_link" Type="IDMSModel.source_system_link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="source_system_link">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_info_IDMS_Type">
+          <End Role="IDMS_Type" Type="IDMSModel.IDMS_Type" Multiplicity="0..1" />
+          <End Role="guest_address" Type="IDMSModel.guest_address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDMS_Type">
+              <PropertyRef Name="IDMSTypeId" />
+            </Principal>
+            <Dependent Role="guest_address">
+              <PropertyRef Name="IDMStypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_phone_IDMS_Type">
+          <End Role="IDMS_Type" Type="IDMSModel.IDMS_Type" Multiplicity="0..1" />
+          <End Role="guest_phone" Type="IDMSModel.guest_phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDMS_Type">
+              <PropertyRef Name="IDMSTypeId" />
+            </Principal>
+            <Dependent Role="guest_phone">
+              <PropertyRef Name="IDMSTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_party_guest_IDMS_Type">
+          <End Role="IDMS_Type" Type="IDMSModel.IDMS_Type" Multiplicity="0..1" />
+          <End Role="party_guest" Type="IDMSModel.party_guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDMS_Type">
+              <PropertyRef Name="IDMSTypeId" />
+            </Principal>
+            <Dependent Role="party_guest">
+              <PropertyRef Name="IDMSTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_source_system_id_IDMS_Type">
+          <End Role="IDMS_Type" Type="IDMSModel.IDMS_Type" Multiplicity="0..1" />
+          <End Role="source_system_link" Type="IDMSModel.source_system_link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDMS_Type">
+              <PropertyRef Name="IDMSTypeId" />
+            </Principal>
+            <Dependent Role="source_system_link">
+              <PropertyRef Name="IDMSTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_party_guest_party">
+          <End Role="party" Type="IDMSModel.party" Multiplicity="0..1" />
+          <End Role="party_guest" Type="IDMSModel.party_guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="party">
+              <PropertyRef Name="partyId" />
+            </Principal>
+            <Dependent Role="party_guest">
+              <PropertyRef Name="partyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="guest_xband">
+          <Key>
+            <PropertyRef Name="guest_xband_id" />
+          </Key>
+          <Property Type="Int64" Name="guest_xband_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="guestId" Nullable="false" />
+          <Property Type="Int64" Name="xbandId" Nullable="false" />
+          <Property Type="String" Name="createdBy" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="createdDate" Nullable="false" />
+          <Property Type="String" Name="updatedBy" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="updatedDate" Nullable="false" />
+          <Property Type="Boolean" Name="active" Nullable="false" />
+          <NavigationProperty Name="guest" Relationship="IDMSModel.FK_guest_xband_guest" FromRole="guest_xband" ToRole="guest" />
+          <NavigationProperty Name="xband" Relationship="IDMSModel.FK_guest_xband_xband" FromRole="guest_xband" ToRole="xband" />
+        </EntityType>
+        <Association Name="FK_guest_xband_guest">
+          <End Type="IDMSModel.guest" Role="guest" Multiplicity="1" />
+          <End Type="IDMSModel.guest_xband" Role="guest_xband" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="guest_xband">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_guest_xband_xband">
+          <End Type="IDMSModel.xband" Role="xband" Multiplicity="1" />
+          <End Type="IDMSModel.guest_xband" Role="guest_xband" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="xband">
+              <PropertyRef Name="xbandId" />
+            </Principal>
+            <Dependent Role="guest_xband">
+              <PropertyRef Name="xbandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="demo">
+          <Key>
+            <PropertyRef Name="demoId" />
+          </Key>
+          <Property Type="Int32" Name="demoId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="demoDescription" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="demoOrder" Nullable="false" />
+          <Property Type="Time" Name="scheduledTime" Nullable="false" />
+          <NavigationProperty Name="demo_guest" Relationship="IDMSModel.FK_demo_guest_Demo" FromRole="demo" ToRole="demo_guest" />
+        </EntityType>
+        <EntityType Name="demo_guest">
+          <Key>
+            <PropertyRef Name="guestId" />
+            <PropertyRef Name="demoId" />
+            <PropertyRef Name="xbandId" />
+          </Key>
+          <Property Type="Int64" Name="guestId" Nullable="false" />
+          <Property Type="Int32" Name="demoId" Nullable="false" />
+          <Property Type="Int64" Name="xbandId" Nullable="false" />
+          <Property Type="Int32" Name="response_status_id" Nullable="false" />
+          <Property Type="String" Name="position" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="guest" Relationship="IDMSModel.FK_demo_guest_guest" FromRole="demo_guest" ToRole="guest" />
+          <NavigationProperty Name="xband" Relationship="IDMSModel.FK_demo_guest_xband" FromRole="demo_guest" ToRole="xband" />
+          <NavigationProperty Name="demo" Relationship="IDMSModel.FK_demo_guest_Demo" FromRole="demo_guest" ToRole="demo" />
+          <NavigationProperty Name="response_status" Relationship="IDMSModel.FK_demo_guest_response_status" FromRole="demo_guest" ToRole="response_status" />
+          <Property Type="Boolean" Name="IsLeadGuest" Nullable="false" />
+        </EntityType>
+        <EntityType Name="response_status">
+          <Key>
+            <PropertyRef Name="response_status_id" />
+          </Key>
+          <Property Type="Int32" Name="response_status_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="response_status1" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="demo_guest" Relationship="IDMSModel.FK_demo_guest_response_status" FromRole="response_status" ToRole="demo_guest" />
+        </EntityType>
+        <Association Name="FK_demo_guest_guest">
+          <End Type="IDMSModel.guest" Role="guest" Multiplicity="1" />
+          <End Type="IDMSModel.demo_guest" Role="demo_guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="guestId" />
+            </Principal>
+            <Dependent Role="demo_guest">
+              <PropertyRef Name="guestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_demo_guest_xband">
+          <End Type="IDMSModel.xband" Role="xband" Multiplicity="1" />
+          <End Type="IDMSModel.demo_guest" Role="demo_guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="xband">
+              <PropertyRef Name="xbandId" />
+            </Principal>
+            <Dependent Role="demo_guest">
+              <PropertyRef Name="xbandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_demo_guest_Demo">
+          <End Type="IDMSModel.demo" Role="demo" Multiplicity="1" />
+          <End Type="IDMSModel.demo_guest" Role="demo_guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="demo">
+              <PropertyRef Name="demoId" />
+            </Principal>
+            <Dependent Role="demo_guest">
+              <PropertyRef Name="demoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_demo_guest_response_status">
+          <End Type="IDMSModel.response_status" Role="response_status" Multiplicity="1" />
+          <End Type="IDMSModel.demo_guest" Role="demo_guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="response_status">
+              <PropertyRef Name="response_status_id" />
+            </Principal>
+            <Dependent Role="demo_guest">
+              <PropertyRef Name="response_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetGuests_Result">
+          <Property Type="Int64" Name="guestid" Nullable="false" />
+          <Property Type="String" Name="Lastname" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="demoid" Nullable="false" />
+          <Property Type="Int64" Name="xbandid" Nullable="false" />
+          <Property Type="String" Name="xid" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="gxplinkid" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="tapid" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="bandid" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="IsLeadGuest" Nullable="false" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IDMSModelStoreContainer" CdmEntityContainer="IDMSEntities">
+          <EntitySetMapping Name="celebrations"><EntityTypeMapping TypeName="IDMSModel.celebration"><MappingFragment StoreEntitySet="celebration">
+            <ScalarProperty Name="celebrationId" ColumnName="celebrationId" />
+            <ScalarProperty Name="guestId" ColumnName="guestId" />
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="message" ColumnName="message" />
+            <ScalarProperty Name="dateStart" ColumnName="dateStart" />
+            <ScalarProperty Name="dateEnd" ColumnName="dateEnd" />
+            <ScalarProperty Name="active" ColumnName="active" />
+            <ScalarProperty Name="IDMSTypeId" ColumnName="IDMSTypeId" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="guests"><EntityTypeMapping TypeName="IDMSModel.guest"><MappingFragment StoreEntitySet="guest">
+            <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="languageCode" ColumnName="languageCode" />
+                <ScalarProperty Name="countryCode" ColumnName="countryCode" />
+                <ScalarProperty Name="parentEmail" ColumnName="parentEmail" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="suffix" ColumnName="suffix" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="middleName" ColumnName="middleName" />
+                <ScalarProperty Name="guestId" ColumnName="guestId" />
+            <ScalarProperty Name="IDMSID" ColumnName="IDMSID" />
+            <ScalarProperty Name="IDMSTypeId" ColumnName="IDMSTypeId" />
+            <ScalarProperty Name="lastName" ColumnName="lastName" />
+            <ScalarProperty Name="firstName" ColumnName="firstName" />
+            <ScalarProperty Name="DOB" ColumnName="DOB" />
+            <ScalarProperty Name="VisitCount" ColumnName="VisitCount" />
+            <ScalarProperty Name="AvatarName" ColumnName="AvatarName" />
+            <ScalarProperty Name="active" ColumnName="active" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="guest_address"><EntityTypeMapping TypeName="IDMSModel.guest_address"><MappingFragment StoreEntitySet="guest_address">
+            <ScalarProperty Name="address3" ColumnName="address3" />
+                <ScalarProperty Name="guest_addressId" ColumnName="guest_addressId" />
+            <ScalarProperty Name="guestId" ColumnName="guestId" />
+            <ScalarProperty Name="IDMStypeId" ColumnName="IDMStypeId" />
+            <ScalarProperty Name="address1" ColumnName="address1" />
+            <ScalarProperty Name="address2" ColumnName="address2" />
+            <ScalarProperty Name="city" ColumnName="city" />
+            <ScalarProperty Name="state" ColumnName="state" />
+            <ScalarProperty Name="countryCode" ColumnName="countryCode" />
+            <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="guest_phone"><EntityTypeMapping TypeName="IDMSModel.guest_phone"><MappingFragment StoreEntitySet="guest_phone">
+            <ScalarProperty Name="extension" ColumnName="extension" />
+                <ScalarProperty Name="guest_phoneId" ColumnName="guest_phoneId" />
+            <ScalarProperty Name="guestId" ColumnName="guestId" />
+            <ScalarProperty Name="IDMSTypeId" ColumnName="IDMSTypeId" />
+            <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="IDMS_Type"><EntityTypeMapping TypeName="IDMSModel.IDMS_Type"><MappingFragment StoreEntitySet="IDMS_Type">
+            <ScalarProperty Name="IDMSTypeId" ColumnName="IDMSTypeId" />
+            <ScalarProperty Name="IDMSTypeName" ColumnName="IDMSTypeName" />
+            <ScalarProperty Name="IDMSTypeValue" ColumnName="IDMSTypeValue" />
+            <ScalarProperty Name="IDMSkey" ColumnName="IDMSkey" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="parties"><EntityTypeMapping TypeName="IDMSModel.party"><MappingFragment StoreEntitySet="party">
+            <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="partyId" ColumnName="partyId" />
+            <ScalarProperty Name="primaryGuestId" ColumnName="primaryGuestId" />
+            <ScalarProperty Name="partyName" ColumnName="partyName" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="party_guest"><EntityTypeMapping TypeName="IDMSModel.party_guest"><MappingFragment StoreEntitySet="party_guest">
+            <ScalarProperty Name="party_guestId" ColumnName="party_guestId" />
+            <ScalarProperty Name="partyId" ColumnName="partyId" />
+            <ScalarProperty Name="guestId" ColumnName="guestId" />
+            <ScalarProperty Name="IDMSTypeId" ColumnName="IDMSTypeId" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="source_system_link"><EntityTypeMapping TypeName="IDMSModel.source_system_link"><MappingFragment StoreEntitySet="source_system_link">
+            <ScalarProperty Name="sourceTypeId" ColumnName="sourceTypeId" />
+            <ScalarProperty Name="guestId" ColumnName="guestId" />
+            <ScalarProperty Name="sourceSystemIdValue" ColumnName="sourceSystemIdValue" />
+            <ScalarProperty Name="IDMSTypeId" ColumnName="IDMSTypeId" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="xbands"><EntityTypeMapping TypeName="IDMSModel.xband"><MappingFragment StoreEntitySet="xband">
+            <ScalarProperty Name="xbandId" ColumnName="xbandId" />
+            <ScalarProperty Name="bandId" ColumnName="bandId" />
+            <ScalarProperty Name="longRangeId" ColumnName="longRangeId" />
+            <ScalarProperty Name="tapId" ColumnName="tapId" />
+            <ScalarProperty Name="secureId" ColumnName="secureId" />
+            <ScalarProperty Name="UID" ColumnName="UID" />
+            <ScalarProperty Name="bandFriendlyName" ColumnName="bandFriendlyName" />
+            <ScalarProperty Name="printedName" ColumnName="printedName" />
+            <ScalarProperty Name="active" ColumnName="active" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+            <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="guest_xband">
+            <EntityTypeMapping TypeName="IDMSModel.guest_xband">
+              <MappingFragment StoreEntitySet="guest_xband">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="xbandId" ColumnName="xbandId" />
+                <ScalarProperty Name="guestId" ColumnName="guestId" />
+                <ScalarProperty Name="guest_xband_id" ColumnName="guest_xband_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="demos">
+            <EntityTypeMapping TypeName="IDMSModel.demo">
+              <MappingFragment StoreEntitySet="demo">
+                <ScalarProperty Name="scheduledTime" ColumnName="scheduledTime" />
+                <ScalarProperty Name="demoOrder" ColumnName="demoOrder" />
+                <ScalarProperty Name="demoDescription" ColumnName="demoDescription" />
+                <ScalarProperty Name="demoId" ColumnName="demoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="demo_guest">
+            <EntityTypeMapping TypeName="IDMSModel.demo_guest">
+              <MappingFragment StoreEntitySet="demo_guest">
+                <ScalarProperty Name="IsLeadGuest" ColumnName="IsLeadGuest" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="response_status_id" ColumnName="response_status_id" />
+                <ScalarProperty Name="xbandId" ColumnName="xbandId" />
+                <ScalarProperty Name="demoId" ColumnName="demoId" />
+                <ScalarProperty Name="guestId" ColumnName="guestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="response_status">
+            <EntityTypeMapping TypeName="IDMSModel.response_status">
+              <MappingFragment StoreEntitySet="response_status">
+                <ScalarProperty Name="response_status1" ColumnName="response_status" />
+                <ScalarProperty Name="response_status_id" ColumnName="response_status_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetGuests" FunctionName="IDMSModel.Store.usp_GetGuests">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IDMSModel.GetGuests_Result">
+                <ScalarProperty Name="guestid" ColumnName="guestid" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="demoid" ColumnName="demoid" />
+                <ScalarProperty Name="xbandid" ColumnName="xbandid" />
+                <ScalarProperty Name="xid" ColumnName="xid" />
+                <ScalarProperty Name="gxplinkid" ColumnName="gxplinkid" />
+                <ScalarProperty Name="tapid" ColumnName="tapid" />
+                <ScalarProperty Name="bandid" ColumnName="bandid" />
+                <ScalarProperty Name="IsLeadGuest" ColumnName="IsLeadGuest" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SetupDemo" FunctionName="IDMSModel.Store.usp_SetupDemo" />
+          <FunctionImportMapping FunctionImportName="RemoveDemo" FunctionName="IDMSModel.Store.usp_RemoveGuests" />
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="IDMSModel">
+        <EntityTypeShape EntityType="IDMSModel.celebration" Width="1.5" PointX="5.25" PointY="15.75" Height="3.7109993489583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="IDMSModel.guest" Width="1.5" PointX="3" PointY="16.75" Height="5.2494108072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="IDMSModel.guest_address" Width="1.5" PointX="8.25" PointY="15.625" Height="3.9033007812499978" IsExpanded="true" />
+        <EntityTypeShape EntityType="IDMSModel.guest_phone" Width="1.5" PointX="5.25" PointY="11.125" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="IDMSModel.IDMS_Type" Width="1.5" PointX="0.75" PointY="13.125" Height="3.71099934895833" IsExpanded="true" />
+        <EntityTypeShape EntityType="IDMSModel.party" Width="1.5" PointX="5.25" PointY="31.25" Height="2.749492187499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="IDMSModel.party_guest" Width="1.5" PointX="7.5" PointY="22" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="IDMSModel.source_system_link" Width="1.5" PointX="8.25" PointY="11.125" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="IDMSModel.xband" Width="1.5" PointX="3" PointY="23.5" Height="3.7109993489583317" IsExpanded="true" />
+        <AssociationConnector Association="IDMSModel.FK_celebration_guest" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="18.105499674479166" />
+          <ConnectorPoint PointX="5.25" PointY="18.105499674479166" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_celebration_IDMS_Type" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="16.21875" />
+          <ConnectorPoint PointX="3.4037688090701042" PointY="16.21875" />
+          <ConnectorPoint PointX="3.5704354757367711" PointY="16.21875" />
+          <ConnectorPoint PointX="3.9414702378683857" PointY="16.21875" />
+          <ConnectorPoint PointX="4.1081369045350522" PointY="16.21875" />
+          <ConnectorPoint PointX="5.25" PointY="16.21875" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_guest_IDMS_Type" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="14.43734255859375" />
+          <ConnectorPoint PointX="3.4871021424034376" PointY="14.43734255859375" />
+          <ConnectorPoint PointX="3.4871021424034376" PointY="16.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_guest_info_guest" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="19.62205078125" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="19.62205078125" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="19.62205078125" />
+          <ConnectorPoint PointX="8.25" PointY="19.62205078125" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_guest_phone_guest" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.0248035712017192" PointY="16.75" />
+          <ConnectorPoint PointX="4.0248035712017192" PointY="12.408523763020833" />
+          <ConnectorPoint PointX="5.25" PointY="12.408523763020833" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_party_guest" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="23.730123697916667" />
+          <ConnectorPoint PointX="4.875" PointY="24.105123697916667" />
+          <ConnectorPoint PointX="4.875" PointY="32.720896809895834" />
+          <ConnectorPoint PointX="5.25" PointY="32.720896809895834" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_party_guest_guest" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="20.462635017934033" />
+          <ConnectorPoint PointX="7.5937475" PointY="20.462635017934033" />
+          <ConnectorPoint PointX="7.5937475" PointY="22" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_source_type_guest" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="19.977772938576862" />
+          <ConnectorPoint PointX="8" PointY="19.977772938576862" />
+          <ConnectorPoint PointX="8" PointY="14.441793619791667" />
+          <ConnectorPoint PointX="9" PointY="14.441793619791667" />
+          <ConnectorPoint PointX="9" PointY="14.066793619791667" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_guest_info_IDMS_Type" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="15.65625" />
+          <ConnectorPoint PointX="3.4037688090701042" PointY="15.65625" />
+          <ConnectorPoint PointX="3.5704354757367711" PointY="15.65625" />
+          <ConnectorPoint PointX="3.9414702378683857" PointY="15.65625" />
+          <ConnectorPoint PointX="4.1081369045350522" PointY="15.65625" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="15.656249999999998" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="15.65625" />
+          <ConnectorPoint PointX="8.25" PointY="15.65625" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_guest_phone_IDMS_Type" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.625" PointY="13.692047526041666" />
+          <ConnectorPoint PointX="3.9414702378683857" PointY="13.692047526041666" />
+          <ConnectorPoint PointX="4.1081369045350522" PointY="13.692047526041666" />
+          <ConnectorPoint PointX="5.625" PointY="13.692047526041666" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_party_guest_IDMS_Type" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="15.182637591145834" />
+          <ConnectorPoint PointX="3.4037688090701042" PointY="15.182637591145834" />
+          <ConnectorPoint PointX="3.5704354757367711" PointY="15.182637591145834" />
+          <ConnectorPoint PointX="3.9414702378683857" PointY="15.182637591145834" />
+          <ConnectorPoint PointX="4.1081369045350522" PointY="15.182637591145834" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="15.182637591145834" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="15.182637591145834" />
+          <ConnectorPoint PointX="8.125" PointY="15.182637591145834" />
+          <ConnectorPoint PointX="8.125" PointY="22" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_source_system_id_IDMS_Type" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="13.126152846153847" />
+          <ConnectorPoint PointX="2.625" PointY="12.751152846153847" />
+          <ConnectorPoint PointX="2.625" PointY="10.75" />
+          <ConnectorPoint PointX="7.875" PointY="10.75" />
+          <ConnectorPoint PointX="8.25" PointY="11.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_party_guest_party" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="33.299988606770832" />
+          <ConnectorPoint PointX="7.90625" PointY="33.299988606770832" />
+          <ConnectorPoint PointX="7.90625" PointY="25.134095052083332" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="IDMSModel.guest_xband" Width="1.5" PointX="5.25" PointY="20.75" Height="2.9417936197916674" />
+        <AssociationConnector Association="IDMSModel.FK_guest_xband_guest" >
+          <ConnectorPoint PointX="4.5" PointY="22.220896809895834" />
+          <ConnectorPoint PointX="5.25" PointY="22.220896809895834" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_guest_xband_xband" >
+          <ConnectorPoint PointX="4.5" PointY="25.043196044124549" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="25.043196044124549" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="25.043196044124549" />
+          <ConnectorPoint PointX="6" PointY="25.043196044124549" />
+          <ConnectorPoint PointX="6" PointY="23.691793619791667" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="IDMSModel.demo" Width="1.5" PointX="8.375" PointY="28" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="IDMSModel.demo_guest" Width="1.5" PointX="10.625" PointY="20.75" Height="2.7494921875000031" />
+        <EntityTypeShape EntityType="IDMSModel.response_status" Width="1.5" PointX="8.375" PointY="30.75" Height="1.5956835937499996" />
+        <AssociationConnector Association="IDMSModel.FK_demo_guest_guest" >
+          <ConnectorPoint PointX="4.5" PointY="20.170830953932647" />
+          <ConnectorPoint PointX="8.0416666666666661" PointY="20.170830953932647" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="20.170830953932647" />
+          <ConnectorPoint PointX="11.375" PointY="20.170830953932647" />
+          <ConnectorPoint PointX="11.375" PointY="20.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_demo_guest_xband" >
+          <ConnectorPoint PointX="4.5" PointY="26.299947916666664" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="26.299947916666664" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="26.299947916666664" />
+          <ConnectorPoint PointX="7.822916666666667" PointY="26.299947916666664" />
+          <ConnectorPoint PointX="7.989583333333333" PointY="26.299947916666664" />
+          <ConnectorPoint PointX="9.3854166666666661" PointY="26.299947916666664" />
+          <ConnectorPoint PointX="9.5520833333333339" PointY="26.299947916666664" />
+          <ConnectorPoint PointX="10.885414166666665" PointY="26.299947916666664" />
+          <ConnectorPoint PointX="11.052080833333333" PointY="26.299947916666664" />
+          <ConnectorPoint PointX="11.57812625" PointY="26.299947916666664" />
+          <ConnectorPoint PointX="11.57812625" PointY="23.499492187500003" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_demo_guest_Demo" >
+          <ConnectorPoint PointX="9.46875" PointY="28" />
+          <ConnectorPoint PointX="9.46875" PointY="21.34375" />
+          <ConnectorPoint PointX="10.625" PointY="21.34375" />
+        </AssociationConnector>
+        <AssociationConnector Association="IDMSModel.FK_demo_guest_response_status" >
+          <ConnectorPoint PointX="9.875" PointY="31.547841796874998" />
+          <ConnectorPoint PointX="10.9687475" PointY="31.547841796874998" />
+          <ConnectorPoint PointX="10.9687475" PointY="23.499492187500003" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

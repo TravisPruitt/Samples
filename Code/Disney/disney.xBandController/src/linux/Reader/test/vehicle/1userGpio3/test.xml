@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<configuration>
+    <controller url="http://localhost:8080" />
+    <readers start="0" end="13661600">
+        <reader name="exit-1" webport="8012" mac="00:00:00:00:00:02" type="lrr" fileformat="json" file="test/vehicle/1userGpio3/LRR_EXIT_1user.txt"/>
+        <reader name="invehicle-1" webport="8015" mac="00:00:00:00:00:05" type="lrr" fileformat="json" file="test/vehicle/1userGpio3/LRR_INVEHICLE_1user.txt"/>
+        <reader name="car-1" webport="8016" mac="00:00:00:00:00:06" type="car" fileformat="json" file="test/vehicle/1userGpio3/LRR_WDI_Car_Events_1user.txt"/>
+	<reader name="car-laser" webport="8017" mac="00:00:00:00:00:07" type="xtpra" fileformat="json" file="test/vehicle/1userGpio3/XTPRA_Laser_Events_1user.txt"/>
+    </readers>
+</configuration>

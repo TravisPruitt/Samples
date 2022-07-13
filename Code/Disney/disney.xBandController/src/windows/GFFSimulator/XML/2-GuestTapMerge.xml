@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<businessEvent>
+  <guest_identifier>342343</guest_identifier>
+  <event_type>CHANGE</event_type>
+  <subtype></subtype>
+  <facilityid>80007936</facilityid>
+  <location>GFF.XI.POINTOFSALE</location>
+  <timestamp>2012-05-30T09:00:00</timestamp>
+  <reference_id>80007936-45646-20120530090000</reference_id>
+  <payLoad>
+    <![CDATA[
+          <tapevent>
+            <eventtypeid>3</eventtypeid>
+            <event>Guest Tapped at Merge Point</event>
+            <facilityonesourceid>80007936</facilityonesourceid>
+            <xbandid>342343</xbandid>
+            <source>Merge Point</source>
+            <timestamp>2012-05-30T09:00:00</timestamp>
+            <timestampgmt>2012-05-30T04:00:00</timestampgmt>
+            <ordernumber>45646</ordernumber>
+            <terminal>Merge Point 1</terminal>
+            <lane>FastPass</lane>
+            <xpassid>{xPassId}</xpassid>
+            <partysize>4</partysize>
+            <isbluelaned>false</isbluelaned>
+          </tapevent>
+        ]]>
+  </payLoad>
+</businessEvent>

@@ -1,0 +1,3 @@
+echo $1 >/dev/pwm8
+echo $1 >/dev/pwm9
+ledtest on 0
